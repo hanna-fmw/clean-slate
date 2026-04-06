@@ -377,7 +377,17 @@
       "subscription": false,
       "receipt_email": null,
       "accounts": [
-        { "alias": "shared", "email": "TODO", "use_for": "SEO data API for RankSmile and SignalStack", "nordpass_hint": "NordPass private - DataForSEO" }
+        { "alias": "personal", "email": "TODO - personal Gmail", "use_for": "SEO data API for RankSmile and SignalStack", "nordpass_hint": "NordPass private - DataForSEO" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Apify",
+      "category": "AI & APIs",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO - personal Gmail", "use_for": "Web scraping / data extraction for Social Media Generator", "nordpass_hint": "NordPass private - Apify" }
       ],
       "last_reviewed": "2026-04-06"
     },
