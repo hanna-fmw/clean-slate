@@ -1,0 +1,451 @@
+{
+  "projects": [
+    {
+      "name": "RankSmile",
+      "status": "active",
+      "description": "SEO SaaS for small Swedish businesses. Decision intelligence for SEO - optimization and content generation. Co-built with Kevin.",
+      "local_path": "~/Documents/ranksmile",
+      "github_alias": "github.com-ranksmile",
+      "github_account": "adminranksmile-design",
+      "chrome_profile": "TODO",
+      "supabase_account": "TODO - which email?",
+      "services": ["Supabase", "OpenRouter", "OpenAI", "Stripe", "Resend", "Firecrawl", "DataForSEO", "Google OAuth", "Google PageSpeed", "Unsplash"],
+      "roles": [
+        { "name": "Admin", "email": "admin.ranksmile@gmail.com", "nordpass_hint": "TODO" },
+        { "name": "Client view", "email": "TODO", "nordpass_hint": "TODO" },
+        { "name": "Dev view", "email": "TODO", "nordpass_hint": "TODO" }
+      ],
+      "links": [
+        { "label": "Live app", "url": "TODO" },
+        { "label": "Vercel", "url": "TODO" },
+        { "label": "Repo", "url": "https://github.com/adminranksmile-design/ranksmile" }
+      ],
+      "notes": "RankSmile has its own Vercel, Supabase, and GitHub accounts separate from personal/Stormfors.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "SignalStack",
+      "status": "active",
+      "description": "AI-powered marketing intelligence SaaS. Helps small businesses with SEO, AEO, and Google Ads via natural language. Uses LangGraph agent framework. Two core features: talk to your data, and weekly AI action plan.",
+      "local_path": "~/Documents/signalstack",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "TODO",
+      "supabase_account": "TODO - which email?",
+      "services": ["Supabase", "OpenRouter", "LangGraph", "Resend", "Tavily", "DataForSEO", "Unsplash"],
+      "roles": [
+        { "name": "Admin", "email": "TODO", "nordpass_hint": "TODO" },
+        { "name": "Client view", "email": "TODO", "nordpass_hint": "TODO" },
+        { "name": "Dev view", "email": "TODO", "nordpass_hint": "TODO" }
+      ],
+      "links": [
+        { "label": "Live app", "url": "TODO" },
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/signal-stack" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Tracker",
+      "status": "active",
+      "description": "Voice-first personal health tracking app. Two users log daily inputs (food, sleep, stress etc.) and symptoms. AI finds patterns and correlations. Designed for non-tech-savvy users.",
+      "local_path": "~/Documents/tracker",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "Personal",
+      "supabase_account": null,
+      "services": ["Prisma/PostgreSQL", "next-auth", "OpenRouter"],
+      "roles": [
+        { "name": "Admin (Hanna)", "email": "TODO", "nordpass_hint": "NordPass private - Tracker" },
+        { "name": "Second user", "email": "TODO", "nordpass_hint": "TODO" }
+      ],
+      "links": [
+        { "label": "Live app", "url": "TODO" },
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/tracker" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Z Project",
+      "status": "active",
+      "description": "Full website redesign + SEO for a recruiting agency (friend). Next.js 16 frontend with headless WordPress CMS. Also includes ongoing SEO work.",
+      "local_path": "~/Documents/z-site-global",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "TODO",
+      "supabase_account": null,
+      "services": ["WordPress REST API", "Resend", "Cloudflare"],
+      "roles": [
+        { "name": "Dev", "email": "TODO", "nordpass_hint": "NordPass private - Z Project" }
+      ],
+      "links": [
+        { "label": "Live site", "url": "TODO" },
+        { "label": "WordPress admin", "url": "TODO" },
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/z-project" }
+      ],
+      "notes": "Keep project name as Z Project. Do not mention real client name.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Baby-claw",
+      "status": "active",
+      "description": "Mini version of OpenClaw. Fully agent-based harness using different agents, an orchestrator, and artifacts. Has a Resell/GitHub integration for creating artifacts from within the project.",
+      "local_path": "~/Documents/baby-claw",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "Personal",
+      "supabase_account": null,
+      "services": ["OpenRouter", "Google AI", "OpenAI", "HuggingFace", "Mattermost"],
+      "roles": [],
+      "links": [
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/baby-claw" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "OpenClaw",
+      "status": "active",
+      "description": "Personal AI assistant running 24/7 as a Docker container on Proxmox VM (192.168.0.102). Accessed via Telegram bot. Handles cron jobs, reminders, and scheduled tasks. Dashboard requires Netbird tunnel.",
+      "local_path": "~/Documents/openClaw (docs/config only - app runs on VM)",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "Personal",
+      "supabase_account": null,
+      "services": ["Telegram Bot API", "Docker", "Proxmox VM (192.168.0.102)", "Netbird (for dashboard access)"],
+      "roles": [],
+      "links": [
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/pfc" },
+        { "label": "Dashboard (via Netbird)", "url": "TODO" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "RN Health Tracker",
+      "status": "active",
+      "description": "React Native / Expo AI-native health app. Tracks symptoms and health data. Uses voice input and AI analysis. Distributed via TestFlight. Requires Apple Developer Account.",
+      "local_path": "~/Documents/rn-health-tracker",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "Personal",
+      "supabase_account": "TODO - which email?",
+      "services": ["Supabase", "Prisma", "OpenRouter", "Cloudflare", "Apple Developer (TestFlight)", "Expo"],
+      "roles": [],
+      "links": [
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/rn-health-tracker" },
+        { "label": "TestFlight", "url": "TODO" }
+      ],
+      "notes": "Apple Developer Account renews annually (~$99). Check renewal date.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "JSON-LD Generator",
+      "status": "active",
+      "description": "AEO (Answer Engine Optimization) tool. Generates JSON-LD structured data. Live production app for Stormfors. Deployed on Coolify/Hetzner.",
+      "local_path": "~/Documents/json-ld-generator",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "TODO - Stormfors profile?",
+      "supabase_account": null,
+      "services": ["OpenRouter", "Firecrawl", "Prisma/PostgreSQL", "Coolify (Stormfors/Hetzner)"],
+      "roles": [],
+      "links": [
+        { "label": "Live app", "url": "https://aeo.stormfors.ai" },
+        { "label": "Coolify", "url": "TODO" },
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/json-ld-generator" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Social Media Generator",
+      "status": "paused",
+      "description": "AI-powered blog post and social media content generator. Multi-agent workflow with style matching. Has RAG via pgvector + Supabase. Multiple pipeline steps - worth revisiting for patterns reusable in other projects.",
+      "local_path": "~/Documents/social-media-generator",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "Personal",
+      "supabase_account": "TODO - which email?",
+      "services": ["Supabase", "pgvector (RAG)", "OpenAI", "Apify", "Google OAuth"],
+      "roles": [],
+      "links": [
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/social-media-generator" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Company KB",
+      "status": "paused",
+      "description": "Stormfors company knowledge base. Deployed on Hetzner via Coolify. Not actively worked on but worth keeping to decide whether to continue or retire.",
+      "local_path": "~/Documents/company-kb",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "TODO - Stormfors profile?",
+      "supabase_account": null,
+      "services": ["Prisma/PostgreSQL", "next-auth", "OpenRouter", "OpenAI", "Qdrant", "Resend", "Google OAuth", "Coolify (Stormfors/Hetzner)"],
+      "roles": [],
+      "links": [
+        { "label": "Live app", "url": "TODO" },
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/company-kb" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Knowledge Base (Server)",
+      "status": "active",
+      "description": "Knowledge base running on Proxmox VM. Has ingestion pipeline and document storage.",
+      "local_path": "~/knowledge-base (on home server)",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": null,
+      "supabase_account": null,
+      "services": ["Proxmox VM", "Netbird (for access)"],
+      "roles": [],
+      "links": [
+        { "label": "Repo", "url": "https://github.com/hanna-fmw/knowledge-base" }
+      ],
+      "last_reviewed": "2026-04-06"
+    }
+  ],
+  "services": [
+    {
+      "name": "GitHub",
+      "category": "Development",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "username": "hanna-fmw", "email": "TODO - noreply github email", "ssh_host": "github.com-personal", "use_for": "Personal projects", "nordpass_hint": "NordPass private - GitHub personal" },
+        { "alias": "work", "username": "StormforsAdmin", "email": "(redacted)", "ssh_host": "github.com-work", "use_for": "Stormfors company", "nordpass_hint": "NordPass company - GitHub Stormfors" },
+        { "alias": "rookie", "username": "rookieworkdev", "email": "rookiework.dev@gmail.com", "ssh_host": "github.com-rookie", "use_for": "Rookie client work", "nordpass_hint": "NordPass private - GitHub Rookie" },
+        { "alias": "ranksmile", "username": "adminranksmile-design", "email": "admin.ranksmile@gmail.com", "ssh_host": "github.com-ranksmile", "use_for": "RankSmile SaaS", "nordpass_hint": "NordPass private - GitHub RankSmile" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Supabase",
+      "category": "Database",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Personal projects", "nordpass_hint": "NordPass private - Supabase personal" },
+        { "alias": "stormfors", "email": "TODO", "use_for": "Stormfors projects", "nordpass_hint": "NordPass company - Supabase" },
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile", "nordpass_hint": "NordPass private - Supabase RankSmile" }
+      ],
+      "notes": "Multiple accounts - check which projects are in which account.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Vercel",
+      "category": "Hosting",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Personal project deployments", "nordpass_hint": "NordPass private - Vercel" },
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile deployment", "nordpass_hint": "NordPass private - Vercel RankSmile" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Cloudflare",
+      "category": "DNS & CDN",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Domain management, DNS, CDN", "nordpass_hint": "NordPass private - Cloudflare" }
+      ],
+      "notes": "Used for DNS management of domains. hosk.app and others managed here.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Railway",
+      "category": "Hosting",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "TODO - check which projects use this", "nordpass_hint": "NordPass private - Railway" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "OpenRouter",
+      "category": "AI & APIs",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "LLM API access for personal projects", "nordpass_hint": "NordPass private - OpenRouter" }
+      ],
+      "notes": "Pay-per-use - check usage across projects (RankSmile, SignalStack, Tracker, Baby-claw, JSON-LD, Company-kb).",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "NordPass",
+      "category": "Security",
+      "subscription": true,
+      "receipt_email": "TODO",
+      "accounts": [
+        { "alias": "private", "email": "TODO", "use_for": "Personal passwords and API keys", "nordpass_hint": null },
+        { "alias": "company", "email": "(redacted)", "use_for": "Stormfors company passwords", "nordpass_hint": null }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Apple Developer",
+      "category": "Mobile",
+      "subscription": true,
+      "receipt_email": "TODO",
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "iOS app distribution via TestFlight (RN Health Tracker)", "nordpass_hint": "NordPass private - Apple Developer" }
+      ],
+      "notes": "Renews annually ~$99. Check exact renewal date.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Google Cloud Console",
+      "category": "AI & APIs",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Personal projects (OAuth, APIs)", "nordpass_hint": "NordPass private - Google Cloud personal" },
+        { "alias": "stormfors", "email": "(redacted)", "use_for": "Stormfors projects", "nordpass_hint": "NordPass company - Google Cloud" },
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile (OAuth, PageSpeed API)", "nordpass_hint": "NordPass private - Google Cloud RankSmile" },
+        { "alias": "rookie", "email": "rookiework.dev@gmail.com", "use_for": "Rookie client projects", "nordpass_hint": "NordPass private - Google Cloud Rookie" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Superwhisper",
+      "category": "Productivity",
+      "subscription": true,
+      "receipt_email": "TODO",
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Voice-to-text transcription", "nordpass_hint": "NordPass private - Superwhisper" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "YouTube Premium",
+      "category": "Entertainment",
+      "subscription": true,
+      "receipt_email": "TODO",
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Ad-free YouTube", "nordpass_hint": null }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Spotify",
+      "category": "Entertainment",
+      "subscription": true,
+      "receipt_email": "TODO",
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Music streaming", "nordpass_hint": null }
+      ],
+      "notes": "Consider cancelling.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Resend",
+      "category": "Email",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal/stormfors", "email": "TODO", "use_for": "Transactional email for SignalStack, Z Project, Tracker, JSON-LD, Company-kb", "nordpass_hint": "NordPass private - Resend" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Stripe",
+      "category": "Payments",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile payment processing", "nordpass_hint": "NordPass private - Stripe RankSmile" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Firecrawl",
+      "category": "AI & APIs",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "personal", "email": "TODO", "use_for": "Web scraping for RankSmile, JSON-LD Generator", "nordpass_hint": "NordPass private - Firecrawl" }
+      ],
+      "notes": "Credit-based - check balance before use.",
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "DataForSEO",
+      "category": "AI & APIs",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "shared", "email": "TODO", "use_for": "SEO data API for RankSmile and SignalStack", "nordpass_hint": "NordPass private - DataForSEO" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Qdrant",
+      "category": "AI & APIs",
+      "subscription": false,
+      "receipt_email": null,
+      "accounts": [
+        { "alias": "stormfors", "email": "TODO", "use_for": "Vector database for Company-kb", "nordpass_hint": "NordPass company - Qdrant" }
+      ],
+      "last_reviewed": "2026-04-06"
+    }
+  ],
+  "infrastructure": [
+    {
+      "name": "Proxmox",
+      "access_url": "TODO - local IP or via Netbird",
+      "login_email": "TODO",
+      "nordpass_hint": "NordPass private - Proxmox",
+      "notes": "Home server. Two VMs: one runs OpenClaw (Docker, 192.168.0.102), one runs knowledge-base. Access remotely via Netbird.",
+      "sub_resources": [
+        { "name": "VM 1", "purpose": "OpenClaw Docker container - personal AI assistant" },
+        { "name": "VM 2", "purpose": "Knowledge base" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Netbird",
+      "access_url": "TODO",
+      "login_email": "TODO",
+      "nordpass_hint": "NordPass private - Netbird",
+      "notes": "VPN/tunnel for remote access to home server (Proxmox dashboard, OpenClaw dashboard). Must be connected for dashboard access.",
+      "sub_resources": [],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Coolify (Personal)",
+      "access_url": "TODO",
+      "login_email": "TODO",
+      "nordpass_hint": "NordPass private - Coolify personal",
+      "notes": "Self-hosted on home server. Used for personal project deployments.",
+      "sub_resources": [],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Coolify (Stormfors)",
+      "access_url": "TODO",
+      "login_email": "(redacted)",
+      "nordpass_hint": "NordPass company - Coolify",
+      "notes": "Hosted on Hetzner. Runs JSON-LD Generator (aeo.stormfors.ai) and Company KB.",
+      "sub_resources": [
+        { "name": "JSON-LD Generator", "purpose": "aeo.stormfors.ai - live production app" },
+        { "name": "Company KB", "purpose": "Stormfors internal knowledge base" }
+      ],
+      "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "Domains",
+      "access_url": "https://dash.cloudflare.com",
+      "login_email": "TODO",
+      "nordpass_hint": "NordPass private - Cloudflare",
+      "notes": "Managed via Cloudflare DNS.",
+      "sub_resources": [
+        { "name": "hosk.app", "purpose": "Personal projects and tools (this dashboard: ops.hosk.app)" },
+        { "name": "stormfors.ai", "purpose": "Stormfors AI tools (aeo.stormfors.ai etc.)" }
+      ],
+      "last_reviewed": "2026-04-06"
+    }
+  ]
+}
