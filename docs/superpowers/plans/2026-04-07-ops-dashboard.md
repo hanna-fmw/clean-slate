@@ -201,6 +201,7 @@ export interface ServiceAccount {
   ssh_host?: string
   use_for: string
   nordpass_hint: string
+  projects?: string[] // project names using this specific account
 }
 
 export interface Service {
@@ -657,6 +658,16 @@ function ServiceDetail({ service }: { service: Service }) {
             <p className="text-xs text-muted-foreground mb-0.5">Password</p>
             <p className="italic">{account.nordpass_hint}</p>
           </div>
+          {account.projects && account.projects.length > 0 && (
+            <div className="col-span-2">
+              <p className="text-xs text-muted-foreground mb-1">Projects</p>
+              <div className="flex flex-wrap gap-1">
+                {account.projects.map((p) => (
+                  <span key={p} className="text-xs bg-muted px-1.5 py-0.5 rounded">{p}</span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       ))}
       {service.notes && (
