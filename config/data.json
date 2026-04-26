@@ -202,6 +202,38 @@
         { "label": "Repo", "url": "https://github.com/hanna-fmw/knowledge-base" }
       ],
       "last_reviewed": "2026-04-06"
+    },
+    {
+      "name": "AI Hub",
+      "status": "active",
+      "description": "Private workspace for preparing AI training material for a potential AI lead role. Two parts: (1) ai-hub - folder-based content workspace with research, learning material by tier (beginner/intermediate/advanced/all), standards, workshops, and personal development. (2) ai-hub-platform - Next.js app for organizing, viewing, and presenting the training material. The folder is the source of truth; the app is the presentation/management layer.",
+      "local_path": "~/Documents/ai-hub-project",
+      "github_alias": "github.com-personal",
+      "github_account": "hanna-fmw",
+      "chrome_profile": "Personal",
+      "supabase_account": null,
+      "services": ["Vercel"],
+      "roles": [],
+      "links": [
+        { "label": "Live app", "url": "https://ai-hub-platform-blush.vercel.app" },
+        { "label": "Repo (platform)", "url": "https://github.com/hanna-fmw/ai-hub-platform" }
+      ],
+      "notes": "Parent folder ai-hub-project/ contains two subfolders: ai-hub/ (content workspace, no repo - private notes and research) and ai-hub-platform/ (Next.js app, has repo). Platform runs on localhost:3200 for dev. Deploy to Vercel via CLI only: 'vercel --prod' (Hobby plan, git email must match Vercel account: hanna.hosk@gmail.com). Claude Code skills used for content creation: yt-transcript, research-write-article, content pipeline (Trend Researcher > Content Creator > Image Prompt Engineer > Technical Writer). No database yet - hardcoded sample data. ai-hub/ has its own CLAUDE.md with folder structure docs and content workflows.",
+      "sub_projects": [
+        {
+          "name": "ai-hub",
+          "path": "~/Documents/ai-hub-project/ai-hub",
+          "purpose": "Content workspace - research, learning material, standards, workshops, personal development. Folder-based, no app. Has CLAUDE.md with full folder structure and workflow docs.",
+          "has_repo": false
+        },
+        {
+          "name": "ai-hub-platform",
+          "path": "~/Documents/ai-hub-project/ai-hub-platform",
+          "purpose": "Next.js 16 app - dashboard with sidebar, topic viewer, presentation mode with keyboard navigation and slide transitions. Stack: shadcn/ui, Tailwind v4, next-themes, Framer Motion, Lucide icons.",
+          "has_repo": true
+        }
+      ],
+      "last_reviewed": "2026-04-26"
     }
   ],
   "services": [
@@ -237,7 +269,7 @@
       "subscription": false,
       "receipt_email": null,
       "accounts": [
-        { "alias": "personal", "email": "TODO", "use_for": "Personal project deployments", "nordpass_hint": "NordPass private - Vercel", "projects": ["SignalStack", "Tracker", "Z Project", "Social Media Generator", "JSON-LD Generator", "Ops Dashboard"] },
+        { "alias": "personal", "email": "TODO", "use_for": "Personal project deployments", "nordpass_hint": "NordPass private - Vercel", "projects": ["SignalStack", "Tracker", "Z Project", "Social Media Generator", "JSON-LD Generator", "Ops Dashboard", "AI Hub"] },
         { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile deployment", "nordpass_hint": "NordPass private - Vercel RankSmile", "projects": ["RankSmile"] }
       ],
       "last_reviewed": "2026-04-06"
