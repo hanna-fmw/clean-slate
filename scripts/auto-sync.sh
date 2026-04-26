@@ -4,7 +4,8 @@ set -e
 PROJECT_DIR="$HOME/Documents/clean-slate"
 cd "$PROJECT_DIR"
 
-export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/share/pnpm:/usr/local/bin:$HOME/.local/bin:$PATH"
+export HOME="$HOME"
 
 pnpm sync
 
