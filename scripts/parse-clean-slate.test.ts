@@ -1,0 +1,120 @@
+import { describe, it, expect } from 'vitest'
+import { parseCleanSlate } from './parse-clean-slate'
+
+const SAMPLE = `# JSON-LD Generator
+
+## Description
+
+A tool for generating **JSON-LD structured data** and **llms.txt files** for websites.
+You start by entering a company's URL and basic info.
+
+## Stack
+
+Next.js 16, TypeScript, Prisma 7, PostgreSQL, Firecrawl, OpenRouter
+
+## Hosting
+
+Coolify on Stormfors Hetzner server. Domain: aeo.stormfors.ai
+Database: PostgreSQL on same Hetzner server.
+
+## GitHub
+
+Account: personal (hanna-fmw)
+SSH alias: github.com-personal
+Repo: https://github.com/hanna-fmw/json-ld-generator
+
+## Run Commands
+
+- \`pnpm dev\` - start dev server
+- \`pnpm build\` - build for production
+- \`pnpm lint\` - lint
+
+## Services
+
+Firecrawl, OpenRouter (Gemini 2.0 Flash), Coolify
+
+## Notes
+
+No local database - DB only on server.
+Uses Prisma 7 WASM client engine.
+`
+
+describe('parseCleanSlate', () => {
+  const result = parseCleanSlate(SAMPLE)
+
+  it('extracts the project name from h1', () => {
+    expect(result.name).toBe('JSON-LD Generator')
+  })
+
+  it('extracts the full description', () => {
+    expect(result.description).toContain('JSON-LD structured data')
+    expect(result.description).toContain("entering a company's URL")
+  })
+
+  it('extracts the short description (first sentence)', () => {
+    expect(result.description_short).toBe(
+      'A tool for generating JSON-LD structured data and llms.txt files for websites.'
+    )
+  })
+
+  it('extracts stack as an array', () => {
+    expect(result.stack).toEqual([
+      'Next.js 16', 'TypeScript', 'Prisma 7', 'PostgreSQL', 'Firecrawl', 'OpenRouter'
+    ])
+  })
+
+  it('extracts hosting', () => {
+    expect(result.hosting).toContain('Coolify on Stormfors Hetzner')
+  })
+
+  it('extracts database from hosting section', () => {
+    expect(result.database).toContain('PostgreSQL on same Hetzner')
+  })
+
+  it('extracts github info', () => {
+    expect(result.github.account).toBe('personal (hanna-fmw)')
+    expect(result.github.ssh_alias).toBe('github.com-personal')
+    expect(result.github.repo_url).toBe('https://github.com/hanna-fmw/json-ld-generator')
+  })
+
+  it('extracts run commands', () => {
+    expect(result.run_commands).toEqual({
+      'pnpm dev': 'start dev server',
+      'pnpm build': 'build for production',
+      'pnpm lint': 'lint',
+    })
+  })
+
+  it('extracts services as an array', () => {
+    expect(result.services).toEqual([
+      'Firecrawl', 'OpenRouter (Gemini 2.0 Flash)', 'Coolify'
+    ])
+  })
+
+  it('extracts notes', () => {
+    expect(result.notes).toContain('No local database')
+    expect(result.notes).toContain('Prisma 7 WASM')
+  })
+})
+
+describe('parseCleanSlate with missing sections', () => {
+  const minimal = `# My Project
+
+## Description
+
+A simple tool.
+`
+  const result = parseCleanSlate(minimal)
+
+  it('handles missing sections with defaults', () => {
+    expect(result.name).toBe('My Project')
+    expect(result.description).toBe('A simple tool.')
+    expect(result.stack).toEqual([])
+    expect(result.hosting).toBe('')
+    expect(result.database).toBe('')
+    expect(result.github).toEqual({ account: '', ssh_alias: '', repo_url: '' })
+    expect(result.run_commands).toEqual({})
+    expect(result.services).toEqual([])
+    expect(result.notes).toBe('')
+  })
+})
