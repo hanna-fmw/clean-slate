@@ -24,7 +24,7 @@ Repo: https://github.com/hanna-fmw/clean-slate
 
 ## Run Commands
 
-- `pnpm dev` - start dev server on localhost:3000
+- `pnpm dev` - start dev server on localhost:3300
 - `pnpm build` - build for production (static export)
 - `pnpm sync` - scan ~/Documents/ and regenerate config/data.json
 - `pnpm test` - run tests
