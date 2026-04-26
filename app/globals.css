@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --muted: #888888;
+  --border: #1a1a1a;
+  --hover: #111111;
+  --tag-bg: #161616;
+  --tag-text: #a0a0a0;
+  --link: #888888;
+  --link-hover: #cccccc;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
