@@ -85,9 +85,13 @@ function main() {
 
   projects.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
 
+  const existing = readJsonIfExists(OUTPUT_PATH) as Partial<DashboardData> | null
+
   const data: DashboardData = {
     generated_at: new Date().toISOString(),
     projects,
+    services: existing?.services ?? [],
+    infrastructure: existing?.infrastructure ?? [],
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true })
