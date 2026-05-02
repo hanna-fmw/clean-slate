@@ -9,7 +9,7 @@ function ProjectSummary({ project }: { project: Project }) {
       <span className="text-sm text-[var(--muted)] truncate hidden sm:block">
         {project.description_short}
       </span>
-      <div className="flex gap-1.5 shrink-0 ml-auto mr-2 flex-wrap justify-end">
+      <div className="flex gap-1.5 ml-auto mr-2 justify-end overflow-hidden">
         {project.stack.slice(0, 4).map((s) => (
           <span
             key={s}
