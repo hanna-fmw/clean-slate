@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "sync": "npx tsx scripts/sync.ts",
+    "sync:tools": "npx tsx scripts/sync-tools.ts",
+    "sync:all": "npx tsx scripts/sync.ts && npx tsx scripts/sync-tools.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },

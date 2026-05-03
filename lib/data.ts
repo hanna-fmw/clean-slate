@@ -8,5 +8,6 @@ export function getData(): DashboardData {
     projects: data.projects ?? [],
     services: data.services ?? [],
     infrastructure: data.infrastructure ?? [],
+    tools: data.tools,
   }
 }
