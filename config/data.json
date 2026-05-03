@@ -1,6 +1,95 @@
 {
-  "generated_at": "2026-04-26T21:05:29.177Z",
+  "generated_at": "2026-04-26T21:24:02.770Z",
   "projects": [
+    {
+      "name": "AI Hub Project",
+      "path": "~/Documents/ai-hub-project",
+      "description": "A two-part workspace for AI leadership work. The parent folder contains two subprojects that serve different purposes but share the same overall mission.\n\nai-hub/ is a private content workspace for preparing and developing AI training material, standards, and workshops. It is organized by audience skill tier (beginner, intermediate, advanced) and covers learning material creation, standards and protocols, workshop planning, personal skill development, and tooling resources. It is a document/markdown workspace, not a deployable application.\n\nai-hub-platform/ is a Next.js 16 web application for creating, managing, and presenting AI training material. It provides a dashboard view and a presentation mode. The app uses server components by default, Tailwind CSS v4, shadcn/ui, Zod for validation, Framer Motion for animations, and next-themes for dark/light mode toggling. A Prisma-backed Postgres database is planned but not yet connected.",
+      "description_short": "A two-part workspace for AI leadership work.",
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript (strict)",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Zod",
+        "Framer Motion",
+        "next-themes",
+        "Lucide React",
+        "pnpm",
+        "Playwright",
+        "Prettier"
+      ],
+      "hosting": "App (ai-hub-platform): Vercel Hobby plan. Deploy via CLI only - `vercel --prod` from the `ai-hub-platform/` directory (no GitHub auto-deploy on free plan with private repo). Database: Postgres on Hetzner via Coolify - planned but not yet set up.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/ai-hub-platform (private) - git is initialized inside `ai-hub-platform/`, not at the project root"
+      },
+      "run_commands": {
+        "pnpm dev": "start local dev server",
+        "pnpm build": "production build",
+        "pnpm start": "run production build locally",
+        "pnpm lint": "run ESLint",
+        "vercel --prod": "deploy to Vercel production"
+      },
+      "services": [
+        "Vercel",
+        "Coolify",
+        "Hugging Face (planned for LLM features)"
+      ],
+      "notes": "The `ai-hub/` content workspace has no git repo or deployable code - it is a local markdown workspace only. The `ai-hub-platform/` app is the deployable product. The two are separate: `ai-hub/` holds source material and standards that the platform may eventually surface. Content in `ai-hub/` is organized by skill tier - always consider which tier content targets (beginner / intermediate / advanced) when creating material.",
+      "last_modified": "2026-04-26T21:23:46.967Z"
+    },
+    {
+      "name": "baby-claw",
+      "path": "~/Documents/baby-claw",
+      "description": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built. Inspired by the OpenClaw teardown.\n\nThe core insight is that generalist agents (like OpenClaw) accumulate context rot - starting at ~7,000 tokens of fixed overhead and ballooning to ~45,000 tokens after months of use, causing up to 40% performance degradation. A sniper agent starts at ~1,400 tokens and stays lean because it only loads what it needs.\n\nEvery agent is defined by four things: Triggers (cron, heartbeat, webhook, CLI/HTTP), Context injection (`SOUL.md` personality, `AGENTS.md` config, `MEMORY.md` persistent facts, JSONL conversation history, tool schemas), Tools (what creates the agentic loop - LLM calls tool, gets result, decides next step), and Outputs (how the agent communicates and writes to the world).\n\nThe harness itself is the reusable infrastructure. Each new agent is just a configuration: a `SOUL.md` + a specific tool set + a trigger. Uses the Vercel AI SDK (model-agnostic, 2M+ weekly downloads) rather than the OpenAI Agents SDK (too new, broken Gemini adapter) or LangGraph (too much magic). All models route through OpenRouter to avoid EU regional restrictions on Google's free tier.",
+      "description_short": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built.",
+      "stack": [
+        "TypeScript (strict)",
+        "Node.js 20+",
+        "Vercel AI SDK (`ai`)",
+        "Zod",
+        "node-cron",
+        "Express",
+        "@mattermost/client",
+        "@ai-sdk/google",
+        "@ai-sdk/openai",
+        "@ai-sdk/ollama",
+        "@huggingface/inference",
+        "Docker",
+        "Docker Compose",
+        "pnpm",
+        "Vitest"
+      ],
+      "hosting": "Railway (baby-claw app). Mattermost self-hosted on homelab or Hetzner.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/baby-claw"
+      },
+      "run_commands": {
+        "pnpm dev": "run the harness with tsx (hot reload via tsx)",
+        "pnpm build": "compile TypeScript to dist/",
+        "pnpm start": "run compiled output from dist/index.js",
+        "pnpm observe": "run in observe mode (MODE=observe)",
+        "pnpm test": "run Vitest",
+        "pnpm test:watch": "run Vitest in watch mode"
+      },
+      "services": [
+        "OpenRouter (LLM routing - primary)",
+        "Hugging Face (image gen",
+        "voice",
+        "multimodal)",
+        "Mattermost (bot messaging)",
+        "Railway (hosting)"
+      ],
+      "notes": "No Claude via Anthropic direct - too expensive. Preferred models: `openrouter/google/gemini-2.0-flash-001` for routine tasks (~$0.075/1M tokens), `openrouter/openai/gpt-4o-mini` for complex reasoning. Local/private: Ollama. Gemini 2.0 Flash has a 1M token context window, making context rot nearly a non-issue for routine agents. Agent behavior is configured in markdown files (`SOUL.md`, `AGENTS.md`, `MEMORY.md`), not in compiled code. SDK decision log is in CLAUDE.md.",
+      "last_modified": "2026-04-26T21:23:27.119Z"
+    },
     {
       "name": "Clean Slate",
       "path": "~/Documents/clean-slate",
@@ -20,7 +109,7 @@
         "repo_url": "https://github.com/hanna-fmw/clean-slate"
       },
       "run_commands": {
-        "pnpm dev": "start dev server on localhost:3000",
+        "pnpm dev": "start dev server on localhost:3300",
         "pnpm build": "build for production (static export)",
         "pnpm sync": "scan ~/Documents/ and regenerate config/data.json",
         "pnpm test": "run tests",
@@ -30,7 +119,569 @@
         "Vercel"
       ],
       "notes": "No database. Fully static. Data comes exclusively from CLEAN-SLATE.md files in project folders.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.",
-      "last_modified": "2026-04-26T21:05:21.745Z"
+      "last_modified": "2026-04-26T21:18:58.605Z"
+    },
+    {
+      "name": "Company Knowledge Base",
+      "path": "~/Documents/company-kb",
+      "description": "A multi-user knowledge base with semantic search and RAG (Retrieval-Augmented Generation) over internal company documents. Users log in via Google Sign-In or email/password and are placed in a `pending` state until an admin assigns a role.\n\nThe core flow is: uploaded documents get chunked and embedded locally using `all-MiniLM-L6-v2` (384-dim vectors), then stored in Qdrant for vector search. When a user asks a question, the app retrieves the most relevant chunks from Qdrant, passes them to an LLM via OpenRouter, and streams the answer back. All conversations are persisted in PostgreSQL.\n\nDocuments are organized into Collections (e.g. HR, Engineering). Each collection maps to a dedicated Qdrant collection. Role-based access controls which collections a user can search. Roles: `admin`, `editor`, `member`, `pending`.\n\nThe admin panel covers document upload, collection CRUD, user management, model selection, a KB description editor, and external connectors (Google Drive integration exists in code but needs end-to-end testing).",
+      "description_short": "A multi-user knowledge base with semantic search and RAG (Retrieval-Augmented Generation) over internal company documents.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Qdrant",
+        "NextAuth.js",
+        "OpenRouter",
+        "`@xenova/transformers` (local embeddings)",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Vitest"
+      ],
+      "hosting": "App: Coolify on Hetzner server, live at **https://kb.stormfors.ai** (Coolify app UUID: `mk8k08soks4s48wcs84gssoo`). Database: PostgreSQL managed via Coolify on the same server. Qdrant: Docker container on the same Coolify internal network.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/company-kb"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server",
+        "npm run build": "Production build",
+        "npm start": "Start production server",
+        "npm test": "Run Vitest unit tests",
+        "npm run lint": "Run ESLint",
+        "npx prisma migrate deploy": "Apply pending migrations (run in Coolify terminal after deploy)",
+        "npx prisma db seed": "Seed the database (first deploy / full reset only)"
+      },
+      "services": [
+        "OpenRouter (LLM inference)",
+        "Google OAuth (NextAuth)",
+        "Google Drive API (connector)",
+        "Resend (email)",
+        "Coolify (deployment)",
+        "Hetzner (server hosting)"
+      ],
+      "notes": "- Deploy by pushing to main - Coolify auto-deploys via GitHub webhook\n- Embedding runs locally inside the container using `@xenova/transformers` - no external embedding API needed\n- After any Prisma schema change: create migration locally, deploy, then run `npx prisma migrate deploy` in Coolify terminal\n- Default LLM model: `qwen/qwen-2.5-7b-instruct` via OpenRouter\n- See `TASKS.md` for known issues and pending work\n- Reference repo (read-only): `~/Desktop/private-knowledge-base`",
+      "last_modified": "2026-04-26T21:22:09.516Z"
+    },
+    {
+      "name": "GDPR Project",
+      "path": "~/Documents/gdpr-project",
+      "description": "A GDPR compliance audit and process documentation project for a web agency. The goal is to audit existing client sites for GDPR compliance and build a reusable compliance process and checklist covering multiple platforms.\n\nPhase 1 (current): Audit all existing Webflow client sites. Key issues include script/consent banner load order in Webflow headers and correct Cookiebot + GTM integration.\n\nPhase 2: Create a reusable audit process and checklist for all supported platforms (Webflow, HubSpot, Next.js).\n\nPhase 3: Research broader GDPR requirements, multi-country and multi-language considerations.\n\nThe project is documentation-heavy. All docs live in `docs/`. The Next.js app (if present) likely serves as a tool or internal dashboard to support the audit/documentation workflow. Clients span multiple countries and languages. The agency is also merging with another company that uses HubSpot, which adds a new platform to cover.",
+      "description_short": "A GDPR compliance audit and process documentation project for a web agency.",
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "shadcn/ui (base-ui)",
+        "Playwright",
+        "Cheerio"
+      ],
+      "hosting": "Not yet determined.",
+      "database": "",
+      "github": {
+        "account": "work (StormforsAdmin)",
+        "ssh_alias": "github.com-work",
+        "repo_url": "https://github.com/StormforsHQ/gdpr-project"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server",
+        "npm run build": "Production build",
+        "npm start": "Start production server",
+        "npm run lint": "Run ESLint"
+      },
+      "services": [
+        "Cookiebot (cookie consent management)",
+        "GTM (Google Tag Manager)",
+        "Webflow",
+        "HubSpot (future scope)"
+      ],
+      "notes": "- Documentation rules: all docs in `docs/`, bullet points and tables over prose, scannable in under 2 minutes, no emojis or em dashes\n- Active branch: `feat/scaffold`\n- The package.json includes Prisma and PostgreSQL - there is likely a database component to the app layer\n- Cheerio is present - likely used for scraping/auditing client site HTML",
+      "last_modified": "2026-04-26T21:23:25.655Z"
+    },
+    {
+      "name": "Health Insights Tracker (React Native)",
+      "path": "~/Documents/rn-health-tracker",
+      "description": "A voice-first personal health tracking mobile app targeting App Store publication. Users log lifestyle factors and symptoms daily; the app combines statistical analysis with LLM interpretation to surface trustworthy correlations and insights. This is a mobile rebuild of the Next.js web app at `/Users/hanna/Documents/tracker` - portable code (metric definitions, Zod schemas, LLM prompts, date utils) should be reused from there.\n\nPrivacy is a hard constraint - Supabase Row-Level Security is required on every user-scoped table. Hanna is the admin (can manage metrics and settings, cannot see other users' data). UX must be simple - one user is not tech-savvy. The app is offline-first: entry logging works via local SQLite and syncs to Supabase when online.\n\nLLM calls happen in Supabase Edge Functions (not client-side) to keep API keys server-side. Architecture, code quality, and UX should meet App Store review standards from the start.",
+      "description_short": "A voice-first personal health tracking mobile app targeting App Store publication.",
+      "stack": [
+        "Expo SDK 53+ (managed workflow)",
+        "Expo Router v4+",
+        "TypeScript (strict)",
+        "NativeWind v4 (Tailwind for React Native)",
+        "Supabase (auth + PostgreSQL + RLS + Edge Functions + real-time)",
+        "Zustand",
+        "expo-sqlite (offline)",
+        "react-native-reanimated v3",
+        "react-native-gesture-handler",
+        "@shopify/flash-list",
+        "expo-notifications",
+        "OpenRouter (via Edge Functions)",
+        "Zod",
+        "Vitest"
+      ],
+      "hosting": "Supabase (EU region, database + auth + edge functions). App distributed via App Store (iOS target). No separate server.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/rn-health-tracker"
+      },
+      "run_commands": {
+        "pnpm ios": "start on iOS simulator",
+        "pnpm android": "start on Android emulator",
+        "pnpm web": "start in web browser (limited support)",
+        "pnpm test": "run Vitest",
+        "pnpm lint": "run ESLint",
+        "pnpm format": "format with Prettier"
+      },
+      "services": [
+        "Supabase (auth + database + edge functions + real-time)",
+        "OpenRouter (LLM via Edge Functions)",
+        "Expo (build + distribution tooling)"
+      ],
+      "notes": "Uses `@shopify/flash-list` instead of FlatList and `expo-image` instead of RN Image for performance. Target 60fps on all animations and lists. Apple/Google sign-in prepared for later (not in initial build). Charts: `react-native-gifted-charts` or Victory Native. Reference the web app's `docs/REQUIREMENTS.md` and `docs/ARCHITECTURE.md` for full feature requirements and data model - adapt Prisma schema to Supabase SQL migrations.",
+      "last_modified": "2026-04-26T21:23:30.579Z"
+    },
+    {
+      "name": "Health Insights Tracker (Web)",
+      "path": "~/Documents/tracker",
+      "description": "A voice-first personal health tracking app for two users. Each user logs daily lifestyle factors (food, sleep, weather, stress, etc.) and symptoms (bloating, palpitations, blood pressure, fatigue, brain fog, etc.). An AI analysis pipeline finds patterns and correlations between logged factors and symptoms.\n\nPrivacy is a hard requirement - the two users have strict data isolation and cannot see each other's entries. Hanna is the admin and can manage tracked metric categories and system settings, but cannot see the other user's health data. The UX must be simple - one user is not tech-savvy and needs clear flows with obvious next actions.\n\nVoice input with AI extraction is the primary entry method. Manual forms are the fallback. The app includes an option to cross-reference findings with online medical sources. This is the web version; a React Native mobile rebuild lives at `/Users/hanna/Documents/rn-health-tracker`.",
+      "description_short": "A voice-first personal health tracking app for two users.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript (strict)",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Recharts",
+        "Prisma ORM",
+        "PostgreSQL (Railway)",
+        "Auth.js (NextAuth v5) with credentials provider",
+        "Web Speech API",
+        "OpenAI Whisper API (voice fallback)",
+        "OpenRouter (LLM)"
+      ],
+      "hosting": "Railway (both app and PostgreSQL database). Domain: subdomain on hanna.app via Cloudflare.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/tracker"
+      },
+      "run_commands": {
+        "pnpm dev": "start Next.js dev server",
+        "pnpm build": "generate Prisma client and build for production",
+        "pnpm start": "start production server",
+        "pnpm lint": "run ESLint",
+        "pnpm format": "format with Prettier",
+        "pnpm db:migrate": "run Prisma migrations (dev)",
+        "pnpm db:seed": "seed database with 2 users and 21 default metrics",
+        "pnpm db:studio": "open Prisma Studio GUI"
+      },
+      "services": [
+        "Railway (hosting + PostgreSQL)",
+        "OpenRouter (LLM/AI analysis)",
+        "OpenAI Whisper (voice transcription fallback)",
+        "Cloudflare (DNS)"
+      ],
+      "notes": "Auth.js (NextAuth v5) uses credentials provider. Uses `proxy.ts` (not `middleware.ts`) per Next.js 16. Prisma schema has 7 models. Detailed requirements at `docs/REQUIREMENTS.md`, architecture and data model at `docs/ARCHITECTURE.md`, phased roadmap at `docs/ROADMAP.md`.",
+      "last_modified": "2026-04-26T21:22:29.440Z"
+    },
+    {
+      "name": "JSON-LD Schema Generator",
+      "path": "~/Documents/json-ld-generator",
+      "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
+      "description_short": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Prisma 7 (with `@prisma/adapter-pg` WASM engine)",
+        "PostgreSQL",
+        "Firecrawl API",
+        "OpenRouter",
+        "schema-dts",
+        "structured-data-testing-tool",
+        "Cheerio",
+        "Docker"
+      ],
+      "hosting": "Deployed on Coolify (Stormfors Hetzner server) at `aeo.stormfors.ai`. Build pack is Dockerfile (not nixpacks). Standalone PostgreSQL database (`json-ld-db`). The container entrypoint runs `prisma db push` and a slug backfill script on startup. There is no local database - DB operations require the deployed container.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/json-ld-generator"
+      },
+      "run_commands": {
+        "pnpm dev": "start Next.js dev server on port 3000",
+        "pnpm build": "build for production",
+        "pnpm start": "start production server",
+        "pnpm lint": "run ESLint",
+        "pnpm prisma db push": "push schema changes to database",
+        "pnpm prisma studio": "open Prisma database GUI",
+        "pnpm prisma generate": "regenerate Prisma Client after schema changes"
+      },
+      "services": [
+        "Firecrawl (web crawling)",
+        "OpenRouter (LLM)",
+        "Coolify (hosting)",
+        "Hetzner (server)",
+        "PostgreSQL",
+        "Trello (report posting)"
+      ],
+      "notes": "Prisma 7 has specific quirks: `prisma.config.ts` uses `process.env.DATABASE_URL ?? ''` (not `env()` - breaks Docker builds), `schema.prisma` has no `url` in the datasource block, and there is no `--skip-generate` flag. Prisma CLI is installed in an isolated `/prisma-cli` directory in Docker because pnpm symlinks break between build stages. Detailed deployment writeup lives at `~/knowledge-base/issues-solved/nextjs-prisma7-docker-coolify-hetzner-deployment.md`.",
+      "last_modified": "2026-04-26T21:21:50.704Z"
+    },
+    {
+      "name": "Mock (Website Modernization)",
+      "path": "~/Documents/mock",
+      "description": "A complete website rebuild using modern Next.js architecture. The project modernizes an existing site with a contemporary design, focusing on performance, accessibility, and smooth animations. Design inspiration comes from a reference site with a clean, spacious aesthetic.\n\nThe build establishes a full design system and component architecture from scratch: full-width sections with contained content, scroll-triggered fade-in animations via Framer Motion (`motion` package), sticky navigation, responsive grid layouts, and a clear typographic hierarchy. A reference repository (`rookieworkdev/rookie_2.0`) was used as the pattern source for app structure, SEO setup, and animation utilities.\n\nPhase 1 covers the homepage. Phase 2 expands to the full site with potential Supabase integration for blog/dynamic content.",
+      "description_short": "A complete website rebuild using modern Next.js architecture.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion (motion)",
+        "Radix UI",
+        "shadcn/ui",
+        "next-themes"
+      ],
+      "hosting": "Not yet deployed. Target likely Vercel.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/mock"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server",
+        "npm run build": "Production build",
+        "npm start": "Start production server",
+        "npm run lint": "Run ESLint"
+      },
+      "services": [
+        "None currently. Supabase planned for Phase 2 (blog/dynamic content)."
+      ],
+      "notes": "- Reference repo patterns: `rookieworkdev/rookie_2.0` (app structure, SEO metadata, animation setup, shadcn customization)\n- Key animation pattern: scroll-triggered reveals using Framer Motion, page transitions via a template wrapper\n- SEO setup includes robots.ts, sitemap.ts, opengraph-image.tsx, manifest.ts\n- Component structure: `ui/` (shadcn), `sections/` (page sections), `layout/` (header/footer/nav), `animations/` (reusable wrappers)",
+      "last_modified": "2026-04-26T21:23:29.518Z"
+    },
+    {
+      "name": "Moiwak",
+      "path": "~/Documents/moiwak",
+      "description": "Moiwak is a physical-product store launching summer 2026. This folder is a parent workspace containing two independent subprojects plus shared strategy documentation. The two subprojects must be kept strictly separate.\n\nmarketing-site/ is a Next.js 16 marketing site that launches first. Its purpose is to announce the store, build SEO foundations, and capture early interest before the shop is live.\n\nshopify-site/ is the Shopify storefront, targeting a mid-June to early July 2026 launch once enough products are ready.\n\nShared strategy lives in `/docs`: project overview, active tasks, backlog, SEO/AEO/GEO strategy, and retail operations (POS, inventory, suppliers, finance automation). Google Workspace is live.",
+      "description_short": "Moiwak is a physical-product store launching summer 2026.",
+      "stack": [
+        "Next.js 16 (marketing site)",
+        "Shopify (storefront)",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Vercel"
+      ],
+      "hosting": "Marketing site: Vercel. Shopify storefront: Shopify platform. No shared database.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw) - repos under the Moiwak GitHub organization",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "No single repo - each subproject has its own repo under the Moiwak GitHub org"
+      },
+      "run_commands": {
+        "pnpm dev": "start local dev server",
+        "pnpm build": "production build",
+        "pnpm lint": "run ESLint"
+      },
+      "services": [
+        "Vercel",
+        "Shopify",
+        "Google Workspace"
+      ],
+      "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
+      "last_modified": "2026-04-26T21:22:28.133Z"
+    },
+    {
+      "name": "OpenClaw",
+      "path": "~/Documents/openClaw",
+      "description": "OpenClaw is a self-hosted application running on a Proxmox homelab, deployed inside a Docker container managed by Coolify on a dedicated Ubuntu VM (VM1). The setup follows a security-first posture: the VM is network-isolated using NetBird (a WireGuard-based overlay network), SSH-hardened with fail2ban and UFW, and the application is accessible only through the private NetBird network.\n\nOpenClaw integrates with Telegram and provides optional security tooling via its ClawSec module. The repo (named `pfc` on GitHub) contains the installation guide and configuration notes for this deployment.",
+      "description_short": "OpenClaw is a self-hosted application running on a Proxmox homelab, deployed inside a Docker container managed by Coolify on a dedicated Ubuntu VM (VM1).",
+      "stack": [
+        "Docker",
+        "Coolify",
+        "Ubuntu 24.04",
+        "Proxmox",
+        "NetBird",
+        "Telegram integration"
+      ],
+      "hosting": "Self-hosted on Proxmox homelab. VM1 at local IP 192.168.0.102 / NetBird IP 100.109.75.79. Coolify manages containers on that VM. Accessible only via NetBird private network.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pfc"
+      },
+      "run_commands": {},
+      "services": [
+        "Proxmox",
+        "Coolify",
+        "NetBird",
+        "Telegram",
+        "fail2ban",
+        "UFW"
+      ],
+      "notes": "VM1 is isolated and dedicated to OpenClaw only - do not use it for other projects (the knowledge base runs on VM2). OpenClaw docs update frequently; use Context7 to look up current OpenClaw documentation rather than relying on the CLAUDE.md content.",
+      "last_modified": "2026-04-26T21:22:11.106Z"
+    },
+    {
+      "name": "Personal Knowledge Base",
+      "path": "~/Documents/knowledge-base-md-files",
+      "description": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes. The system lets you ask natural-language questions and get answers sourced from your own documents.\n\nThe pipeline works as follows: markdown notes live on VM2 at `/home/hanna/markdown-vault/` and are edited via VS Code Remote-SSH. A Node.js indexing script uses local embeddings (`@xenova/transformers`) to chunk and embed the documents, storing them in Qdrant (a vector database deployed via Coolify). At query time, a Node.js script performs semantic search against Qdrant and sends the top chunks to the HF Inference API (Qwen/Qwen2.5-7B-Instruct) to generate an answer with source attribution.\n\nA Next.js 16 web UI provides a chat interface, document management admin panel, dark mode, and markdown rendering. The UI is deployed via Coolify using a deploy key from GitHub, with nixpacks as the build system. A SQLite database (persisted via Coolify volume) tracks indexed document metadata.\n\nThis local folder (`knowledge-base-md-files/`) contains documentation and guides about the project, not the application code itself. The actual app code lives at `~/Desktop/private-knowledge-base/`.",
+      "description_short": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes.",
+      "stack": [
+        "Next.js 16",
+        "Node.js",
+        "Qdrant",
+        "SQLite",
+        "@xenova/transformers (local embeddings)",
+        "HF Inference API (Qwen LLM)",
+        "Coolify",
+        "Docker",
+        "Ubuntu 24.04",
+        "Proxmox",
+        "NetBird"
+      ],
+      "hosting": "App: Coolify on VM2 (local IP 192.168.0.104, NetBird IP 100.109.251.80). Accessible at http://100.109.251.80/ via NetBird private network. No public URL yet (Cloudflare tunnel planned but not set up).",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/private-knowledge-base (private) - note: app code repo, not this docs folder"
+      },
+      "run_commands": {
+        "pnpm dev": "local dev server",
+        "pnpm build": "production build",
+        "node /home/hanna/kb-scripts/index.js": "index/re-index markdown vault",
+        "node /home/hanna/kb-scripts/query.js": "CLI semantic search"
+      },
+      "services": [
+        "Hugging Face Inference API",
+        "Qdrant",
+        "Coolify",
+        "NetBird",
+        "GitHub"
+      ],
+      "notes": "Auto-deploy on push is not active - Coolify's webhook is only on the private NetBird network so GitHub can't reach it. Manual deploy (two clicks in Coolify UI) is the current workflow. Remaining work: Cloudflare tunnel for public HTTPS URL + custom domain, then switch to GitHub App integration for auto-deploy. Also needs real content added and re-indexed.",
+      "last_modified": "2026-04-26T21:23:28.301Z"
+    },
+    {
+      "name": "Portfolio",
+      "path": "~/Documents/portfolio",
+      "description": "Personal portfolio website. Built with Next.js 16 using the App Router, server components by default, with Framer Motion animations for page transitions and scroll effects.\n\nSupports two languages (English and Swedish) via next-intl, with translation files in `messages/en.json` and `messages/sv.json`. Swedish text must use real characters (å, ä, ö). Dark/light theme toggle via next-themes.",
+      "description_short": "Personal portfolio website.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "next-intl (i18n)",
+        "next-themes",
+        "shadcn/ui",
+        "Playwright"
+      ],
+      "hosting": "Not configured yet (no remote in git config). Likely Vercel.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "Not yet pushed to remote"
+      },
+      "run_commands": {
+        "pnpm dev": "Start dev server",
+        "pnpm build": "Production build",
+        "pnpm start": "Start production server",
+        "pnpm lint": "Run ESLint"
+      },
+      "services": [
+        "None"
+      ],
+      "notes": "- No remote configured in `.git/config` yet - repo has not been pushed\n- Client components only when browser APIs, state, or event handlers are needed\n- i18n: add translations to both `messages/en.json` and `messages/sv.json` for every string",
+      "last_modified": "2026-04-26T21:22:13.902Z"
+    },
+    {
+      "name": "Private Knowledge Base",
+      "path": "~/Documents/private-knowledge-base",
+      "description": "A personal knowledge base with semantic search and RAG over private markdown notes and documents. Three content sources feed into the system: a local `~/knowledge-base/` folder auto-synced to GitHub via `fswatch`, Google Drive folders (OAuth2, delta sync hourly / full sync every 6h), and manual drag-and-drop uploads in the admin UI.\n\nAll sources go through an ingestion pipeline that chunks content, embeds it using `all-MiniLM-L6-v2` (384-dim vectors, runs locally), and stores vectors in Qdrant. Users ask questions in a chat UI; the app retrieves relevant chunks and passes them to an LLM (Qwen 2.5 7B via HF Inference API) which streams the answer with source citations.\n\nThe web UI includes a TipTap markdown editor, a unified file sidebar showing content from all three sources (Repo / Google Drive / Uploads), and a chat interface. Deployed via Coolify on a dedicated VM (VM2) that is separate and isolated from other VMs on the home server.",
+      "description_short": "A personal knowledge base with semantic search and RAG over private markdown notes and documents.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Qdrant",
+        "`@xenova/transformers` (local embeddings)",
+        "HF Inference API (Qwen LLM)",
+        "TipTap",
+        "Google Drive API",
+        "isomorphic-git",
+        "better-sqlite3",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Vitest",
+        "Playwright"
+      ],
+      "hosting": "App: Coolify on VM2 (Ubuntu 24.04 on Proxmox homelab). VM2 is accessible via NetBird VPN. Qdrant: Docker container managed by Coolify on VM2. No external database - uses SQLite (better-sqlite3) for metadata.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/private-knowledge-base"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server",
+        "npm run build": "Production build (allocates 4GB Node heap)",
+        "npm start": "Start production server",
+        "npm test": "Run Vitest unit tests",
+        "npm run test:watch": "Run Vitest in watch mode",
+        "npm run test:e2e": "Run Playwright E2E tests",
+        "npm run test:e2e:ui": "Run Playwright E2E tests with UI",
+        "npm run lint": "Run ESLint"
+      },
+      "services": [
+        "HF Inference API (Qwen LLM)",
+        "Google Drive API (OAuth2 connector)",
+        "Coolify (deployment)",
+        "Proxmox/NetBird (homelab infrastructure)"
+      ],
+      "notes": "- VM2 SSH: `ssh knowledge-base` (via NetBird, IP: 100.109.251.80)\n- Coolify on VM2: http://100.109.251.80:8000\n- Local notes source: `~/knowledge-base/` auto-pushed to GitHub via `fswatch` launchd service on Mac\n- GitHub repo acts as the sync mechanism between local notes and the app on VM2\n- LLM provider is abstracted - swapping from HF Inference to another provider requires only a config change\n- Scope is personal notes and docs only, not code projects\n- Build uses `NODE_OPTIONS='--max-old-space-size=4096'` due to heavy TypeScript type definitions (`googleapis` package)",
+      "last_modified": "2026-04-26T21:22:30.425Z"
+    },
+    {
+      "name": "RankSmile",
+      "path": "~/Documents/ranksmile",
+      "description": "An SEO SaaS targeting small Swedish businesses. Positioned as decision intelligence for SEO - it helps users optimize and generate content, not just write with AI. The core value is telling users what to do, not just surfacing data.\n\nThe project is a pnpm monorepo with two apps: `apps/web` (Next.js frontend on Vercel) and `apps/api` (Express backend to be deployed on Coolify). Auth uses Supabase. A Vercel Cron job runs daily at 06:00 UTC to process articles via `/api/cron/process-articles`. Magic link dev login is available via `node scripts/dev-login.js` from the repo root.",
+      "description_short": "An SEO SaaS targeting small Swedish businesses.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Express",
+        "Supabase (auth + PostgreSQL + RLS)",
+        "OpenRouter",
+        "Stripe",
+        "Resend",
+        "Vitest",
+        "pnpm workspaces"
+      ],
+      "hosting": "Web: Vercel (team: ranksmile). API: to be deployed on Coolify. Database: Supabase (EU region).",
+      "database": "",
+      "github": {
+        "account": "ranksmile (adminranksmile-design)",
+        "ssh_alias": "github.com-ranksmile",
+        "repo_url": "https://github.com/adminranksmile-design/ranksmile"
+      },
+      "run_commands": {
+        "pnpm dev": "start both web (port 3005) and API (port 8000) in parallel",
+        "pnpm dev:web": "start only the Next.js web app",
+        "pnpm dev:api": "start only the Express API",
+        "pnpm dev:login": "generate a magic link for dev login (requires env vars from `apps/web/.env.local`)",
+        "pnpm build": "build all apps",
+        "pnpm test": "run Vitest across all apps",
+        "pnpm lint": "run ESLint",
+        "pnpm type-check": "run TypeScript check across all apps"
+      },
+      "services": [
+        "Supabase (auth + database)",
+        "Vercel (hosting + cron)",
+        "OpenRouter (LLM)",
+        "Stripe (payments)",
+        "Resend (email)"
+      ],
+      "notes": "Two env files must be kept in sync: `apps/web/.env.local` (Next.js) and `.env.local` at repo root (API). Shared vars include Supabase keys and `CRON_SECRET`. Word count is capped at 500 in `apps/api/src/services/articles/article-generator.ts` during development - remove for production. Supabase project ref: `awtwkdkinpykaozbwcdy`. MCP server `supabase-ranksmile` is configured in `~/.claude.json`.",
+      "last_modified": "2026-04-26T21:22:12.061Z"
+    },
+    {
+      "name": "SignalStack",
+      "path": "~/Documents/signalstack",
+      "description": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO. Built for non-technical users - natural language chat is the primary interface, not dashboards full of charts.\n\nThe two core selling points are: (1) Talk to your data - ask any marketing data a question in plain language, and (2) Your weekly action plan - cross-subsystem LangGraph agents extract top findings from each area and a consolidator synthesizes them into a ranked action plan. This \"action plan\" feature is the main differentiator - it replaces what an SEO agency decision-maker does.\n\nThe architecture is an npm workspaces monorepo with `apps/web` (Next.js), `apps/api` (Express on port 5000), and `packages/shared`. The Express API is a persistent server (avoids serverless timeouts for AI workloads). Auth is Supabase with JWT verified via jose + JWKS in Express middleware. Implementation plans for all 11 subsystems live in `docs/plans/`.",
+      "description_short": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Express",
+        "Supabase (auth + PostgreSQL + RLS)",
+        "OpenRouter",
+        "LangGraph",
+        "Zod",
+        "Vitest",
+        "React Testing Library",
+        "npm workspaces"
+      ],
+      "hosting": "Web: not yet deployed (Vercel target). API: not yet deployed (Coolify target). Database: Supabase (EU, free tier).",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/signal-stack"
+      },
+      "run_commands": {
+        "npm run dev": "start both web and API in parallel",
+        "npm run dev:web": "start only the Next.js web app",
+        "npm run dev:api": "start only the Express API (port 5000)",
+        "npm run build": "build all workspaces",
+        "npm run test": "run Vitest across all workspaces (run from repo root so `.env` is picked up)",
+        "npm run lint": "run ESLint",
+        "npm run format": "format with Prettier"
+      },
+      "services": [
+        "Supabase (auth + database)",
+        "OpenRouter (LLM)",
+        "Apify (data scraping)",
+        "Jina AI Reader (content extraction)",
+        "PageSpeed API",
+        "Google Ads API (planned)"
+      ],
+      "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
+      "last_modified": "2026-04-26T21:22:14.742Z"
+    },
+    {
+      "name": "Social Media Generator",
+      "path": "~/Documents/social-media-generator",
+      "description": "A multi-agent content generator that uses LangGraph.js for agent orchestration. The system learns your writing style from previous posts and generates new content across multiple formats: blog posts, LinkedIn posts, Instagram captions, Twitter threads, and YouTube scripts.\n\nThe agent pipeline consists of specialized nodes - a topic agent, a research agent, and a writing agent - each handling a stage of content creation. Style examples stored in a library teach the system your voice. Content moves through a draft stage before being published to the library.\n\nThe app uses Supabase as the database (can run locally via `supabase start` + Docker, or against the hosted project). The LLM is Claude Sonnet via the Anthropic API (routed through `@langchain/openai` compatible interface).",
+      "description_short": "A multi-agent content generator that uses LangGraph.js for agent orchestration.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "LangGraph.js",
+        "LangChain",
+        "Supabase",
+        "Claude Sonnet",
+        "shadcn/ui",
+        "Tailwind CSS"
+      ],
+      "hosting": "Vercel (frontend/API). Supabase (database - hosted or local Docker instance).",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/social-media-generator"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server (requires Docker + `supabase start` first if using local Supabase)",
+        "npm run build": "Production build",
+        "npm start": "Start production server",
+        "npm run lint": "Run ESLint"
+      },
+      "services": [
+        "Supabase (database)",
+        "Anthropic Claude API (LLM)",
+        "LangGraph.js (agent orchestration)"
+      ],
+      "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
+      "last_modified": "2026-04-26T21:22:12.972Z"
     }
   ]
 }
