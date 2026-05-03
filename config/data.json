@@ -1193,5 +1193,1013 @@
       ],
       "last_reviewed": ""
     }
-  ]
+  ],
+  "tools": {
+    "synced_at": "2026-05-03T07:26:01.473Z",
+    "agents": [
+      {
+        "name": "Agentic Identity & Trust Architect",
+        "description": "Designs identity, authentication, and trust verification systems for autonomous AI agents operating in multi-agent environments. Ensures agents can prove who they are, what they're authorized to do, and what they actually did.",
+        "source": "custom",
+        "category": "agentic"
+      },
+      {
+        "name": "Agents Orchestrator",
+        "description": "Autonomous pipeline manager that orchestrates the entire development workflow. You are the leader of this process.",
+        "source": "custom",
+        "category": "agents"
+      },
+      {
+        "name": "Data Analytics Reporter",
+        "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visualization and reporting.",
+        "source": "custom",
+        "category": "data"
+      },
+      {
+        "name": "Data Consolidation Agent",
+        "description": "AI agent that consolidates extracted sales data into live reporting dashboards with territory, rep, and pipeline summaries",
+        "source": "custom",
+        "category": "data"
+      },
+      {
+        "name": "Brand Guardian",
+        "description": "Expert brand strategist and guardian specializing in brand identity development, consistency maintenance, and strategic brand positioning",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "Image Prompt Engineer",
+        "description": "Expert photography prompt engineer specializing in crafting detailed, evocative prompts for AI image generation. Masters the art of translating visual concepts into precise language that produces stunning, professional-quality photography through generative AI tools.",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "Inclusive Visuals Specialist",
+        "description": "Representation expert who defeats systemic AI biases to generate culturally accurate, affirming, and non-stereotypical images and video.",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "UI Designer",
+        "description": "Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible user interfaces that enhance UX and reflect brand identity",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "UX Architect",
+        "description": "Technical architecture and UX specialist who provides developers with solid foundations, CSS systems, and clear implementation guidance",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "UX Researcher",
+        "description": "Expert user experience researcher specializing in user behavior analysis, usability testing, and data-driven design insights. Provides actionable research findings that improve product usability and user satisfaction",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "Visual Storyteller",
+        "description": "Expert visual communication specialist focused on creating compelling visual narratives, multimedia content, and brand storytelling through design. Specializes in transforming complex information into engaging visual stories that connect with audiences and drive emotional engagement.",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "Whimsy Injector",
+        "description": "Expert creative specialist focused on adding personality, delight, and playful elements to brand experiences. Creates memorable, joyful interactions that differentiate brands through unexpected moments of whimsy",
+        "source": "custom",
+        "category": "design"
+      },
+      {
+        "name": "AI Engineer",
+        "description": "Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent features, data pipelines, and AI-powered applications with emphasis on practical, scalable solutions.",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Autonomous Optimization Architect",
+        "description": "Intelligent system governor that continuously shadow-tests APIs for performance while enforcing strict financial and security guardrails against runaway costs.",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Backend Architect",
+        "description": "Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, performant server-side applications and microservices",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Data Engineer",
+        "description": "Expert data engineer specializing in building reliable data pipelines, lakehouse architectures, and scalable data infrastructure. Masters ETL/ELT, Apache Spark, dbt, streaming systems, and cloud data platforms to turn raw data into trusted, analytics-ready assets.",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "DevOps Automator",
+        "description": "Expert DevOps engineer specializing in infrastructure automation, CI/CD pipeline development, and cloud operations",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Frontend Developer",
+        "description": "Expert frontend developer specializing in modern web technologies, React/Vue/Angular frameworks, UI implementation, and performance optimization",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Mobile App Builder",
+        "description": "Specialized mobile application developer with expertise in native iOS/Android development and cross-platform frameworks",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Rapid Prototyper",
+        "description": "Specialized in ultra-fast proof-of-concept development and MVP creation using efficient tools and frameworks",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Security Engineer",
+        "description": "Expert application security engineer specializing in threat modeling, vulnerability assessment, secure code review, and security architecture design for modern web and cloud-native applications.",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Senior Developer",
+        "description": "Premium implementation specialist - Masters Laravel/Livewire/FluxUI, advanced CSS, Three.js integration",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "Technical Writer",
+        "description": "Expert technical writer specializing in developer documentation, API references, README files, and tutorials. Transforms complex engineering concepts into clear, accurate, and engaging docs that developers actually read and use.",
+        "source": "custom",
+        "category": "engineering"
+      },
+      {
+        "name": "gsd-codebase-mapper",
+        "description": "Explores codebase and writes structured analysis documents. Spawned by map-codebase with a focus area (tech, arch, quality, concerns). Writes documents directly to reduce orchestrator context load.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-debugger",
+        "description": "Investigates bugs using scientific method, manages debug sessions, handles checkpoints. Spawned by /gsd:debug orchestrator.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-executor",
+        "description": "Executes GSD plans with atomic commits, deviation handling, checkpoint protocols, and state management. Spawned by execute-phase orchestrator or execute-plan command.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-integration-checker",
+        "description": "Verifies cross-phase integration and E2E flows. Checks that phases connect properly and user workflows complete end-to-end.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-phase-researcher",
+        "description": "Researches how to implement a phase before planning. Produces RESEARCH.md consumed by gsd-planner. Spawned by /gsd:plan-phase orchestrator.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-plan-checker",
+        "description": "Verifies plans will achieve phase goal before execution. Goal-backward analysis of plan quality. Spawned by /gsd:plan-phase orchestrator.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-planner",
+        "description": "Creates executable phase plans with task breakdown, dependency analysis, and goal-backward verification. Spawned by /gsd:plan-phase orchestrator.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-project-researcher",
+        "description": "Researches domain ecosystem before roadmap creation. Produces files in .planning/research/ consumed during roadmap creation. Spawned by /gsd:new-project or /gsd:new-milestone orchestrators.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-research-synthesizer",
+        "description": "Synthesizes research outputs from parallel researcher agents into SUMMARY.md. Spawned by /gsd:new-project after 4 researcher agents complete.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-roadmapper",
+        "description": "Creates project roadmaps with phase breakdown, requirement mapping, success criteria derivation, and coverage validation. Spawned by /gsd:new-project orchestrator.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "gsd-verifier",
+        "description": "Verifies phase goal achievement through goal-backward analysis. Checks codebase delivers what phase promised, not just that tasks completed. Creates VERIFICATION.md report.",
+        "source": "custom",
+        "category": "gsd"
+      },
+      {
+        "name": "LSP/Index Engineer",
+        "description": "Language Server Protocol specialist building unified code intelligence systems through LSP client orchestration and semantic indexing",
+        "source": "custom",
+        "category": "lsp"
+      },
+      {
+        "name": "App Store Optimizer",
+        "description": "Expert app store marketing specialist focused on App Store Optimization (ASO), conversion rate optimization, and app discoverability",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Content Creator",
+        "description": "Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optimizes content for engagement across all digital channels.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Growth Hacker",
+        "description": "Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and finds scalable growth channels for exponential business growth.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Instagram Curator",
+        "description": "Expert Instagram marketing specialist focused on visual storytelling, community building, and multi-format content optimization. Masters aesthetic development and drives meaningful engagement.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Reddit Community Builder",
+        "description": "Expert Reddit marketing specialist focused on authentic community engagement, value-driven content creation, and long-term relationship building. Masters Reddit culture navigation.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Social Media Strategist",
+        "description": "Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engagement, and develops thought leadership strategies.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "TikTok Strategist",
+        "description": "Expert TikTok marketing specialist focused on viral content creation, algorithm optimization, and community building. Masters TikTok's unique culture and features for brand growth.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Twitter Engager",
+        "description": "Expert Twitter marketing specialist focused on real-time engagement, thought leadership building, and community-driven growth. Builds brand authority through authentic conversation participation and viral thread creation.",
+        "source": "custom",
+        "category": "marketing"
+      },
+      {
+        "name": "Behavioral Nudge Engine",
+        "description": "Behavioral psychology specialist that adapts software interaction cadences and styles to maximize user motivation and success.",
+        "source": "custom",
+        "category": "product"
+      },
+      {
+        "name": "Feedback Synthesizer",
+        "description": "Expert in collecting, analyzing, and synthesizing user feedback from multiple channels to extract actionable product insights. Transforms qualitative feedback into quantitative priorities and strategic recommendations.",
+        "source": "custom",
+        "category": "product"
+      },
+      {
+        "name": "Sprint Prioritizer",
+        "description": "Expert product manager specializing in agile sprint planning, feature prioritization, and resource allocation. Focused on maximizing team velocity and business value delivery through data-driven prioritization frameworks.",
+        "source": "custom",
+        "category": "product"
+      },
+      {
+        "name": "Trend Researcher",
+        "description": "Expert market intelligence analyst specializing in identifying emerging trends, competitive analysis, and opportunity assessment. Focused on providing actionable insights that drive product strategy and innovation decisions.",
+        "source": "custom",
+        "category": "product"
+      },
+      {
+        "name": "Experiment Tracker",
+        "description": "Expert project manager specializing in experiment design, execution tracking, and data-driven decision making. Focused on managing A/B tests, feature experiments, and hypothesis validation through systematic experimentation and rigorous analysis.",
+        "source": "custom",
+        "category": "project"
+      },
+      {
+        "name": "Project Shepherd",
+        "description": "Expert project manager specializing in cross-functional project coordination, timeline management, and stakeholder alignment. Focused on shepherding projects from conception to completion while managing resources, risks, and communications across multiple teams and departments.",
+        "source": "custom",
+        "category": "project"
+      },
+      {
+        "name": "Studio Operations",
+        "description": "Expert operations manager specializing in day-to-day studio efficiency, process optimization, and resource coordination. Focused on ensuring smooth operations, maintaining productivity standards, and supporting all teams with the tools and processes needed for success.",
+        "source": "custom",
+        "category": "project"
+      },
+      {
+        "name": "Studio Producer",
+        "description": "Senior strategic leader specializing in high-level creative and technical project orchestration, resource allocation, and multi-project portfolio management. Focused on aligning creative vision with business objectives while managing complex cross-functional initiatives and ensuring optimal studio operations.",
+        "source": "custom",
+        "category": "project"
+      },
+      {
+        "name": "Senior Project Manager",
+        "description": "Converts specs to tasks and remembers previous projects. Focused on realistic scope, no background processes, exact spec requirements",
+        "source": "custom",
+        "category": "project"
+      },
+      {
+        "name": "Report Distribution Agent",
+        "description": "AI agent that automates distribution of consolidated sales reports to representatives based on territorial parameters",
+        "source": "custom",
+        "category": "report"
+      },
+      {
+        "name": "Sales Data Extraction Agent",
+        "description": "AI agent specialized in monitoring Excel files and extracting key sales metrics (MTD, YTD, Year End) for internal live reporting",
+        "source": "custom",
+        "category": "sales"
+      },
+      {
+        "name": "Cultural Intelligence Strategist",
+        "description": "CQ specialist that detects invisible exclusion, researches global context, and ensures software resonates authentically across intersectional identities.",
+        "source": "custom",
+        "category": "specialized"
+      },
+      {
+        "name": "Developer Advocate",
+        "description": "Expert developer advocate specializing in building developer communities, creating compelling technical content, optimizing developer experience (DX), and driving platform adoption through authentic engineering engagement. Bridges product and engineering teams with external developers.",
+        "source": "custom",
+        "category": "specialized"
+      },
+      {
+        "name": "Analytics Reporter",
+        "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visualization and reporting.",
+        "source": "custom",
+        "category": "support"
+      },
+      {
+        "name": "Executive Summary Generator",
+        "description": "Consultant-grade AI specialist trained to think and communicate like a senior strategy consultant. Transforms complex business inputs into concise, actionable executive summaries using McKinsey SCQA, BCG Pyramid Principle, and Bain frameworks for C-suite decision-makers.",
+        "source": "custom",
+        "category": "support"
+      },
+      {
+        "name": "Finance Tracker",
+        "description": "Expert financial analyst and controller specializing in financial planning, budget management, and business performance analysis. Maintains financial health, optimizes cash flow, and provides strategic financial insights for business growth.",
+        "source": "custom",
+        "category": "support"
+      },
+      {
+        "name": "Infrastructure Maintainer",
+        "description": "Expert infrastructure specialist focused on system reliability, performance optimization, and technical operations management. Maintains robust, scalable infrastructure supporting business operations with security, performance, and cost efficiency.",
+        "source": "custom",
+        "category": "support"
+      },
+      {
+        "name": "Legal Compliance Checker",
+        "description": "Expert legal and compliance specialist ensuring business operations, data handling, and content creation comply with relevant laws, regulations, and industry standards across multiple jurisdictions.",
+        "source": "custom",
+        "category": "support"
+      },
+      {
+        "name": "Support Responder",
+        "description": "Expert customer support specialist delivering exceptional customer service, issue resolution, and user experience optimization. Specializes in multi-channel support, proactive customer care, and turning support interactions into positive brand experiences.",
+        "source": "custom",
+        "category": "support"
+      },
+      {
+        "name": "Accessibility Auditor",
+        "description": "Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to finding barriers — if it's not tested with a screen reader, it's not accessible.",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "API Tester",
+        "description": "Expert API testing specialist focused on comprehensive API validation, performance testing, and quality assurance across all systems and third-party integrations",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "Evidence Collector",
+        "description": "Screenshot-obsessed, fantasy-allergic QA specialist - Default to finding 3-5 issues, requires visual proof for everything",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "Performance Benchmarker",
+        "description": "Expert performance testing and optimization specialist focused on measuring, analyzing, and improving system performance across all applications and infrastructure",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "Reality Checker",
+        "description": "Stops fantasy approvals, evidence-based certification - Default to \"NEEDS WORK\", requires overwhelming proof for production readiness",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "Test Results Analyzer",
+        "description": "Expert test analysis specialist focused on comprehensive test result evaluation, quality metrics analysis, and actionable insight generation from testing activities",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "Tool Evaluator",
+        "description": "Expert technology assessment specialist focused on evaluating, testing, and recommending tools, software, and platforms for business use and productivity optimization",
+        "source": "custom",
+        "category": "testing"
+      },
+      {
+        "name": "Workflow Optimizer",
+        "description": "Expert process improvement specialist focused on analyzing, optimizing, and automating workflows across all business functions for maximum productivity and efficiency",
+        "source": "custom",
+        "category": "testing"
+      }
+    ],
+    "plugins": [
+      {
+        "name": "superpowers",
+        "version": "5.0.7",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "huggingface-skills",
+        "version": "1.0.1",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "github",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "playwright",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "frontend-design",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "code-simplifier",
+        "version": "1.0.0",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "security-guidance",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "figma",
+        "version": "2.1.30",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "pr-review-toolkit",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "agent-sdk-dev",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "skill-creator",
+        "version": "unknown",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "compound-engineering",
+        "version": "2.38.1",
+        "source": "3rd-party",
+        "marketplace": "compound-engineering-plugin"
+      },
+      {
+        "name": "vercel",
+        "version": "0.40.1",
+        "source": "official",
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "warp",
+        "version": "2.0.0",
+        "source": "3rd-party",
+        "marketplace": "claude-code-warp"
+      }
+    ],
+    "mcp_servers": [
+      {
+        "name": "n8n-mcp",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "context7",
+        "source": "official",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "MCP_DOCKER",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "firecrawl-mcp-stormfors",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "nano-banana",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "docker",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "coolify",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "ssh-server",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "proxmox",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "coolify-stormfors",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "figma-personal",
+        "source": "3rd-party",
+        "transport": "sse",
+        "notes": ""
+      },
+      {
+        "name": "supabase-signalstack",
+        "source": "3rd-party",
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "Sanity",
+        "source": "3rd-party",
+        "transport": "sse",
+        "notes": ""
+      }
+    ],
+    "skills": [
+      {
+        "name": "figma-code-connect",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-create-design-system-rules",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-create-new-file",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-generate-design",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-generate-library",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-implement-design",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-use",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-generate-diagram",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "figma-use-figjam",
+        "plugin": "figma",
+        "source": "official"
+      },
+      {
+        "name": "frontend-design",
+        "plugin": "frontend-design",
+        "source": "official"
+      },
+      {
+        "name": "hf-cli",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-dataset-viewer",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-datasets",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-evaluation",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-jobs",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-model-trainer",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-object-detection-trainer",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-paper-publisher",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-tool-builder",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-trackio",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "hugging-face-vision-trainer",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "huggingface-gradio",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "transformers.js",
+        "plugin": "huggingface-skills",
+        "source": "official"
+      },
+      {
+        "name": "skill-creator",
+        "plugin": "skill-creator",
+        "source": "official"
+      },
+      {
+        "name": "brainstorming",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "dispatching-parallel-agents",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "executing-plans",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "finishing-a-development-branch",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "receiving-code-review",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "requesting-code-review",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "subagent-driven-development",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "systematic-debugging",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "test-driven-development",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "using-git-worktrees",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "using-superpowers",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "verification-before-completion",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "writing-plans",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "writing-skills",
+        "plugin": "superpowers",
+        "source": "official"
+      },
+      {
+        "name": "ai-gateway",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "ai-sdk",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "auth",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "bootstrap",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "chat-sdk",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "deployments-cicd",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "env-vars",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "knowledge-update",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "marketplace",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "next-cache-components",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "next-forge",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "next-upgrade",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "nextjs",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "react-best-practices",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "routing-middleware",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "runtime-cache",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "shadcn",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "turbopack",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "vercel-agent",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "vercel-cli",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "vercel-functions",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "vercel-sandbox",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "vercel-storage",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "verification",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "workflow",
+        "plugin": "vercel",
+        "source": "official"
+      },
+      {
+        "name": "agent-browser",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "agent-native-architecture",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "andrew-kane-gem-writer",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "brainstorming",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "compound-docs",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "create-agent-skills",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "dhh-rails-style",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "document-review",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "dspy-ruby",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "every-style-editor",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "file-todos",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "frontend-design",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "gemini-imagegen",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "git-worktree",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "orchestrating-swarms",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "proof",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "rclone",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "resolve-pr-parallel",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "setup",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      },
+      {
+        "name": "skill-creator",
+        "plugin": "compound-engineering",
+        "source": "3rd-party"
+      }
+    ]
+  }
 }
