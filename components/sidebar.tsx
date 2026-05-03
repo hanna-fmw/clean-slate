@@ -75,7 +75,7 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
 
   const navContent = (
     <>
-      <div className="px-4 h-14 flex items-center border-b border-[var(--border)]">
+      <div className="px-4 h-[var(--header-height)] flex items-center border-b border-[var(--border)]">
         <div className="flex items-center gap-2 text-sm font-medium">
           <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
             <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.1"/>
@@ -100,9 +100,9 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
           <button
             key={key}
             onClick={() => handleNavigate(key)}
-            className={`w-full flex items-center gap-2.5 px-2.5 py-[7px] text-[13px] rounded-md transition-colors cursor-pointer mb-px ${
+            className={`w-full flex items-center gap-2.5 px-2.5 py-[7px] text-[13px] rounded-[var(--card-radius)] transition-colors cursor-pointer mb-px ${
               active === key
-                ? 'bg-[var(--background)] text-[var(--foreground)] font-medium'
+                ? 'bg-[var(--sidebar-active)] text-[var(--foreground)] font-medium'
                 : 'text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--hover)]'
             }`}
           >
@@ -128,7 +128,7 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
   return (
     <>
       {/* Mobile header bar */}
-      <div className="fixed top-0 left-0 right-0 h-14 bg-[var(--sidebar-bg)] border-b border-[var(--border)] flex items-center px-4 z-20 md:hidden">
+      <div className="fixed top-0 left-0 right-0 h-[var(--header-height)] bg-[var(--sidebar-bg)] border-b border-[var(--border)] flex items-center px-4 z-20 md:hidden">
         <button
           className="p-1 text-[var(--muted)] hover:text-[var(--foreground)] cursor-pointer"
           onClick={() => setMobileOpen(true)}
