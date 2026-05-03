@@ -697,21 +697,21 @@
           "username": "hanna-fmw",
           "email": "TODO",
           "chrome_profile": "TODO",
-          "use_for": "Personal projects",
+          "use_for": "Personal projects (most projects)",
           "nordpass_hint": "TODO"
         },
         {
           "alias": "work",
           "username": "StormforsAdmin",
-          "email": "TODO",
+          "email": "(redacted)",
           "chrome_profile": "TODO",
-          "use_for": "Stormfors company",
+          "use_for": "Stormfors company (GDPR project)",
           "nordpass_hint": "TODO"
         },
         {
           "alias": "rookie",
           "username": "rookieworkdev",
-          "email": "TODO",
+          "email": "rookiework.dev@gmail.com",
           "chrome_profile": "TODO",
           "use_for": "Rookie/client work",
           "nordpass_hint": "TODO"
@@ -719,13 +719,13 @@
         {
           "alias": "ranksmile",
           "username": "adminranksmile-design",
-          "email": "TODO",
+          "email": "admin.ranksmile@gmail.com",
           "chrome_profile": "TODO",
           "use_for": "RankSmile SaaS",
           "nordpass_hint": "TODO"
         }
       ],
-      "notes": "SSH aliases: github.com-personal, github.com-work, github.com-rookie, github.com-ranksmile",
+      "notes": "SSH aliases: github.com-personal, github.com-work, github.com-rookie, github.com-ranksmile. Config in ~/.ssh/config.",
       "last_reviewed": ""
     },
     {
@@ -736,15 +736,39 @@
       "receipt_email": "",
       "accounts": [
         {
-          "alias": "TODO",
+          "alias": "signalstack",
           "username": "",
           "email": "TODO",
           "chrome_profile": "TODO",
-          "use_for": "TODO",
+          "use_for": "SignalStack (EU, free tier). MCP: supabase-signalstack",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "ranksmile",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "RankSmile (EU, ref: awtwkdkinpykaozbwcdy). MCP: supabase-ranksmile",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "social-media-gen",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Social Media Generator (can run local via Docker)",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "rn-health-tracker",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Health Insights Tracker mobile app (EU, auth + DB + edge functions + real-time)",
           "nordpass_hint": "TODO"
         }
       ],
-      "notes": "Multiple accounts across different Chrome profiles. Fill in details.",
+      "notes": "Multiple accounts across Chrome profiles. Projects using Supabase: SignalStack, RankSmile, Social Media Generator, RN Health Tracker. All EU region.",
       "last_reviewed": ""
     },
     {
@@ -755,34 +779,58 @@
       "receipt_email": "",
       "accounts": [
         {
-          "alias": "TODO",
+          "alias": "personal",
+          "username": "hanna-fmw",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Personal projects: Clean Slate (ops.hosk.app), AI Hub Platform, Mock, Moiwak, Portfolio, Social Media Generator",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "ranksmile",
           "username": "",
           "email": "TODO",
           "chrome_profile": "TODO",
-          "use_for": "TODO",
+          "use_for": "RankSmile web app (team: ranksmile)",
           "nordpass_hint": "TODO"
         }
       ],
-      "notes": "",
+      "notes": "Hobby plan - private repos need CLI deploy (vercel --prod), no GitHub auto-deploy. Commit author email must match Vercel account email.",
       "last_reviewed": ""
     },
     {
       "name": "Coolify",
       "category": "Hosting",
-      "url": "TODO",
+      "url": "",
       "subscription": false,
       "receipt_email": "",
       "accounts": [
         {
-          "alias": "TODO",
+          "alias": "homelab",
           "username": "",
           "email": "TODO",
-          "chrome_profile": "TODO",
-          "use_for": "TODO",
+          "chrome_profile": "",
+          "use_for": "VM1 (OpenClaw, local services). URL: http://192.168.0.102:8000 or http://100.109.75.79:8000 via NetBird",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "stormfors",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "",
+          "use_for": "Hetzner server (company-kb, json-ld, GDPR, SignalStack API). URL: https://coolify.stormfors.ai",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "homelab-vm2",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "",
+          "use_for": "VM2 (Knowledge Base, Private KB). URL: http://100.109.251.80:8000 via NetBird",
           "nordpass_hint": "TODO"
         }
       ],
-      "notes": "",
+      "notes": "Three Coolify instances. MCP servers: coolify (homelab), coolify-stormfors (Hetzner). VM2 has no MCP server yet.",
       "last_reviewed": ""
     },
     {
@@ -793,15 +841,53 @@
       "receipt_email": "",
       "accounts": [
         {
-          "alias": "TODO",
+          "alias": "main",
           "username": "",
           "email": "TODO",
           "chrome_profile": "TODO",
-          "use_for": "TODO",
+          "use_for": "LLM routing for most projects (SignalStack, RankSmile, Tracker, JSON-LD, baby-claw, Health Tracker)",
           "nordpass_hint": "TODO"
         }
       ],
       "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Railway",
+      "category": "Hosting",
+      "url": "https://railway.app",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "main",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Tracker (app + PostgreSQL), baby-claw",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Cloudflare",
+      "category": "DNS & Domains",
+      "url": "https://dash.cloudflare.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "main",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "DNS management for all domains",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "Manages: hosk.app, stormfors.ai, hanna.app (tracker subdomain), and others.",
       "last_reviewed": ""
     },
     {
@@ -816,7 +902,7 @@
           "username": "",
           "email": "TODO",
           "chrome_profile": "TODO",
-          "use_for": "TODO",
+          "use_for": "OAuth credentials (company-kb Google Sign-In, Google Drive API)",
           "nordpass_hint": "TODO"
         }
       ],
@@ -824,9 +910,47 @@
       "last_reviewed": ""
     },
     {
-      "name": "Cloudflare",
-      "category": "Hosting",
-      "url": "https://dash.cloudflare.com",
+      "name": "Firecrawl",
+      "category": "AI & APIs",
+      "url": "https://firecrawl.dev",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "stormfors",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Web crawling for JSON-LD Generator. MCP: firecrawl-mcp-stormfors",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "Credit-based. Check balance if tool calls fail.",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Hugging Face",
+      "category": "AI & APIs",
+      "url": "https://huggingface.co",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "main",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Inference API (Knowledge Base - Qwen LLM, baby-claw - image gen/voice)",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Sanity",
+      "category": "CMS",
+      "url": "https://sanity.io",
       "subscription": false,
       "receipt_email": "",
       "accounts": [
@@ -835,36 +959,194 @@
           "username": "",
           "email": "TODO",
           "chrome_profile": "TODO",
-          "use_for": "Domain management",
+          "use_for": "TODO. MCP: Sanity",
           "nordpass_hint": "TODO"
         }
       ],
       "notes": "",
       "last_reviewed": ""
+    },
+    {
+      "name": "n8n",
+      "category": "Automation",
+      "url": "https://n8n.io",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "rookie",
+          "username": "",
+          "email": "",
+          "chrome_profile": "TODO",
+          "use_for": "Workflow automation. Cloud instance: rookieab.app.n8n.cloud",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "MCP server configured for rookieab cloud instance.",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Stripe",
+      "category": "Payments",
+      "url": "https://dashboard.stripe.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "ranksmile",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "RankSmile payments",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Resend",
+      "category": "Email",
+      "url": "https://resend.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "main",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Transactional email for company-kb and RankSmile",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Shopify",
+      "category": "E-commerce",
+      "url": "https://shopify.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "moiwak",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Moiwak storefront",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "Account created. Research in shopify-site/docs/spec.md.",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Figma",
+      "category": "Design",
+      "url": "https://figma.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "personal",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Design work. MCP: figma-personal",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Expo",
+      "category": "Development",
+      "url": "https://expo.dev",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "main",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Health Insights Tracker mobile app (build + distribution)",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Google Workspace",
+      "category": "Business",
+      "url": "https://workspace.google.com",
+      "subscription": true,
+      "receipt_email": "TODO",
+      "accounts": [
+        {
+          "alias": "moiwak",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Moiwak business email and workspace",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "Set up as part of Moiwak workstream B (domain + email).",
+      "last_reviewed": ""
     }
   ],
   "infrastructure": [
     {
-      "name": "Proxmox",
+      "name": "Proxmox (Homelab)",
       "access_url": "TODO",
       "login_email": "TODO",
       "nordpass_hint": "TODO",
-      "notes": "Home server. Access via NetBird if remote.",
+      "notes": "Home server. Access via NetBird if remote. Local IP: 192.168.0.102.",
       "sub_resources": [
         {
-          "name": "TODO - VM 1",
-          "purpose": "TODO"
+          "name": "VM1 (Ubuntu + Coolify)",
+          "purpose": "OpenClaw, local Coolify instance. Local: 192.168.0.102, NetBird: 100.109.75.79"
+        },
+        {
+          "name": "VM2 (Ubuntu + Coolify)",
+          "purpose": "Knowledge Base apps (public + private). Local: 192.168.0.104, NetBird: 100.109.251.80"
         }
       ],
       "last_reviewed": ""
     },
     {
       "name": "Hetzner (Stormfors)",
-      "access_url": "TODO",
+      "access_url": "https://coolify.stormfors.ai",
       "login_email": "TODO",
       "nordpass_hint": "TODO",
-      "notes": "Runs Coolify for Stormfors projects.",
-      "sub_resources": [],
+      "notes": "Runs Coolify for Stormfors projects. Has public IP - GitHub webhooks work for auto-deploy. MCP: coolify-stormfors.",
+      "sub_resources": [
+        {
+          "name": "company-kb",
+          "purpose": "Company Knowledge Base - kb.stormfors.ai"
+        },
+        {
+          "name": "json-ld-generator",
+          "purpose": "JSON-LD Schema Generator - aeo.stormfors.ai"
+        },
+        {
+          "name": "gdpr-project",
+          "purpose": "GDPR compliance tool"
+        },
+        {
+          "name": "PostgreSQL instances",
+          "purpose": "Databases for deployed apps (json-ld-db, etc.)"
+        },
+        {
+          "name": "Qdrant",
+          "purpose": "Vector DB for company-kb semantic search"
+        }
+      ],
       "last_reviewed": ""
     },
     {
@@ -876,11 +1158,37 @@
       "sub_resources": [
         {
           "name": "hosk.app",
-          "purpose": "Personal projects and tools"
+          "purpose": "Personal projects and tools (ops.hosk.app = Clean Slate)"
         },
         {
           "name": "stormfors.ai",
-          "purpose": "Stormfors AI tools"
+          "purpose": "Stormfors AI tools (aeo.stormfors.ai, kb.stormfors.ai, coolify.stormfors.ai)"
+        },
+        {
+          "name": "hanna.app",
+          "purpose": "Tracker app subdomain"
+        }
+      ],
+      "last_reviewed": ""
+    },
+    {
+      "name": "NetBird VPN",
+      "access_url": "TODO",
+      "login_email": "TODO",
+      "nordpass_hint": "TODO",
+      "notes": "WireGuard-based VPN for accessing homelab VMs remotely. Does NOT auto-start after macOS restart - open NetBird app or run 'netbird up'. If deployed apps show infinite spinner after reboot, check NetBird first.",
+      "sub_resources": [
+        {
+          "name": "VM1",
+          "purpose": "100.109.75.79 (OpenClaw, Coolify homelab)"
+        },
+        {
+          "name": "VM2",
+          "purpose": "100.109.251.80 (Knowledge Base apps, Coolify VM2)"
+        },
+        {
+          "name": "Docker host",
+          "purpose": "SSH to 192.168.0.102 via NetBird for Docker MCP"
         }
       ],
       "last_reviewed": ""
