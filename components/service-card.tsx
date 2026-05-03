@@ -11,6 +11,28 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
+import { ServiceLogo } from './service-logo'
+
+const CATEGORY_COLORS: Record<string, string> = {
+  'cloud-platform': 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+  database: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+  hosting: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20',
+  ai: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
+  cms: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
+  automation: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
+  payments: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
+  email: 'bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20',
+  design: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20',
+  ecommerce: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20',
+  mobile: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
+  productivity: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20',
+  'dev-tools': 'bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20',
+  scraping: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20',
+}
+
+function categoryColor(category: string) {
+  return CATEGORY_COLORS[category] || 'bg-secondary text-secondary-foreground border-transparent'
+}
 
 function MetaRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -31,12 +53,20 @@ export function ServiceCard({ service }: { service: Service }) {
         onClick={() => setOpen(true)}
       >
         <CardHeader>
-          <CardTitle className="text-sm">{service.name}</CardTitle>
+          <div className="flex items-center gap-3">
+            <ServiceLogo name={service.name} size={28} />
+            <CardTitle className="text-sm">{service.name}</CardTitle>
+          </div>
           <CardAction>
             <div className="flex items-center gap-2">
-              <Badge variant="secondary" className="text-[11px]">{service.category}</Badge>
+              <Badge variant="outline" className={`text-[11px] ${categoryColor(service.category)}`}>
+                {service.category}
+              </Badge>
               {service.subscription && (
-                <Badge variant="outline" className="text-[11px]">Paid</Badge>
+                <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                  Paid
+                </span>
               )}
             </div>
           </CardAction>
@@ -76,13 +106,25 @@ export function ServiceCard({ service }: { service: Service }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-2xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-lg">{service.name}</DialogTitle>
-            <DialogDescription>
-              <span className="inline-flex gap-2 items-center">
-                <Badge variant="secondary" className="text-[11px]">{service.category}</Badge>
-                {service.subscription && <Badge variant="outline" className="text-[11px]">Paid</Badge>}
-              </span>
-            </DialogDescription>
+            <div className="flex items-center gap-3">
+              <ServiceLogo name={service.name} size={36} />
+              <div>
+                <DialogTitle className="text-lg">{service.name}</DialogTitle>
+                <DialogDescription>
+                  <span className="inline-flex gap-2 items-center mt-1">
+                    <Badge variant="outline" className={`text-[11px] ${categoryColor(service.category)}`}>
+                      {service.category}
+                    </Badge>
+                    {service.subscription && (
+                      <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        Paid
+                      </span>
+                    )}
+                  </span>
+                </DialogDescription>
+              </div>
+            </div>
           </DialogHeader>
 
           <div className="space-y-5 text-sm">
@@ -110,7 +152,10 @@ export function ServiceCard({ service }: { service: Service }) {
                   <Card key={i} size="sm" className="bg-muted/30">
                     <CardContent className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <span className="font-mono font-medium text-xs">{account.alias || 'Account'}</span>
+                        <span className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          <span className="font-medium text-xs">{account.alias || 'Account'}</span>
+                        </span>
                         {account.username && (
                           <span className="font-mono text-xs text-muted-foreground">@{account.username}</span>
                         )}
