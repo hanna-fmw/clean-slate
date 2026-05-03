@@ -1,12 +1,18 @@
 import { ExpandableRow } from './expandable-row'
+import { ThemeToggle } from './theme-toggle'
 
 export function Header() {
   return (
     <header className="mb-6">
-      <h1 className="font-mono text-lg font-bold tracking-tight mb-1">clean-slate</h1>
-      <p className="text-xs text-[var(--muted)] leading-relaxed mb-4">
-        Your personal hub for all projects, accounts, and infrastructure.
-      </p>
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="font-mono text-lg font-bold tracking-tight mb-1">clean-slate</h1>
+          <p className="text-xs text-[var(--muted)] leading-relaxed mb-4">
+            Your personal hub for all projects, accounts, and infrastructure.
+          </p>
+        </div>
+        <ThemeToggle />
+      </div>
       <div className="mb-4">
         <ExpandableRow
           summary={
