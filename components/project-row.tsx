@@ -9,17 +9,17 @@ function ProjectSummary({ project }: { project: Project }) {
       <span className="text-sm text-[var(--muted)] truncate hidden sm:block">
         {project.description_short}
       </span>
-      <div className="flex gap-1.5 shrink-0 ml-auto mr-2 flex-wrap justify-end">
-        {project.stack.slice(0, 4).map((s) => (
+      <div className="hidden sm:flex gap-1.5 ml-auto mr-2 shrink-0">
+        {project.stack.slice(0, 3).map((s) => (
           <span
             key={s}
-            className="text-[11px] font-mono bg-[var(--tag-bg)] text-[var(--tag-text)] px-1.5 py-0.5 rounded"
+            className="text-[11px] font-mono bg-[var(--tag-bg)] text-[var(--tag-text)] px-1.5 py-0.5 rounded whitespace-nowrap"
           >
             {s}
           </span>
         ))}
-        {project.stack.length > 4 && (
-          <span className="text-[11px] text-[var(--muted)]">+{project.stack.length - 4}</span>
+        {project.stack.length > 3 && (
+          <span className="text-[11px] text-[var(--muted)] whitespace-nowrap">+{project.stack.length - 3}</span>
         )}
       </div>
       {project.last_modified && (
