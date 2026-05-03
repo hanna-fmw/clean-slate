@@ -54,9 +54,47 @@ export interface Infrastructure {
   last_reviewed: string
 }
 
+export type ToolSource = 'official' | '3rd-party' | 'custom'
+
+export interface AgentInfo {
+  name: string
+  description: string
+  source: ToolSource
+  category: string
+}
+
+export interface PluginInfo {
+  name: string
+  version: string
+  source: ToolSource
+  marketplace: string
+}
+
+export interface McpServerInfo {
+  name: string
+  source: ToolSource
+  transport: string
+  notes: string
+}
+
+export interface SkillInfo {
+  name: string
+  plugin: string
+  source: ToolSource
+}
+
+export interface ToolsInventory {
+  synced_at: string
+  agents: AgentInfo[]
+  plugins: PluginInfo[]
+  mcp_servers: McpServerInfo[]
+  skills: SkillInfo[]
+}
+
 export interface DashboardData {
   generated_at: string
   projects: Project[]
   services: Service[]
   infrastructure: Infrastructure[]
+  tools?: ToolsInventory
 }
