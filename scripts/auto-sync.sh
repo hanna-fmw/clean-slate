@@ -8,6 +8,7 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/share/pnpm:/usr/local/bin:$HOME/.lo
 export HOME="$HOME"
 
 pnpm sync
+pnpm sync:tools
 
 if git diff --quiet config/data.json; then
   echo "No changes detected."
