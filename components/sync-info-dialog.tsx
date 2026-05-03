@@ -24,7 +24,7 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
 }
 
 function Code({ children }: { children: React.ReactNode }) {
-  return <code className="font-mono text-foreground/70 bg-muted/50 px-1 py-0.5 rounded text-[11px]">{children}</code>
+  return <code className="font-mono text-foreground bg-muted px-1 py-0.5 rounded text-[11px]">{children}</code>
 }
 
 export function SyncInfoDialog() {
