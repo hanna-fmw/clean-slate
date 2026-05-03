@@ -1,5 +1,5 @@
 import { getData } from '@/lib/data'
-import { ProjectRow } from '@/components/project-row'
+import { ProjectCard } from '@/components/project-card'
 import { ServiceRow } from '@/components/service-row'
 import { InfrastructureRow } from '@/components/infrastructure-row'
 import { ToolsSection } from '@/components/tools-section'
@@ -17,9 +17,9 @@ export default function Home() {
         tools: (tools?.agents.length ?? 0) + (tools?.plugins.length ?? 0) + (tools?.mcp_servers.length ?? 0) + (tools?.skills.length ?? 0),
       }}
       projectList={
-        <div>
+        <div className="grid gap-3">
           {projects.map((project) => (
-            <ProjectRow key={project.name} project={project} />
+            <ProjectCard key={project.name} project={project} />
           ))}
         </div>
       }
