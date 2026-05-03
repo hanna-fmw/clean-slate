@@ -13,7 +13,7 @@ interface DashboardLayoutProps {
 
 const TITLES: Record<Section, string> = {
   projects: 'Projects',
-  services: 'Services & Accounts',
+  services: 'Services',
   infrastructure: 'Infrastructure',
   tools: 'Tools',
 }
@@ -30,17 +30,24 @@ export function DashboardLayout({
   return (
     <div className="flex min-h-screen">
       <Sidebar active={active} onNavigate={setActive} counts={counts} />
-      <main className="flex-1 ml-[var(--sidebar-width)]">
-        <div className="border-b border-[var(--border)] px-8 py-5">
-          <h2 className="text-sm font-medium">{TITLES[active]}</h2>
-        </div>
-        <div className="px-8 py-6">
+      <div className="flex-1 ml-[var(--sidebar-width)] flex flex-col min-h-screen">
+        <header className="h-14 border-b border-[var(--border)] flex items-center px-6 shrink-0">
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-[var(--muted)]">clean-slate</span>
+            <span className="text-[var(--muted)]">/</span>
+            <span className="font-medium">{TITLES[active]}</span>
+          </div>
+          <div className="ml-auto text-[12px] text-[var(--muted)]">
+            {counts[active]} items
+          </div>
+        </header>
+        <main className="flex-1 px-6 py-6 max-w-5xl">
           {active === 'projects' && projectList}
           {active === 'services' && serviceList}
           {active === 'infrastructure' && infrastructureList}
           {active === 'tools' && toolsList}
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   )
 }

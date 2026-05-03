@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
 export type Section = 'projects' | 'services' | 'infrastructure' | 'tools'
@@ -17,7 +16,7 @@ const NAV_ITEMS: { key: Section; label: string; icon: React.ReactNode }[] = [
   },
   {
     key: 'services',
-    label: 'Services & Accounts',
+    label: 'Services',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
@@ -58,34 +57,36 @@ interface SidebarProps {
 
 export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
   return (
-    <aside className="fixed top-0 left-0 h-full w-[var(--sidebar-width)] bg-[var(--sidebar-bg)] border-r border-[var(--border)] flex flex-col">
-      <div className="px-4 py-5 border-b border-[var(--border)]">
-        <div className="flex items-center justify-between">
-          <h1 className="text-sm font-medium">clean-slate</h1>
-          <ThemeToggle />
+    <aside className="fixed top-0 left-0 h-full w-[var(--sidebar-width)] bg-[var(--sidebar-bg)] border-r border-[var(--border)] flex flex-col z-10">
+      <div className="px-4 h-14 flex items-center border-b border-[var(--border)]">
+        <div className="flex items-center gap-2 text-sm font-medium">
+          <svg width="18" height="18" viewBox="0 0 76 65" fill="currentColor">
+            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+          </svg>
+          clean-slate
         </div>
       </div>
 
-      <nav className="flex-1 py-3 px-2">
+      <nav className="flex-1 py-2 px-2 overflow-y-auto">
         {NAV_ITEMS.map(({ key, label, icon }) => (
           <button
             key={key}
             onClick={() => onNavigate(key)}
-            className={`w-full flex items-center gap-2.5 px-3 py-2 text-[13px] rounded-md transition-colors cursor-pointer mb-0.5 ${
+            className={`w-full flex items-center gap-2.5 px-2.5 py-[7px] text-[13px] rounded-md transition-colors cursor-pointer mb-px ${
               active === key
-                ? 'bg-[var(--sidebar-active)] text-[var(--foreground)] font-medium shadow-[0_1px_2px_rgba(0,0,0,0.04)]'
+                ? 'bg-[var(--background)] text-[var(--foreground)] font-medium'
                 : 'text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--hover)]'
             }`}
           >
-            <span className="shrink-0 opacity-70">{icon}</span>
+            <span className="shrink-0">{icon}</span>
             {label}
-            <span className="ml-auto text-[11px] opacity-50">{counts[key]}</span>
           </button>
         ))}
       </nav>
 
-      <div className="px-4 py-3 border-t border-[var(--border)] text-[11px] text-[var(--muted)]">
-        ops.hosk.app
+      <div className="px-3 py-3 border-t border-[var(--border)] flex items-center justify-between">
+        <span className="text-[12px] text-[var(--muted)]">ops.hosk.app</span>
+        <ThemeToggle />
       </div>
     </aside>
   )
