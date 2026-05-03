@@ -3,7 +3,7 @@
     {
       "name": "RankSmile",
       "status": "active",
-      "description": "SEO SaaS for small Swedish businesses. Decision intelligence for SEO - optimization and content generation. Co-built with Kevin.",
+      "description": "SEO SaaS product with subscription-based model. Decision intelligence for SEO - optimization and content generation. Co-built with Kevin.",
       "local_path": "~/Documents/ranksmile",
       "github_alias": "github.com-ranksmile",
       "github_account": "adminranksmile-design",
@@ -26,7 +26,7 @@
     {
       "name": "SignalStack",
       "status": "active",
-      "description": "AI-powered marketing intelligence SaaS. Helps small businesses with SEO, AEO, and Google Ads via natural language. Uses LangGraph agent framework. Two core features: talk to your data, and weekly AI action plan.",
+      "description": "AI-powered marketing intelligence SaaS for small Swedish businesses. Simplifies SEO, AEO, and Google Ads via natural language. Uses LangGraph agents. Two core features: talk to your data in plain language, and a weekly AI action plan.",
       "local_path": "~/Documents/signalstack",
       "github_alias": "github.com-personal",
       "github_account": "hanna-fmw",
