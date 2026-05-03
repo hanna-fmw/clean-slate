@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T21:24:02.770Z",
+  "generated_at": "2026-05-03T16:46:22.243Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -40,7 +40,7 @@
         "Hugging Face (planned for LLM features)"
       ],
       "notes": "The `ai-hub/` content workspace has no git repo or deployable code - it is a local markdown workspace only. The `ai-hub-platform/` app is the deployable product. The two are separate: `ai-hub/` holds source material and standards that the platform may eventually surface. Content in `ai-hub/` is organized by skill tier - always consider which tier content targets (beginner / intermediate / advanced) when creating material.",
-      "last_modified": "2026-04-26T21:23:46.967Z"
+      "last_modified": "2026-05-03T07:06:01.370Z"
     },
     {
       "name": "baby-claw",
@@ -88,20 +88,21 @@
         "Railway (hosting)"
       ],
       "notes": "No Claude via Anthropic direct - too expensive. Preferred models: `openrouter/google/gemini-2.0-flash-001` for routine tasks (~$0.075/1M tokens), `openrouter/openai/gpt-4o-mini` for complex reasoning. Local/private: Ollama. Gemini 2.0 Flash has a 1M token context window, making context rot nearly a non-issue for routine agents. Agent behavior is configured in markdown files (`SOUL.md`, `AGENTS.md`, `MEMORY.md`), not in compiled code. SDK decision log is in CLAUDE.md.",
-      "last_modified": "2026-04-26T21:23:27.119Z"
+      "last_modified": "2026-04-06T20:54:40+02:00"
     },
     {
       "name": "Clean Slate",
       "path": "~/Documents/clean-slate",
-      "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dark, monospace, dense UI - no fluff, just information.\n\nA macOS launchd job runs the sync automatically on a schedule. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.",
+      "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dense, monospace UI with dark/light mode - no fluff, just information.\n\nA tools inventory section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.\n\nA macOS launchd job runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.\n\nA scheduled remote agent (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.",
       "description_short": "A personal project dashboard that auto-syncs from ~/Documents/.",
       "stack": [
         "Next.js 16",
         "TypeScript",
         "Tailwind CSS v4",
-        "shadcn/ui"
+        "shadcn/ui",
+        "next-themes"
       ],
-      "hosting": "Vercel free tier. Domain: ops.hosk.app (or similar subdomain of hosk.app).",
+      "hosting": "Vercel free tier. Domain: ops.hosk.app.",
       "database": "",
       "github": {
         "account": "personal (hanna-fmw)",
@@ -111,15 +112,18 @@
       "run_commands": {
         "pnpm dev": "start dev server on localhost:3300",
         "pnpm build": "build for production (static export)",
-        "pnpm sync": "scan ~/Documents/ and regenerate config/data.json",
+        "pnpm sync": "scan ~/Documents/ and regenerate project data in config/data.json",
+        "pnpm sync:tools": "scan ~/.claude/ and regenerate tools inventory in config/data.json",
+        "pnpm sync:all": "run both syncs",
         "pnpm test": "run tests",
         "pnpm lint": "lint"
       },
       "services": [
-        "Vercel"
+        "Vercel",
+        "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
-      "notes": "No database. Fully static. Data comes exclusively from CLEAN-SLATE.md files in project folders.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.",
-      "last_modified": "2026-04-26T21:18:58.605Z"
+      "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
+      "last_modified": "2026-05-03T12:53:45+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -164,44 +168,7 @@
         "Hetzner (server hosting)"
       ],
       "notes": "- Deploy by pushing to main - Coolify auto-deploys via GitHub webhook\n- Embedding runs locally inside the container using `@xenova/transformers` - no external embedding API needed\n- After any Prisma schema change: create migration locally, deploy, then run `npx prisma migrate deploy` in Coolify terminal\n- Default LLM model: `qwen/qwen-2.5-7b-instruct` via OpenRouter\n- See `TASKS.md` for known issues and pending work\n- Reference repo (read-only): `~/Desktop/private-knowledge-base`",
-      "last_modified": "2026-04-26T21:22:09.516Z"
-    },
-    {
-      "name": "GDPR Project",
-      "path": "~/Documents/gdpr-project",
-      "description": "A GDPR compliance audit and process documentation project for a web agency. The goal is to audit existing client sites for GDPR compliance and build a reusable compliance process and checklist covering multiple platforms.\n\nPhase 1 (current): Audit all existing Webflow client sites. Key issues include script/consent banner load order in Webflow headers and correct Cookiebot + GTM integration.\n\nPhase 2: Create a reusable audit process and checklist for all supported platforms (Webflow, HubSpot, Next.js).\n\nPhase 3: Research broader GDPR requirements, multi-country and multi-language considerations.\n\nThe project is documentation-heavy. All docs live in `docs/`. The Next.js app (if present) likely serves as a tool or internal dashboard to support the audit/documentation workflow. Clients span multiple countries and languages. The agency is also merging with another company that uses HubSpot, which adds a new platform to cover.",
-      "description_short": "A GDPR compliance audit and process documentation project for a web agency.",
-      "stack": [
-        "Next.js",
-        "TypeScript",
-        "Prisma",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "shadcn/ui (base-ui)",
-        "Playwright",
-        "Cheerio"
-      ],
-      "hosting": "Not yet determined.",
-      "database": "",
-      "github": {
-        "account": "work (StormforsAdmin)",
-        "ssh_alias": "github.com-work",
-        "repo_url": "https://github.com/StormforsHQ/gdpr-project"
-      },
-      "run_commands": {
-        "npm run dev": "Start dev server",
-        "npm run build": "Production build",
-        "npm start": "Start production server",
-        "npm run lint": "Run ESLint"
-      },
-      "services": [
-        "Cookiebot (cookie consent management)",
-        "GTM (Google Tag Manager)",
-        "Webflow",
-        "HubSpot (future scope)"
-      ],
-      "notes": "- Documentation rules: all docs in `docs/`, bullet points and tables over prose, scannable in under 2 minutes, no emojis or em dashes\n- Active branch: `feat/scaffold`\n- The package.json includes Prisma and PostgreSQL - there is likely a database component to the app layer\n- Cheerio is present - likely used for scraping/auditing client site HTML",
-      "last_modified": "2026-04-26T21:23:25.655Z"
+      "last_modified": "2026-03-14T15:00:32+01:00"
     },
     {
       "name": "Health Insights Tracker (React Native)",
@@ -245,7 +212,7 @@
         "Expo (build + distribution tooling)"
       ],
       "notes": "Uses `@shopify/flash-list` instead of FlatList and `expo-image` instead of RN Image for performance. Target 60fps on all animations and lists. Apple/Google sign-in prepared for later (not in initial build). Charts: `react-native-gifted-charts` or Victory Native. Reference the web app's `docs/REQUIREMENTS.md` and `docs/ARCHITECTURE.md` for full feature requirements and data model - adapt Prisma schema to Supabase SQL migrations.",
-      "last_modified": "2026-04-26T21:23:30.579Z"
+      "last_modified": "2026-04-06T20:58:35+02:00"
     },
     {
       "name": "Health Insights Tracker (Web)",
@@ -289,7 +256,7 @@
         "Cloudflare (DNS)"
       ],
       "notes": "Auth.js (NextAuth v5) uses credentials provider. Uses `proxy.ts` (not `middleware.ts`) per Next.js 16. Prisma schema has 7 models. Detailed requirements at `docs/REQUIREMENTS.md`, architecture and data model at `docs/ARCHITECTURE.md`, phased roadmap at `docs/ROADMAP.md`.",
-      "last_modified": "2026-04-26T21:22:29.440Z"
+      "last_modified": "2026-03-04T23:22:18+01:00"
     },
     {
       "name": "JSON-LD Schema Generator",
@@ -335,7 +302,7 @@
         "Trello (report posting)"
       ],
       "notes": "Prisma 7 has specific quirks: `prisma.config.ts` uses `process.env.DATABASE_URL ?? ''` (not `env()` - breaks Docker builds), `schema.prisma` has no `url` in the datasource block, and there is no `--skip-generate` flag. Prisma CLI is installed in an isolated `/prisma-cli` directory in Docker because pnpm symlinks break between build stages. Detailed deployment writeup lives at `~/knowledge-base/issues-solved/nextjs-prisma7-docker-coolify-hetzner-deployment.md`.",
-      "last_modified": "2026-04-26T21:21:50.704Z"
+      "last_modified": "2026-03-31T11:00:26+02:00"
     },
     {
       "name": "Mock (Website Modernization)",
@@ -368,7 +335,7 @@
         "None currently. Supabase planned for Phase 2 (blog/dynamic content)."
       ],
       "notes": "- Reference repo patterns: `rookieworkdev/rookie_2.0` (app structure, SEO metadata, animation setup, shadcn customization)\n- Key animation pattern: scroll-triggered reveals using Framer Motion, page transitions via a template wrapper\n- SEO setup includes robots.ts, sitemap.ts, opengraph-image.tsx, manifest.ts\n- Component structure: `ui/` (shadcn), `sections/` (page sections), `layout/` (header/footer/nav), `animations/` (reusable wrappers)",
-      "last_modified": "2026-04-26T21:23:29.518Z"
+      "last_modified": "2026-02-12T08:58:20+01:00"
     },
     {
       "name": "Moiwak",
@@ -401,7 +368,7 @@
         "Google Workspace"
       ],
       "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
-      "last_modified": "2026-04-26T21:22:28.133Z"
+      "last_modified": "2026-04-30T19:21:28.077Z"
     },
     {
       "name": "OpenClaw",
@@ -433,7 +400,7 @@
         "UFW"
       ],
       "notes": "VM1 is isolated and dedicated to OpenClaw only - do not use it for other projects (the knowledge base runs on VM2). OpenClaw docs update frequently; use Context7 to look up current OpenClaw documentation rather than relying on the CLAUDE.md content.",
-      "last_modified": "2026-04-26T21:22:11.106Z"
+      "last_modified": "2026-02-15T18:15:06+01:00"
     },
     {
       "name": "Personal Knowledge Base",
@@ -508,7 +475,7 @@
         "None"
       ],
       "notes": "- No remote configured in `.git/config` yet - repo has not been pushed\n- Client components only when browser APIs, state, or event handlers are needed\n- i18n: add translations to both `messages/en.json` and `messages/sv.json` for every string",
-      "last_modified": "2026-04-26T21:22:13.902Z"
+      "last_modified": "2026-03-26T18:04:05+01:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -554,7 +521,7 @@
         "Proxmox/NetBird (homelab infrastructure)"
       ],
       "notes": "- VM2 SSH: `ssh knowledge-base` (via NetBird, IP: 100.109.251.80)\n- Coolify on VM2: http://100.109.251.80:8000\n- Local notes source: `~/knowledge-base/` auto-pushed to GitHub via `fswatch` launchd service on Mac\n- GitHub repo acts as the sync mechanism between local notes and the app on VM2\n- LLM provider is abstracted - swapping from HF Inference to another provider requires only a config change\n- Scope is personal notes and docs only, not code projects\n- Build uses `NODE_OPTIONS='--max-old-space-size=4096'` due to heavy TypeScript type definitions (`googleapis` package)",
-      "last_modified": "2026-04-26T21:22:30.425Z"
+      "last_modified": "2026-03-14T16:23:41+01:00"
     },
     {
       "name": "RankSmile",
@@ -599,7 +566,7 @@
         "Resend (email)"
       ],
       "notes": "Two env files must be kept in sync: `apps/web/.env.local` (Next.js) and `.env.local` at repo root (API). Shared vars include Supabase keys and `CRON_SECRET`. Word count is capped at 500 in `apps/api/src/services/articles/article-generator.ts` during development - remove for production. Supabase project ref: `awtwkdkinpykaozbwcdy`. MCP server `supabase-ranksmile` is configured in `~/.claude.json`.",
-      "last_modified": "2026-04-26T21:22:12.061Z"
+      "last_modified": "2026-04-04T13:23:52+02:00"
     },
     {
       "name": "SignalStack",
@@ -620,7 +587,7 @@
         "React Testing Library",
         "npm workspaces"
       ],
-      "hosting": "Web: not yet deployed (Vercel target). API: not yet deployed (Coolify target). Database: Supabase (EU, free tier).",
+      "hosting": "Web: not yet deployed - plan: **Vercel free tier**. API: not yet deployed - plan: **Hetzner CPX11 (€5.99/mo) + Coolify**. Database: Supabase (EU, free tier). Total target cost: ~€6/mo.",
       "database": "",
       "github": {
         "account": "personal (hanna-fmw)",
@@ -645,7 +612,7 @@
         "Google Ads API (planned)"
       ],
       "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
-      "last_modified": "2026-04-26T21:22:14.742Z"
+      "last_modified": "2026-05-03T18:14:28+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -681,7 +648,7 @@
         "LangGraph.js (agent orchestration)"
       ],
       "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
-      "last_modified": "2026-04-26T21:22:12.972Z"
+      "last_modified": "2026-01-11T21:21:43+01:00"
     }
   ],
   "services": [
@@ -1103,10 +1070,10 @@
   "infrastructure": [
     {
       "name": "Proxmox (Homelab)",
-      "access_url": "TODO",
+      "access_url": "https://192.168.0.50:8006",
       "login_email": "TODO",
       "nordpass_hint": "TODO",
-      "notes": "Home server. Access via NetBird if remote. Local IP: 192.168.0.102.",
+      "notes": "Home server. Proxmox host at 192.168.0.50. Access via NetBird if remote.",
       "sub_resources": [
         {
           "name": "VM1 (Ubuntu + Coolify)",
@@ -1173,7 +1140,7 @@
     },
     {
       "name": "NetBird VPN",
-      "access_url": "TODO",
+      "access_url": "https://app.netbird.io",
       "login_email": "TODO",
       "nordpass_hint": "TODO",
       "notes": "WireGuard-based VPN for accessing homelab VMs remotely. Does NOT auto-start after macOS restart - open NetBird app or run 'netbird up'. If deployed apps show infinite spinner after reboot, check NetBird first.",
@@ -1195,1010 +1162,2260 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-03T07:26:01.473Z",
+    "synced_at": "2026-05-03T16:46:23.397Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
         "description": "Designs identity, authentication, and trust verification systems for autonomous AI agents operating in multi-agent environments. Ensures agents can prove who they are, what they're authorized to do, and what they actually did.",
-        "source": "custom",
-        "category": "agentic"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "agents"
       },
       {
         "name": "Agents Orchestrator",
         "description": "Autonomous pipeline manager that orchestrates the entire development workflow. You are the leader of this process.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "agents"
       },
       {
         "name": "Data Analytics Reporter",
         "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visualization and reporting.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "data"
       },
       {
         "name": "Data Consolidation Agent",
         "description": "AI agent that consolidates extracted sales data into live reporting dashboards with territory, rep, and pipeline summaries",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "data"
       },
       {
         "name": "Brand Guardian",
         "description": "Expert brand strategist and guardian specializing in brand identity development, consistency maintenance, and strategic brand positioning",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "Image Prompt Engineer",
         "description": "Expert photography prompt engineer specializing in crafting detailed, evocative prompts for AI image generation. Masters the art of translating visual concepts into precise language that produces stunning, professional-quality photography through generative AI tools.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "Inclusive Visuals Specialist",
         "description": "Representation expert who defeats systemic AI biases to generate culturally accurate, affirming, and non-stereotypical images and video.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "UI Designer",
         "description": "Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible user interfaces that enhance UX and reflect brand identity",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "UX Architect",
         "description": "Technical architecture and UX specialist who provides developers with solid foundations, CSS systems, and clear implementation guidance",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "UX Researcher",
         "description": "Expert user experience researcher specializing in user behavior analysis, usability testing, and data-driven design insights. Provides actionable research findings that improve product usability and user satisfaction",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "Visual Storyteller",
         "description": "Expert visual communication specialist focused on creating compelling visual narratives, multimedia content, and brand storytelling through design. Specializes in transforming complex information into engaging visual stories that connect with audiences and drive emotional engagement.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "Whimsy Injector",
         "description": "Expert creative specialist focused on adding personality, delight, and playful elements to brand experiences. Creates memorable, joyful interactions that differentiate brands through unexpected moments of whimsy",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "design"
       },
       {
         "name": "AI Engineer",
         "description": "Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent features, data pipelines, and AI-powered applications with emphasis on practical, scalable solutions.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Autonomous Optimization Architect",
         "description": "Intelligent system governor that continuously shadow-tests APIs for performance while enforcing strict financial and security guardrails against runaway costs.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Backend Architect",
         "description": "Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, performant server-side applications and microservices",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Data Engineer",
         "description": "Expert data engineer specializing in building reliable data pipelines, lakehouse architectures, and scalable data infrastructure. Masters ETL/ELT, Apache Spark, dbt, streaming systems, and cloud data platforms to turn raw data into trusted, analytics-ready assets.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "DevOps Automator",
         "description": "Expert DevOps engineer specializing in infrastructure automation, CI/CD pipeline development, and cloud operations",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Frontend Developer",
         "description": "Expert frontend developer specializing in modern web technologies, React/Vue/Angular frameworks, UI implementation, and performance optimization",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Mobile App Builder",
         "description": "Specialized mobile application developer with expertise in native iOS/Android development and cross-platform frameworks",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Rapid Prototyper",
         "description": "Specialized in ultra-fast proof-of-concept development and MVP creation using efficient tools and frameworks",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Security Engineer",
         "description": "Expert application security engineer specializing in threat modeling, vulnerability assessment, secure code review, and security architecture design for modern web and cloud-native applications.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Senior Developer",
         "description": "Premium implementation specialist - Masters Laravel/Livewire/FluxUI, advanced CSS, Three.js integration",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "Technical Writer",
         "description": "Expert technical writer specializing in developer documentation, API references, README files, and tutorials. Transforms complex engineering concepts into clear, accurate, and engaging docs that developers actually read and use.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "engineering"
       },
       {
         "name": "gsd-codebase-mapper",
         "description": "Explores codebase and writes structured analysis documents. Spawned by map-codebase with a focus area (tech, arch, quality, concerns). Writes documents directly to reduce orchestrator context load.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-debugger",
         "description": "Investigates bugs using scientific method, manages debug sessions, handles checkpoints. Spawned by /gsd:debug orchestrator.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-executor",
         "description": "Executes GSD plans with atomic commits, deviation handling, checkpoint protocols, and state management. Spawned by execute-phase orchestrator or execute-plan command.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-integration-checker",
         "description": "Verifies cross-phase integration and E2E flows. Checks that phases connect properly and user workflows complete end-to-end.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-phase-researcher",
         "description": "Researches how to implement a phase before planning. Produces RESEARCH.md consumed by gsd-planner. Spawned by /gsd:plan-phase orchestrator.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-plan-checker",
         "description": "Verifies plans will achieve phase goal before execution. Goal-backward analysis of plan quality. Spawned by /gsd:plan-phase orchestrator.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-planner",
         "description": "Creates executable phase plans with task breakdown, dependency analysis, and goal-backward verification. Spawned by /gsd:plan-phase orchestrator.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-project-researcher",
         "description": "Researches domain ecosystem before roadmap creation. Produces files in .planning/research/ consumed during roadmap creation. Spawned by /gsd:new-project or /gsd:new-milestone orchestrators.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-research-synthesizer",
         "description": "Synthesizes research outputs from parallel researcher agents into SUMMARY.md. Spawned by /gsd:new-project after 4 researcher agents complete.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-roadmapper",
         "description": "Creates project roadmaps with phase breakdown, requirement mapping, success criteria derivation, and coverage validation. Spawned by /gsd:new-project orchestrator.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "gsd-verifier",
         "description": "Verifies phase goal achievement through goal-backward analysis. Checks codebase delivers what phase promised, not just that tasks completed. Creates VERIFICATION.md report.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/gsd-build/get-shit-done"
+        },
         "category": "gsd"
       },
       {
         "name": "LSP/Index Engineer",
         "description": "Language Server Protocol specialist building unified code intelligence systems through LSP client orchestration and semantic indexing",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "lsp"
       },
       {
         "name": "App Store Optimizer",
         "description": "Expert app store marketing specialist focused on App Store Optimization (ASO), conversion rate optimization, and app discoverability",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Content Creator",
         "description": "Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optimizes content for engagement across all digital channels.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Growth Hacker",
         "description": "Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and finds scalable growth channels for exponential business growth.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Instagram Curator",
         "description": "Expert Instagram marketing specialist focused on visual storytelling, community building, and multi-format content optimization. Masters aesthetic development and drives meaningful engagement.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Reddit Community Builder",
         "description": "Expert Reddit marketing specialist focused on authentic community engagement, value-driven content creation, and long-term relationship building. Masters Reddit culture navigation.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Social Media Strategist",
         "description": "Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engagement, and develops thought leadership strategies.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "TikTok Strategist",
         "description": "Expert TikTok marketing specialist focused on viral content creation, algorithm optimization, and community building. Masters TikTok's unique culture and features for brand growth.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Twitter Engager",
         "description": "Expert Twitter marketing specialist focused on real-time engagement, thought leadership building, and community-driven growth. Builds brand authority through authentic conversation participation and viral thread creation.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "marketing"
       },
       {
         "name": "Behavioral Nudge Engine",
         "description": "Behavioral psychology specialist that adapts software interaction cadences and styles to maximize user motivation and success.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "product"
       },
       {
         "name": "Feedback Synthesizer",
         "description": "Expert in collecting, analyzing, and synthesizing user feedback from multiple channels to extract actionable product insights. Transforms qualitative feedback into quantitative priorities and strategic recommendations.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "product"
       },
       {
         "name": "Sprint Prioritizer",
         "description": "Expert product manager specializing in agile sprint planning, feature prioritization, and resource allocation. Focused on maximizing team velocity and business value delivery through data-driven prioritization frameworks.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "product"
       },
       {
         "name": "Trend Researcher",
         "description": "Expert market intelligence analyst specializing in identifying emerging trends, competitive analysis, and opportunity assessment. Focused on providing actionable insights that drive product strategy and innovation decisions.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "product"
       },
       {
         "name": "Experiment Tracker",
         "description": "Expert project manager specializing in experiment design, execution tracking, and data-driven decision making. Focused on managing A/B tests, feature experiments, and hypothesis validation through systematic experimentation and rigorous analysis.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "project"
       },
       {
         "name": "Project Shepherd",
         "description": "Expert project manager specializing in cross-functional project coordination, timeline management, and stakeholder alignment. Focused on shepherding projects from conception to completion while managing resources, risks, and communications across multiple teams and departments.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "project"
       },
       {
         "name": "Studio Operations",
         "description": "Expert operations manager specializing in day-to-day studio efficiency, process optimization, and resource coordination. Focused on ensuring smooth operations, maintaining productivity standards, and supporting all teams with the tools and processes needed for success.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "project"
       },
       {
         "name": "Studio Producer",
         "description": "Senior strategic leader specializing in high-level creative and technical project orchestration, resource allocation, and multi-project portfolio management. Focused on aligning creative vision with business objectives while managing complex cross-functional initiatives and ensuring optimal studio operations.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "project"
       },
       {
         "name": "Senior Project Manager",
         "description": "Converts specs to tasks and remembers previous projects. Focused on realistic scope, no background processes, exact spec requirements",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "project"
       },
       {
         "name": "Report Distribution Agent",
         "description": "AI agent that automates distribution of consolidated sales reports to representatives based on territorial parameters",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "report"
       },
       {
         "name": "Sales Data Extraction Agent",
         "description": "AI agent specialized in monitoring Excel files and extracting key sales metrics (MTD, YTD, Year End) for internal live reporting",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "sales"
       },
       {
         "name": "Cultural Intelligence Strategist",
         "description": "CQ specialist that detects invisible exclusion, researches global context, and ensures software resonates authentically across intersectional identities.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "specialized"
       },
       {
         "name": "Developer Advocate",
         "description": "Expert developer advocate specializing in building developer communities, creating compelling technical content, optimizing developer experience (DX), and driving platform adoption through authentic engineering engagement. Bridges product and engineering teams with external developers.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "specialized"
       },
       {
         "name": "Analytics Reporter",
         "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visualization and reporting.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "support"
       },
       {
         "name": "Executive Summary Generator",
         "description": "Consultant-grade AI specialist trained to think and communicate like a senior strategy consultant. Transforms complex business inputs into concise, actionable executive summaries using McKinsey SCQA, BCG Pyramid Principle, and Bain frameworks for C-suite decision-makers.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "support"
       },
       {
         "name": "Finance Tracker",
         "description": "Expert financial analyst and controller specializing in financial planning, budget management, and business performance analysis. Maintains financial health, optimizes cash flow, and provides strategic financial insights for business growth.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "support"
       },
       {
         "name": "Infrastructure Maintainer",
         "description": "Expert infrastructure specialist focused on system reliability, performance optimization, and technical operations management. Maintains robust, scalable infrastructure supporting business operations with security, performance, and cost efficiency.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "support"
       },
       {
         "name": "Legal Compliance Checker",
         "description": "Expert legal and compliance specialist ensuring business operations, data handling, and content creation comply with relevant laws, regulations, and industry standards across multiple jurisdictions.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "support"
       },
       {
         "name": "Support Responder",
         "description": "Expert customer support specialist delivering exceptional customer service, issue resolution, and user experience optimization. Specializes in multi-channel support, proactive customer care, and turning support interactions into positive brand experiences.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "support"
       },
       {
         "name": "Accessibility Auditor",
         "description": "Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to finding barriers — if it's not tested with a screen reader, it's not accessible.",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "API Tester",
         "description": "Expert API testing specialist focused on comprehensive API validation, performance testing, and quality assurance across all systems and third-party integrations",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "Evidence Collector",
         "description": "Screenshot-obsessed, fantasy-allergic QA specialist - Default to finding 3-5 issues, requires visual proof for everything",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "Performance Benchmarker",
         "description": "Expert performance testing and optimization specialist focused on measuring, analyzing, and improving system performance across all applications and infrastructure",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "Reality Checker",
         "description": "Stops fantasy approvals, evidence-based certification - Default to \"NEEDS WORK\", requires overwhelming proof for production readiness",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "Test Results Analyzer",
         "description": "Expert test analysis specialist focused on comprehensive test result evaluation, quality metrics analysis, and actionable insight generation from testing activities",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "Tool Evaluator",
         "description": "Expert technology assessment specialist focused on evaluating, testing, and recommending tools, software, and platforms for business use and productivity optimization",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
       },
       {
         "name": "Workflow Optimizer",
         "description": "Expert process improvement specialist focused on analyzing, optimizing, and automating workflows across all business functions for maximum productivity and efficiency",
-        "source": "custom",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
         "category": "testing"
+      },
+      {
+        "name": "agent-sdk-verifier-py",
+        "description": "Use this agent to verify that a Python Agent SDK application is properly configured, follows SDK best practices and documentation recommendations, and is ready for deployment or testing. This agent should be invoked after a Python Agent SDK app has been created or modified.",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "agent-sdk-dev"
+        },
+        "category": "agent-sdk-dev"
+      },
+      {
+        "name": "agent-sdk-verifier-ts",
+        "description": "Use this agent to verify that a TypeScript Agent SDK application is properly configured, follows SDK best practices and documentation recommendations, and is ready for deployment or testing. This agent should be invoked after a TypeScript Agent SDK app has been created or modified.",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "agent-sdk-dev"
+        },
+        "category": "agent-sdk-dev"
+      },
+      {
+        "name": "code-simplifier",
+        "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Focuses on recently modified code unless instructed otherwise.",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "code-simplifier"
+        },
+        "category": "code-simplifier"
+      },
+      {
+        "name": "AGENTS",
+        "description": "",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        },
+        "category": "huggingface-skills"
+      },
+      {
+        "name": "code-reviewer",
+        "description": "Use this agent when you need to review code for adherence to project guidelines, style guides, and best practices. This agent should be used proactively after writing or modifying code, especially before committing changes or creating pull requests. It will check for style violations, potential issues, and ensure code follows the established patterns in CLAUDE.md. Also the agent needs to know which files to focus on for the review. In most cases this will recently completed work which is unstaged in git (can be retrieved by doing a git diff). However there can be cases where this is different, make sure to specify this as the agent input when calling the agent. \\n\\nExamples:\\n<example>\\nContext: The user has just implemented a new feature with several TypeScript files.\\nuser: \"I've added the new authentication feature. Can you check if everything looks good?\"\\nassistant: \"I'll use the Task tool to launch the code-reviewer agent to review your recent changes.\"\\n<commentary>\\nSince the user has completed a feature and wants validation, use the code-reviewer agent to ensure the code meets project standards.\\n</commentary>\\n</example>\\n<example>\\nContext: The assistant has just written a new utility function.\\nuser: \"Please create a function to validate email addresses\"\\nassistant: \"Here's the email validation function:\"\\n<function call omitted for brevity>\\nassistant: \"Now I'll use the Task tool to launch the code-reviewer agent to review this implementation.\"\\n<commentary>\\nProactively use the code-reviewer agent after writing new code to catch issues early.\\n</commentary>\\n</example>\\n<example>\\nContext: The user is about to create a PR.\\nuser: \"I think I'm ready to create a PR for this feature\"\\nassistant: \"Before creating the PR, I'll use the Task tool to launch the code-reviewer agent to ensure all code meets our standards.\"\\n<commentary>\\nProactively review code before PR creation to avoid review comments and iterations.\\n</commentary>\\n</example>",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "pr-review-toolkit"
+        },
+        "category": "pr-review-toolkit"
+      },
+      {
+        "name": "comment-analyzer",
+        "description": "Use this agent when you need to analyze code comments for accuracy, completeness, and long-term maintainability. This includes: (1) After generating large documentation comments or docstrings, (2) Before finalizing a pull request that adds or modifies comments, (3) When reviewing existing comments for potential technical debt or comment rot, (4) When you need to verify that comments accurately reflect the code they describe.\\n\\n<example>\\nContext: The user is working on a pull request that adds several documentation comments to functions.\\nuser: \"I've added documentation to these functions. Can you check if the comments are accurate?\"\\nassistant: \"I'll use the comment-analyzer agent to thoroughly review all the comments in this pull request for accuracy and completeness.\"\\n<commentary>\\nSince the user has added documentation comments and wants them checked, use the comment-analyzer agent to verify their accuracy against the actual code.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user just asked to generate comprehensive documentation for a complex function.\\nuser: \"Add detailed documentation for this authentication handler function\"\\nassistant: \"I've added the documentation. Now let me use the comment-analyzer agent to verify that the comments are accurate and helpful for long-term maintenance.\"\\n<commentary>\\nAfter generating large documentation comments, proactively use the comment-analyzer to ensure quality.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user is preparing to create a pull request with multiple code changes and comments.\\nuser: \"I think we're ready to create the PR now\"\\nassistant: \"Before creating the pull request, let me use the comment-analyzer agent to review all the comments we've added or modified to ensure they're accurate and won't create technical debt.\"\\n<commentary>\\nBefore finalizing a PR, use the comment-analyzer to review all comment changes.\\n</commentary>\\n</example>",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "pr-review-toolkit"
+        },
+        "category": "pr-review-toolkit"
+      },
+      {
+        "name": "pr-test-analyzer",
+        "description": "Use this agent when you need to review a pull request for test coverage quality and completeness. This agent should be invoked after a PR is created or updated to ensure tests adequately cover new functionality and edge cases. Examples:\\n\\n<example>\\nContext: Daisy has just created a pull request with new functionality.\\nuser: \"I've created the PR. Can you check if the tests are thorough?\"\\nassistant: \"I'll use the pr-test-analyzer agent to review the test coverage and identify any critical gaps.\"\\n<commentary>\\nSince Daisy is asking about test thoroughness in a PR, use the Task tool to launch the pr-test-analyzer agent.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: A pull request has been updated with new code changes.\\nuser: \"The PR is ready for review - I added the new validation logic we discussed\"\\nassistant: \"Let me analyze the PR to ensure the tests adequately cover the new validation logic and edge cases.\"\\n<commentary>\\nThe PR has new functionality that needs test coverage analysis, so use the pr-test-analyzer agent.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Reviewing PR feedback before marking as ready.\\nuser: \"Before I mark this PR as ready, can you double-check the test coverage?\"\\nassistant: \"I'll use the pr-test-analyzer agent to thoroughly review the test coverage and identify any critical gaps before you mark it ready.\"\\n<commentary>\\nDaisy wants a final test coverage check before marking PR ready, use the pr-test-analyzer agent.\\n</commentary>\\n</example>",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "pr-review-toolkit"
+        },
+        "category": "pr-review-toolkit"
+      },
+      {
+        "name": "silent-failure-hunter",
+        "description": "Use this agent when reviewing code changes in a pull request to identify silent failures, inadequate error handling, and inappropriate fallback behavior. This agent should be invoked proactively after completing a logical chunk of work that involves error handling, catch blocks, fallback logic, or any code that could potentially suppress errors. Examples:\\n\\n<example>\\nContext: Daisy has just finished implementing a new feature that fetches data from an API with fallback behavior.\\nDaisy: \"I've added error handling to the API client. Can you review it?\"\\nAssistant: \"Let me use the silent-failure-hunter agent to thoroughly examine the error handling in your changes.\"\\n<Task tool invocation to launch silent-failure-hunter agent>\\n</example>\\n\\n<example>\\nContext: Daisy has created a PR with changes that include try-catch blocks.\\nDaisy: \"Please review PR #1234\"\\nAssistant: \"I'll use the silent-failure-hunter agent to check for any silent failures or inadequate error handling in this PR.\"\\n<Task tool invocation to launch silent-failure-hunter agent>\\n</example>\\n\\n<example>\\nContext: Daisy has just refactored error handling code.\\nDaisy: \"I've updated the error handling in the authentication module\"\\nAssistant: \"Let me proactively use the silent-failure-hunter agent to ensure the error handling changes don't introduce silent failures.\"\\n<Task tool invocation to launch silent-failure-hunter agent>\\n</example>",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "pr-review-toolkit"
+        },
+        "category": "pr-review-toolkit"
+      },
+      {
+        "name": "type-design-analyzer",
+        "description": "Use this agent when you need expert analysis of type design in your codebase. Specifically use it: (1) when introducing a new type to ensure it follows best practices for encapsulation and invariant expression, (2) during pull request creation to review all types being added, (3) when refactoring existing types to improve their design quality. The agent will provide both qualitative feedback and quantitative ratings on encapsulation, invariant expression, usefulness, and enforcement.\\n\\n<example>\\nContext: Daisy is writing code that introduces a new UserAccount type and wants to ensure it has well-designed invariants.\\nuser: \"I've just created a new UserAccount type that handles user authentication and permissions\"\\nassistant: \"I'll use the type-design-analyzer agent to review the UserAccount type design\"\\n<commentary>\\nSince a new type is being introduced, use the type-design-analyzer to ensure it has strong invariants and proper encapsulation.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Daisy is creating a pull request and wants to review all newly added types.\\nuser: \"I'm about to create a PR with several new data model types\"\\nassistant: \"Let me use the type-design-analyzer agent to review all the types being added in this PR\"\\n<commentary>\\nDuring PR creation with new types, use the type-design-analyzer to review their design quality.\\n</commentary>\\n</example>",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "pr-review-toolkit"
+        },
+        "category": "pr-review-toolkit"
+      },
+      {
+        "name": "ai-architect",
+        "description": "Specializes in architecting AI-powered applications on Vercel — choosing between AI SDK patterns, configuring providers, building agents, setting up durable workflows, and integrating MCP servers. Use when designing AI features, building chatbots, or creating agentic applications.",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        },
+        "category": "vercel"
+      },
+      {
+        "name": "deployment-expert",
+        "description": "Specializes in Vercel deployment strategies, CI/CD pipelines, preview URLs, production promotions, rollbacks, environment variables, and domain configuration. Use when troubleshooting deployments, setting up CI/CD, or optimizing the deploy pipeline.",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        },
+        "category": "vercel"
+      },
+      {
+        "name": "performance-optimizer",
+        "description": "Specializes in optimizing Vercel application performance — Core Web Vitals, rendering strategies, caching, image optimization, font loading, edge computing, and bundle size. Use when investigating slow pages, improving Lighthouse scores, or optimizing loading performance.",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        },
+        "category": "vercel"
+      },
+      {
+        "name": "design-implementation-reviewer",
+        "description": "\"Visually compares live UI implementation against Figma designs and provides detailed feedback on discrepancies. Use after writing or modifying HTML/CSS/React components to verify design fidelity.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "design-iterator",
+        "description": "\"Iteratively refines UI design through N screenshot-analyze-improve cycles. Use PROACTIVELY when design changes aren't coming together after 1-2 attempts, or when user requests iterative refinement.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "figma-design-sync",
+        "description": "\"Detects and fixes visual differences between a web implementation and its Figma design. Use iteratively when syncing implementation to match Figma specs.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "ankane-readme-writer",
+        "description": "\"Creates or updates README files following Ankane-style template for Ruby gems. Use when writing gem documentation with imperative voice, concise prose, and standard section ordering.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "best-practices-researcher",
+        "description": "\"Researches and synthesizes external best practices, documentation, and examples for any technology or framework. Use when you need industry standards, community conventions, or implementation guidance.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "framework-docs-researcher",
+        "description": "\"Gathers comprehensive documentation and best practices for frameworks, libraries, or dependencies. Use when you need official docs, version-specific constraints, or implementation patterns.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "git-history-analyzer",
+        "description": "\"Performs archaeological analysis of git history to trace code evolution, identify contributors, and understand why code patterns exist. Use when you need historical context for code changes.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "learnings-researcher",
+        "description": "\"Searches docs/solutions/ for relevant past solutions by frontmatter metadata. Use before implementing features or fixing problems to surface institutional knowledge and prevent repeated mistakes.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "repo-research-analyst",
+        "description": "\"Conducts thorough research on repository structure, documentation, conventions, and implementation patterns. Use when onboarding to a new codebase or understanding project conventions.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "agent-native-reviewer",
+        "description": "\"Reviews code to ensure agent-native parity — any action a user can take, an agent can also take. Use after adding UI features, agent tools, or system prompts.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "architecture-strategist",
+        "description": "\"Analyzes code changes from an architectural perspective for pattern compliance and design integrity. Use when reviewing PRs, adding services, or evaluating structural refactors.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "code-simplicity-reviewer",
+        "description": "\"Final review pass to ensure code is as simple and minimal as possible. Use after implementation is complete to identify YAGNI violations and simplification opportunities.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "data-integrity-guardian",
+        "description": "\"Reviews database migrations, data models, and persistent data code for safety. Use when checking migration safety, data constraints, transaction boundaries, or privacy compliance.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "data-migration-expert",
+        "description": "\"Validates data migrations, backfills, and production data transformations against reality. Use when PRs involve ID mappings, column renames, enum conversions, or schema changes.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "deployment-verification-agent",
+        "description": "\"Produces Go/No-Go deployment checklists with SQL verification queries, rollback procedures, and monitoring plans. Use when PRs touch production data, migrations, or risky data changes.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "dhh-rails-reviewer",
+        "description": "\"Brutally honest Rails code review from DHH's perspective. Use when reviewing Rails code for anti-patterns, JS framework contamination, or violations of Rails conventions.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "julik-frontend-races-reviewer",
+        "description": "\"Reviews JavaScript and Stimulus code for race conditions, timing issues, and DOM lifecycle problems. Use after implementing or modifying frontend controllers or async UI code.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "kieran-python-reviewer",
+        "description": "\"Reviews Python code with an extremely high quality bar for Pythonic patterns, type safety, and maintainability. Use after implementing features, modifying code, or creating new Python modules.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "kieran-rails-reviewer",
+        "description": "\"Reviews Rails code with an extremely high quality bar for conventions, clarity, and maintainability. Use after implementing features, modifying code, or creating new Rails components.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "kieran-typescript-reviewer",
+        "description": "\"Reviews TypeScript code with an extremely high quality bar for type safety, modern patterns, and maintainability. Use after implementing features, modifying code, or creating new TypeScript components.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "pattern-recognition-specialist",
+        "description": "\"Analyzes code for design patterns, anti-patterns, naming conventions, and duplication. Use when checking codebase consistency or verifying new code follows established patterns.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "performance-oracle",
+        "description": "\"Analyzes code for performance bottlenecks, algorithmic complexity, database queries, memory usage, and scalability. Use after implementing features or when performance concerns arise.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "schema-drift-detector",
+        "description": "\"Detects unrelated schema.rb changes in PRs by cross-referencing against included migrations. Use when reviewing PRs with database schema changes.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "security-sentinel",
+        "description": "\"Performs security audits for vulnerabilities, input validation, auth/authz, hardcoded secrets, and OWASP compliance. Use when reviewing code for security issues or before deployment.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "bug-reproduction-validator",
+        "description": "\"Systematically reproduces and validates bug reports to confirm whether reported behavior is an actual bug. Use when you receive a bug report or issue that needs verification.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "every-style-editor",
+        "description": "\"Reviews and edits text content to conform to Every's editorial style guide. Use when written content needs style compliance checks for headlines, punctuation, voice, and formatting.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "lint",
+        "description": "\"Use this agent when you need to run linting and code quality checks on Ruby and ERB files. Run before pushing to origin.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "pr-comment-resolver",
+        "description": "\"Addresses PR review comments by implementing requested changes and reporting resolutions. Use when code review feedback needs to be resolved with code changes.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
+      },
+      {
+        "name": "spec-flow-analyzer",
+        "description": "\"Analyzes specifications and feature descriptions for user flow completeness and gap identification. Use when a spec, plan, or feature description needs flow analysis, edge case discovery, or requirements validation.\"",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
+        "category": "compound-engineering"
       }
     ],
     "plugins": [
       {
         "name": "superpowers",
         "version": "5.0.7",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "huggingface-skills",
         "version": "1.0.1",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "github",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "github"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "playwright",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "playwright"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "frontend-design",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "frontend-design"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "code-simplifier",
         "version": "1.0.0",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "code-simplifier"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "security-guidance",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "security-guidance"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "figma",
         "version": "2.1.30",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "pr-review-toolkit",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "pr-review-toolkit"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "agent-sdk-dev",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "agent-sdk-dev"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "skill-creator",
         "version": "unknown",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "skill-creator"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "compound-engineering",
         "version": "2.38.1",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        },
         "marketplace": "compound-engineering-plugin"
       },
       {
         "name": "vercel",
         "version": "0.40.1",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        },
         "marketplace": "claude-plugins-official"
       },
       {
         "name": "warp",
         "version": "2.0.0",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/warpdotdev/claude-code-warp",
+          "plugin": "warp"
+        },
         "marketplace": "claude-code-warp"
       }
     ],
     "mcp_servers": [
       {
         "name": "n8n-mcp",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/leonardsellem/n8n-mcp-server"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "context7",
-        "source": "official",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "MCP_DOCKER",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/docker/mcp-gateway"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "firecrawl-mcp-stormfors",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/firecrawl/firecrawl-mcp-server"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "nano-banana",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/ConechoAI/Nano-Banana-MCP"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "docker",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/docker/mcp-gateway"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "coolify",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/StuMason/coolify-mcp"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "ssh-server",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/oaslananka-lab/mcp-ssh-tool"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "proxmox",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/canvrno/ProxmoxMCP"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "coolify-stormfors",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/StuMason/coolify-mcp"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "figma-personal",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://mcp.figma.com"
+        },
         "transport": "sse",
         "notes": ""
       },
       {
         "name": "supabase-signalstack",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/supabase-community/supabase-mcp"
+        },
         "transport": "stdio",
         "notes": ""
       },
       {
         "name": "Sanity",
-        "source": "3rd-party",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/sanity-io/sanity-mcp-server"
+        },
         "transport": "sse",
         "notes": ""
       }
     ],
     "skills": [
       {
+        "name": "compact-handoff",
+        "description": "Quick checkpoint before /compact or session break. Updates docs and memory if needed, copies a continuation prompt to clipboard. Minimal output.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-code-javascript",
+        "description": "Write JavaScript code in n8n Code nodes. Use when writing JavaScript in n8n, using $input/$json/$node syntax, making HTTP requests with $helpers, working with dates using DateTime, troubleshooting Code node errors, or choosing between Code node modes.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-code-python",
+        "description": "Write Python code in n8n Code nodes. Use when writing Python in n8n, using _input/_json/_node syntax, working with standard library, or need to understand Python limitations in n8n Code nodes.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-expression-syntax",
+        "description": "Validate n8n expression syntax and fix common errors. Use when writing n8n expressions, using {{}} syntax, accessing $json/$node variables, troubleshooting expression errors, or working with webhook data in workflows.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-mcp-tools-expert",
+        "description": "Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-node-configuration",
+        "description": "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node_essentials and get_node_info, or learning common configuration patterns by node type.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-validation-expert",
+        "description": "Interpret validation errors and guide fixing them. Use when encountering validation errors, validation warnings, false positives, operator structure issues, or need help understanding validation results. Also use when asking about validation profiles, error types, or the validation loop process.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "n8n-workflow-patterns",
+        "description": "Proven workflow architectural patterns from real n8n workflows. Use when building new workflows, designing workflow structure, choosing workflow patterns, planning workflow architecture, or asking about webhook processing, HTTP API integration, database operations, AI agent workflows, or scheduled tasks.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "notebooklm",
+        "description": "Complete API for Google NotebookLM - full programmatic access including features not in the web UI. Create notebooks, add sources, generate all artifact types, download in multiple formats. Activates on explicit /notebooklm or intent like \"create a podcast about X",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "react-native-skills",
+        "description": "",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "research-write-article",
+        "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use yt-transcript for those).",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "session-handoff",
+        "description": "Wrap up a session - update docs, commit, verify, and save a handoff prompt for the next session",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "youtube-search",
+        "description": "Search YouTube for videos and return structured results with metadata and engagement metrics. Use this skill whenever the user wants to search YouTube, find videos on a topic, discover content creators, research video performance, compare channels, or analyze YouTube engagement — even if they don't say \"YouTube search\" explicitly. Triggers on phrases like \"search YouTube\", \"find videos about\", \"what videos are there on\", \"look up on YouTube\", \"YouTube results for\", or any request to find or discover video content.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "yt-research-pipeline",
+        "description": "YouTube-powered research pipeline that finds videos on a topic, feeds them into NotebookLM for deep analysis, and optionally generates deliverables (podcasts, flashcards, quizzes, infographics, etc.). Use this skill whenever the user wants to research a topic using YouTube content, build a knowledge base from videos, analyze what YouTube creators are saying about something, or wants a \"YouTube research\" workflow. Triggers on phrases like \"research this topic on YouTube\", \"what are YouTubers saying about\", \"build a research notebook from YouTube\", \"analyze YouTube videos about\", or any multi-step request combining video discovery with analysis.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "yt-transcript",
+        "description": "Transcribe a YouTube video into a near-transcript summary and save it to the knowledge base. Use this skill whenever the user shares a YouTube URL and wants a transcript, summary, near-transcript, or wants to save/ingest a video into their knowledge base. Also triggers when the user says \"transcribe this video\", \"save this tutorial\", \"add this to my knowledge base\", \"get the transcript\", or pastes a youtube.com URL with intent to capture its content.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
         "name": "figma-code-connect",
+        "description": "Creates and maintains Figma Code Connect template files that map Figma components to code snippets. Use when the user mentions Code Connect, Figma component mapping, design-to-code translation, or asks to create/update .figma.ts or .figma.js files.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-create-design-system-rules",
+        "description": "Generates custom design system rules for the user's codebase. Use when user says \"create design system rules\", \"generate rules for my project\", \"set up design rules\", \"customize design system guidelines\", or wants to establish project-specific conventions for Figma-to-code workflows. Requires Figma MCP server connection.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-create-new-file",
+        "description": "Create a new blank Figma file. Use when the user wants to create a new Figma design or FigJam file, or when you need a new file before calling use_figma. Handles plan resolution via whoami if needed. Usage — /figma-create-new-file [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard)",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-generate-design",
+        "description": "Use this skill alongside figma-use when the task involves translating an application page, view, or multi-section layout into Figma. Triggers: 'write to Figma', 'create in Figma from code', 'push page to Figma', 'take this app/page and build it in Figma', 'create a screen', 'build a landing page in Figma', 'update the Figma screen to match code', 'convert this modal/dialog/drawer/panel to Figma'. This is the preferred workflow skill whenever the user wants to build or update a full page, modal, dialog, drawer, sidebar, panel, or any composed multi-section view in Figma from code or a description. Discovers design system components, variables, and styles from Code Connect files, existing screens, and library search, then imports them and assembles views incrementally section-by-section using design system tokens instead of hardcoded values.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-generate-library",
+        "description": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-implement-design",
+        "description": "Translates Figma designs into production-ready application code with 1:1 visual fidelity. Use when implementing UI code from Figma files, when user mentions \"implement design\", \"generate code\", \"implement component\", provides Figma URLs, or asks to build components matching Figma specs. For Figma canvas writes via `use_figma`, use `figma-use`.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-use",
+        "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-generate-diagram",
+        "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. Routes to type-specific guidance (generic flowchart, architecture flowchart) and tells you when to proceed directly, when to use a different diagram type, or when the tool isn't the right fit at all.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "figma-use-figjam",
+        "description": "This skill helps agents use Figma's use_figma MCP tool in the FigJam context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
         "plugin": "figma",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
       },
       {
         "name": "frontend-design",
+        "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
         "plugin": "frontend-design",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "frontend-design"
+        }
       },
       {
         "name": "hf-cli",
+        "description": "Hugging Face Hub CLI (`hf`) for downloading, uploading, and managing repositories, models, datasets, and Spaces on the Hugging Face Hub. Replaces now deprecated `huggingface-cli` command.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-dataset-viewer",
+        "description": "",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-datasets",
+        "description": "Create and manage datasets on Hugging Face Hub. Supports initializing repos, defining configs/system prompts, streaming row updates, and SQL-based dataset querying/transformation. Designed to work alongside HF MCP server for comprehensive dataset workflows.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-evaluation",
+        "description": "Add and manage evaluation results in Hugging Face model cards. Supports extracting eval tables from README content, importing scores from Artificial Analysis API, and running custom model evaluations with vLLM/lighteval. Works with the model-index metadata format.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-jobs",
+        "description": "This skill should be used when users want to run any workload on Hugging Face Jobs infrastructure. Covers UV scripts, Docker-based jobs, hardware selection, cost estimation, authentication with tokens, secrets management, timeout configuration, and result persistence. Designed for general-purpose compute workloads including data processing, inference, experiments, batch jobs, and any Python-based tasks. Should be invoked for tasks involving cloud compute, GPU workloads, or when users mention running jobs on Hugging Face infrastructure without local setup.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-model-trainer",
+        "description": "This skill should be used when users want to train or fine-tune language models using TRL (Transformer Reinforcement Learning) on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, and model persistence. Should be invoked for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-object-detection-trainer",
+        "description": "Trains and fine-tunes object detection models (D-FINE, RT-DETR v2, DETR, YOLOS) using Hugging Face Transformers on Hugging Face Jobs cloud GPUs. Covers COCO-format dataset preparation, Albumentations augmentation, mAP/mAR evaluation, hardware selection, cost estimation, Trackio monitoring, and Hub persistence. Use when users mention training object detection, DETR, D-FINE, RT-DETR, bounding box models, or fine-tuning on Hugging Face Jobs.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-paper-publisher",
+        "description": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-tool-builder",
+        "description": "Use this skill when the user wants to build tool/scripts or achieve a task where using data from the Hugging Face API would help. This is especially useful when chaining or combining API calls or the task will be repeated/automated. This Skill creates a reusable script to fetch, enrich or process data.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-trackio",
+        "description": "Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "hugging-face-vision-trainer",
+        "description": "Trains and fine-tunes vision models for object detection (D-FINE, RT-DETR v2, DETR, YOLOS), image classification (timm models — MobileNetV3, MobileViT, ResNet, ViT/DINOv3 — plus any Transformers classifier), and SAM/SAM2 segmentation using Hugging Face Transformers on Hugging Face Jobs cloud GPUs. Covers COCO-format dataset preparation, Albumentations augmentation, mAP/mAR evaluation, accuracy metrics, SAM segmentation with bbox/point prompts, DiceCE loss, hardware selection, cost estimation, Trackio monitoring, and Hub persistence. Use when users mention training object detection, image classification, SAM, SAM2, segmentation, image matting, DETR, D-FINE, RT-DETR, ViT, timm, MobileNet, ResNet, bounding box models, or fine-tuning vision models on Hugging Face Jobs.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "huggingface-gradio",
+        "description": "Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, components, event listeners, layouts, or chatbots.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "transformers.js",
+        "description": "Use Transformers.js to run state-of-the-art machine learning models directly in JavaScript/TypeScript. Supports NLP (text classification, translation, summarization), computer vision (image classification, object detection), audio (speech recognition, audio classification), and multimodal tasks. Works in Node.js and browsers (with WebGPU/WASM) using pre-trained models from Hugging Face Hub.",
         "plugin": "huggingface-skills",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
       },
       {
         "name": "skill-creator",
+        "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
         "plugin": "skill-creator",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "skill-creator"
+        }
       },
       {
         "name": "brainstorming",
+        "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "dispatching-parallel-agents",
+        "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "executing-plans",
+        "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "finishing-a-development-branch",
+        "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "receiving-code-review",
+        "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "requesting-code-review",
+        "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "subagent-driven-development",
+        "description": "Use when executing implementation plans with independent tasks in the current session",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "systematic-debugging",
+        "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "test-driven-development",
+        "description": "Use when implementing any feature or bugfix, before writing implementation code",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "using-git-worktrees",
+        "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "using-superpowers",
+        "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "verification-before-completion",
+        "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "writing-plans",
+        "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "writing-skills",
+        "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
         "plugin": "superpowers",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
       },
       {
         "name": "ai-gateway",
+        "description": "Vercel AI Gateway expert guidance. Use when configuring model routing, provider failover, cost tracking, or managing multiple AI providers through a unified API.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "ai-sdk",
+        "description": "Vercel AI SDK expert guidance. Use when building AI-powered features — chat interfaces, text generation, structured output, tool calling, agents, MCP integration, streaming, embeddings, reranking, image generation, or working with any LLM provider.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "auth",
+        "description": "Authentication integration guidance — Clerk (native Vercel Marketplace), Descope, and Auth0 setup for Next.js applications. Covers middleware auth patterns, sign-in/sign-up flows, and Marketplace provisioning. Use when implementing user authentication.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "bootstrap",
+        "description": "Project bootstrapping orchestrator for repos that depend on Vercel-linked resources (databases, auth, and managed integrations). Use when setting up or repairing a repository so linking, environment provisioning, env pulls, and first-run db/dev commands happen in the correct safe order.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "chat-sdk",
+        "description": "Vercel Chat SDK expert guidance. Use when building multi-platform chat bots — Slack, Telegram, Microsoft Teams, Discord, Google Chat, GitHub, Linear — with a single codebase. Covers the Chat class, adapters, threads, messages, cards, modals, streaming, state management, and webhook setup.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "deployments-cicd",
+        "description": "Vercel deployment and CI/CD expert guidance. Use when deploying, promoting, rolling back, inspecting deployments, building with --prebuilt, or configuring CI workflow files for Vercel.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "env-vars",
+        "description": "Vercel environment variable expert guidance. Use when working with .env files, vercel env commands, OIDC tokens, or managing environment-specific configuration.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "knowledge-update",
+        "description": "Corrects outdated LLM knowledge about the Vercel platform and introduces new products. Injected at session start.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "marketplace",
+        "description": "Vercel Marketplace expert guidance — discovering, installing, and building integrations, auto-provisioned environment variables, unified billing, and the vercel integration CLI. Use when consuming third-party services, building custom integrations, or managing marketplace resources on Vercel.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "next-cache-components",
+        "description": "Next.js 16 Cache Components guidance — PPR, use cache directive, cacheLife, cacheTag, updateTag, and migration from unstable_cache. Use when implementing partial prerendering, caching strategies, or migrating from older Next.js cache patterns.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "next-forge",
+        "description": "next-forge expert guidance — production-grade Turborepo monorepo SaaS starter by Vercel. Use when working in a next-forge project, scaffolding with `npx next-forge init`, or editing @repo/* workspace packages.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "next-upgrade",
+        "description": "Upgrade Next.js to the latest version following official migration guides and codemods. Use when upgrading Next.js versions, running codemods, or migrating between major releases.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "nextjs",
+        "description": "Next.js App Router expert guidance. Use when building, debugging, or architecting Next.js applications — routing, Server Components, Server Actions, Cache Components, layouts, middleware/proxy, data fetching, rendering strategies, and deployment on Vercel.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "react-best-practices",
+        "description": "React best-practices reviewer for TSX files. Triggers after editing multiple TSX components to run a condensed quality checklist covering component structure, hooks usage, accessibility, performance, and TypeScript patterns.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "routing-middleware",
+        "description": "Vercel Routing Middleware guidance — request interception before cache, rewrites, redirects, personalization. Works with any framework. Supports Edge, Node.js, and Bun runtimes. Use when intercepting requests at the platform level.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "runtime-cache",
+        "description": "Vercel Runtime Cache API guidance — ephemeral per-region key-value cache with tag-based invalidation. Shared across Functions, Routing Middleware, and Builds. Use when implementing caching strategies beyond framework-level caching.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "shadcn",
+        "description": "shadcn/ui expert guidance — CLI, component installation, composition patterns, custom registries, theming, Tailwind CSS integration, and high-quality interface design. Use when initializing shadcn, adding components, composing product UI, building custom registries, configuring themes, or troubleshooting component issues.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "turbopack",
+        "description": "Turbopack expert guidance. Use when configuring the Next.js bundler, optimizing HMR, debugging build issues, or understanding the Turbopack vs Webpack differences.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "vercel-agent",
+        "description": "Vercel Agent guidance — AI-powered code review, incident investigation, and SDK installation. Automates PR analysis and anomaly debugging. Use when configuring or understanding Vercel's AI development tools.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "vercel-cli",
+        "description": "Vercel CLI expert guidance. Use when deploying, managing environment variables, linking projects, viewing logs, managing domains, or interacting with the Vercel platform from the command line.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "vercel-functions",
+        "description": "Vercel Functions expert guidance — Serverless Functions, Edge Functions, Fluid Compute, streaming, Cron Jobs, and runtime configuration. Use when configuring, debugging, or optimizing server-side code running on Vercel.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "vercel-sandbox",
+        "description": "Vercel Sandbox guidance — ephemeral Firecracker microVMs for running untrusted code safely. Supports AI agents, code generation, and experimentation. Use when executing user-generated or AI-generated code in isolation.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "vercel-storage",
+        "description": "Vercel storage expert guidance — Blob, Edge Config, and Marketplace storage (Neon Postgres, Upstash Redis). Use when choosing, configuring, or using data storage with Vercel applications.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "verification",
+        "description": "Full-story verification — infers what the user is building, then verifies the complete flow end-to-end: browser → API → data → response. Triggers on dev server start and 'why isn't this working' signals.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "workflow",
+        "description": "Vercel Workflow DevKit (WDK) expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume, retries, step-based execution, or crash-safe orchestration with Vercel Workflow.",
         "plugin": "vercel",
-        "source": "official"
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
       },
       {
         "name": "agent-browser",
+        "description": "Browser automation using Vercel's agent-browser CLI. Use when you need to interact with web pages, fill forms, take screenshots, or scrape data. Alternative to Playwright MCP - uses Bash commands with ref-based element selection. Triggers on \"browse website\", \"fill form\", \"click button\", \"take screenshot\", \"scrape page\", \"web automation\".",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "agent-native-architecture",
+        "description": "Build applications where agents are first-class citizens. Use this skill when designing autonomous agents, creating MCP tools, implementing self-modifying systems, or building apps where features are outcomes achieved by agents operating in a loop.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "andrew-kane-gem-writer",
+        "description": "This skill should be used when writing Ruby gems following Andrew Kane's proven patterns and philosophy. It applies when creating new Ruby gems, refactoring existing gems, designing gem APIs, or when clean, minimal, production-ready Ruby library code is needed. Triggers on requests like \"create a gem\", \"write a Ruby library\", \"design a gem API\", or mentions of Andrew Kane's style.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "brainstorming",
+        "description": "This skill should be used before implementing features, building components, or making changes. It guides exploring user intent, approaches, and design decisions before planning. Triggers on \"let's brainstorm\", \"help me think through\", \"what should we build\", \"explore approaches\", ambiguous feature requests, or when the user's request has multiple valid interpretations that need clarification.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "compound-docs",
+        "description": "Capture solved problems as categorized documentation with YAML frontmatter for fast lookup",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "create-agent-skills",
+        "description": "Expert guidance for creating Claude Code skills and slash commands. Use when working with SKILL.md files, authoring new skills, improving existing skills, creating slash commands, or understanding skill structure and best practices.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "dhh-rails-style",
+        "description": "This skill should be used when writing Ruby and Rails code in DHH's distinctive 37signals style. It applies when writing Ruby code, Rails applications, creating models, controllers, or any Ruby file. Triggers on Ruby/Rails code generation, refactoring requests, code review, or when the user mentions DHH, 37signals, Basecamp, HEY, or Campfire style. Embodies REST purity, fat models, thin controllers, Current attributes, Hotwire patterns, and the \"clarity over cleverness\" philosophy.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "document-review",
+        "description": "This skill should be used to refine brainstorm or plan documents before proceeding to the next workflow step. It applies when a brainstorm or plan document exists and the user wants to improve it.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "dspy-ruby",
+        "description": "Build type-safe LLM applications with DSPy.rb — Ruby's programmatic prompt framework with signatures, modules, agents, and optimization. Use when implementing predictable AI features, creating LLM signatures and modules, configuring language model providers, building agent systems with tools, optimizing prompts, or testing LLM-powered functionality in Ruby applications.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "every-style-editor",
+        "description": "This skill should be used when reviewing or editing copy to ensure adherence to Every's style guide. It provides a systematic line-by-line review process for grammar, punctuation, mechanics, and style guide compliance.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "file-todos",
+        "description": "This skill should be used when managing the file-based todo tracking system in the todos/ directory. It provides workflows for creating todos, managing status and dependencies, conducting triage, and integrating with slash commands and code review processes.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "frontend-design",
+        "description": "This skill should be used when creating distinctive, production-grade frontend interfaces with high design quality. It applies when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "gemini-imagegen",
+        "description": "This skill should be used when generating and editing images using the Gemini API (Nano Banana Pro). It applies when creating images from text prompts, editing existing images, applying style transfers, generating logos with text, creating stickers, product mockups, or any image generation/manipulation task. Supports text-to-image, image editing, multi-turn refinement, and composition from multiple reference images.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "git-worktree",
+        "description": "This skill manages Git worktrees for isolated parallel development. It handles creating, listing, switching, and cleaning up worktrees with a simple interactive interface, following KISS principles.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "orchestrating-swarms",
+        "description": "This skill should be used when orchestrating multi-agent swarms using Claude Code's TeammateTool and Task system. It applies when coordinating multiple agents, running parallel code reviews, creating pipeline workflows with dependencies, building self-organizing task queues, or any task benefiting from divide-and-conquer patterns.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "proof",
+        "description": "Create, edit, comment on, and share markdown documents via Proof's web API and local bridge. Use when asked to \"proof\", \"share a doc\", \"create a proof doc\", \"comment on a document\", \"suggest edits\", \"review in proof\", or when given a proofeditor.ai URL.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "rclone",
+        "description": "Upload, sync, and manage files across cloud storage providers using rclone. Use when uploading files (images, videos, documents) to S3, Cloudflare R2, Backblaze B2, Google Drive, Dropbox, or any S3-compatible storage. Triggers on \"upload to S3\", \"sync to cloud\", \"rclone\", \"backup files\", \"upload video/image to bucket\", or requests to transfer files to remote storage.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "resolve-pr-parallel",
+        "description": "Resolve all PR comments using parallel processing. Use when addressing PR review feedback, resolving review threads, or batch-fixing PR comments.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "setup",
+        "description": "Configure which review agents run for your project. Auto-detects stack and writes compound-engineering.local.md.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       },
       {
         "name": "skill-creator",
+        "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
         "plugin": "compound-engineering",
-        "source": "3rd-party"
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
+          "plugin": "compound-engineering"
+        }
       }
     ]
   }
