@@ -77,8 +77,10 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
     <>
       <div className="px-4 h-14 flex items-center border-b border-[var(--border)]">
         <div className="flex items-center gap-2 text-sm font-medium">
-          <svg width="18" height="18" viewBox="0 0 76 65" fill="currentColor">
-            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.1"/>
+            <path d="M8 10h16M8 16h10M8 22h13" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+            <circle cx="24" cy="22" r="3" fill="#3ECF8E"/>
           </svg>
           clean-slate
         </div>
@@ -110,9 +112,15 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
         ))}
       </nav>
 
-      <div className="px-3 py-3 border-t border-[var(--border)] flex items-center justify-between">
-        <span className="text-[12px] text-[var(--muted)]">ops.hosk.app</span>
-        <ThemeToggle />
+      <div className="border-t border-[var(--border)] px-3 py-3 space-y-2">
+        <div className="text-[11px] text-[var(--muted)] space-y-0.5">
+          <p>Next.js 16 - Vercel</p>
+          <p className="font-mono">ops.hosk.app</p>
+        </div>
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] text-[var(--muted)]">Personal Ops Dashboard</span>
+          <ThemeToggle />
+        </div>
       </div>
     </>
   )
@@ -132,8 +140,10 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
           </svg>
         </button>
         <div className="flex items-center gap-2 text-sm font-medium ml-3">
-          <svg width="16" height="16" viewBox="0 0 76 65" fill="currentColor">
-            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.1"/>
+            <path d="M8 10h16M8 16h10M8 22h13" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+            <circle cx="24" cy="22" r="3" fill="#3ECF8E"/>
           </svg>
           clean-slate
         </div>

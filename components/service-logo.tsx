@@ -33,15 +33,23 @@ function FallbackLogo({ name }: { name: string }) {
 
 export function ServiceLogo({ name, size = 32 }: { name: string; size?: number }) {
   const src = LOGO_MAP[name]
-  if (!src) return <div style={{ width: size, height: size }} className="shrink-0"><FallbackLogo name={name} /></div>
 
   return (
-    <Image
-      src={src}
-      alt={`${name} logo`}
-      width={size}
-      height={size}
-      className="shrink-0 object-contain"
-    />
+    <div
+      className="relative shrink-0"
+      style={{ width: size, height: size }}
+    >
+      {src ? (
+        <Image
+          src={src}
+          alt={`${name} logo`}
+          fill
+          className="object-contain"
+          sizes={`${size}px`}
+        />
+      ) : (
+        <FallbackLogo name={name} />
+      )}
+    </div>
   )
 }
