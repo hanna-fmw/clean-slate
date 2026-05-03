@@ -211,10 +211,10 @@
       "subscription": false,
       "receipt_email": null,
       "accounts": [
-        { "alias": "personal", "username": "hanna-fmw", "email": "TODO - noreply github email", "ssh_host": "github.com-personal", "use_for": "Personal projects", "nordpass_hint": "NordPass private - GitHub personal" },
-        { "alias": "work", "username": "StormforsAdmin", "email": "hanna@stormfors.com", "ssh_host": "github.com-work", "use_for": "Stormfors company", "nordpass_hint": "NordPass company - GitHub Stormfors" },
-        { "alias": "rookie", "username": "rookieworkdev", "email": "rookiework.dev@gmail.com", "ssh_host": "github.com-rookie", "use_for": "Rookie client work", "nordpass_hint": "NordPass private - GitHub Rookie" },
-        { "alias": "ranksmile", "username": "adminranksmile-design", "email": "admin.ranksmile@gmail.com", "ssh_host": "github.com-ranksmile", "use_for": "RankSmile SaaS", "nordpass_hint": "NordPass private - GitHub RankSmile" }
+        { "alias": "personal", "username": "hanna-fmw", "email": "TODO - noreply github email", "ssh_host": "github.com-personal", "use_for": "Personal projects", "nordpass_hint": "NordPass private - GitHub personal", "projects": ["SignalStack", "Tracker", "Z Project", "Baby-claw", "OpenClaw", "Social Media Generator", "JSON-LD Generator", "RN Health Tracker", "Company KB", "Knowledge Base (Server)", "Ops Dashboard"] },
+        { "alias": "work", "username": "StormforsAdmin", "email": "hanna@stormfors.com", "ssh_host": "github.com-work", "use_for": "Stormfors company", "nordpass_hint": "NordPass company - GitHub Stormfors", "projects": [] },
+        { "alias": "rookie", "username": "rookieworkdev", "email": "rookiework.dev@gmail.com", "ssh_host": "github.com-rookie", "use_for": "Rookie client work", "nordpass_hint": "NordPass private - GitHub Rookie", "projects": [] },
+        { "alias": "ranksmile", "username": "adminranksmile-design", "email": "admin.ranksmile@gmail.com", "ssh_host": "github.com-ranksmile", "use_for": "RankSmile SaaS", "nordpass_hint": "NordPass private - GitHub RankSmile", "projects": ["RankSmile"] }
       ],
       "last_reviewed": "2026-04-06"
     },
@@ -224,9 +224,9 @@
       "subscription": false,
       "receipt_email": null,
       "accounts": [
-        { "alias": "personal", "email": "TODO", "use_for": "Personal projects", "nordpass_hint": "NordPass private - Supabase personal" },
-        { "alias": "stormfors", "email": "TODO", "use_for": "Stormfors projects", "nordpass_hint": "NordPass company - Supabase" },
-        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile", "nordpass_hint": "NordPass private - Supabase RankSmile" }
+        { "alias": "personal", "email": "TODO", "use_for": "Personal projects", "nordpass_hint": "NordPass private - Supabase personal", "projects": ["SignalStack", "Social Media Generator", "RN Health Tracker"] },
+        { "alias": "stormfors", "email": "TODO", "use_for": "Stormfors projects", "nordpass_hint": "NordPass company - Supabase", "projects": [] },
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile", "nordpass_hint": "NordPass private - Supabase RankSmile", "projects": ["RankSmile"] }
       ],
       "notes": "Multiple accounts - check which projects are in which account.",
       "last_reviewed": "2026-04-06"
@@ -237,8 +237,8 @@
       "subscription": false,
       "receipt_email": null,
       "accounts": [
-        { "alias": "personal", "email": "TODO", "use_for": "Personal project deployments", "nordpass_hint": "NordPass private - Vercel" },
-        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile deployment", "nordpass_hint": "NordPass private - Vercel RankSmile" }
+        { "alias": "personal", "email": "TODO", "use_for": "Personal project deployments", "nordpass_hint": "NordPass private - Vercel", "projects": ["SignalStack", "Tracker", "Z Project", "Social Media Generator", "JSON-LD Generator", "Ops Dashboard"] },
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile deployment", "nordpass_hint": "NordPass private - Vercel RankSmile", "projects": ["RankSmile"] }
       ],
       "last_reviewed": "2026-04-06"
     },
@@ -302,10 +302,10 @@
       "subscription": false,
       "receipt_email": null,
       "accounts": [
-        { "alias": "personal", "email": "TODO", "use_for": "Personal projects (OAuth, APIs)", "nordpass_hint": "NordPass private - Google Cloud personal" },
-        { "alias": "stormfors", "email": "hanna@stormfors.com", "use_for": "Stormfors projects", "nordpass_hint": "NordPass company - Google Cloud" },
-        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile (OAuth, PageSpeed API)", "nordpass_hint": "NordPass private - Google Cloud RankSmile" },
-        { "alias": "rookie", "email": "rookiework.dev@gmail.com", "use_for": "Rookie client projects", "nordpass_hint": "NordPass private - Google Cloud Rookie" }
+        { "alias": "personal", "email": "TODO", "use_for": "Personal projects (OAuth, APIs)", "nordpass_hint": "NordPass private - Google Cloud personal", "projects": ["SignalStack", "Social Media Generator", "Tracker"] },
+        { "alias": "stormfors", "email": "hanna@stormfors.com", "use_for": "Stormfors projects", "nordpass_hint": "NordPass company - Google Cloud", "projects": ["Company KB", "JSON-LD Generator"] },
+        { "alias": "ranksmile", "email": "admin.ranksmile@gmail.com", "use_for": "RankSmile (OAuth, PageSpeed API)", "nordpass_hint": "NordPass private - Google Cloud RankSmile", "projects": ["RankSmile"] },
+        { "alias": "rookie", "email": "rookiework.dev@gmail.com", "use_for": "Rookie client projects", "nordpass_hint": "NordPass private - Google Cloud Rookie", "projects": [] }
       ],
       "last_reviewed": "2026-04-06"
     },
