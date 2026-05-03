@@ -683,5 +683,207 @@
       "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
       "last_modified": "2026-04-26T21:22:12.972Z"
     }
+  ],
+  "services": [
+    {
+      "name": "GitHub",
+      "category": "Development",
+      "url": "https://github.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "personal",
+          "username": "hanna-fmw",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Personal projects",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "work",
+          "username": "StormforsAdmin",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Stormfors company",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "rookie",
+          "username": "rookieworkdev",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Rookie/client work",
+          "nordpass_hint": "TODO"
+        },
+        {
+          "alias": "ranksmile",
+          "username": "adminranksmile-design",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "RankSmile SaaS",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "SSH aliases: github.com-personal, github.com-work, github.com-rookie, github.com-ranksmile",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Supabase",
+      "category": "Database",
+      "url": "https://supabase.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "TODO",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "TODO",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "Multiple accounts across different Chrome profiles. Fill in details.",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Vercel",
+      "category": "Hosting",
+      "url": "https://vercel.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "TODO",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "TODO",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Coolify",
+      "category": "Hosting",
+      "url": "TODO",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "TODO",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "TODO",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "OpenRouter",
+      "category": "AI & APIs",
+      "url": "https://openrouter.ai",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "TODO",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "TODO",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Google Cloud",
+      "category": "AI & APIs",
+      "url": "https://console.cloud.google.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "TODO",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "TODO",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    },
+    {
+      "name": "Cloudflare",
+      "category": "Hosting",
+      "url": "https://dash.cloudflare.com",
+      "subscription": false,
+      "receipt_email": "",
+      "accounts": [
+        {
+          "alias": "TODO",
+          "username": "",
+          "email": "TODO",
+          "chrome_profile": "TODO",
+          "use_for": "Domain management",
+          "nordpass_hint": "TODO"
+        }
+      ],
+      "notes": "",
+      "last_reviewed": ""
+    }
+  ],
+  "infrastructure": [
+    {
+      "name": "Proxmox",
+      "access_url": "TODO",
+      "login_email": "TODO",
+      "nordpass_hint": "TODO",
+      "notes": "Home server. Access via NetBird if remote.",
+      "sub_resources": [
+        {
+          "name": "TODO - VM 1",
+          "purpose": "TODO"
+        }
+      ],
+      "last_reviewed": ""
+    },
+    {
+      "name": "Hetzner (Stormfors)",
+      "access_url": "TODO",
+      "login_email": "TODO",
+      "nordpass_hint": "TODO",
+      "notes": "Runs Coolify for Stormfors projects.",
+      "sub_resources": [],
+      "last_reviewed": ""
+    },
+    {
+      "name": "Domains (Cloudflare)",
+      "access_url": "https://dash.cloudflare.com",
+      "login_email": "TODO",
+      "nordpass_hint": "TODO",
+      "notes": "All domains managed via Cloudflare DNS.",
+      "sub_resources": [
+        {
+          "name": "hosk.app",
+          "purpose": "Personal projects and tools"
+        },
+        {
+          "name": "stormfors.ai",
+          "purpose": "Stormfors AI tools"
+        }
+      ],
+      "last_reviewed": ""
+    }
   ]
 }
