@@ -43,10 +43,10 @@ export function ToolsSection({ tools }: { tools: ToolsInventory }) {
           <button
             key={key}
             onClick={() => setActive(key)}
-            className={`px-3 py-1.5 text-xs font-mono rounded transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 text-[13px] rounded-md transition-colors cursor-pointer ${
               active === key
                 ? 'bg-[var(--foreground)] text-[var(--background)]'
-                : 'bg-[var(--tag-bg)] text-[var(--tag-text)] hover:text-[var(--foreground)]'
+                : 'text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--hover)]'
             }`}
           >
             {label}
@@ -84,7 +84,7 @@ function AgentsList({ agents }: { agents: ToolsInventory['agents'] }) {
                   key={agent.name}
                   className="flex items-center gap-3 py-2 px-4 border-b border-[var(--border)]"
                 >
-                  <span className="font-mono text-sm font-bold shrink-0">{agent.name}</span>
+                  <span className="text-sm font-medium shrink-0">{agent.name}</span>
                   <SourceBadge source={agent.source} />
                   <span className="text-xs text-[var(--muted)] truncate hidden sm:block">
                     {agent.description}
@@ -106,7 +106,7 @@ function PluginsList({ plugins }: { plugins: ToolsInventory['plugins'] }) {
           key={plugin.name}
           className="flex items-center gap-3 py-2 px-4 border-b border-[var(--border)]"
         >
-          <span className="font-mono text-sm font-bold shrink-0">{plugin.name}</span>
+          <span className="text-sm font-medium shrink-0">{plugin.name}</span>
           <SourceBadge source={plugin.source} />
           <span className="text-[11px] font-mono bg-[var(--tag-bg)] text-[var(--tag-text)] px-1.5 py-0.5 rounded shrink-0">
             v{plugin.version}
@@ -126,7 +126,7 @@ function McpServersList({ servers }: { servers: ToolsInventory['mcp_servers'] })
           key={server.name}
           className="flex items-center gap-3 py-2 px-4 border-b border-[var(--border)]"
         >
-          <span className="font-mono text-sm font-bold shrink-0">{server.name}</span>
+          <span className="text-sm font-medium shrink-0">{server.name}</span>
           <SourceBadge source={server.source} />
           <span className="text-[11px] font-mono bg-[var(--tag-bg)] text-[var(--tag-text)] px-1.5 py-0.5 rounded shrink-0">
             {server.transport}

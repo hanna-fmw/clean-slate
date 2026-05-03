@@ -5,7 +5,7 @@ import type { Project } from '@/lib/types'
 function ProjectSummary({ project }: { project: Project }) {
   return (
     <div className="flex items-center gap-3 flex-1 min-w-0">
-      <span className="font-mono font-bold text-sm shrink-0">{project.name}</span>
+      <span className="font-medium text-sm shrink-0">{project.name}</span>
       <span className="text-sm text-[var(--muted)] truncate hidden sm:block">
         {project.description_short}
       </span>
@@ -36,7 +36,7 @@ function ProjectDetail({ project }: { project: Project }) {
     <div className="space-y-4 text-sm">
       {project.description && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Description</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Description</p>
           <div
             className="text-[var(--foreground)] leading-relaxed whitespace-pre-line"
             dangerouslySetInnerHTML={{
@@ -50,21 +50,21 @@ function ProjectDetail({ project }: { project: Project }) {
 
       {project.hosting && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Hosting</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Hosting</p>
           <p>{project.hosting}</p>
         </div>
       )}
 
       {project.database && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Database</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Database</p>
           <p>{project.database}</p>
         </div>
       )}
 
       {project.github.repo_url && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">GitHub</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">GitHub</p>
           <p className="font-mono text-xs">
             {project.github.account && <span>{project.github.account}</span>}
             {project.github.ssh_alias && <span className="text-[var(--muted)]"> ({project.github.ssh_alias})</span>}
@@ -82,7 +82,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
       {Object.keys(project.run_commands).length > 0 && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Run Commands</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Run Commands</p>
           <div className="bg-[var(--background)] rounded px-3 py-2 font-mono text-xs space-y-1">
             {Object.entries(project.run_commands).map(([cmd, desc]) => (
               <div key={cmd} className="flex gap-4">
@@ -96,7 +96,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
       {project.services.length > 0 && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Services</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Services</p>
           <div className="flex flex-wrap gap-1.5">
             {project.services.map((s) => (
               <span key={s} className="text-xs font-mono bg-[var(--tag-bg)] text-[var(--tag-text)] px-1.5 py-0.5 rounded">
@@ -109,7 +109,7 @@ function ProjectDetail({ project }: { project: Project }) {
 
       {project.notes && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Notes</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Notes</p>
           <p className="text-[var(--muted)] whitespace-pre-line">{project.notes}</p>
         </div>
       )}

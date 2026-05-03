@@ -16,7 +16,7 @@
   --link-hover: #0a0a0a;
   --sidebar-bg: #fafafa;
   --sidebar-active: #fff;
-  --sidebar-width: 240px;
+  --sidebar-width: 256px;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);

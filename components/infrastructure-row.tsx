@@ -4,7 +4,7 @@ import type { Infrastructure } from '@/lib/types'
 function InfraSummary({ infra }: { infra: Infrastructure }) {
   return (
     <div className="flex items-center gap-3 flex-1 min-w-0">
-      <span className="font-mono font-bold text-sm shrink-0">{infra.name}</span>
+      <span className="font-medium text-sm shrink-0">{infra.name}</span>
       {infra.access_url && infra.access_url !== 'TODO' && (
         <a
           href={infra.access_url}
@@ -57,14 +57,14 @@ function InfraDetail({ infra }: { infra: Infrastructure }) {
 
       {infra.notes && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-1 font-mono uppercase tracking-wider">Notes</p>
+          <p className="text-xs text-[var(--muted)] mb-1 uppercase tracking-wider">Notes</p>
           <p className="text-[var(--muted)] whitespace-pre-line">{infra.notes}</p>
         </div>
       )}
 
       {infra.sub_resources.length > 0 && (
         <div>
-          <p className="text-xs text-[var(--muted)] mb-2 font-mono uppercase tracking-wider">Resources</p>
+          <p className="text-xs text-[var(--muted)] mb-2 uppercase tracking-wider">Resources</p>
           <div className="space-y-1">
             {infra.sub_resources.map((r, i) => (
               <div key={i} className="flex gap-4 text-xs">
