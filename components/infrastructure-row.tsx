@@ -10,7 +10,6 @@ function InfraSummary({ infra }: { infra: Infrastructure }) {
           href={infra.access_url}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
           className="font-mono text-xs text-[var(--link)] hover:text-[var(--link-hover)] transition-colors truncate hidden sm:block"
         >
           {infra.access_url}
