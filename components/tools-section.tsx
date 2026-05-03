@@ -5,9 +5,9 @@ import type { ToolsInventory, ToolSource } from '@/lib/types'
 
 function SourceBadge({ source }: { source: ToolSource }) {
   const colors: Record<ToolSource, string> = {
-    official: 'bg-green-900/30 text-green-400',
-    '3rd-party': 'bg-blue-900/30 text-blue-400',
-    custom: 'bg-purple-900/30 text-purple-400',
+    official: 'bg-[var(--tag-bg)] text-green-500',
+    '3rd-party': 'bg-[var(--tag-bg)] text-blue-500',
+    custom: 'bg-[var(--tag-bg)] text-purple-500',
   }
 
   return (
