@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Service } from '@/lib/types'
-import { Card, CardContent, CardHeader, CardTitle, CardAction } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import {
   Dialog,
@@ -54,22 +54,17 @@ export function ServiceCard({ service }: { service: Service }) {
       >
         <CardHeader>
           <div className="flex items-center gap-3">
-            <ServiceLogo name={service.name} size={28} />
-            <CardTitle className="text-sm">{service.name}</CardTitle>
+            <ServiceLogo name={service.name} size={32} />
+            <Badge variant="outline" className={`text-[11px] ${categoryColor(service.category)}`}>
+              {service.category}
+            </Badge>
+            {service.subscription && (
+              <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                Paid
+              </span>
+            )}
           </div>
-          <CardAction>
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className={`text-[11px] ${categoryColor(service.category)}`}>
-                {service.category}
-              </Badge>
-              {service.subscription && (
-                <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                  Paid
-                </span>
-              )}
-            </div>
-          </CardAction>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
