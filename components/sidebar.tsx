@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
-export type Section = 'projects' | 'services' | 'infrastructure' | 'tools'
+export type Section = 'projects' | 'services' | 'tools'
 
 const NAV_ITEMS: { key: Section; label: string; icon: React.ReactNode }[] = [
   {
@@ -24,18 +24,6 @@ const NAV_ITEMS: { key: Section; label: string; icon: React.ReactNode }[] = [
         <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
         <line x1="6" y1="6" x2="6.01" y2="6" />
         <line x1="6" y1="18" x2="6.01" y2="18" />
-      </svg>
-    ),
-  },
-  {
-    key: 'infrastructure',
-    label: 'Infrastructure',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <rect x="9" y="9" width="6" height="6" />
-        <path d="M15 2v2" /><path d="M15 20v2" /><path d="M2 15h2" /><path d="M2 9h2" />
-        <path d="M20 15h2" /><path d="M20 9h2" /><path d="M9 2v2" /><path d="M9 20v2" />
       </svg>
     ),
   },
