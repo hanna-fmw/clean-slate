@@ -54,33 +54,40 @@ export interface Infrastructure {
   last_reviewed: string
 }
 
-export type ToolSource = 'official' | '3rd-party' | 'custom'
+export type ToolSource = 'anthropic' | '3rd-party' | 'custom'
+
+export interface ToolOrigin {
+  source: ToolSource
+  repo_url?: string
+  plugin?: string
+}
 
 export interface AgentInfo {
   name: string
   description: string
-  source: ToolSource
+  origin: ToolOrigin
   category: string
 }
 
 export interface PluginInfo {
   name: string
   version: string
-  source: ToolSource
+  origin: ToolOrigin
   marketplace: string
 }
 
 export interface McpServerInfo {
   name: string
-  source: ToolSource
+  origin: ToolOrigin
   transport: string
   notes: string
 }
 
 export interface SkillInfo {
   name: string
+  description: string
+  origin: ToolOrigin
   plugin: string
-  source: ToolSource
 }
 
 export interface ToolsInventory {

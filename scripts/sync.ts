@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { execSync } from 'child_process'
 import { parseCleanSlate } from './parse-clean-slate'
 import { detectFromPackageJson, detectFromGitConfig } from './detect-project'
 import type { Project, DashboardData } from '../lib/types'
@@ -9,6 +10,13 @@ const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
 const CLEAN_SLATE_FILE = 'CLEAN-SLATE.md'
 
 function getLastModified(dirPath: string): string {
+  try {
+    const result = execSync(
+      'git log -1 --format=%aI 2>/dev/null',
+      { cwd: dirPath, encoding: 'utf-8', timeout: 5000 }
+    ).trim()
+    if (result) return result
+  } catch { /* not a git repo or no commits */ }
   try {
     const stat = fs.statSync(dirPath)
     return stat.mtime.toISOString()

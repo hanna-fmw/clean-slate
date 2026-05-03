@@ -2,19 +2,18 @@
 
 import { useState } from 'react'
 import { Sidebar, type Section } from '@/components/sidebar'
+import { SyncInfoDialog } from '@/components/sync-info-dialog'
 
 interface DashboardLayoutProps {
   counts: Record<Section, number>
   projectList: React.ReactNode
   serviceList: React.ReactNode
-  infrastructureList: React.ReactNode
   toolsList: React.ReactNode
 }
 
 const TITLES: Record<Section, string> = {
   projects: 'Projects',
   services: 'Services',
-  infrastructure: 'Infrastructure',
   tools: 'Tools',
 }
 
@@ -22,7 +21,6 @@ export function DashboardLayout({
   counts,
   projectList,
   serviceList,
-  infrastructureList,
   toolsList,
 }: DashboardLayoutProps) {
   const [active, setActive] = useState<Section>('projects')
@@ -37,14 +35,14 @@ export function DashboardLayout({
             <span className="text-[var(--muted)] hidden sm:inline">/</span>
             <span className="font-medium">{TITLES[active]}</span>
           </div>
-          <div className="ml-auto text-xs text-[var(--muted)]">
+          <div className="ml-auto flex items-center gap-3 text-xs text-[var(--muted)]">
             {counts[active]} items
+            <SyncInfoDialog />
           </div>
         </header>
         <main className="flex-1 px-[var(--card-padding)] md:px-[var(--space-section)] py-[var(--space-section)] max-w-5xl">
           {active === 'projects' && projectList}
           {active === 'services' && serviceList}
-          {active === 'infrastructure' && infrastructureList}
           {active === 'tools' && toolsList}
         </main>
       </div>

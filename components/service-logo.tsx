@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 const LOGO_MAP: Record<string, string> = {
   'GitHub': '/logos/github.svg',
   'Supabase': '/logos/supabase.svg',
@@ -19,7 +17,14 @@ const LOGO_MAP: Record<string, string> = {
   'Figma': '/logos/figma.svg',
   'Expo': '/logos/expo.svg',
   'Google Workspace': '/logos/google.svg',
+  'Proxmox (Homelab)': '/logos/proxmox.svg',
+  'Hetzner (Stormfors)': '/logos/hetzner.svg',
+  'NetBird VPN': '/logos/netbird.svg',
 }
+
+const DARK_LOGOS = new Set([
+  'GitHub', 'Vercel', 'Railway', 'OpenRouter', 'Resend', 'Expo',
+])
 
 function FallbackLogo({ name }: { name: string }) {
   return (
@@ -31,21 +36,20 @@ function FallbackLogo({ name }: { name: string }) {
   )
 }
 
-export function ServiceLogo({ name, size = 32 }: { name: string; size?: number }) {
+export function ServiceLogo({ name, size = 28 }: { name: string; size?: number }) {
   const src = LOGO_MAP[name]
 
   return (
-    <div
-      className="relative shrink-0"
-      style={{ width: size, height: size }}
-    >
+    <div className="shrink-0" style={{ width: size, height: size }}>
       {src ? (
-        <Image
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
           src={src}
           alt={`${name} logo`}
-          fill
-          className="object-contain"
-          sizes={`${size}px`}
+          width={size}
+          height={size}
+          className={DARK_LOGOS.has(name) ? 'dark:invert' : undefined}
+          style={{ width: size, height: size, objectFit: 'contain' }}
         />
       ) : (
         <FallbackLogo name={name} />
