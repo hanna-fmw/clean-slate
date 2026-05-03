@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 
-type Tab = 'projects' | 'services' | 'infrastructure'
+type Tab = 'projects' | 'services' | 'infrastructure' | 'tools'
 
 const TABS: { key: Tab; label: string }[] = [
   { key: 'projects', label: 'Projects' },
   { key: 'services', label: 'Services & Accounts' },
   { key: 'infrastructure', label: 'Infrastructure' },
+  { key: 'tools', label: 'Tools' },
 ]
 
 interface DashboardTabsProps {
@@ -15,6 +16,7 @@ interface DashboardTabsProps {
   projectList: React.ReactNode
   serviceList: React.ReactNode
   infrastructureList: React.ReactNode
+  toolsList: React.ReactNode
 }
 
 export function DashboardTabs({
@@ -22,6 +24,7 @@ export function DashboardTabs({
   projectList,
   serviceList,
   infrastructureList,
+  toolsList,
 }: DashboardTabsProps) {
   const [active, setActive] = useState<Tab>('projects')
 
@@ -46,6 +49,7 @@ export function DashboardTabs({
       {active === 'projects' && projectList}
       {active === 'services' && serviceList}
       {active === 'infrastructure' && infrastructureList}
+      {active === 'tools' && toolsList}
     </div>
   )
 }
