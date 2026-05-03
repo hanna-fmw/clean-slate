@@ -1,8 +1,8 @@
 import { getData } from '@/lib/data'
 import { ProjectCard } from '@/components/project-card'
-import { ServiceRow } from '@/components/service-row'
-import { InfrastructureRow } from '@/components/infrastructure-row'
-import { ToolsSection } from '@/components/tools-section'
+import { ServiceCard } from '@/components/service-card'
+import { InfrastructureCard } from '@/components/infrastructure-card'
+import { ToolsSectionCards } from '@/components/tools-section-cards'
 import { DashboardLayout } from './dashboard-layout'
 
 export default function Home() {
@@ -24,24 +24,24 @@ export default function Home() {
         </div>
       }
       serviceList={
-        <div>
+        <div className="space-y-3">
           {services.map((service) => (
-            <ServiceRow key={service.name} service={service} />
+            <ServiceCard key={service.name} service={service} />
           ))}
         </div>
       }
       infrastructureList={
-        <div>
+        <div className="space-y-3">
           {infrastructure.map((infra) => (
-            <InfrastructureRow key={infra.name} infra={infra} />
+            <InfrastructureCard key={infra.name} infra={infra} />
           ))}
         </div>
       }
       toolsList={
         tools ? (
-          <ToolsSection tools={tools} />
+          <ToolsSectionCards tools={tools} />
         ) : (
-          <p className="text-sm text-[var(--muted)] py-4">
+          <p className="text-sm text-muted-foreground py-4">
             No tools inventory yet. Run: npx tsx scripts/sync-tools.ts
           </p>
         )
