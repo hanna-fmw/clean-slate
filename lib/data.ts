@@ -2,5 +2,11 @@ import rawData from '@/config/data.json'
 import type { DashboardData } from './types'
 
 export function getData(): DashboardData {
-  return rawData as DashboardData
+  const data = rawData as Partial<DashboardData>
+  return {
+    generated_at: data.generated_at ?? '',
+    projects: data.projects ?? [],
+    services: data.services ?? [],
+    infrastructure: data.infrastructure ?? [],
+  }
 }
