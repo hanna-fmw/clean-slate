@@ -24,7 +24,7 @@ export default function Home() {
         </div>
       }
       serviceList={
-        <div className="space-y-3">
+        <div className="flex flex-wrap gap-3 [&>*]:w-full [&>*]:sm:w-[calc(50%-0.375rem)]">
           {services.map((service) => (
             <ServiceCard key={service.name} service={service} />
           ))}
