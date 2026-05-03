@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
 export type Section = 'projects' | 'services' | 'infrastructure' | 'tools'
@@ -56,8 +57,24 @@ interface SidebarProps {
 }
 
 export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
-  return (
-    <aside className="fixed top-0 left-0 h-full w-[var(--sidebar-width)] bg-[var(--sidebar-bg)] border-r border-[var(--border)] flex flex-col z-10">
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handleResize = () => {
+      if (window.innerWidth >= 768) setMobileOpen(false)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [mobileOpen])
+
+  const handleNavigate = (section: Section) => {
+    onNavigate(section)
+    setMobileOpen(false)
+  }
+
+  const navContent = (
+    <>
       <div className="px-4 h-14 flex items-center border-b border-[var(--border)]">
         <div className="flex items-center gap-2 text-sm font-medium">
           <svg width="18" height="18" viewBox="0 0 76 65" fill="currentColor">
@@ -65,13 +82,22 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
           </svg>
           clean-slate
         </div>
+        <button
+          className="ml-auto md:hidden p-1 text-[var(--muted)] hover:text-[var(--foreground)] cursor-pointer"
+          onClick={() => setMobileOpen(false)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
       </div>
 
       <nav className="flex-1 py-2 px-2 overflow-y-auto">
         {NAV_ITEMS.map(({ key, label, icon }) => (
           <button
             key={key}
-            onClick={() => onNavigate(key)}
+            onClick={() => handleNavigate(key)}
             className={`w-full flex items-center gap-2.5 px-2.5 py-[7px] text-[13px] rounded-md transition-colors cursor-pointer mb-px ${
               active === key
                 ? 'bg-[var(--background)] text-[var(--foreground)] font-medium'
@@ -88,6 +114,50 @@ export function Sidebar({ active, onNavigate, counts }: SidebarProps) {
         <span className="text-[12px] text-[var(--muted)]">ops.hosk.app</span>
         <ThemeToggle />
       </div>
-    </aside>
+    </>
+  )
+
+  return (
+    <>
+      {/* Mobile header bar */}
+      <div className="fixed top-0 left-0 right-0 h-14 bg-[var(--sidebar-bg)] border-b border-[var(--border)] flex items-center px-4 z-20 md:hidden">
+        <button
+          className="p-1 text-[var(--muted)] hover:text-[var(--foreground)] cursor-pointer"
+          onClick={() => setMobileOpen(true)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <div className="flex items-center gap-2 text-sm font-medium ml-3">
+          <svg width="16" height="16" viewBox="0 0 76 65" fill="currentColor">
+            <path d="M37.5274 0L75.0548 65H0L37.5274 0Z" />
+          </svg>
+          clean-slate
+        </div>
+        <div className="ml-auto">
+          <ThemeToggle />
+        </div>
+      </div>
+
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/20 z-30 md:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* Sidebar - fixed on desktop, slide-over on mobile */}
+      <aside
+        className={`fixed top-0 left-0 h-full w-[var(--sidebar-width)] bg-[var(--sidebar-bg)] border-r border-[var(--border)] flex flex-col z-40 transition-transform duration-200 ${
+          mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        }`}
+      >
+        {navContent}
+      </aside>
+    </>
   )
 }

@@ -32,7 +32,7 @@ function hashIndex(name: string, len: number): number {
 function ProjectPreview({ name, stack }: { name: string; stack: string[] }) {
   const gradient = GRADIENTS[hashIndex(name, GRADIENTS.length)]
   return (
-    <div className={`w-full h-full min-h-[180px] rounded-lg border border-border/50 bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-3 p-6`}>
+    <div className={`w-full h-full min-h-[120px] sm:min-h-[180px] rounded-lg border border-border/50 bg-gradient-to-br ${gradient} flex flex-col items-center justify-center gap-3 p-6`}>
       <span className="text-3xl font-medium opacity-20">
         {name.charAt(0).toUpperCase()}
       </span>
@@ -69,17 +69,17 @@ export function ProjectCard({ project }: { project: Project }) {
           <CardTitle className="text-base">{project.name}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-6">
-            <div className="w-[280px] shrink-0">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <div className="w-full sm:w-[280px] shrink-0">
               <ProjectPreview name={project.name} stack={project.stack} />
             </div>
-            <div className="flex-1 min-w-0 space-y-4">
+            <div className="flex-1 min-w-0 space-y-3 sm:space-y-4">
               <MetaRow label="Description">
                 <p className="text-muted-foreground leading-relaxed">{project.description_short}</p>
               </MetaRow>
 
               {project.hosting && (
-                <div className="flex gap-8">
+                <div className="flex flex-wrap gap-x-8 gap-y-3">
                   <MetaRow label="Hosting">
                     <p>{project.hosting}</p>
                   </MetaRow>
@@ -102,7 +102,7 @@ export function ProjectCard({ project }: { project: Project }) {
               </MetaRow>
 
               {project.last_modified && (
-                <div className="flex gap-8">
+                <div className="flex flex-wrap gap-x-8 gap-y-3">
                   <MetaRow label="Last Modified">
                     <p>{formatRelativeTime(project.last_modified)}</p>
                   </MetaRow>
