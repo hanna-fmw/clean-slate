@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Service } from '@/lib/types'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import {
   Dialog,
@@ -52,24 +52,16 @@ export function ServiceCard({ service }: { service: Service }) {
         className="cursor-pointer transition-all hover:ring-foreground/20"
         onClick={() => setOpen(true)}
       >
-        <CardHeader>
-          <div className="flex items-center gap-3">
+        <CardContent className="flex flex-col justify-between h-full">
+          <div className="flex justify-between items-start">
             <ServiceLogo name={service.name} size={32} />
             <Badge variant="outline" className={`text-[11px] ${categoryColor(service.category)}`}>
               {service.category}
             </Badge>
-            {service.subscription && (
-              <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                Paid
-              </span>
-            )}
           </div>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-x-8 gap-y-3">
-            {service.url && (
-              <MetaRow label="URL">
+          <div className="flex justify-between items-end">
+            <div className="min-w-0">
+              {service.url && (
                 <a
                   href={service.url}
                   target="_blank"
@@ -78,22 +70,23 @@ export function ServiceCard({ service }: { service: Service }) {
                   onClick={(e) => e.stopPropagation()}
                 >
                   {service.url}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                     <polyline points="15 3 21 3 21 9" />
                     <line x1="10" y1="14" x2="21" y2="3" />
                   </svg>
                 </a>
-              </MetaRow>
-            )}
-            <MetaRow label="Accounts">
-              <p>{service.accounts.length} account{service.accounts.length !== 1 ? 's' : ''}</p>
-            </MetaRow>
-            {service.receipt_email && (
-              <MetaRow label="Receipt Email">
-                <p className="font-mono text-xs">{service.receipt_email}</p>
-              </MetaRow>
-            )}
+              )}
+              {service.subscription && (
+                <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground mt-1">
+                  <span className="rounded-full bg-blue-500" style={{ width: 'var(--dot-size)', height: 'var(--dot-size)' }} />
+                  Paid
+                </span>
+              )}
+            </div>
+            <span className="text-[11px] text-muted-foreground shrink-0">
+              {service.accounts.length} account{service.accounts.length !== 1 ? 's' : ''}
+            </span>
           </div>
         </CardContent>
       </Card>
@@ -101,7 +94,7 @@ export function ServiceCard({ service }: { service: Service }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-2xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-[var(--space-gap)]">
               <ServiceLogo name={service.name} size={36} />
               <div>
                 <DialogTitle className="text-lg">{service.name}</DialogTitle>
@@ -112,7 +105,7 @@ export function ServiceCard({ service }: { service: Service }) {
                     </Badge>
                     {service.subscription && (
                       <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        <span className="rounded-full bg-blue-500" style={{ width: 'var(--dot-size)', height: 'var(--dot-size)' }} />
                         Paid
                       </span>
                     )}
@@ -124,7 +117,7 @@ export function ServiceCard({ service }: { service: Service }) {
 
           <div className="space-y-5 text-sm">
             {service.url && (
-              <MetaRow label="URL">
+              <div>
                 <a
                   href={service.url}
                   target="_blank"
@@ -138,17 +131,17 @@ export function ServiceCard({ service }: { service: Service }) {
                     <line x1="10" y1="14" x2="21" y2="3" />
                   </svg>
                 </a>
-              </MetaRow>
+              </div>
             )}
 
             <MetaRow label="Accounts">
               <div className="space-y-3 mt-1">
                 {service.accounts.map((account, i) => (
-                  <Card key={i} size="sm" className="bg-muted/30">
+                  <Card key={i} size="sm" className="bg-secondary/50">
                     <CardContent className="space-y-2">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-[var(--space-gap)]">
                         <span className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          <span className="rounded-full bg-emerald-500" style={{ width: 'var(--dot-size)', height: 'var(--dot-size)' }} />
                           <span className="font-medium text-xs">{account.alias || 'Account'}</span>
                         </span>
                         {account.username && (
