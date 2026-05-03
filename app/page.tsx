@@ -17,7 +17,7 @@ export default function Home() {
         tools: (tools?.agents.length ?? 0) + (tools?.plugins.length ?? 0) + (tools?.mcp_servers.length ?? 0) + (tools?.skills.length ?? 0),
       }}
       projectList={
-        <div className="grid gap-3">
+        <div className="space-y-4">
           {projects.map((project) => (
             <ProjectCard key={project.name} project={project} />
           ))}
