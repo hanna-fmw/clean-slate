@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-05T18:45:03.825Z",
+  "generated_at": "2026-05-06T05:49:56.440Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -123,7 +123,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-05T14:41:01+02:00"
+      "last_modified": "2026-05-05T20:45:05+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -305,39 +305,6 @@
       "last_modified": "2026-03-31T11:00:26+02:00"
     },
     {
-      "name": "Mock (Website Modernization)",
-      "path": "~/Documents/mock",
-      "description": "A complete website rebuild using modern Next.js architecture. The project modernizes an existing site with a contemporary design, focusing on performance, accessibility, and smooth animations. Design inspiration comes from a reference site with a clean, spacious aesthetic.\n\nThe build establishes a full design system and component architecture from scratch: full-width sections with contained content, scroll-triggered fade-in animations via Framer Motion (`motion` package), sticky navigation, responsive grid layouts, and a clear typographic hierarchy. A reference repository (`rookieworkdev/rookie_2.0`) was used as the pattern source for app structure, SEO setup, and animation utilities.\n\nPhase 1 covers the homepage. Phase 2 expands to the full site with potential Supabase integration for blog/dynamic content.",
-      "description_short": "A complete website rebuild using modern Next.js architecture.",
-      "stack": [
-        "Next.js (App Router)",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion (motion)",
-        "Radix UI",
-        "shadcn/ui",
-        "next-themes"
-      ],
-      "hosting": "Not yet deployed. Target likely Vercel.",
-      "database": "",
-      "github": {
-        "account": "personal (hanna-fmw)",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/mock"
-      },
-      "run_commands": {
-        "npm run dev": "Start dev server",
-        "npm run build": "Production build",
-        "npm start": "Start production server",
-        "npm run lint": "Run ESLint"
-      },
-      "services": [
-        "None currently. Supabase planned for Phase 2 (blog/dynamic content)."
-      ],
-      "notes": "- Reference repo patterns: `rookieworkdev/rookie_2.0` (app structure, SEO metadata, animation setup, shadcn customization)\n- Key animation pattern: scroll-triggered reveals using Framer Motion, page transitions via a template wrapper\n- SEO setup includes robots.ts, sitemap.ts, opengraph-image.tsx, manifest.ts\n- Component structure: `ui/` (shadcn), `sections/` (page sections), `layout/` (header/footer/nav), `animations/` (reusable wrappers)",
-      "last_modified": "2026-02-12T08:58:20+01:00"
-    },
-    {
       "name": "Moiwak",
       "path": "~/Documents/moiwak",
       "description": "Moiwak is a physical-product store launching summer 2026. This folder is a parent workspace containing two independent subprojects plus shared strategy documentation. The two subprojects must be kept strictly separate.\n\nmarketing-site/ is a Next.js 16 marketing site that launches first. Its purpose is to announce the store, build SEO foundations, and capture early interest before the shop is live.\n\nshopify-site/ is the Shopify storefront, targeting a mid-June to early July 2026 launch once enough products are ready.\n\nShared strategy lives in `/docs`: project overview, active tasks, backlog, SEO/AEO/GEO strategy, and retail operations (POS, inventory, suppliers, finance automation). Google Workspace is live.",
@@ -368,7 +335,7 @@
         "Google Workspace"
       ],
       "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
-      "last_modified": "2026-04-30T19:21:28.077Z"
+      "last_modified": "2026-05-06T04:06:20.101Z"
     },
     {
       "name": "OpenClaw",
@@ -612,7 +579,7 @@
         "Google Ads API (planned)"
       ],
       "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
-      "last_modified": "2026-05-05T13:18:36+02:00"
+      "last_modified": "2026-05-05T22:46:45+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1162,7 +1129,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-05T18:45:05.243Z",
+    "synced_at": "2026-05-06T05:49:57.122Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2476,6 +2443,14 @@
         }
       },
       {
+        "name": "frontend-slides",
+        "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
         "name": "n8n-code-javascript",
         "description": "Write JavaScript code in n8n Code nodes. Use when writing JavaScript in n8n, using $input/$json/$node syntax, making HTTP requests with $helpers, working with dates using DateTime, troubleshooting Code node errors, or choosing between Code node modes.",
         "plugin": "custom",
@@ -2628,6 +2603,16 @@
         }
       },
       {
+        "name": "figma-generate-diagram",
+        "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. Routes to type-specific guidance (generic flowchart, architecture flowchart) and tells you when to proceed directly, when to use a different diagram type, or when the tool isn't the right fit at all.",
+        "plugin": "figma",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "figma"
+        }
+      },
+      {
         "name": "figma-generate-library",
         "description": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
         "plugin": "figma",
@@ -2650,16 +2635,6 @@
       {
         "name": "figma-use",
         "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-generate-diagram",
-        "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. Routes to type-specific guidance (generic flowchart, architecture flowchart) and tells you when to proceed directly, when to use a different diagram type, or when the tool isn't the right fit at all.",
         "plugin": "figma",
         "origin": {
           "source": "anthropic",
