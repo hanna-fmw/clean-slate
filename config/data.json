@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-09T05:00:07.209Z",
+  "generated_at": "2026-05-09T13:54:29.262Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -88,7 +88,7 @@
         "Railway (hosting)"
       ],
       "notes": "No Claude via Anthropic direct - too expensive. Preferred models: `openrouter/google/gemini-2.0-flash-001` for routine tasks (~$0.075/1M tokens), `openrouter/openai/gpt-4o-mini` for complex reasoning. Local/private: Ollama. Gemini 2.0 Flash has a 1M token context window, making context rot nearly a non-issue for routine agents. Agent behavior is configured in markdown files (`SOUL.md`, `AGENTS.md`, `MEMORY.md`), not in compiled code. SDK decision log is in CLAUDE.md.",
-      "last_modified": "2026-04-06T20:54:40+02:00"
+      "last_modified": "2026-05-09T15:42:59+02:00"
     },
     {
       "name": "Clean Slate",
@@ -123,7 +123,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-08T17:35:49+02:00"
+      "last_modified": "2026-05-09T07:00:08+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1129,7 +1129,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-09T05:00:08.257Z",
+    "synced_at": "2026-05-09T13:54:30.407Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
