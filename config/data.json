@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-09T13:54:29.262Z",
+  "generated_at": "2026-05-10T05:19:18.401Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -45,10 +45,10 @@
     {
       "name": "baby-claw",
       "path": "~/Documents/baby-claw",
-      "description": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built. Inspired by the OpenClaw teardown.\n\nThe core insight is that generalist agents (like OpenClaw) accumulate context rot - starting at ~7,000 tokens of fixed overhead and ballooning to ~45,000 tokens after months of use, causing up to 40% performance degradation. A sniper agent starts at ~1,400 tokens and stays lean because it only loads what it needs.\n\nEvery agent is defined by four things: Triggers (cron, heartbeat, webhook, CLI/HTTP), Context injection (`SOUL.md` personality, `AGENTS.md` config, `MEMORY.md` persistent facts, JSONL conversation history, tool schemas), Tools (what creates the agentic loop - LLM calls tool, gets result, decides next step), and Outputs (how the agent communicates and writes to the world).\n\nThe harness itself is the reusable infrastructure. Each new agent is just a configuration: a `SOUL.md` + a specific tool set + a trigger. Uses the Vercel AI SDK (model-agnostic, 2M+ weekly downloads) rather than the OpenAI Agents SDK (too new, broken Gemini adapter) or LangGraph (too much magic). All models route through OpenRouter to avoid EU regional restrictions on Google's free tier.",
+      "description": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built. Inspired by the OpenClaw teardown.\n\nThe core insight is that generalist agents accumulate context rot - starting at ~7,000 tokens of fixed overhead and ballooning to ~45,000 tokens after months of use, causing up to 40% performance degradation. A sniper agent starts at ~1,400 tokens and stays lean because it only loads what it needs.\n\nEvery agent is defined by four things: Triggers (cron, heartbeat, webhook, CLI/HTTP), Context injection (`SOUL.md`, `AGENTS.md`, `MEMORY.md`, JSONL history, tool schemas), Tools (agentic loop - LLM calls tool, gets result, decides next step), and Outputs (how the agent communicates and writes to the world).\n\nMonorepo structure: `api/` (Express backend), `web/` (Next.js frontend), `agents/` (agent workspaces), `docs/` (references, plans).",
       "description_short": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built.",
       "stack": [
-        "TypeScript (strict)",
+        "**Backend (api/):** TypeScript (strict)",
         "Node.js 20+",
         "Vercel AI SDK (`ai`)",
         "Zod",
@@ -60,11 +60,15 @@
         "@ai-sdk/ollama",
         "@huggingface/inference",
         "Docker",
-        "Docker Compose",
         "pnpm",
-        "Vitest"
+        "Vitest\n\n**Frontend (web/):** Next.js 16 (App Router)",
+        "React 19",
+        "shadcn/ui",
+        "Tailwind v4",
+        "next-themes",
+        "pnpm"
       ],
-      "hosting": "Railway (baby-claw app). Mattermost self-hosted on homelab or Hetzner.",
+      "hosting": "**Frontend:** Vercel (not yet deployed)\n**Backend:** Hetzner VPS via Coolify (not yet deployed). Docker container with volume for agents/.\n**Mattermost:** Self-hosted on homelab or Hetzner (future).",
       "database": "",
       "github": {
         "account": "personal (hanna-fmw)",
@@ -72,23 +76,25 @@
         "repo_url": "https://github.com/hanna-fmw/baby-claw"
       },
       "run_commands": {
-        "pnpm dev": "run the harness with tsx (hot reload via tsx)",
+        "pnpm dev": "run the backend with tsx (default: CLI mode)",
+        "pnpm observe": "run backend in observe mode (serves old HTML UI)",
         "pnpm build": "compile TypeScript to dist/",
-        "pnpm start": "run compiled output from dist/index.js",
-        "pnpm observe": "run in observe mode (MODE=observe)",
+        "pnpm start": "run compiled output",
         "pnpm test": "run Vitest",
-        "pnpm test:watch": "run Vitest in watch mode"
+        "cd web && pnpm dev": "run Next.js frontend (default port 3334)",
+        "cd web && pnpm build": "build Next.js for production"
       },
       "services": [
-        "OpenRouter (LLM routing - primary)",
+        "OpenRouter (LLM routing)",
         "Hugging Face (image gen",
         "voice",
         "multimodal)",
         "Mattermost (bot messaging)",
-        "Railway (hosting)"
+        "Vercel (frontend hosting)",
+        "Coolify (backend hosting)"
       ],
-      "notes": "No Claude via Anthropic direct - too expensive. Preferred models: `openrouter/google/gemini-2.0-flash-001` for routine tasks (~$0.075/1M tokens), `openrouter/openai/gpt-4o-mini` for complex reasoning. Local/private: Ollama. Gemini 2.0 Flash has a 1M token context window, making context rot nearly a non-issue for routine agents. Agent behavior is configured in markdown files (`SOUL.md`, `AGENTS.md`, `MEMORY.md`), not in compiled code. SDK decision log is in CLAUDE.md.",
-      "last_modified": "2026-05-09T15:42:59+02:00"
+      "notes": "No Claude via Anthropic direct - too expensive. Preferred models: `openrouter/google/gemini-2.0-flash-001` for routine (~$0.075/1M tokens), `openrouter/openai/gpt-4o-mini` for complex reasoning. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
+      "last_modified": "2026-05-09T23:01:55+02:00"
     },
     {
       "name": "Clean Slate",
@@ -123,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-09T07:00:08+02:00"
+      "last_modified": "2026-05-09T15:54:30+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1129,7 +1135,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-09T13:54:30.407Z",
+    "synced_at": "2026-05-10T05:19:19.403Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
