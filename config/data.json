@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T05:19:18.401Z",
+  "generated_at": "2026-05-10T11:34:19.053Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -93,8 +93,8 @@
         "Vercel (frontend hosting)",
         "Coolify (backend hosting)"
       ],
-      "notes": "No Claude via Anthropic direct - too expensive. Preferred models: `openrouter/google/gemini-2.0-flash-001` for routine (~$0.075/1M tokens), `openrouter/openai/gpt-4o-mini` for complex reasoning. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
-      "last_modified": "2026-05-09T23:01:55+02:00"
+      "notes": "No Claude via Anthropic direct - too expensive. Dev default: `openrouter/deepseek/deepseek-v4-flash` ($0.14/$0.28 per 1M) for all agents. Production recommendations split by task complexity: budget (DeepSeek V4 Flash) for structured agents, mid-tier (GPT-4.1 Mini, $0.40/$1.60) for reasoning/synthesis agents. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
+      "last_modified": "2026-05-10T13:32:57+02:00"
     },
     {
       "name": "Clean Slate",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-09T15:54:30+02:00"
+      "last_modified": "2026-05-10T07:19:19+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -585,7 +585,7 @@
         "Google Ads API (planned)"
       ],
       "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
-      "last_modified": "2026-05-05T22:46:45+02:00"
+      "last_modified": "2026-05-10T13:30:39+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1135,7 +1135,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-10T05:19:19.403Z",
+    "synced_at": "2026-05-10T11:34:19.641Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2176,6 +2176,15 @@
           "plugin": "compound-engineering"
         },
         "category": "compound-engineering"
+      },
+      {
+        "name": "codex-rescue",
+        "description": "Proactively use when Claude Code is stuck, wants a second implementation or diagnosis pass, needs a deeper root-cause investigation, or should hand a substantial coding task to Codex through the shared runtime",
+        "origin": {
+          "source": "3rd-party",
+          "plugin": "codex"
+        },
+        "category": "codex"
       }
     ],
     "plugins": [
@@ -2318,6 +2327,15 @@
           "plugin": "warp"
         },
         "marketplace": "claude-code-warp"
+      },
+      {
+        "name": "codex",
+        "version": "1.0.4",
+        "origin": {
+          "source": "3rd-party",
+          "plugin": "codex"
+        },
+        "marketplace": "openai-codex"
       }
     ],
     "mcp_servers": [
@@ -3396,6 +3414,33 @@
           "source": "3rd-party",
           "repo_url": "https://github.com/EveryInc/compound-engineering-plugin",
           "plugin": "compound-engineering"
+        }
+      },
+      {
+        "name": "codex-cli-runtime",
+        "description": "Internal helper contract for calling the codex-companion runtime from Claude Code",
+        "plugin": "codex",
+        "origin": {
+          "source": "3rd-party",
+          "plugin": "codex"
+        }
+      },
+      {
+        "name": "codex-result-handling",
+        "description": "Internal guidance for presenting Codex helper output back to the user",
+        "plugin": "codex",
+        "origin": {
+          "source": "3rd-party",
+          "plugin": "codex"
+        }
+      },
+      {
+        "name": "gpt-5-4-prompting",
+        "description": "Internal guidance for composing Codex and GPT-5.4 prompts for coding, review, diagnosis, and research tasks inside the Codex Claude Code plugin",
+        "plugin": "codex",
+        "origin": {
+          "source": "3rd-party",
+          "plugin": "codex"
         }
       }
     ]
