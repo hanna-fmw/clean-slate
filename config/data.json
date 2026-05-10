@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T11:34:19.053Z",
+  "generated_at": "2026-05-10T19:10:41.076Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -94,7 +94,7 @@
         "Coolify (backend hosting)"
       ],
       "notes": "No Claude via Anthropic direct - too expensive. Dev default: `openrouter/deepseek/deepseek-v4-flash` ($0.14/$0.28 per 1M) for all agents. Production recommendations split by task complexity: budget (DeepSeek V4 Flash) for structured agents, mid-tier (GPT-4.1 Mini, $0.40/$1.60) for reasoning/synthesis agents. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
-      "last_modified": "2026-05-10T13:32:57+02:00"
+      "last_modified": "2026-05-10T17:15:27+02:00"
     },
     {
       "name": "Clean Slate",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-10T07:19:19+02:00"
+      "last_modified": "2026-05-10T13:34:19+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -585,7 +585,7 @@
         "Google Ads API (planned)"
       ],
       "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
-      "last_modified": "2026-05-10T13:30:39+02:00"
+      "last_modified": "2026-05-10T18:52:52+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1135,7 +1135,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-10T11:34:19.641Z",
+    "synced_at": "2026-05-10T19:10:42.126Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
