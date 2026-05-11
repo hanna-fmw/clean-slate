@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T19:10:41.076Z",
+  "generated_at": "2026-05-11T09:06:16.594Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-10T13:34:19+02:00"
+      "last_modified": "2026-05-10T21:10:42+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -622,6 +622,29 @@
       ],
       "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
       "last_modified": "2026-01-11T21:21:43+01:00"
+    },
+    {
+      "name": "Yllw",
+      "path": "~/Documents/yllw",
+      "description": "Supplier document management system for Yllw, a Swedish workplace transformation company and one of the largest furniture brokers in the Nordics. Replaces Henrik's manual workflow of managing ~500 suppliers' price lists across SharePoint, Webflow assets, and Webflow CMS. Built on Supabase (database + file storage), synced to Webflow via WhaleSync. Hard deadline: August 24, 2026 for Adda compliance portal.",
+      "description_short": "Supplier document management system for Yllw, a Swedish workplace transformation company and one of the largest furniture brokers in the Nordics.",
+      "stack": [
+        "- Supabase (PostgreSQL + Storage) - database and file hosting\n- WhaleSync - Supabase-to-Webflow data sync\n- Webflow - public website (client-owned",
+        "we sync to it)"
+      ],
+      "hosting": "- Local: Supabase Local (Docker)\n- Staging: Leadfront dev server (self-hosted Supabase)\n- Production: Supabase Cloud",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Supabase Cloud (production - not yet provisioned)\n- WhaleSync (not yet configured)\n- Webflow (client's existing site at yllw.com)"
+      ],
+      "notes": "- No frontend app - Henrik uses Supabase Studio as the UI\n- Documents served from Supabase storage (Webflow has 10MB file limit, PDFs are 50-60MB)\n- Schema will evolve after Henrik kickoff meeting\n- Adda framework agreement requires regional/sub-area document organization",
+      "last_modified": "2026-05-11T10:40:59+02:00"
     }
   ],
   "services": [
@@ -1135,7 +1158,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-10T19:10:42.126Z",
+    "synced_at": "2026-05-11T09:06:17.526Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
