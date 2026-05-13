@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-13T07:01:48.544Z",
+  "generated_at": "2026-05-13T13:02:23.892Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-12T20:29:00+02:00"
+      "last_modified": "2026-05-13T09:02:17+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -635,16 +635,16 @@
       "hosting": "- Local: Supabase Local (Docker)\n- Staging: Leadfront dev server (self-hosted Supabase)\n- Production: Supabase Cloud",
       "database": "",
       "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/yllw-test"
       },
       "run_commands": {},
       "services": [
         "- Supabase Cloud (production - not yet provisioned)\n- WhaleSync (not yet configured)\n- Webflow (client's existing site at yllw.com)"
       ],
       "notes": "- No frontend app - Henrik uses Supabase Studio as the UI\n- Documents served from Supabase storage (Webflow has 10MB file limit, PDFs are 50-60MB)\n- Schema will evolve after Henrik kickoff meeting\n- Adda framework agreement requires regional/sub-area document organization",
-      "last_modified": "2026-05-12T15:07:41+02:00"
+      "last_modified": "2026-05-13T12:31:38+02:00"
     }
   ],
   "services": [
@@ -1158,7 +1158,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-13T07:02:16.006Z",
+    "synced_at": "2026-05-13T13:02:25.091Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
