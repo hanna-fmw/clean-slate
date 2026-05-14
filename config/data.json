@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T12:08:06.942Z",
+  "generated_at": "2026-05-14T20:28:12.409Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-14T07:45:42+02:00"
+      "last_modified": "2026-05-14T14:08:08+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -341,7 +341,7 @@
         "Google Workspace"
       ],
       "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
-      "last_modified": "2026-05-08T04:45:53.181Z"
+      "last_modified": "2026-05-14T16:34:31.786Z"
     },
     {
       "name": "OpenClaw",
@@ -622,6 +622,29 @@
       ],
       "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
       "last_modified": "2026-01-11T21:21:43+01:00"
+    },
+    {
+      "name": "UJD Shopify",
+      "path": "~/Documents/ujd-shopify",
+      "description": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se). Live production e-commerce site. Tweaks, product additions, descriptions, collections, pages, blog setup.",
+      "description_short": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se).",
+      "stack": [
+        "- Shopify (Liquid theme",
+        "native)\n- Shopify CLI for theme sync\n- Admin GraphQL via shopify-mcp + shopify store execute + custom app token"
+      ],
+      "hosting": "Shopify-hosted. Public domain: ullajacobssondesign.se.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Shopify store: `1qerbz-rh.myshopify.com` (admin: https://admin.shopify.com/store/1qerbz-rh)\n- Custom app (Admin API) — credentials in `.env`"
+      ],
+      "notes": "Live production site. Default everything to DRAFT / development theme. Never push to live theme or publish products/pages/collections/articles without explicit user approval for that specific change.",
+      "last_modified": "2026-05-14T20:24:04.442Z"
     },
     {
       "name": "Yllw",
@@ -1158,7 +1181,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-14T12:08:07.896Z",
+    "synced_at": "2026-05-14T20:28:13.973Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
