@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T05:45:40.684Z",
+  "generated_at": "2026-05-14T12:08:06.942Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-13T15:02:25+02:00"
+      "last_modified": "2026-05-14T07:45:42+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1158,7 +1158,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-14T05:45:41.931Z",
+    "synced_at": "2026-05-14T12:08:07.896Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2363,64 +2363,10 @@
     ],
     "mcp_servers": [
       {
-        "name": "n8n-mcp",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/leonardsellem/n8n-mcp-server"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "context7",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "MCP_DOCKER",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/docker/mcp-gateway"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
         "name": "firecrawl-mcp-stormfors",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/firecrawl/firecrawl-mcp-server"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "nano-banana",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/ConechoAI/Nano-Banana-MCP"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "docker",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/docker/mcp-gateway"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "coolify",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/StuMason/coolify-mcp"
         },
         "transport": "stdio",
         "notes": ""
@@ -2444,39 +2390,11 @@
         "notes": ""
       },
       {
-        "name": "coolify-stormfors",
+        "name": "coolify-personal",
         "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/StuMason/coolify-mcp"
+          "source": "3rd-party"
         },
         "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "figma-personal",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://mcp.figma.com"
-        },
-        "transport": "sse",
-        "notes": ""
-      },
-      {
-        "name": "supabase-signalstack",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/supabase-community/supabase-mcp"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "Sanity",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/sanity-io/sanity-mcp-server"
-        },
-        "transport": "sse",
         "notes": ""
       }
     ],
