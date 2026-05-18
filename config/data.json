@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T09:24:52.782Z",
+  "generated_at": "2026-05-18T18:27:45.762Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -152,7 +152,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-17T22:22:59+02:00"
+      "last_modified": "2026-05-18T11:24:58+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -669,7 +669,7 @@
         "scopes set as **Required** (see `docs/shopify-admin-api-setup.md`)\n- OpenRouter (text + image gen via Gemini)\n- Vercel Hobby (content-studio)"
       ],
       "notes": "Live production site. Default everything to DRAFT / development theme. Never push to live theme or publish products/pages/collections/articles without explicit user approval for that specific change.",
-      "last_modified": "2026-05-17T14:36:26.390Z"
+      "last_modified": "2026-05-18T17:17:28.956Z"
     },
     {
       "name": "Yllw",
@@ -1206,7 +1206,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-18T09:24:57.307Z",
+    "synced_at": "2026-05-18T18:27:55.837Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
