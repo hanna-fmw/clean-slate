@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T14:20:14.007Z",
+  "generated_at": "2026-05-19T20:29:33.203Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -117,7 +117,7 @@
         "Coolify (backend hosting)"
       ],
       "notes": "No Claude via Anthropic direct - too expensive. Dev default: `openrouter/deepseek/deepseek-v4-flash` ($0.14/$0.28 per 1M) for all agents. Production recommendations split by task complexity: budget (DeepSeek V4 Flash) for structured agents, mid-tier (GPT-4.1 Mini, $0.40/$1.60) for reasoning/synthesis agents. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
-      "last_modified": "2026-05-19T09:17:51+02:00"
+      "last_modified": "2026-05-19T21:43:48+02:00"
     },
     {
       "name": "Clean Slate",
@@ -152,7 +152,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-19T10:20:09+02:00"
+      "last_modified": "2026-05-19T16:20:15+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -608,7 +608,7 @@
         "Google Ads API (planned)"
       ],
       "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
-      "last_modified": "2026-05-18T21:36:39+02:00"
+      "last_modified": "2026-05-19T20:00:00+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1206,7 +1206,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-19T14:20:15.709Z",
+    "synced_at": "2026-05-19T20:29:35.146Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2271,7 +2271,7 @@
       },
       {
         "name": "huggingface-skills",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2817,6 +2817,126 @@
       {
         "name": "transformers.js",
         "description": "Use Transformers.js to run state-of-the-art machine learning models directly in JavaScript/TypeScript. Supports NLP (text classification, translation, summarization), computer vision (image classification, object detection), audio (speech recognition, audio classification), and multimodal tasks. Works in Node.js and browsers (with WebGPU/WASM) using pre-trained models from Hugging Face Hub.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-best",
+        "description": ">",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-community-evals",
+        "description": "Run evaluations for Hugging Face Hub models using inspect-ai and lighteval on local hardware. Use for backend selection, local GPU evals, and choosing between vLLM / Transformers / accelerate. Not for HF Jobs orchestration, model-card PRs, .eval_results publication, or community-evals automation.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-datasets",
+        "description": "",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-llm-trainer",
+        "description": "Train or fine-tune language and vision models using TRL (Transformer Reinforcement Learning) or Unsloth with Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, model selection/leaderboards and model persistence. Use for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-local-models",
+        "description": "Use to select models to run locally with llama.cpp and GGUF on CPU, Mac Metal, CUDA, or ROCm. Covers finding GGUFs, quant selection, running servers, exact GGUF file lookup, conversion, and OpenAI-compatible local serving.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-paper-publisher",
+        "description": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-papers",
+        "description": "Look up and read Hugging Face paper pages in markdown, and use the papers API for structured metadata such as authors, linked models/datasets/spaces, Github repo and project page. Use when the user shares a Hugging Face paper page URL, an arXiv URL or ID, or asks to summarize, explain, or analyze an AI research paper.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-tool-builder",
+        "description": "Use this skill when the user wants to build tool/scripts or achieve a task where using data from the Hugging Face API would help. This is especially useful when chaining or combining API calls or the task will be repeated/automated. This Skill creates a reusable script to fetch, enrich or process data.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-trackio",
+        "description": "Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-vision-trainer",
+        "description": "Trains and fine-tunes vision models for object detection (D-FINE, RT-DETR v2, DETR, YOLOS), image classification (timm models — MobileNetV3, MobileViT, ResNet, ViT/DINOv3 — plus any Transformers classifier), and SAM/SAM2 segmentation using Hugging Face Transformers on Hugging Face Jobs cloud GPUs. Covers COCO-format dataset preparation, Albumentations augmentation, mAP/mAR evaluation, accuracy metrics, SAM segmentation with bbox/point prompts, DiceCE loss, hardware selection, cost estimation, Trackio monitoring, and Hub persistence. Use when users mention training object detection, image classification, SAM, SAM2, segmentation, image matting, DETR, D-FINE, RT-DETR, ViT, timm, MobileNet, ResNet, bounding box models, or fine-tuning vision models on Hugging Face Jobs.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "train-sentence-transformers",
+        "description": "Train or fine-tune sentence-transformers models across `SentenceTransformer` (bi-encoder; dense or static embedding model; for retrieval, similarity, clustering, classification, paraphrase mining, dedup, multimodal), `CrossEncoder` (reranker; pair scoring for two-stage retrieval / pair classification), and `SparseEncoder` (SPLADE, sparse embedding model; for learned-sparse retrieval). Covers loss selection, hard-negative mining, evaluators, distillation, LoRA, Matryoshka, and Hugging Face Hub publishing. Use for any sentence-transformers training task.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "transformers-js",
+        "description": "Use Transformers.js to run state-of-the-art machine learning models directly in JavaScript/TypeScript. Supports NLP (text classification, translation, summarization), computer vision (image classification, object detection), audio (speech recognition, audio classification), and multimodal tasks. Works in browsers and server-side runtimes (Node.js, Bun, Deno) with WebGPU/WASM using pre-trained models from Hugging Face Hub.",
         "plugin": "huggingface-skills",
         "origin": {
           "source": "anthropic",
