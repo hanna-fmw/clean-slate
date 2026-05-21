@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20T17:01:42.727Z",
+  "generated_at": "2026-05-21T09:35:03.000Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -152,7 +152,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-20T13:01:36+02:00"
+      "last_modified": "2026-05-20T19:01:48+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1206,7 +1206,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-20T17:01:47.916Z",
+    "synced_at": "2026-05-21T09:35:04.189Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3286,7 +3286,7 @@
       },
       {
         "name": "vercel-cli",
-        "description": "Vercel CLI expert guidance. Use when deploying, managing environment variables, linking projects, viewing logs, managing domains, or interacting with the Vercel platform from the command line.",
+        "description": "Vercel CLI expert guidance. Use when deploying, managing environment variables, linking projects, viewing logs, querying metrics, managing domains, or interacting with the Vercel platform from the command line.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
