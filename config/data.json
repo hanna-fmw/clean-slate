@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T05:24:15.338Z",
+  "generated_at": "2026-05-22T11:24:22.216Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -152,7 +152,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-21T17:35:11+02:00"
+      "last_modified": "2026-05-22T07:24:16+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1206,7 +1206,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-22T05:24:16.301Z",
+    "synced_at": "2026-05-22T11:24:23.955Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2271,7 +2271,7 @@
       },
       {
         "name": "huggingface-skills",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2937,6 +2937,16 @@
       {
         "name": "transformers-js",
         "description": "Use Transformers.js to run state-of-the-art machine learning models directly in JavaScript/TypeScript. Supports NLP (text classification, translation, summarization), computer vision (image classification, object detection), audio (speech recognition, audio classification), and multimodal tasks. Works in browsers and server-side runtimes (Node.js, Bun, Deno) with WebGPU/WASM using pre-trained models from Hugging Face Hub.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
+        "name": "huggingface-zerogpu",
+        "description": "AI demos and GPU compute with Gradio Spaces and Hugging Face Spaces ZeroGPU. Use when writing or reviewing code that uses `@spaces.GPU`, configuring `python_version` or `requirements.txt` for a ZeroGPU Space, or handling ZeroGPU-specific code constraints — pickle-based process isolation, `gr.State` semantics across the worker boundary, no `torch.compile` (use AoTI instead), CUDA wheel-only builds (no `nvcc` at build or runtime), large vs xlarge sizing, and dynamic duration callables. Make sure to use this skill whenever the user mentions ZeroGPU, `@spaces.GPU`, or the `spaces` Python package, or hits ZeroGPU-specific code errors like `PicklingError` across the worker boundary, `illegal duration`, or `flash-attn` wheel-build failures — even when the user does not explicitly ask for ZeroGPU coding guidance. Trigger on `import spaces` or `@spaces.GPU` in code.",
         "plugin": "huggingface-skills",
         "origin": {
           "source": "anthropic",
