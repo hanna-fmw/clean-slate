@@ -1,29 +1,6 @@
 {
-  "generated_at": "2026-05-26T07:53:52.859Z",
+  "generated_at": "2026-05-26T13:53:58.850Z",
   "projects": [
-    {
-      "name": "Abril Aventura Shopify",
-      "path": "~/Documents/abril-aventura",
-      "description": "Pre-launch Shopify storefront for Abril Aventura (r1yrmc-th.myshopify.com). Password-protected, not yet live. Setup, theme work, products, collections, pages, blog.",
-      "description_short": "Pre-launch Shopify storefront for Abril Aventura (r1yrmc-th.myshopify.com).",
-      "stack": [
-        "- Shopify (Liquid theme",
-        "native)\n- Shopify CLI for theme sync\n- Admin GraphQL via shopify-mcp-abril + shopify store execute + custom app token"
-      ],
-      "hosting": "Shopify-hosted. Public domain TBD.",
-      "database": "",
-      "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
-      },
-      "run_commands": {},
-      "services": [
-        "- Shopify store: `r1yrmc-th.myshopify.com` (admin: https://admin.shopify.com/store/abril-aventura)\n- Custom app (Admin API) — credentials in `.claude/settings.local.json` env block + `.env`"
-      ],
-      "notes": "Pre-launch but treat with the same publishing discipline: drafts by default, development theme by default. Ask before publishing or `--live`.",
-      "last_modified": "2026-05-14T20:55:12.279Z"
-    },
     {
       "name": "AI Hub Project",
       "path": "~/Documents/ai-hub-project",
@@ -152,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-25T22:14:14+02:00"
+      "last_modified": "2026-05-26T09:53:53+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -200,94 +177,6 @@
       "last_modified": "2026-03-14T15:00:32+01:00"
     },
     {
-      "name": "Health Insights Tracker (React Native)",
-      "path": "~/Documents/rn-health-tracker",
-      "description": "A voice-first personal health tracking mobile app targeting App Store publication. Users log lifestyle factors and symptoms daily; the app combines statistical analysis with LLM interpretation to surface trustworthy correlations and insights. This is a mobile rebuild of the Next.js web app at `/Users/hanna/Documents/tracker` - portable code (metric definitions, Zod schemas, LLM prompts, date utils) should be reused from there.\n\nPrivacy is a hard constraint - Supabase Row-Level Security is required on every user-scoped table. Hanna is the admin (can manage metrics and settings, cannot see other users' data). UX must be simple - one user is not tech-savvy. The app is offline-first: entry logging works via local SQLite and syncs to Supabase when online.\n\nLLM calls happen in Supabase Edge Functions (not client-side) to keep API keys server-side. Architecture, code quality, and UX should meet App Store review standards from the start.",
-      "description_short": "A voice-first personal health tracking mobile app targeting App Store publication.",
-      "stack": [
-        "Expo SDK 53+ (managed workflow)",
-        "Expo Router v4+",
-        "TypeScript (strict)",
-        "NativeWind v4 (Tailwind for React Native)",
-        "Supabase (auth + PostgreSQL + RLS + Edge Functions + real-time)",
-        "Zustand",
-        "expo-sqlite (offline)",
-        "react-native-reanimated v3",
-        "react-native-gesture-handler",
-        "@shopify/flash-list",
-        "expo-notifications",
-        "OpenRouter (via Edge Functions)",
-        "Zod",
-        "Vitest"
-      ],
-      "hosting": "Supabase (EU region, database + auth + edge functions). App distributed via App Store (iOS target). No separate server.",
-      "database": "",
-      "github": {
-        "account": "personal (hanna-fmw)",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/rn-health-tracker"
-      },
-      "run_commands": {
-        "pnpm ios": "start on iOS simulator",
-        "pnpm android": "start on Android emulator",
-        "pnpm web": "start in web browser (limited support)",
-        "pnpm test": "run Vitest",
-        "pnpm lint": "run ESLint",
-        "pnpm format": "format with Prettier"
-      },
-      "services": [
-        "Supabase (auth + database + edge functions + real-time)",
-        "OpenRouter (LLM via Edge Functions)",
-        "Expo (build + distribution tooling)"
-      ],
-      "notes": "Uses `@shopify/flash-list` instead of FlatList and `expo-image` instead of RN Image for performance. Target 60fps on all animations and lists. Apple/Google sign-in prepared for later (not in initial build). Charts: `react-native-gifted-charts` or Victory Native. Reference the web app's `docs/REQUIREMENTS.md` and `docs/ARCHITECTURE.md` for full feature requirements and data model - adapt Prisma schema to Supabase SQL migrations.",
-      "last_modified": "2026-04-06T20:58:35+02:00"
-    },
-    {
-      "name": "Health Insights Tracker (Web)",
-      "path": "~/Documents/tracker",
-      "description": "A voice-first personal health tracking app for two users. Each user logs daily lifestyle factors (food, sleep, weather, stress, etc.) and symptoms (bloating, palpitations, blood pressure, fatigue, brain fog, etc.). An AI analysis pipeline finds patterns and correlations between logged factors and symptoms.\n\nPrivacy is a hard requirement - the two users have strict data isolation and cannot see each other's entries. Hanna is the admin and can manage tracked metric categories and system settings, but cannot see the other user's health data. The UX must be simple - one user is not tech-savvy and needs clear flows with obvious next actions.\n\nVoice input with AI extraction is the primary entry method. Manual forms are the fallback. The app includes an option to cross-reference findings with online medical sources. This is the web version; a React Native mobile rebuild lives at `/Users/hanna/Documents/rn-health-tracker`.",
-      "description_short": "A voice-first personal health tracking app for two users.",
-      "stack": [
-        "Next.js 16",
-        "TypeScript (strict)",
-        "shadcn/ui",
-        "Tailwind CSS",
-        "Recharts",
-        "Prisma ORM",
-        "PostgreSQL (Railway)",
-        "Auth.js (NextAuth v5) with credentials provider",
-        "Web Speech API",
-        "OpenAI Whisper API (voice fallback)",
-        "OpenRouter (LLM)"
-      ],
-      "hosting": "Railway (both app and PostgreSQL database). Domain: subdomain on hanna.app via Cloudflare.",
-      "database": "",
-      "github": {
-        "account": "personal (hanna-fmw)",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/tracker"
-      },
-      "run_commands": {
-        "pnpm dev": "start Next.js dev server",
-        "pnpm build": "generate Prisma client and build for production",
-        "pnpm start": "start production server",
-        "pnpm lint": "run ESLint",
-        "pnpm format": "format with Prettier",
-        "pnpm db:migrate": "run Prisma migrations (dev)",
-        "pnpm db:seed": "seed database with 2 users and 21 default metrics",
-        "pnpm db:studio": "open Prisma Studio GUI"
-      },
-      "services": [
-        "Railway (hosting + PostgreSQL)",
-        "OpenRouter (LLM/AI analysis)",
-        "OpenAI Whisper (voice transcription fallback)",
-        "Cloudflare (DNS)"
-      ],
-      "notes": "Auth.js (NextAuth v5) uses credentials provider. Uses `proxy.ts` (not `middleware.ts`) per Next.js 16. Prisma schema has 7 models. Detailed requirements at `docs/REQUIREMENTS.md`, architecture and data model at `docs/ARCHITECTURE.md`, phased roadmap at `docs/ROADMAP.md`.",
-      "last_modified": "2026-03-04T23:22:18+01:00"
-    },
-    {
       "name": "JSON-LD Schema Generator",
       "path": "~/Documents/json-ld-generator",
       "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
@@ -332,39 +221,6 @@
       ],
       "notes": "Prisma 7 has specific quirks: `prisma.config.ts` uses `process.env.DATABASE_URL ?? ''` (not `env()` - breaks Docker builds), `schema.prisma` has no `url` in the datasource block, and there is no `--skip-generate` flag. Prisma CLI is installed in an isolated `/prisma-cli` directory in Docker because pnpm symlinks break between build stages. Detailed deployment writeup lives at `~/knowledge-base/issues-solved/nextjs-prisma7-docker-coolify-hetzner-deployment.md`.",
       "last_modified": "2026-05-17T22:42:00+02:00"
-    },
-    {
-      "name": "Moiwak",
-      "path": "~/Documents/moiwak",
-      "description": "Moiwak is a physical-product store launching summer 2026. This folder is a parent workspace containing two independent subprojects plus shared strategy documentation. The two subprojects must be kept strictly separate.\n\nmarketing-site/ is a Next.js 16 marketing site that launches first. Its purpose is to announce the store, build SEO foundations, and capture early interest before the shop is live.\n\nshopify-site/ is the Shopify storefront, targeting a mid-June to early July 2026 launch once enough products are ready.\n\nShared strategy lives in `/docs`: project overview, active tasks, backlog, SEO/AEO/GEO strategy, and retail operations (POS, inventory, suppliers, finance automation). Google Workspace is live.",
-      "description_short": "Moiwak is a physical-product store launching summer 2026.",
-      "stack": [
-        "Next.js 16 (marketing site)",
-        "Shopify (storefront)",
-        "TypeScript",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "Vercel"
-      ],
-      "hosting": "Marketing site: Vercel. Shopify storefront: Shopify platform. No shared database.",
-      "database": "",
-      "github": {
-        "account": "personal (hanna-fmw) - repos under the Moiwak GitHub organization",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "No single repo - each subproject has its own repo under the Moiwak GitHub org"
-      },
-      "run_commands": {
-        "pnpm dev": "start local dev server",
-        "pnpm build": "production build",
-        "pnpm lint": "run ESLint"
-      },
-      "services": [
-        "Vercel",
-        "Shopify",
-        "Google Workspace"
-      ],
-      "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
-      "last_modified": "2026-05-24T17:58:54.357Z"
     },
     {
       "name": "OpenClaw",
@@ -438,40 +294,6 @@
       ],
       "notes": "Auto-deploy on push is not active - Coolify's webhook is only on the private NetBird network so GitHub can't reach it. Manual deploy (two clicks in Coolify UI) is the current workflow. Remaining work: Cloudflare tunnel for public HTTPS URL + custom domain, then switch to GitHub App integration for auto-deploy. Also needs real content added and re-indexed.",
       "last_modified": "2026-04-26T21:23:28.301Z"
-    },
-    {
-      "name": "Portfolio",
-      "path": "~/Documents/portfolio",
-      "description": "Personal portfolio website. Built with Next.js 16 using the App Router, server components by default, with Framer Motion animations for page transitions and scroll effects.\n\nSupports two languages (English and Swedish) via next-intl, with translation files in `messages/en.json` and `messages/sv.json`. Swedish text must use real characters (å, ä, ö). Dark/light theme toggle via next-themes.",
-      "description_short": "Personal portfolio website.",
-      "stack": [
-        "Next.js 16",
-        "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-        "next-intl (i18n)",
-        "next-themes",
-        "shadcn/ui",
-        "Playwright"
-      ],
-      "hosting": "Not configured yet (no remote in git config). Likely Vercel.",
-      "database": "",
-      "github": {
-        "account": "personal (hanna-fmw)",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "Not yet pushed to remote"
-      },
-      "run_commands": {
-        "pnpm dev": "Start dev server",
-        "pnpm build": "Production build",
-        "pnpm start": "Start production server",
-        "pnpm lint": "Run ESLint"
-      },
-      "services": [
-        "None"
-      ],
-      "notes": "- No remote configured in `.git/config` yet - repo has not been pushed\n- Client components only when browser APIs, state, or event handlers are needed\n- i18n: add translations to both `messages/en.json` and `messages/sv.json` for every string",
-      "last_modified": "2026-03-26T18:04:05+01:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -645,31 +467,6 @@
       ],
       "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
       "last_modified": "2026-01-11T21:21:43+01:00"
-    },
-    {
-      "name": "UJD Shopify",
-      "path": "~/Documents/ujd-shopify",
-      "description": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se). Live production e-commerce site. Tweaks, product additions, descriptions, collections, pages, blog setup.\n\nSibling app `content-studio/` is a custom Next.js + Vercel app for Ulla. 4-step wizard (beskriv plagget → pris/storlekar → bilder → granska och skicka) that uses OpenRouter (GPT-5-mini) to write product descriptions in her voice and Gemini 3 Pro Image (Nano Banana Pro) to AI-edit product photos, then saves the product as a Shopify draft with sizes, prices, inventory, and attached images via the Admin API.",
-      "description_short": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se).",
-      "stack": [
-        "- Shopify (Liquid theme",
-        "native) for the storefront\n- `content-studio/` — Next.js 16 (App Router) + TypeScript + Tailwind v4 + shadcn/ui",
-        "deployed to Vercel\n- Shopify CLI for theme sync\n- Admin GraphQL via shopify-mcp + shopify store execute + content-studio (client_credentials grant)"
-      ],
-      "hosting": "Shopify-hosted. Public domain: ullajacobssondesign.se.",
-      "database": "",
-      "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
-      },
-      "run_commands": {},
-      "services": [
-        "- Shopify store: `1qerbz-rh.myshopify.com` (admin: https://admin.shopify.com/store/1qerbz-rh)\n- Custom app **Claude Code UJD** in Dev Dashboard — `client_credentials` grant",
-        "scopes set as **Required** (see `docs/shopify-admin-api-setup.md`)\n- OpenRouter (text + image gen via Gemini)\n- Vercel Hobby (content-studio)"
-      ],
-      "notes": "Live production site. Default everything to DRAFT / development theme. Never push to live theme or publish products/pages/collections/articles without explicit user approval for that specific change.",
-      "last_modified": "2026-05-22T13:59:28.590Z"
     },
     {
       "name": "Yllw",
@@ -1206,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-26T07:53:53.630Z",
+    "synced_at": "2026-05-26T13:53:59.408Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
