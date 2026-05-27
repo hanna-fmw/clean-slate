@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-26T13:53:58.850Z",
+  "generated_at": "2026-05-27T07:31:33.598Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-26T09:53:53+02:00"
+      "last_modified": "2026-05-26T15:53:59+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1003,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-26T13:53:59.408Z",
+    "synced_at": "2026-05-27T07:31:34.226Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2118,7 +2118,7 @@
       },
       {
         "name": "security-guidance",
-        "version": "unknown",
+        "version": "2.0.0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2187,16 +2187,6 @@
         "marketplace": "claude-plugins-official"
       },
       {
-        "name": "warp",
-        "version": "2.0.0",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/warpdotdev/claude-code-warp",
-          "plugin": "warp"
-        },
-        "marketplace": "claude-code-warp"
-      },
-      {
         "name": "codex",
         "version": "1.0.4",
         "origin": {
@@ -2204,6 +2194,16 @@
           "plugin": "codex"
         },
         "marketplace": "openai-codex"
+      },
+      {
+        "name": "warp",
+        "version": "2.1.0",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/warpdotdev/claude-code-warp",
+          "plugin": "warp"
+        },
+        "marketplace": "claude-code-warp"
       }
     ],
     "mcp_servers": [
