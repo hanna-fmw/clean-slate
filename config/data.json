@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T09:41:06.319Z",
+  "generated_at": "2026-05-28T15:41:10.613Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-27T22:33:07+02:00"
+      "last_modified": "2026-05-28T11:41:07+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1003,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-28T09:41:06.888Z",
+    "synced_at": "2026-05-28T15:41:11.258Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
