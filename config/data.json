@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T15:41:10.613Z",
+  "generated_at": "2026-05-28T23:41:48.767Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-28T11:41:07+02:00"
+      "last_modified": "2026-05-28T17:41:11+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1003,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-28T15:41:11.258Z",
+    "synced_at": "2026-05-28T23:41:49.752Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2262,6 +2262,54 @@
         }
       },
       {
+        "name": "content-notebooklm",
+        "description": "Complete API for Google NotebookLM - full programmatic access including features not in the web UI. Create notebooks, add sources, generate all artifact types, download in multiple formats. Activates on explicit /notebooklm or intent like \"create a podcast about X",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "content-research-youtube",
+        "description": "YouTube-powered research pipeline that finds videos on a topic, feeds them into NotebookLM for deep analysis, and optionally generates deliverables (podcasts, flashcards, quizzes, infographics, etc.). Use this skill whenever the user wants to research a topic using YouTube content, build a knowledge base from videos, analyze what YouTube creators are saying about something, or wants a \"YouTube research\" workflow. Triggers on phrases like \"research this topic on YouTube\", \"what are YouTubers saying about\", \"build a research notebook from YouTube\", \"analyze YouTube videos about\", or any multi-step request combining video discovery with analysis.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "content-search-youtube",
+        "description": "Search YouTube for videos and return structured results with metadata and engagement metrics. Use this skill whenever the user wants to search YouTube, find videos on a topic, discover content creators, research video performance, compare channels, or analyze YouTube engagement — even if they don't say \"YouTube search\" explicitly. Triggers on phrases like \"search YouTube\", \"find videos about\", \"what videos are there on\", \"look up on YouTube\", \"YouTube results for\", or any request to find or discover video content.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "content-transcribe-video",
+        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use yt-transcript) and NOT for live audio.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "content-transcribe-youtube",
+        "description": "Transcribe a YouTube video into a near-transcript summary and save it to the knowledge base. Use this skill whenever the user shares a YouTube URL and wants a transcript, summary, near-transcript, or wants to save/ingest a video into their knowledge base. Also triggers when the user says \"transcribe this video\", \"save this tutorial\", \"add this to my knowledge base\", \"get the transcript\", or pastes a youtube.com URL with intent to capture its content.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "content-write-article",
+        "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use yt-transcript for those).",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
         "name": "frontend-slides",
         "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
         "plugin": "custom",
@@ -2272,14 +2320,6 @@
       {
         "name": "invoice-creator",
         "description": "Create a Swedish-style invoice (faktura) for Hanna Jacobsson Translations as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
-        "name": "meeting-transcript",
-        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use yt-transcript) and NOT for live audio.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
@@ -2342,14 +2382,6 @@
         }
       },
       {
-        "name": "notebooklm",
-        "description": "Complete API for Google NotebookLM - full programmatic access including features not in the web UI. Create notebooks, add sources, generate all artifact types, download in multiple formats. Activates on explicit /notebooklm or intent like \"create a podcast about X",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
         "name": "react-native-skills",
         "description": "",
         "plugin": "custom",
@@ -2358,40 +2390,8 @@
         }
       },
       {
-        "name": "research-write-article",
-        "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use yt-transcript for those).",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
         "name": "session-handoff",
         "description": "Wrap up a session - update docs, commit, verify, and save a handoff prompt for the next session",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
-        "name": "youtube-search",
-        "description": "Search YouTube for videos and return structured results with metadata and engagement metrics. Use this skill whenever the user wants to search YouTube, find videos on a topic, discover content creators, research video performance, compare channels, or analyze YouTube engagement — even if they don't say \"YouTube search\" explicitly. Triggers on phrases like \"search YouTube\", \"find videos about\", \"what videos are there on\", \"look up on YouTube\", \"YouTube results for\", or any request to find or discover video content.",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
-        "name": "yt-research-pipeline",
-        "description": "YouTube-powered research pipeline that finds videos on a topic, feeds them into NotebookLM for deep analysis, and optionally generates deliverables (podcasts, flashcards, quizzes, infographics, etc.). Use this skill whenever the user wants to research a topic using YouTube content, build a knowledge base from videos, analyze what YouTube creators are saying about something, or wants a \"YouTube research\" workflow. Triggers on phrases like \"research this topic on YouTube\", \"what are YouTubers saying about\", \"build a research notebook from YouTube\", \"analyze YouTube videos about\", or any multi-step request combining video discovery with analysis.",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
-        "name": "yt-transcript",
-        "description": "Transcribe a YouTube video into a near-transcript summary and save it to the knowledge base. Use this skill whenever the user shares a YouTube URL and wants a transcript, summary, near-transcript, or wants to save/ingest a video into their knowledge base. Also triggers when the user says \"transcribe this video\", \"save this tutorial\", \"add this to my knowledge base\", \"get the transcript\", or pastes a youtube.com URL with intent to capture its content.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
