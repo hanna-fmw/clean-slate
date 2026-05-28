@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-27T20:33:05.898Z",
+  "generated_at": "2026-05-28T09:41:06.319Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-27T15:31:38+02:00"
+      "last_modified": "2026-05-27T22:33:07+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1003,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-27T20:33:06.903Z",
+    "synced_at": "2026-05-28T09:41:06.888Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2068,7 +2068,7 @@
       },
       {
         "name": "huggingface-skills",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2272,6 +2272,14 @@
       {
         "name": "invoice-creator",
         "description": "Create a Swedish-style invoice (faktura) for the user's business as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "meeting-transcript",
+        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use yt-transcript) and NOT for live audio.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
