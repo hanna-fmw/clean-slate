@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29T13:33:01.496Z",
+  "generated_at": "2026-05-29T19:33:22.893Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-29T01:41:49+02:00"
+      "last_modified": "2026-05-29T15:33:02+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1003,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-29T13:33:02.113Z",
+    "synced_at": "2026-05-29T19:33:23.897Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2287,7 +2287,7 @@
       },
       {
         "name": "content-transcribe-video",
-        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use content-transcribe-youtube) and NOT for live audio.",
+        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Handles any meeting shape — 1-on-1 walkthroughs, multi-person standups, client calls — and labels unknown voices as Speaker N. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings, standups, or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"transcribe our standup\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", \"I only care about the part about X\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use content-transcribe-youtube) and NOT for live audio.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
