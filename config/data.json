@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-28T23:41:48.767Z",
+  "generated_at": "2026-05-29T13:33:01.496Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -129,7 +129,7 @@
         "Claude Code Routines (scheduled remote agent for staleness checks)"
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
-      "last_modified": "2026-05-28T17:41:11+02:00"
+      "last_modified": "2026-05-29T01:41:49+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1003,7 +1003,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-28T23:41:49.752Z",
+    "synced_at": "2026-05-29T13:33:02.113Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2287,7 +2287,7 @@
       },
       {
         "name": "content-transcribe-video",
-        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use yt-transcript) and NOT for live audio.",
+        "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use content-transcribe-youtube) and NOT for live audio.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
@@ -2303,7 +2303,7 @@
       },
       {
         "name": "content-write-article",
-        "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use yt-transcript for those).",
+        "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use content-transcribe-youtube for those).",
         "plugin": "custom",
         "origin": {
           "source": "custom"
