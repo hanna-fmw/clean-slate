@@ -85,6 +85,21 @@ export function ProjectCard({ project }: { project: Project }) {
                 </svg>
               </a>
             )}
+            {project.chrome_profile && (
+              <span
+                className="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground px-1.5 py-0.5 rounded border border-border/60"
+                title={`Open in ${project.chrome_profile} Chrome profile`}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="4" />
+                  <line x1="21.17" y1="8" x2="12" y2="8" />
+                  <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
+                  <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
+                </svg>
+                {project.chrome_profile}
+              </span>
+            )}
           </div>
         </CardHeader>
         <CardContent>
@@ -154,6 +169,21 @@ export function ProjectCard({ project }: { project: Project }) {
                     <line x1="10" y1="14" x2="21" y2="3" />
                   </svg>
                 </a>
+              )}
+              {project.chrome_profile && (
+                <span
+                  className="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground px-1.5 py-0.5 rounded border border-border/60"
+                  title={`Open in ${project.chrome_profile} Chrome profile`}
+                >
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="4" />
+                    <line x1="21.17" y1="8" x2="12" y2="8" />
+                    <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
+                    <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
+                  </svg>
+                  {project.chrome_profile}
+                </span>
               )}
             </div>
           </DialogHeader>
