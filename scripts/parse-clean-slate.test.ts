@@ -205,6 +205,24 @@ Web: Vercel (not yet deployed at app.example.com).
     expect(r.deployed_url).toBe('')
   })
 
+  it('treats undeployed markers as whole words (no "future-proof" false positive)', () => {
+    const md = `# X
+## Hosting
+Vercel, live at future-proof-app.example.com.
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('https://future-proof-app.example.com')
+  })
+
+  it('rejects URLs with embedded credentials by parsing via URL API', () => {
+    const md = `# X
+## Hosting
+Live at https://attacker@192.168.0.5/
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('')
+  })
+
   it('strips wrapping markdown formatting and trailing punctuation', () => {
     const md = `# X
 ## Hosting

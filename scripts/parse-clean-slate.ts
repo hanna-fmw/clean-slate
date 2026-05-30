@@ -100,10 +100,16 @@ const PRIVATE_URL_PATTERNS = [
   /^100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\./, // CGNAT range used by NetBird/Tailscale
 ]
 
-function isPublicHost(host: string): boolean {
-  const bare = host.replace(/^https?:\/\//, '').split('/')[0].split(':')[0]
-  if (!bare.includes('.')) return false
-  return !PRIVATE_URL_PATTERNS.some((p) => p.test(bare))
+function isPublicHost(input: string): boolean {
+  let hostname: string
+  try {
+    const withScheme = /^https?:\/\//i.test(input) ? input : `https://${input}`
+    hostname = new URL(withScheme).hostname
+  } catch {
+    return false
+  }
+  if (!hostname.includes('.')) return false
+  return !PRIVATE_URL_PATTERNS.some((p) => p.test(hostname))
 }
 
 function normalizeUrl(raw: string): string {
@@ -125,12 +131,14 @@ const NOT_DEPLOYED_MARKERS = [
   'to be deployed',
   'tbd',
   'coming soon',
-  'future',
 ]
 
 function looksUndeployed(line: string): boolean {
   const lower = line.toLowerCase()
-  return NOT_DEPLOYED_MARKERS.some((m) => lower.includes(m))
+  return NOT_DEPLOYED_MARKERS.some((m) => {
+    const escaped = m.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    return new RegExp(`\\b${escaped}\\b`).test(lower)
+  })
 }
 
 function extractDeployedUrl(hostingText: string): string {
