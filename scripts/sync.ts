@@ -76,6 +76,7 @@ function scanProject(dirPath: string, dirName: string): Project | null {
       : detected.run_commands,
     services: parsed.services,
     notes: parsed.notes,
+    toolbox_mentions: parsed.toolbox_mentions,
     last_modified: getLastModified(dirPath),
   }
 }
@@ -100,6 +101,8 @@ function main() {
     projects,
     services: existing?.services ?? [],
     infrastructure: existing?.infrastructure ?? [],
+    tools: existing?.tools,
+    toolbox: existing?.toolbox,
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true })

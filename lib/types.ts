@@ -4,6 +4,14 @@ export interface ProjectGitHub {
   repo_url: string
 }
 
+export type ToolboxType = 'skill' | 'agent' | 'plugin' | 'mcp'
+
+export interface ToolboxMention {
+  type: ToolboxType
+  category: string | null
+  name: string
+}
+
 export interface Project {
   name: string
   path: string
@@ -16,6 +24,7 @@ export interface Project {
   run_commands: Record<string, string>
   services: string[]
   notes: string
+  toolbox_mentions: ToolboxMention[]
   last_modified: string
 }
 
@@ -98,10 +107,23 @@ export interface ToolsInventory {
   skills: SkillInfo[]
 }
 
+export interface ToolboxEntry {
+  name: string
+  type: ToolboxType
+  category: string
+  usage_count: number
+  projects: string[]
+  origin: ToolSource | 'unknown'
+  one_liner: string
+  pinned: boolean
+  installed: boolean
+}
+
 export interface DashboardData {
   generated_at: string
   projects: Project[]
   services: Service[]
   infrastructure: Infrastructure[]
   tools?: ToolsInventory
+  toolbox?: ToolboxEntry[]
 }

@@ -9,12 +9,14 @@ interface DashboardLayoutProps {
   projectList: React.ReactNode
   serviceList: React.ReactNode
   toolsList: React.ReactNode
+  toolboxList: React.ReactNode
 }
 
 const TITLES: Record<Section, string> = {
   projects: 'Projects',
   services: 'Services',
   tools: 'Tools',
+  toolbox: 'My Toolbox',
 }
 
 export function DashboardLayout({
@@ -22,6 +24,7 @@ export function DashboardLayout({
   projectList,
   serviceList,
   toolsList,
+  toolboxList,
 }: DashboardLayoutProps) {
   const [active, setActive] = useState<Section>('projects')
 
@@ -44,6 +47,7 @@ export function DashboardLayout({
           {active === 'projects' && projectList}
           {active === 'services' && serviceList}
           {active === 'tools' && toolsList}
+          {active === 'toolbox' && toolboxList}
         </main>
       </div>
     </div>
