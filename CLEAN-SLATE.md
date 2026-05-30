@@ -10,6 +10,10 @@ A **tools inventory** section tracks all Claude Code agents, plugins, MCP server
 
 A **My Toolbox** view aggregates the per-project "Skills, Agents & Plugins" sections from each CLEAN-SLATE.md into a single, glanceable reference grouped by purpose - showing only the tools actually used across projects (not everything installed), with frequency counts, project lists, and origin tags. A manual overrides file (`toolbox-overrides.md`) pins favorites, normalizes categories, and supplies custom one-liners.
 
+Each project can also declare a **Chrome profile** to use when opening it (via a `## Chrome Profile` H2 section, or a `Chrome Profile:` line inside the GitHub section). The dashboard shows this as a small chip next to the project name so you know which browser profile to switch to.
+
+A clickable **deployed-URL chip** next to the project name opens the live deployment. The URL is auto-extracted from the Hosting section (or from an explicit `Live URL:` / `Deployed URL:` / `Domain:` line). Private/VPN-only and undeployed projects are correctly skipped.
+
 A **macOS launchd job** runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and **Vercel deploys** the update. You never have to remember to sync manually.
 
 A **scheduled remote agent** (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.

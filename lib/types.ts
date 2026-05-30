@@ -26,6 +26,7 @@ export interface Project {
   notes: string
   toolbox_mentions: ToolboxMention[]
   deployed_url: string
+  chrome_profile: string
   last_modified: string
 }
 

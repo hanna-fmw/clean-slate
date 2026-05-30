@@ -38,6 +38,10 @@ Firecrawl, OpenRouter (Gemini 2.0 Flash), Coolify
 No local database - DB only on server.
 Uses Prisma 7 WASM client engine.
 
+## Chrome Profile
+
+Personal
+
 ## Skills, Agents & Plugins
 
 ### Skills
@@ -127,6 +131,10 @@ describe('parseCleanSlate', () => {
     expect(result.deployed_url).toBe('https://aeo.stormfors.ai')
   })
 
+  it('extracts chrome_profile from dedicated section', () => {
+    expect(result.chrome_profile).toBe('Personal')
+  })
+
   it('extracts toolbox mentions with types, categories, and names', () => {
     expect(result.toolbox_mentions).toEqual([
       { type: 'skill', category: 'Content & Research', name: 'content-write-article' },
@@ -164,6 +172,28 @@ A simple tool.
     expect(result.notes).toBe('')
     expect(result.toolbox_mentions).toEqual([])
     expect(result.deployed_url).toBe('')
+    expect(result.chrome_profile).toBe('')
+  })
+})
+
+describe('parseCleanSlate chrome_profile extraction', () => {
+  it('extracts chrome_profile from a labeled line inside the GitHub section', () => {
+    const md = `# X
+## GitHub
+Account: personal (hanna-fmw)
+Chrome Profile: Personal
+`
+    const r = parseCleanSlate(md)
+    expect(r.chrome_profile).toBe('Personal')
+  })
+
+  it('strips wrapping formatting on chrome_profile values', () => {
+    const md = `# X
+## Chrome Profile
+**Work**
+`
+    const r = parseCleanSlate(md)
+    expect(r.chrome_profile).toBe('Work')
   })
 })
 

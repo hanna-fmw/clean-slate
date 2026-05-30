@@ -19,6 +19,7 @@ interface ParsedProject {
   notes: string
   toolbox_mentions: ToolboxMention[]
   deployed_url: string
+  chrome_profile: string
 }
 
 export function parseCleanSlate(markdown: string): ParsedProject {
@@ -36,11 +37,33 @@ export function parseCleanSlate(markdown: string): ParsedProject {
   const notes = (sections['notes'] ?? '').trim()
   const toolbox_mentions = parseToolboxSection(findToolboxSection(sections))
   const deployed_url = extractDeployedUrl(sections['hosting'] ?? '')
+  const chrome_profile = extractChromeProfile(sections)
 
   return {
     name, description, description_short, stack, hosting, database,
     github, run_commands, services, notes, toolbox_mentions, deployed_url,
+    chrome_profile,
   }
+}
+
+function extractChromeProfile(sections: Record<string, string>): string {
+  // 1. Top-level "## Chrome Profile" section
+  const dedicated = sections['chrome profile']
+  if (dedicated?.trim()) return cleanProfileValue(dedicated.split('\n')[0])
+
+  // 2. "Chrome Profile:" / "Profile:" line inside GitHub or other sections
+  const labelPattern = /^(?:[-*]\s+)?(?:\*\*)?(chrome profile|profile)(?:\*\*)?\s*[:\-]\s*(.+)$/i
+  for (const text of Object.values(sections)) {
+    for (const line of text.split('\n')) {
+      const m = line.match(labelPattern)
+      if (m) return cleanProfileValue(m[2])
+    }
+  }
+  return ''
+}
+
+function cleanProfileValue(text: string): string {
+  return text.trim().replace(/^[`*'"<(]+|[.,;`*'")>]+$/g, '').trim()
 }
 
 function splitSections(markdown: string): Record<string, string> {
