@@ -25,6 +25,7 @@ export interface Project {
   services: string[]
   notes: string
   toolbox_mentions: ToolboxMention[]
+  deployed_url: string
   last_modified: string
 }
 

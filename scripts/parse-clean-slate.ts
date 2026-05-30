@@ -18,6 +18,7 @@ interface ParsedProject {
   services: string[]
   notes: string
   toolbox_mentions: ToolboxMention[]
+  deployed_url: string
 }
 
 export function parseCleanSlate(markdown: string): ParsedProject {
@@ -34,10 +35,11 @@ export function parseCleanSlate(markdown: string): ParsedProject {
   const services = parseCommaSeparated(sections['services'] ?? '')
   const notes = (sections['notes'] ?? '').trim()
   const toolbox_mentions = parseToolboxSection(findToolboxSection(sections))
+  const deployed_url = extractDeployedUrl(sections['hosting'] ?? '')
 
   return {
     name, description, description_short, stack, hosting, database,
-    github, run_commands, services, notes, toolbox_mentions,
+    github, run_commands, services, notes, toolbox_mentions, deployed_url,
   }
 }
 
@@ -87,6 +89,78 @@ function parseCommaSeparated(text: string): string[] {
 function extractHosting(text: string): string {
   const lines = text.split('\n').filter(l => !l.toLowerCase().startsWith('database:'))
   return lines.join('\n').trim()
+}
+
+const PRIVATE_URL_PATTERNS = [
+  /^localhost$/i,
+  /^127\./,
+  /^10\./,
+  /^192\.168\./,
+  /^172\.(1[6-9]|2[0-9]|3[01])\./,
+  /^100\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\./, // CGNAT range used by NetBird/Tailscale
+]
+
+function isPublicHost(host: string): boolean {
+  const bare = host.replace(/^https?:\/\//, '').split('/')[0].split(':')[0]
+  if (!bare.includes('.')) return false
+  return !PRIVATE_URL_PATTERNS.some((p) => p.test(bare))
+}
+
+function normalizeUrl(raw: string): string {
+  let url = raw.trim().replace(/[.,;:)`*'"<>]+$/, '')
+  url = url.replace(/^[`*'"<(]+/, '')
+  if (!/^https?:\/\//i.test(url)) url = `https://${url}`
+  try {
+    return new URL(url).toString().replace(/\/$/, '')
+  } catch {
+    return ''
+  }
+}
+
+const NOT_DEPLOYED_MARKERS = [
+  'not yet deployed',
+  'not deployed',
+  'no public url',
+  'planned but not',
+  'to be deployed',
+  'tbd',
+  'coming soon',
+  'future',
+]
+
+function looksUndeployed(line: string): boolean {
+  const lower = line.toLowerCase()
+  return NOT_DEPLOYED_MARKERS.some((m) => lower.includes(m))
+}
+
+function extractDeployedUrl(hostingText: string): string {
+  if (!hostingText.trim()) return ''
+  const lines = hostingText.split('\n')
+
+  // 1. Explicit label takes precedence: "Deployed URL:", "Live URL:", "Live at:", "URL:", "Domain:"
+  const explicitLabel = /^(?:[-*]\s+)?(?:\*\*)?(deployed url|live url|live at|production url|prod url|url|domain)(?:\*\*)?\s*[:\-–—]\s*(.+)$/i
+  for (const line of lines) {
+    if (looksUndeployed(line)) continue
+    const m = line.match(explicitLabel)
+    if (!m) continue
+    const value = m[2].trim().replace(/^[`*'"<(]+|[.,;`*'")>]+$/g, '')
+    if (!value) continue
+    const normalized = normalizeUrl(value)
+    if (normalized && isPublicHost(normalized)) return normalized
+  }
+
+  // 2. Otherwise, scan for first plausible public URL/domain in the prose
+  const urlPattern = /\b((?:https?:\/\/)?(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}(?:\/[^\s`*'")>]*)?)/gi
+  for (const line of lines) {
+    if (looksUndeployed(line)) continue
+    const matches = line.match(urlPattern)
+    if (!matches) continue
+    for (const m of matches) {
+      const normalized = normalizeUrl(m)
+      if (normalized && isPublicHost(normalized)) return normalized
+    }
+  }
+  return ''
 }
 
 function extractDatabase(text: string): string {

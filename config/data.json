@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T11:49:39.664Z",
+  "generated_at": "2026-05-30T13:22:38.559Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -92,6 +92,7 @@
           "name": "frontend-slides"
         }
       ],
+      "deployed_url": "",
       "last_modified": "2026-05-22T14:06:16.068Z"
     },
     {
@@ -129,11 +130,11 @@
       },
       "run_commands": {
         "pnpm dev": "run the backend with tsx (default: CLI mode)",
-        "pnpm observe": "run backend in observe mode (serves old HTML UI)",
+        "pnpm observe": "run backend in observe mode on :3333 (HTTP API + SSE + a2a + backlog picker). The Next.js UI talks to this; an old static HTML dashboard at /api/ui/index.html still serves as a fallback.",
         "pnpm build": "compile TypeScript to dist/",
         "pnpm start": "run compiled output",
-        "pnpm test": "run Vitest",
-        "cd web && pnpm dev": "run Next.js frontend (default port 3334)",
+        "pnpm test": "run Vitest (302/302 passing as of 2026-05-30)",
+        "cd web && pnpm dev": "run Next.js frontend on :3000",
         "cd web && pnpm build": "build Next.js for production"
       },
       "services": [
@@ -143,9 +144,9 @@
         "multimodal)",
         "Mattermost (bot messaging)",
         "Vercel (frontend hosting)",
-        "Coolify (backend hosting)"
+        "Coolify (backend hosting)."
       ],
-      "notes": "No Claude via Anthropic direct - too expensive. Dev default: `openrouter/deepseek/deepseek-v4-flash` ($0.14/$0.28 per 1M) for all agents. Production recommendations split by task complexity: budget (DeepSeek V4 Flash) for structured agents, mid-tier (GPT-4.1 Mini, $0.40/$1.60) for reasoning/synthesis agents. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
+      "notes": "No Claude via Anthropic direct — too expensive. Dev default: `openrouter/deepseek/deepseek-v4-flash` ($0.14/$0.28 per 1M) for most agents. **Orchestrator** runs on `openrouter/openai/gpt-4.1-mini` ($0.40/$1.60) — swapped 2026-05-30 because DeepSeek V4 Flash via OpenRouter ignored the per-step abort signal and hung on multi-step orchestration. Team leads (engineering-lead, content-lead, operations-lead) also on gpt-4.1-mini. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
       "toolbox_mentions": [
         {
           "type": "skill",
@@ -158,6 +159,31 @@
           "name": "session-handoff"
         },
         {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers:brainstorming"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:kieran-typescript-reviewer"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:code-simplicity-reviewer"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:performance-oracle"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:security-sentinel"
+        },
+        {
           "type": "mcp",
           "category": null,
           "name": "context7"
@@ -168,12 +194,13 @@
           "name": "coolify"
         }
       ],
-      "last_modified": "2026-05-30T10:50:23+02:00"
+      "deployed_url": "",
+      "last_modified": "2026-05-30T15:00:52+02:00"
     },
     {
       "name": "Clean Slate",
       "path": "~/Documents/clean-slate",
-      "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dense, monospace UI with dark/light mode - no fluff, just information.\n\nA tools inventory section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.\n\nA macOS launchd job runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.\n\nA scheduled remote agent (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.",
+      "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dense, monospace UI with dark/light mode - no fluff, just information.\n\nA tools inventory section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.\n\nA My Toolbox view aggregates the per-project \"Skills, Agents & Plugins\" sections from each CLEAN-SLATE.md into a single, glanceable reference grouped by purpose - showing only the tools actually used across projects (not everything installed), with frequency counts, project lists, and origin tags. A manual overrides file (`toolbox-overrides.md`) pins favorites, normalizes categories, and supplies custom one-liners.\n\nA macOS launchd job runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.\n\nA scheduled remote agent (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.",
       "description_short": "A personal project dashboard that auto-syncs from ~/Documents/.",
       "stack": [
         "Next.js 16",
@@ -194,7 +221,8 @@
         "pnpm build": "build for production (static export)",
         "pnpm sync": "scan ~/Documents/ and regenerate project data in config/data.json",
         "pnpm sync:tools": "scan ~/.claude/ and regenerate tools inventory in config/data.json",
-        "pnpm sync:all": "run both syncs",
+        "pnpm sync:toolbox": "aggregate per-project Skills/Agents/Plugins mentions into the toolbox view",
+        "pnpm sync:all": "run all three syncs in order",
         "pnpm test": "run tests",
         "pnpm lint": "lint"
       },
@@ -204,7 +232,8 @@
       ],
       "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
       "toolbox_mentions": [],
-      "last_modified": "2026-05-30T10:57:14+02:00"
+      "deployed_url": "https://ops.hosk.app",
+      "last_modified": "2026-05-30T14:52:28+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -250,6 +279,7 @@
       ],
       "notes": "- Deploy by pushing to main - Coolify auto-deploys via GitHub webhook\n- Embedding runs locally inside the container using `@xenova/transformers` - no external embedding API needed\n- After any Prisma schema change: create migration locally, deploy, then run `npx prisma migrate deploy` in Coolify terminal\n- Default LLM model: `qwen/qwen-2.5-7b-instruct` via OpenRouter\n- See `TASKS.md` for known issues and pending work\n- Reference repo (read-only): `~/Desktop/private-knowledge-base`",
       "toolbox_mentions": [],
+      "deployed_url": "https://kb.stormfors.ai",
       "last_modified": "2026-03-14T15:00:32+01:00"
     },
     {
@@ -297,6 +327,7 @@
       ],
       "notes": "Prisma 7 has specific quirks: `prisma.config.ts` uses `process.env.DATABASE_URL ?? ''` (not `env()` - breaks Docker builds), `schema.prisma` has no `url` in the datasource block, and there is no `--skip-generate` flag. Prisma CLI is installed in an isolated `/prisma-cli` directory in Docker because pnpm symlinks break between build stages. Detailed deployment writeup lives at `~/knowledge-base/issues-solved/nextjs-prisma7-docker-coolify-hetzner-deployment.md`.",
       "toolbox_mentions": [],
+      "deployed_url": "https://aeo.stormfors.ai",
       "last_modified": "2026-05-17T22:42:00+02:00"
     },
     {
@@ -330,6 +361,7 @@
       ],
       "notes": "VM1 is isolated and dedicated to OpenClaw only - do not use it for other projects (the knowledge base runs on VM2). OpenClaw docs update frequently; use Context7 to look up current OpenClaw documentation rather than relying on the CLAUDE.md content.",
       "toolbox_mentions": [],
+      "deployed_url": "",
       "last_modified": "2026-02-15T18:15:06+01:00"
     },
     {
@@ -372,6 +404,7 @@
       ],
       "notes": "Auto-deploy on push is not active - Coolify's webhook is only on the private NetBird network so GitHub can't reach it. Manual deploy (two clicks in Coolify UI) is the current workflow. Remaining work: Cloudflare tunnel for public HTTPS URL + custom domain, then switch to GitHub App integration for auto-deploy. Also needs real content added and re-indexed.",
       "toolbox_mentions": [],
+      "deployed_url": "",
       "last_modified": "2026-04-26T21:23:28.301Z"
     },
     {
@@ -419,6 +452,7 @@
       ],
       "notes": "- VM2 SSH: `ssh knowledge-base` (via NetBird, IP: 100.109.251.80)\n- Coolify on VM2: http://100.109.251.80:8000\n- Local notes source: `~/knowledge-base/` auto-pushed to GitHub via `fswatch` launchd service on Mac\n- GitHub repo acts as the sync mechanism between local notes and the app on VM2\n- LLM provider is abstracted - swapping from HF Inference to another provider requires only a config change\n- Scope is personal notes and docs only, not code projects\n- Build uses `NODE_OPTIONS='--max-old-space-size=4096'` due to heavy TypeScript type definitions (`googleapis` package)",
       "toolbox_mentions": [],
+      "deployed_url": "",
       "last_modified": "2026-03-14T16:23:41+01:00"
     },
     {
@@ -465,6 +499,7 @@
       ],
       "notes": "Two env files must be kept in sync: `apps/web/.env.local` (Next.js) and `.env.local` at repo root (API). Shared vars include Supabase keys and `CRON_SECRET`. Word count is capped at 500 in `apps/api/src/services/articles/article-generator.ts` during development - remove for production. Supabase project ref: `awtwkdkinpykaozbwcdy`. MCP server `supabase-ranksmile` is configured in `~/.claude.json`.",
       "toolbox_mentions": [],
+      "deployed_url": "",
       "last_modified": "2026-04-04T13:23:52+02:00"
     },
     {
@@ -512,6 +547,7 @@
       ],
       "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
       "toolbox_mentions": [],
+      "deployed_url": "",
       "last_modified": "2026-05-29T22:35:58+02:00"
     },
     {
@@ -549,6 +585,7 @@
       ],
       "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
       "toolbox_mentions": [],
+      "deployed_url": "",
       "last_modified": "2026-01-11T21:21:43+01:00"
     },
     {
@@ -579,6 +616,7 @@
           "name": "Supabase MCP (not yet configured for this project)"
         }
       ],
+      "deployed_url": "",
       "last_modified": "2026-05-20T16:42:41+02:00"
     }
   ],

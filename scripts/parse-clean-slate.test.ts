@@ -123,6 +123,10 @@ describe('parseCleanSlate', () => {
     expect(result.notes).toContain('Prisma 7 WASM')
   })
 
+  it('extracts deployed url from hosting prose', () => {
+    expect(result.deployed_url).toBe('https://aeo.stormfors.ai')
+  })
+
   it('extracts toolbox mentions with types, categories, and names', () => {
     expect(result.toolbox_mentions).toEqual([
       { type: 'skill', category: 'Content & Research', name: 'content-write-article' },
@@ -159,5 +163,54 @@ A simple tool.
     expect(result.services).toEqual([])
     expect(result.notes).toBe('')
     expect(result.toolbox_mentions).toEqual([])
+    expect(result.deployed_url).toBe('')
+  })
+})
+
+describe('parseCleanSlate deployed_url extraction', () => {
+  it('uses explicit "Live at:" label over surrounding prose', () => {
+    const md = `# X
+## Hosting
+Vercel free tier (something else.com mentioned in passing).
+Live at: https://my-real-app.example.com
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('https://my-real-app.example.com')
+  })
+
+  it('extracts bare domain from prose', () => {
+    const md = `# X
+## Hosting
+Coolify on Hetzner, live at kb.stormfors.ai.
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('https://kb.stormfors.ai')
+  })
+
+  it('skips private/VPN/local IPs', () => {
+    const md = `# X
+## Hosting
+Coolify on VM2 (local IP 192.168.0.104, NetBird IP 100.109.251.80). Accessible at http://100.109.251.80/ via NetBird private network.
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('')
+  })
+
+  it('returns empty when marked not yet deployed', () => {
+    const md = `# X
+## Hosting
+Web: Vercel (not yet deployed at app.example.com).
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('')
+  })
+
+  it('strips wrapping markdown formatting and trailing punctuation', () => {
+    const md = `# X
+## Hosting
+App: Coolify on Hetzner server, live at **https://kb.stormfors.ai** (notes follow).
+`
+    const r = parseCleanSlate(md)
+    expect(r.deployed_url).toBe('https://kb.stormfors.ai')
   })
 })
