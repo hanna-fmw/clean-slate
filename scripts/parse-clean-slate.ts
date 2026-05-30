@@ -1,3 +1,11 @@
+type ToolboxType = 'skill' | 'agent' | 'plugin' | 'mcp'
+
+interface ToolboxMention {
+  type: ToolboxType
+  category: string | null
+  name: string
+}
+
 interface ParsedProject {
   name: string
   description: string
@@ -9,6 +17,7 @@ interface ParsedProject {
   run_commands: Record<string, string>
   services: string[]
   notes: string
+  toolbox_mentions: ToolboxMention[]
 }
 
 export function parseCleanSlate(markdown: string): ParsedProject {
@@ -24,10 +33,11 @@ export function parseCleanSlate(markdown: string): ParsedProject {
   const run_commands = parseRunCommands(sections['run commands'] ?? '')
   const services = parseCommaSeparated(sections['services'] ?? '')
   const notes = (sections['notes'] ?? '').trim()
+  const toolbox_mentions = parseToolboxSection(findToolboxSection(sections))
 
   return {
     name, description, description_short, stack, hosting, database,
-    github, run_commands, services, notes,
+    github, run_commands, services, notes, toolbox_mentions,
   }
 }
 
@@ -93,6 +103,102 @@ function parseGitHub(text: string): { account: string; ssh_alias: string; repo_u
     else if (lower.startsWith('repo:')) result.repo_url = line.replace(/^repo:\s*/i, '').trim()
   }
   return result
+}
+
+function findToolboxSection(sections: Record<string, string>): string {
+  const candidates = [
+    'skills, agents & plugins',
+    'skills, agents and plugins',
+    'skills agents plugins',
+    'skills, agents & plugins & mcp servers',
+    'skills, agents, plugins & mcp servers',
+    'skills, agents, plugins and mcp servers',
+    'tools',
+    'toolbox',
+  ]
+  for (const key of Object.keys(sections)) {
+    const lower = key.toLowerCase()
+    if (candidates.includes(lower)) return sections[key]
+    if (lower.startsWith('skills') && (lower.includes('agent') || lower.includes('plugin'))) {
+      return sections[key]
+    }
+  }
+  return ''
+}
+
+const TYPE_MAP: Record<string, ToolboxType> = {
+  'skill': 'skill',
+  'skills': 'skill',
+  'agent': 'agent',
+  'agents': 'agent',
+  'plugin': 'plugin',
+  'plugins': 'plugin',
+  'mcp': 'mcp',
+  'mcp server': 'mcp',
+  'mcp servers': 'mcp',
+}
+
+function classifyType(heading: string): ToolboxType | null {
+  const normalized = heading.trim().toLowerCase().replace(/[^a-z ]/g, '').trim()
+  if (TYPE_MAP[normalized]) return TYPE_MAP[normalized]
+  for (const [key, value] of Object.entries(TYPE_MAP)) {
+    if (normalized === key || normalized.startsWith(key + ' ') || normalized.endsWith(' ' + key)) {
+      return value
+    }
+  }
+  return null
+}
+
+function extractToolName(bullet: string): string {
+  // Strip leading "- " or "* ", then take text before first " - " or " — " or ":"
+  let text = bullet.replace(/^[-*]\s+/, '').trim()
+  // Inline code: `name` -> name
+  const codeMatch = text.match(/^`([^`]+)`/)
+  if (codeMatch) return stripSlashCommand(codeMatch[1].trim())
+  // Bold: **name** -> name
+  const boldMatch = text.match(/^\*\*([^*]+)\*\*/)
+  if (boldMatch) return stripSlashCommand(boldMatch[1].trim())
+  // Plain text before separator
+  text = text.split(/\s+[-—:]\s+/)[0]
+  return stripSlashCommand(text.trim())
+}
+
+function stripSlashCommand(name: string): string {
+  return name.replace(/^\//, '').trim()
+}
+
+function parseToolboxSection(text: string): ToolboxMention[] {
+  if (!text.trim()) return []
+  const mentions: ToolboxMention[] = []
+  const lines = text.split('\n')
+  let currentType: ToolboxType | null = null
+  let currentCategory: string | null = null
+
+  for (const rawLine of lines) {
+    const line = rawLine.trimEnd()
+    const h3 = line.match(/^###\s+(.+)$/)
+    if (h3) {
+      const t = classifyType(h3[1])
+      if (t) {
+        currentType = t
+        currentCategory = null
+      }
+      continue
+    }
+    const h4 = line.match(/^####\s+(.+)$/)
+    if (h4) {
+      currentCategory = h4[1].trim()
+      continue
+    }
+    const bullet = line.match(/^\s*[-*]\s+/)
+    if (bullet && currentType) {
+      const name = extractToolName(line.trimStart())
+      if (name) {
+        mentions.push({ type: currentType, category: currentCategory, name })
+      }
+    }
+  }
+  return mentions
 }
 
 function parseRunCommands(text: string): Record<string, string> {

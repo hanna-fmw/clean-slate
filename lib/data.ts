@@ -9,5 +9,6 @@ export function getData(): DashboardData {
     services: data.services ?? [],
     infrastructure: data.infrastructure ?? [],
     tools: data.tools,
+    toolbox: data.toolbox,
   }
 }

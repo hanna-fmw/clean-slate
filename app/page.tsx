@@ -2,6 +2,7 @@ import { getData } from '@/lib/data'
 import { ProjectCard } from '@/components/project-card'
 import { ServiceCard } from '@/components/service-card'
 import { ToolsSectionCards } from '@/components/tools-section-cards'
+import { ToolboxView } from '@/components/toolbox-view'
 import { DashboardLayout } from './dashboard-layout'
 import type { Service } from '@/lib/types'
 
@@ -34,7 +35,7 @@ function infraToService(infra: { name: string; access_url: string; login_email: 
 }
 
 export default function Home() {
-  const { projects, services, infrastructure, tools } = getData()
+  const { projects, services, infrastructure, tools, toolbox } = getData()
 
   const allServices = [
     ...services,
@@ -47,6 +48,7 @@ export default function Home() {
         projects: projects.length,
         services: allServices.length,
         tools: (tools?.agents.length ?? 0) + (tools?.plugins.length ?? 0) + (tools?.mcp_servers.length ?? 0) + (tools?.skills.length ?? 0),
+        toolbox: toolbox?.length ?? 0,
       }}
       projectList={
         <div className="space-y-4">
@@ -71,6 +73,7 @@ export default function Home() {
           </p>
         )
       }
+      toolboxList={<ToolboxView toolbox={toolbox ?? []} />}
     />
   )
 }
