@@ -7,7 +7,6 @@ import type {
   DashboardData,
   Project,
   ToolboxEntry,
-  ToolboxMention,
   ToolboxType,
   ToolsInventory,
   ToolSource,
@@ -189,9 +188,3 @@ function main() {
 }
 
 main()
-
-// Exported for tests
-export { aggregate }
-
-// Suppress unused export warning when this file is run as a script
-export type { ToolboxMention as _ToolboxMentionForTypeCheck }
