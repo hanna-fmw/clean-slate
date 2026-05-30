@@ -78,6 +78,7 @@ function scanProject(dirPath: string, dirName: string): Project | null {
     notes: parsed.notes,
     toolbox_mentions: parsed.toolbox_mentions,
     deployed_url: parsed.deployed_url,
+    chrome_profile: parsed.chrome_profile,
     last_modified: getLastModified(dirPath),
   }
 }
