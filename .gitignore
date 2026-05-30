@@ -45,3 +45,4 @@ CLAUDE.md
 .claude/
 docs/tasks.md
 test-results/
+toolbox-overrides.md

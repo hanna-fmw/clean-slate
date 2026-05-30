@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
-export type Section = 'projects' | 'services' | 'tools'
+export type Section = 'projects' | 'services' | 'tools' | 'toolbox'
 
 const NAV_ITEMS: { key: Section; label: string; icon: React.ReactNode }[] = [
   {
@@ -33,6 +33,18 @@ const NAV_ITEMS: { key: Section; label: string; icon: React.ReactNode }[] = [
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    ),
+  },
+  {
+    key: 'toolbox',
+    label: 'My Toolbox',
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 8h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2z" />
+        <path d="M8 8V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3" />
+        <line x1="3" y1="13" x2="21" y2="13" />
+        <rect x="10" y="11" width="4" height="4" rx="0.5" />
       </svg>
     ),
   },
