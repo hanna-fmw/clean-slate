@@ -61,12 +61,12 @@ function parsePinned(text: string): Array<z.infer<typeof PinnedSchema>> {
     if (!line.startsWith('- ') && !line.startsWith('* ')) continue
     const body = line.replace(/^[-*]\s+/, '')
     // Format: "name (type)" or "name: type"
-    const parenMatch = body.match(/^(.+?)\s*\(([a-z]+)\)\s*$/i)
-    const colonMatch = body.match(/^(.+?):\s*([a-z]+)\s*$/i)
+    const parenMatch = body.match(/^(.+?)\s*\(([a-z][a-z ]*)\)\s*$/i)
+    const colonMatch = body.match(/^(.+?):\s*([a-z][a-z ]*)\s*$/i)
     const match = parenMatch ?? colonMatch
     if (!match) continue
     const name = stripFormatting(match[1].trim())
-    const typeRaw = match[2].toLowerCase()
+    const typeRaw = match[2].trim().toLowerCase()
     const type = typeRaw === 'mcp server' || typeRaw === 'server' ? 'mcp' : typeRaw
     const parsed = ToolboxTypeSchema.safeParse(type)
     if (parsed.success) result.push({ name, type: parsed.data })

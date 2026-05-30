@@ -8,6 +8,7 @@ const SAMPLE = `# Toolbox Overrides
 - deep-research (skill)
 - Frontend Developer (agent)
 - \`context7\` (mcp)
+- supabase-signalstack (MCP Server)
 
 ## One-liners
 
@@ -33,6 +34,7 @@ describe('parseOverrides', () => {
       { name: 'deep-research', type: 'skill' },
       { name: 'Frontend Developer', type: 'agent' },
       { name: 'context7', type: 'mcp' },
+      { name: 'supabase-signalstack', type: 'mcp' },
     ])
   })
 
