@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clean Slate
 
-## Getting Started
+A personal project dashboard that auto-syncs from `~/Documents/`. Reads `CLEAN-SLATE.md` files from each project, plus `~/.claude/` for the Claude Code tools inventory, and renders a dense, monospace UI.
 
-First, run the development server:
+Live at [ops.hosk.app](https://ops.hosk.app).
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3300
+pnpm sync:all     # regenerate config/data.json
+pnpm test         # vitest
+pnpm build        # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sync pipeline
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`scripts/sync.ts` → `scripts/sync-tools.ts` → `scripts/build-toolbox.ts`, run sequentially by `pnpm sync:all` and by the launchd job (`~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist`) every 6 hours. All three write to `config/data.json`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Step | Input | Output key |
+|------|-------|------------|
+| `sync.ts` | `~/Documents/*/CLEAN-SLATE.md` | `projects` |
+| `sync-tools.ts` | `~/.claude/` (agents, plugins, MCP servers, skills) | `tools` |
+| `build-toolbox.ts` | `projects` + `tools` + `toolbox-overrides.md` | `toolbox` |
 
-## Learn More
+## Tabs
 
-To learn more about Next.js, take a look at the following resources:
+- **Projects** — every project that has a `CLEAN-SLATE.md`
+- **Services** — accounts and login info per service
+- **Tools** — full inventory of installed Claude Code agents/plugins/MCP servers/skills
+- **My Toolbox** — aggregated view of tools actually mentioned in projects' `CLEAN-SLATE.md` files (signal vs. noise)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## My Toolbox
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each project's `CLEAN-SLATE.md` should include a `## Skills, Agents & Plugins` section listing only the tools relevant to that project, grouped by H3 type and (optionally) H4 category:
 
-## Deploy on Vercel
+```markdown
+## Skills, Agents & Plugins
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Skills
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Content & Research
+- deep-research - multi-source fact-checked research
+- content-write-article
+
+### Agents
+- Frontend Developer - React/Next.js implementation
+
+### Plugins
+- compound-engineering
+
+### MCP Servers
+- context7
+```
+
+`build-toolbox.ts` aggregates these mentions across all projects, joins each entry with the installed-tool inventory (so `origin` and `one_liner` come from frontmatter when available), and writes the result to `data.json#toolbox`. Frequency = how many projects list the tool. Sort order in the UI: pinned first, then `usage_count` desc, then name.
+
+### Overrides
+
+Create `~/Documents/clean-slate/toolbox-overrides.md` (gitignored) to:
+
+- **Pin** tools you want surfaced regardless of usage count
+- **Override one-liners** with your own phrasing
+- **Normalize categories** so `Content/Research`, `content & research`, and `Content & Research` all merge
+
+```markdown
+## Pinned
+- deep-research (skill)
+- Frontend Developer (agent)
+
+## One-liners
+- deep-research: When you need a fact-checked multi-source report.
+
+## Category map
+- Content/Research -> Content & Research
+- ui -> Frontend
+
+## Defaults
+- compound-engineering: Engineering Workflow
+```
+
+After editing the overrides file, run `pnpm sync:toolbox` (or wait for the next launchd run).

@@ -8,6 +8,8 @@ The dashboard reads from **CLEAN-SLATE.md** files placed in each project's root 
 
 A **tools inventory** section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.
 
+A **My Toolbox** view aggregates the per-project "Skills, Agents & Plugins" sections from each CLEAN-SLATE.md into a single, glanceable reference grouped by purpose - showing only the tools actually used across projects (not everything installed), with frequency counts, project lists, and origin tags. A manual overrides file (`toolbox-overrides.md`) pins favorites, normalizes categories, and supplies custom one-liners.
+
 A **macOS launchd job** runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and **Vercel deploys** the update. You never have to remember to sync manually.
 
 A **scheduled remote agent** (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.
@@ -32,7 +34,8 @@ Repo: https://github.com/hanna-fmw/clean-slate
 - `pnpm build` - build for production (static export)
 - `pnpm sync` - scan ~/Documents/ and regenerate project data in config/data.json
 - `pnpm sync:tools` - scan ~/.claude/ and regenerate tools inventory in config/data.json
-- `pnpm sync:all` - run both syncs
+- `pnpm sync:toolbox` - aggregate per-project Skills/Agents/Plugins mentions into the toolbox view
+- `pnpm sync:all` - run all three syncs in order
 - `pnpm test` - run tests
 - `pnpm lint` - lint
 

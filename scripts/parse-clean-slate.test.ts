@@ -37,6 +37,33 @@ Firecrawl, OpenRouter (Gemini 2.0 Flash), Coolify
 
 No local database - DB only on server.
 Uses Prisma 7 WASM client engine.
+
+## Skills, Agents & Plugins
+
+### Skills
+
+#### Content & Research
+- content-write-article - Write long-form articles
+- deep-research
+
+#### Frontend
+- \`frontend-design\` - distinctive UI
+- **vercel:nextjs**: Next.js guidance
+
+### Agents
+
+- Frontend Developer - React/Next.js implementation
+- Backend Architect
+
+### Plugins
+
+- compound-engineering
+- vercel
+
+### MCP Servers
+
+- context7
+- supabase-signalstack
 `
 
 describe('parseCleanSlate', () => {
@@ -95,6 +122,21 @@ describe('parseCleanSlate', () => {
     expect(result.notes).toContain('No local database')
     expect(result.notes).toContain('Prisma 7 WASM')
   })
+
+  it('extracts toolbox mentions with types, categories, and names', () => {
+    expect(result.toolbox_mentions).toEqual([
+      { type: 'skill', category: 'Content & Research', name: 'content-write-article' },
+      { type: 'skill', category: 'Content & Research', name: 'deep-research' },
+      { type: 'skill', category: 'Frontend', name: 'frontend-design' },
+      { type: 'skill', category: 'Frontend', name: 'vercel:nextjs' },
+      { type: 'agent', category: null, name: 'Frontend Developer' },
+      { type: 'agent', category: null, name: 'Backend Architect' },
+      { type: 'plugin', category: null, name: 'compound-engineering' },
+      { type: 'plugin', category: null, name: 'vercel' },
+      { type: 'mcp', category: null, name: 'context7' },
+      { type: 'mcp', category: null, name: 'supabase-signalstack' },
+    ])
+  })
 })
 
 describe('parseCleanSlate with missing sections', () => {
@@ -116,5 +158,6 @@ A simple tool.
     expect(result.run_commands).toEqual({})
     expect(result.services).toEqual([])
     expect(result.notes).toBe('')
+    expect(result.toolbox_mentions).toEqual([])
   })
 })
