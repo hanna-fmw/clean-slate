@@ -66,7 +66,26 @@ export function ProjectCard({ project }: { project: Project }) {
         onClick={() => setOpen(true)}
       >
         <CardHeader>
-          <CardTitle className="text-base">{project.name}</CardTitle>
+          <div className="flex items-center gap-2 flex-wrap">
+            <CardTitle className="text-base">{project.name}</CardTitle>
+            {project.deployed_url && (
+              <a
+                href={project.deployed_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors px-1.5 py-0.5 rounded border border-border/60 hover:border-foreground/30"
+                title={`Open ${project.deployed_url}`}
+              >
+                {project.deployed_url.replace(/^https?:\/\//, '')}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
@@ -119,7 +138,24 @@ export function ProjectCard({ project }: { project: Project }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-3xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-lg">{project.name}</DialogTitle>
+            <div className="flex items-center gap-2 flex-wrap">
+              <DialogTitle className="text-lg">{project.name}</DialogTitle>
+              {project.deployed_url && (
+                <a
+                  href={project.deployed_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors px-1.5 py-0.5 rounded border border-border/60 hover:border-foreground/30"
+                >
+                  {project.deployed_url.replace(/^https?:\/\//, '')}
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
+              )}
+            </div>
           </DialogHeader>
 
           <div className="space-y-6 text-sm">
