@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T14:58:09.060Z",
+  "generated_at": "2026-05-31T08:23:58.274Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -133,7 +133,7 @@
         "pnpm observe": "run backend in observe mode on :3333 (HTTP API + SSE + a2a + backlog picker). The Next.js UI talks to this; an old static HTML dashboard at /api/ui/index.html still serves as a fallback.",
         "pnpm build": "compile TypeScript to dist/",
         "pnpm start": "run compiled output",
-        "pnpm test": "run Vitest (302/302 passing as of 2026-05-30)",
+        "pnpm test": "run Vitest (340/340 passing as of 2026-05-30)",
         "cd web && pnpm dev": "run Next.js frontend on :3000",
         "cd web && pnpm build": "build Next.js for production"
       },
@@ -196,7 +196,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-05-30T16:33:53+02:00"
+      "last_modified": "2026-05-30T17:19:17+02:00"
     },
     {
       "name": "Clean Slate",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-05-30T16:50:39+02:00"
+      "last_modified": "2026-05-31T09:57:02+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1142,7 +1142,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-05-30T14:58:10.356Z",
+    "synced_at": "2026-05-31T08:23:59.297Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2206,96 +2206,6 @@
         "marketplace": "claude-plugins-official"
       },
       {
-        "name": "huggingface-skills",
-        "version": "1.0.4",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "github",
-        "version": "unknown",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "github"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "playwright",
-        "version": "unknown",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "playwright"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "frontend-design",
-        "version": "unknown",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "frontend-design"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "code-simplifier",
-        "version": "1.0.0",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "code-simplifier"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "security-guidance",
-        "version": "2.0.0",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "security-guidance"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "figma",
-        "version": "2.2.12",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "pr-review-toolkit",
-        "version": "unknown",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "pr-review-toolkit"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
-        "name": "agent-sdk-dev",
-        "version": "unknown",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "agent-sdk-dev"
-        },
-        "marketplace": "claude-plugins-official"
-      },
-      {
         "name": "skill-creator",
         "version": "unknown",
         "origin": {
@@ -2326,6 +2236,16 @@
         "marketplace": "claude-plugins-official"
       },
       {
+        "name": "frontend-design",
+        "version": "unknown",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "frontend-design"
+        },
+        "marketplace": "claude-plugins-official"
+      },
+      {
         "name": "codex",
         "version": "1.0.4",
         "origin": {
@@ -2343,6 +2263,16 @@
           "plugin": "warp"
         },
         "marketplace": "claude-code-warp"
+      },
+      {
+        "name": "security-guidance",
+        "version": "2.0.0",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "security-guidance"
+        },
+        "marketplace": "claude-plugins-official"
       }
     ],
     "mcp_servers": [
