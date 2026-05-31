@@ -106,7 +106,8 @@ function extractFirstSentence(text: string): string {
 
 function parseCommaSeparated(text: string): string[] {
   if (!text.trim()) return []
-  return text.trim().split(',').map(s => s.trim()).filter(Boolean)
+  const items = text.trim().split(',').map(s => s.trim()).filter(Boolean)
+  return [...new Set(items)]
 }
 
 function extractHosting(text: string): string {

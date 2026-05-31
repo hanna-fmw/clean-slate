@@ -176,6 +176,28 @@ A simple tool.
   })
 })
 
+describe('parseCleanSlate comma-separated dedupe', () => {
+  const markdown = `# Dupe Project
+
+## Stack
+
+Next.js, TypeScript, pnpm, pnpm, TypeScript
+
+## Services
+
+Vercel, Vercel, Supabase
+`
+  const result = parseCleanSlate(markdown)
+
+  it('removes duplicate stack entries while preserving order', () => {
+    expect(result.stack).toEqual(['Next.js', 'TypeScript', 'pnpm'])
+  })
+
+  it('removes duplicate services entries', () => {
+    expect(result.services).toEqual(['Vercel', 'Supabase'])
+  })
+})
+
 describe('parseCleanSlate chrome_profile extraction', () => {
   it('extracts chrome_profile from a labeled line inside the GitHub section', () => {
     const md = `# X

@@ -119,8 +119,7 @@
         "React 19",
         "shadcn/ui",
         "Tailwind v4",
-        "next-themes",
-        "pnpm"
+        "next-themes"
       ],
       "hosting": "**Frontend:** Vercel (not yet deployed)\n**Backend:** Hetzner VPS via Coolify (not yet deployed). Docker container with volume for agents/.\n**Mattermost:** Self-hosted on homelab or Hetzner (future).",
       "database": "",
