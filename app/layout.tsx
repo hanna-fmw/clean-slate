@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
@@ -16,7 +16,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Clean Slate',
   robots: { index: false, follow: false },
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/icons/apple-icon.png',
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'Clean Slate',
+    statusBarStyle: 'black-translucent',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a',
 }
 
 export default function RootLayout({
