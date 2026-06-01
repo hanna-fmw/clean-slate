@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T15:43:15.263Z",
+  "generated_at": "2026-06-01T21:48:32.601Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-01T11:43:12+02:00"
+      "last_modified": "2026-06-01T17:43:16+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -513,7 +513,7 @@
     {
       "name": "SignalStack",
       "path": "~/Documents/signalstack",
-      "description": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO. Built for non-technical users - natural language chat is the primary interface, not dashboards full of charts.\n\nThe two core selling points are: (1) Talk to your data - ask any marketing data a question in plain language, and (2) Your weekly action plan - cross-subsystem LangGraph agents extract top findings from each area and a consolidator synthesizes them into a ranked action plan. This \"action plan\" feature is the main differentiator - it replaces what an SEO agency decision-maker does.\n\nNavigation is workflow-based: 5 main pages (Home, Research, Visibility, Content, Ads) with progressive disclosure (\"More tools\" sections). Old domain-based routes redirect to new pages.\n\nThe architecture is an npm workspaces monorepo with `apps/web` (Next.js), `apps/api` (Express on port 5000), and `packages/shared`. The Express API is a persistent server (avoids serverless timeouts for AI workloads). Auth is Supabase with JWT verified via jose + JWKS in Express middleware. Implementation plans for all 11 subsystems live in `docs/plans/`.",
+      "description": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO. Built for non-technical users - natural language chat is the primary interface, not dashboards full of charts.\n\nThe two core selling points are: (1) Talk to your data - ask any marketing data a question in plain language, and (2) Your weekly action plan - cross-subsystem LangGraph agents extract top findings from each area and a consolidator synthesizes them into a ranked action plan. This \"action plan\" feature is the main differentiator - it replaces what an SEO agency decision-maker does.\n\nNavigation is workflow-based: 5 main pages (Home, Research, Visibility, Content, Ads) with progressive disclosure (\"More tools\" sections). Old domain-based routes redirect to new pages.\n\nThe architecture is an npm workspaces monorepo with `apps/web` (Next.js), `apps/api` (Express on port 5000), and `packages/shared`. The Express API is a persistent server (avoids serverless timeouts for AI workloads). Auth is Supabase with JWT verified via jose + JWKS in Express middleware.",
       "description_short": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO.",
       "stack": [
         "Next.js (App Router)",
@@ -529,7 +529,7 @@
         "React Testing Library",
         "npm workspaces"
       ],
-      "hosting": "Web: not yet deployed (Vercel target). API: not yet deployed (Coolify target). Database: Supabase (EU, free tier).",
+      "hosting": "Web: not yet deployed (Vercel target, `app.hosk.app`). API: not yet deployed; Coolify server provisioned at Hetzner CPX22 in Helsinki (`coolify-1`, IP 62.238.38.28), target domain `api.hosk.app`. Database: Supabase (EU, free tier).",
       "database": "",
       "github": {
         "account": "personal (hanna-fmw)",
@@ -553,11 +553,11 @@
         "PageSpeed API",
         "Google Ads API (planned)"
       ],
-      "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Design spec at `docs/specs/2026-03-13-signalstack-design.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Pre-launch checklist at `docs/pre-launch-checklist.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`.",
+      "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Architecture overview in `docs/ARCHITECTURE.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Launch checklist + deployment runbook in `docs/LAUNCH.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`. Coolify session notes for the Hetzner server in `~/Documents/infra/hetzner/`.",
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-05-31T18:38:35+02:00"
+      "last_modified": "2026-06-01T22:37:33+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1142,7 +1142,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-01T15:43:15.843Z",
+    "synced_at": "2026-06-01T21:48:33.666Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2266,7 +2266,7 @@
       },
       {
         "name": "security-guidance",
-        "version": "2.0.0",
+        "version": "2.0.1",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
