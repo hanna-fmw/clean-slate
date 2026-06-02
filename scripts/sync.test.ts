@@ -2,7 +2,8 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
-import { findProjectRoots, displayPath } from './sync'
+import { findProjectRoots, displayPath, filterHidden } from './sync'
+import type { Project } from '../lib/types'
 
 describe('findProjectRoots', () => {
   let tmp: string
@@ -48,5 +49,20 @@ describe('displayPath', () => {
   it('abbreviates the home directory to ~', () => {
     const home = process.env.HOME ?? ''
     expect(displayPath(path.join(home, 'Documents', 'projects', 'foo'))).toBe('~/Documents/projects/foo')
+  })
+})
+
+describe('filterHidden', () => {
+  const p = (name: string) => ({ name }) as Project
+
+  it('returns all projects when nothing is hidden', () => {
+    const projects = [p('Alpha'), p('Beta')]
+    expect(filterHidden(projects, [])).toBe(projects)
+  })
+
+  it('excludes hidden projects (case- and whitespace-insensitive)', () => {
+    const projects = [p('Alpha'), p('Beta'), p('Gamma')]
+    const result = filterHidden(projects, ['  beta ', 'GAMMA'])
+    expect(result.map((x) => x.name)).toEqual(['Alpha'])
   })
 })

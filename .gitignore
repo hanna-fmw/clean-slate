@@ -43,6 +43,10 @@ next-env.d.ts
 # claude
 CLAUDE.md
 .claude/
-docs/tasks.md
+docs/
 test-results/
 toolbox-overrides.md
+
+# Local list of project names to hide from the dashboard (e.g. during demos).
+# Kept off GitHub so the hidden names never leave this machine.
+config/hidden-projects.json

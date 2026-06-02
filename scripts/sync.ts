@@ -9,6 +9,9 @@ const HOME_DIR = process.env.HOME ?? ''
 const DOCUMENTS_DIR = path.join(HOME_DIR, 'Documents')
 const PROJECTS_DIR = path.join(DOCUMENTS_DIR, 'projects')
 const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
+// Local, gitignored list of project names to exclude from data.json entirely
+// (e.g. to hide projects during a demo). Names never reach the deployed app.
+const HIDDEN_PATH = path.join(__dirname, '..', 'config', 'hidden-projects.json')
 const CLEAN_SLATE_FILE = 'CLEAN-SLATE.md'
 
 // Directories never worth descending into when hunting for CLEAN-SLATE.md
@@ -131,6 +134,23 @@ function collectProjectDirs(): string[] {
   return [...dirs]
 }
 
+function readHiddenNames(): string[] {
+  const content = readFileIfExists(HIDDEN_PATH)
+  if (!content) return []
+  try {
+    const parsed = JSON.parse(content)
+    return Array.isArray(parsed) ? parsed.filter((n): n is string => typeof n === 'string') : []
+  } catch {
+    return []
+  }
+}
+
+export function filterHidden(projects: Project[], hiddenNames: string[]): Project[] {
+  if (hiddenNames.length === 0) return projects
+  const hidden = new Set(hiddenNames.map((n) => n.toLowerCase().trim()))
+  return projects.filter((p) => !hidden.has(p.name.toLowerCase().trim()))
+}
+
 function main() {
   const projects: Project[] = []
   const byName = new Map<string, Project>()
@@ -155,11 +175,15 @@ function main() {
   projects.push(...byName.values())
   projects.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
 
+  const hiddenNames = readHiddenNames()
+  const visible = filterHidden(projects, hiddenNames)
+  const hiddenCount = projects.length - visible.length
+
   const existing = readJsonIfExists(OUTPUT_PATH) as Partial<DashboardData> | null
 
   const data: DashboardData = {
     generated_at: new Date().toISOString(),
-    projects,
+    projects: visible,
     services: existing?.services ?? [],
     infrastructure: existing?.infrastructure ?? [],
     tools: existing?.tools,
@@ -169,7 +193,10 @@ function main() {
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true })
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2) + '\n')
 
-  console.log(`Synced ${projects.length} projects to config/data.json`)
+  if (hiddenCount > 0) {
+    console.log(`Hiding ${hiddenCount} project(s): ${hiddenNames.join(', ')}`)
+  }
+  console.log(`Synced ${visible.length} projects to config/data.json`)
 }
 
 if (require.main === module) main()
