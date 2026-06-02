@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-02T11:13:23.306Z",
+  "generated_at": "2026-06-02T17:53:24.618Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T09:19:34+02:00"
+      "last_modified": "2026-06-02T13:13:24+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -372,6 +372,68 @@
       "last_modified": "2026-05-17T22:42:00+02:00"
     },
     {
+      "name": "no-excuses",
+      "path": "~/Documents/projects/no-excuses",
+      "description": "Personal home-workout cheat sheet PWA. Browse exercises by muscle group, see a minimum effective set, and log workouts on a calendar (per-day entries, pick from cheat sheet or free text). Single user (Hanna).",
+      "description_short": "Personal home-workout cheat sheet PWA.",
+      "stack": [
+        "Next.js 16 (App Router",
+        "server components)",
+        "React 19",
+        "Tailwind v4",
+        "shadcn/ui (base-nova)",
+        "next-themes (dark default)",
+        "TypeScript",
+        "pnpm."
+      ],
+      "hosting": "Vercel — production at https://no-excuses-tau.vercel.app. Scope/team `hannafmws-projects`. Private repo on Hobby does NOT auto-deploy from GitHub — deploy manually with `pnpm dlx vercel --prod --yes`.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/no-excuses"
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start"
+      },
+      "services": [
+        "- Vercel (hosting)\n- No database yet — workout log uses **localStorage**. Planned: plain Postgres container on home server when cross-device sync is wanted (no Supabase — overkill for one user)."
+      ],
+      "notes": "- Workout log: `/log` page, swappable data layer in `src/lib/workout-log.ts` (`loadEntries`/`saveEntry`/`deleteEntry`) — swap to a Postgres-backed API route without touching the UI.\n- Tailwind v4 font wiring: `@theme` in `globals.css` must reference the exact variable name `next/font` sets (e.g. `--font-geist-sans`). Self-referential `var(--font-sans)` silently falls back to default sans.\n- PWA: `public/manifest.ts` + flame icon makes it installable to Dock. Updates pick up on reopen / hard refresh.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:deploy"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "run"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "code-review"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None configured for this project (single-user, no backend yet)."
+        }
+      ],
+      "deployed_url": "https://no-excuses-tau.vercel.app",
+      "chrome_profile": "",
+      "last_modified": "2026-06-02T16:31:16+02:00"
+    },
+    {
       "name": "OpenClaw",
       "path": "~/Documents/openClaw",
       "description": "OpenClaw is a self-hosted application running on a Proxmox homelab, deployed inside a Docker container managed by Coolify on a dedicated Ubuntu VM (VM1). The setup follows a security-first posture: the VM is network-isolated using NetBird (a WireGuard-based overlay network), SSH-hardened with fail2ban and UFW, and the application is accessible only through the private NetBird network.\n\nOpenClaw integrates with Telegram and provides optional security tooling via its ClawSec module. The repo (named `pfc` on GitHub) contains the installation guide and configuration notes for this deployment.",
@@ -480,7 +542,7 @@
       ],
       "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T10:59:05.676Z"
+      "last_modified": "2026-06-02T11:21:16.755Z"
     },
     {
       "name": "Private Knowledge Base",
@@ -551,7 +613,9 @@
       "run_commands": {
         "./install.sh": "deploy to `~/.disk-cleanup/`, symlink CLI, load schedule",
         "./uninstall.sh` (": "-purge` to also delete state)",
-        "reclaim help": "list all commands"
+        "reclaim help": "list all commands",
+        "reclaim monitor` / `monitor --free": "text Activity Monitor (CPU/memory/swap) + quit heavy apps",
+        "reclaim doctor": "self-check"
       },
       "services": [
         "None. Optionally interacts with the local Docker daemon (skipped if not running)\nand Google Chrome (for the `ram` tab breakdown",
@@ -1211,7 +1275,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-02T11:13:23.888Z",
+    "synced_at": "2026-06-02T17:53:26.100Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2458,6 +2522,14 @@
       {
         "name": "invoice-creator",
         "description": "Create a Swedish-style invoice (faktura) for the user's business as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "learn",
+        "description": "Run a personal tutoring session on one isolated topic. Reads the topic's checklist + progress, picks up where the last session left off (or starts a new topic), teaches incrementally with assess-before-explain and AskUserQuestion quizzes, can interleave real hands-on actions (SSH into a server, run a command, inspect a schema), and ends with the standard session-log + checklist + progress update routine. Triggers on \"/learn\", \"let's do a learn session\", \"tutor me on X\", \"continue the learn session\", \"add a topic for X\", \"add this to my learn references\".",
         "plugin": "custom",
         "origin": {
           "source": "custom"
