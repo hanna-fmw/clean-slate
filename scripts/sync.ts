@@ -5,9 +5,42 @@ import { parseCleanSlate } from './parse-clean-slate'
 import { detectFromPackageJson, detectFromGitConfig } from './detect-project'
 import type { Project, DashboardData } from '../lib/types'
 
-const DOCUMENTS_DIR = path.join(process.env.HOME ?? '', 'Documents')
+const HOME_DIR = process.env.HOME ?? ''
+const DOCUMENTS_DIR = path.join(HOME_DIR, 'Documents')
+const PROJECTS_DIR = path.join(DOCUMENTS_DIR, 'projects')
 const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
 const CLEAN_SLATE_FILE = 'CLEAN-SLATE.md'
+
+// Directories never worth descending into when hunting for CLEAN-SLATE.md
+const IGNORE_DIRS = new Set([
+  'node_modules', '.next', 'dist', 'build', '.turbo', '.vercel', 'coverage', 'out',
+])
+
+export function displayPath(absPath: string): string {
+  return HOME_DIR && absPath.startsWith(HOME_DIR) ? '~' + absPath.slice(HOME_DIR.length) : absPath
+}
+
+// Recursively collect directories that contain a CLEAN-SLATE.md. A directory
+// with one is treated as a project root, so we don't descend further into it.
+export function findProjectRoots(rootDir: string, depth = 0, results: string[] = []): string[] {
+  if (depth > 6) return results
+  let entries: fs.Dirent[]
+  try {
+    entries = fs.readdirSync(rootDir, { withFileTypes: true })
+  } catch {
+    return results
+  }
+  if (entries.some((e) => e.isFile() && e.name === CLEAN_SLATE_FILE)) {
+    results.push(rootDir)
+    return results
+  }
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue
+    if (IGNORE_DIRS.has(entry.name) || entry.name.startsWith('.')) continue
+    findProjectRoots(path.join(rootDir, entry.name), depth + 1, results)
+  }
+  return results
+}
 
 function getLastModified(dirPath: string): string {
   try {
@@ -43,7 +76,8 @@ function readJsonIfExists(filePath: string): Record<string, unknown> | null {
   }
 }
 
-function scanProject(dirPath: string, dirName: string): Project | null {
+function scanProject(dirPath: string): Project | null {
+  const dirName = path.basename(dirPath)
   const cleanSlatePath = path.join(dirPath, CLEAN_SLATE_FILE)
   const cleanSlateContent = readFileIfExists(cleanSlatePath)
   if (!cleanSlateContent) return null
@@ -60,7 +94,7 @@ function scanProject(dirPath: string, dirName: string): Project | null {
 
   return {
     name: parsed.name || dirName,
-    path: `~/Documents/${dirName}`,
+    path: displayPath(dirPath),
     description: parsed.description,
     description_short: parsed.description_short,
     stack: parsed.stack.length > 0 ? parsed.stack : detected.stack,
@@ -83,17 +117,42 @@ function scanProject(dirPath: string, dirName: string): Project | null {
   }
 }
 
-function main() {
-  const entries = fs.readdirSync(DOCUMENTS_DIR, { withFileTypes: true })
-  const projects: Project[] = []
+// Collect candidate project directories: every top-level folder in ~/Documents
+// (one level, as before), plus a recursive scan of ~/Documents/projects.
+function collectProjectDirs(): string[] {
+  const dirs = new Set<string>()
 
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue
-    const dirPath = path.join(DOCUMENTS_DIR, entry.name)
-    const project = scanProject(dirPath, entry.name)
-    if (project) projects.push(project)
+  for (const entry of fs.readdirSync(DOCUMENTS_DIR, { withFileTypes: true })) {
+    if (entry.isDirectory()) dirs.add(path.join(DOCUMENTS_DIR, entry.name))
   }
 
+  for (const dir of findProjectRoots(PROJECTS_DIR)) dirs.add(dir)
+
+  return [...dirs]
+}
+
+function main() {
+  const projects: Project[] = []
+  const byName = new Map<string, Project>()
+
+  for (const dirPath of collectProjectDirs()) {
+    const project = scanProject(dirPath)
+    if (!project) continue
+
+    // A project can transiently exist in two places during migration into
+    // ~/Documents/projects. Dedupe by name, keeping the most recently modified.
+    const key = project.name.toLowerCase()
+    const existing = byName.get(key)
+    if (existing) {
+      const winner = (project.last_modified ?? '') > (existing.last_modified ?? '') ? project : existing
+      byName.set(key, winner)
+      console.warn(`Duplicate project name "${project.name}" - keeping ${winner.path}`)
+      continue
+    }
+    byName.set(key, project)
+  }
+
+  projects.push(...byName.values())
   projects.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
 
   const existing = readJsonIfExists(OUTPUT_PATH) as Partial<DashboardData> | null
@@ -113,4 +172,4 @@ function main() {
   console.log(`Synced ${projects.length} projects to config/data.json`)
 }
 
-main()
+if (require.main === module) main()
