@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T21:48:32.601Z",
+  "generated_at": "2026-06-02T07:19:17.497Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-01T17:43:16+02:00"
+      "last_modified": "2026-06-02T09:19:11+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -284,6 +284,43 @@
       "deployed_url": "https://kb.stormfors.ai",
       "chrome_profile": "",
       "last_modified": "2026-03-14T15:00:32+01:00"
+    },
+    {
+      "name": "Flatfile Playbook",
+      "path": "~/Documents/projects/flatfile-playbook",
+      "description": "Flatfile Playbook is a knowledge repo capturing reusable techniques for building things with the flat-file / git-as-data approach - using plain files in a folder as the source of truth instead of a database, optionally with an LLM as the compiler that turns messy input into clean output. Covers when the pattern fits vs when you need a real database, the swappable pieces (scheduler, compiler, delivery), the AI variant, the connection to Andrej Karpathy's LLM Wiki, and AI persistent memory.",
+      "description_short": "Flatfile Playbook is a knowledge repo capturing reusable techniques for building things with the flat-file / git-as-data approach - using plain files in a folder as the source of truth instead of a database, optionally with an LLM as the compiler that turns messy input into clean output.",
+      "stack": [
+        "Markdown",
+        "Git"
+      ],
+      "hosting": "Not deployed - reference/docs repo.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/flatfile-playbook"
+      },
+      "run_commands": {},
+      "services": [
+        "None"
+      ],
+      "notes": "Born out of the Clean Slate build. The reference implementation of the deterministic version of this pattern lives at `~/Documents/clean-slate`. Ideas land here so they don't get lost; expand the playbook as new use cases come up.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "content-write-article"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers:brainstorming"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-06-02T08:30:16+02:00"
     },
     {
       "name": "JSON-LD Schema Generator",
@@ -414,6 +451,54 @@
       "last_modified": "2026-04-26T21:23:28.301Z"
     },
     {
+      "name": "Pindrop",
+      "path": "~/Documents/projects/pindrop",
+      "description": "Pindrop is a single-screen visual feedback tool for websites the developer builds. The developer picks a page (typed, or chosen from the site's sitemap via a searchable list) and a viewport (Desktop / Tablet / Mobile); a server-side Playwright capture renders a full-page screenshot, and comments are dropped as colored pins directly on the image via a Comment toggle. Pins are viewport-scoped (a mobile note only shows in mobile view) so they never drift. The sidebar switches between Review (the screenshot canvas with pins) and Board (a Trello-style board: Open / In progress / Done columns with drag-and-drop, full-text cards, filter by page + date sort). Screenshots are used instead of a live iframe because cross-origin iframes break full-height (`100vh`) layouts and can't anchor pins reliably.",
+      "description_short": "Pindrop is a single-screen visual feedback tool for websites the developer builds.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "server components",
+        "server actions)\n- TypeScript (strict)\n- Tailwind CSS v4 + shadcn/ui (dark/light mode via next-themes)\n- PostgreSQL via `pg` (no Supabase - plain Postgres)\n- Playwright (chromium) for server-side screenshot capture\n- Zod (validation)",
+        "Resend (optional email)"
+      ],
+      "hosting": "- Target: self-hosted on Hetzner via Coolify (Node server, not Vercel serverless - needed for Playwright)\n- Postgres: a Postgres container on the same host\n- Auth: Cloudflare Access (password) in front of the app",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pindrop"
+      },
+      "run_commands": {
+        "pnpm dev": "start dev server (port 3007)",
+        "node --env-file=.env.local scripts/migrate.mjs": "apply schema + seed demo project",
+        "pnpm build": "production build",
+        "pnpm test": "unit tests (Vitest)",
+        "node scripts/console-check.mjs": "Playwright console/e2e check"
+      },
+      "services": [
+        "- PostgreSQL - pins",
+        "comments",
+        "projects",
+        "screenshot metadata (`DATABASE_URL`)\n- Local screenshots stored under `data/screenshots/` (a volume in production)\n- Resend - optional owner notification email"
+      ],
+      "notes": "- Canvas renders the captured PNG (`/api/screenshot`); `/api/capture` (Playwright, nodejs runtime) takes the shot. A Capture/Refresh button re-captures.\n- Pins store `pin_x/pin_y` in image space + `viewport_w`; filtered per viewport.\n- v1 is single-tenant, no per-user auth: the `author` field (Client / You) is a UI toggle, gated only by a shared `APP_PASSWORD` (proxy.ts) locally and Cloudflare Access in prod. Add real auth + per-project isolation before any multi-client/public use.\n- Dev DB currently points at the local Postgres on `127.0.0.1:54322`.\n- Sitemap: `/api/sitemap` uses the entered URL's origin, discovers via `robots.txt` + `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` (WordPress), stores a `pages` table; sidebar has a searchable page list + depth filter.\n- Capture robustness: normal Chrome UA (HeadlessChrome gets blocked), `waitUntil: 'load'` (networkidle never settles on real sites), scroll + force-eager + `data-src`/WP-placeholder image loading. SSRF guard blocks private/redirect targets in prod; `SSRF_ALLOW_LOCAL=1` only in dev.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:shadcn"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:agent-browser / Playwright"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-05-31T22:45:00+02:00"
+    },
+    {
       "name": "Private Knowledge Base",
       "path": "~/Documents/private-knowledge-base",
       "description": "A personal knowledge base with semantic search and RAG over private markdown notes and documents. Three content sources feed into the system: a local `~/knowledge-base/` folder auto-synced to GitHub via `fswatch`, Google Drive folders (OAuth2, delta sync hourly / full sync every 6h), and manual drag-and-drop uploads in the admin UI.\n\nAll sources go through an ingestion pipeline that chunks content, embeds it using `all-MiniLM-L6-v2` (384-dim vectors, runs locally), and stores vectors in Qdrant. Users ask questions in a chat UI; the app retrieves relevant chunks and passes them to an LLM (Qwen 2.5 7B via HF Inference API) which streams the answer with source citations.\n\nThe web UI includes a TipTap markdown editor, a unified file sidebar showing content from all three sources (Repo / Google Drive / Uploads), and a chat interface. Deployed via Coolify on a dedicated VM (VM2) that is separate and isolated from other VMs on the home server.",
@@ -509,6 +594,54 @@
       "deployed_url": "",
       "chrome_profile": "",
       "last_modified": "2026-04-04T13:23:52+02:00"
+    },
+    {
+      "name": "reclaim",
+      "path": "~/Documents/projects/reclaim",
+      "description": "A process-aware disk and memory janitor for macOS. Not just a cleaner - a\nsmall, auditable workspace agent whose rule is to **never delete anything you\nare actively working on**. Before removing a project's build cache it checks for\na running dev server, a dirty git tree, or **files edited in the last\n24h, and protects any project that matches. Frees only regenerable caches and\njunk** (Next.js `.next`, installer DMGs, Docker dangling images), pops up an\napproval dialog, measures real space freed, and records every removed path in\nan append-only JSON audit log. Runs on a schedule via launchd, every ~3 days.",
+      "description_short": "A process-aware disk and memory janitor for macOS.",
+      "stack": [
+        "- **Language:** Bash (3.2-compatible) + a little Python 3 (system default) for log parsing\n- **UI:** macOS native dialogs/notifications via `osascript` (AppleScript)\n- **Scheduler:** launchd LaunchAgent (daily 08:45",
+        "3-day gate in script)\n- **Data:** flat-file append-only `history.jsonl` (the \"git for data\" approach)\n- No external dependencies",
+        "no telemetry"
+      ],
+      "hosting": "Local only - runs on the Mac. No server, no cloud.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/reclaim"
+      },
+      "run_commands": {
+        "./install.sh": "deploy to `~/.disk-cleanup/`, symlink CLI, load schedule",
+        "./uninstall.sh` (": "-purge` to also delete state)",
+        "reclaim help": "list all commands"
+      },
+      "services": [
+        "None. Optionally interacts with the local Docker daemon (skipped if not running)\nand Google Chrome (for the `ram` tab breakdown",
+        "read-only via AppleScript)."
+      ],
+      "notes": "- Runtime install lives in `~/.disk-cleanup/`; this folder is the editable source.\n  Edit here, re-run `./install.sh` to deploy.\n- Deliberately **no Trash-recovery**: macOS Trash is same-volume (moving frees ~0\n  bytes) and `.next` is regenerable, so recovery has no value and would defeat the\n  purpose. This is a defensible design decision, not a missing feature.\n- launchd is intentionally unremarkable - every comparable tool uses it. The\n  differentiators are active-work awareness, auditability, and transparency.\n- Built collaboratively 2026-06-01 by extracting the methodology from a manual\n  disk-cleanup session (16 GB Mac that had dropped to 878 MB free).\n- Config knobs at top of `cleanup.sh`: `INTERVAL_DAYS`, `PROTECT_HOURS`, `DOCS`, `DMG_DIR`.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "update-config"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "None specific. `Performance Benchmarker` or `DevOps Automator` could help if extending to system-wide profiling."
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None required."
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-06-02T09:18:42+02:00"
     },
     {
       "name": "SignalStack",
