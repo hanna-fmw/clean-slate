@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-02T07:19:17.497Z",
+  "generated_at": "2026-06-02T11:13:23.306Z",
   "projects": [
     {
       "name": "AI Hub Project",
       "path": "~/Documents/ai-hub-project",
-      "description": "A two-part workspace for AI leadership work. The parent folder contains two subprojects that serve different purposes but share the same overall mission.\n\nai-hub/ is a private content workspace for preparing and developing AI training material, standards, and workshops. It is organized by audience skill tier (beginner, intermediate, advanced) and covers learning material creation, standards and protocols, workshop planning, personal skill development, and tooling resources. It is a document/markdown workspace, not a deployable application.\n\nai-hub-platform/ is a Next.js 16 web application for creating, managing, and presenting AI training material. It provides a dashboard view and a presentation mode. The app uses server components by default, Tailwind CSS v4, shadcn/ui, Zod for validation, Framer Motion for animations, and next-themes for dark/light mode toggling. A Prisma-backed Postgres database is planned but not yet connected.",
-      "description_short": "A two-part workspace for AI leadership work.",
+      "description": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
+      "description_short": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
       "stack": [
         "Next.js 16",
         "React 19",
@@ -39,7 +39,7 @@
         "Coolify",
         "Hugging Face (planned for LLM features)"
       ],
-      "notes": "The `ai-hub/` content workspace has no git repo or deployable code - it is a local markdown workspace only. The `ai-hub-platform/` app is the deployable product. The two are separate: `ai-hub/` holds source material and standards that the platform may eventually surface. Content in `ai-hub/` is organized by skill tier - always consider which tier content targets (beginner / intermediate / advanced) when creating material.",
+      "notes": "A personal collection of AI assets, ideas, and learning notes. Work in progress.",
       "toolbox_mentions": [
         {
           "type": "skill",
@@ -94,7 +94,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-05-22T14:06:16.068Z"
+      "last_modified": "2026-06-02T07:40:28.094Z"
     },
     {
       "name": "baby-claw",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T09:19:11+02:00"
+      "last_modified": "2026-06-02T09:19:34+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -407,96 +407,80 @@
       "last_modified": "2026-02-15T18:15:06+01:00"
     },
     {
-      "name": "Personal Knowledge Base",
-      "path": "~/Documents/knowledge-base-md-files",
-      "description": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes. The system lets you ask natural-language questions and get answers sourced from your own documents.\n\nThe pipeline works as follows: markdown notes live on VM2 at `/home/hanna/markdown-vault/` and are edited via VS Code Remote-SSH. A Node.js indexing script uses local embeddings (`@xenova/transformers`) to chunk and embed the documents, storing them in Qdrant (a vector database deployed via Coolify). At query time, a Node.js script performs semantic search against Qdrant and sends the top chunks to the HF Inference API (Qwen/Qwen2.5-7B-Instruct) to generate an answer with source attribution.\n\nA Next.js 16 web UI provides a chat interface, document management admin panel, dark mode, and markdown rendering. The UI is deployed via Coolify using a deploy key from GitHub, with nixpacks as the build system. A SQLite database (persisted via Coolify volume) tracks indexed document metadata.\n\nThis local folder (`knowledge-base-md-files/`) contains documentation and guides about the project, not the application code itself. The actual app code lives at `~/Desktop/private-knowledge-base/`.",
-      "description_short": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes.",
+      "name": "Portfolio Platform",
+      "path": "~/Documents/portfolio-platform",
+      "description": "A personal portfolio at portfolio.hosk.app, built as a platform-style dashboard rather than a traditional portfolio site. Visitors land in a sidebar-driven interface with sections for About, Projects, Services & Tools, and CV - mirroring the operational dashboard aesthetic of [clean-slate](https://github.com/hanna-fmw/clean-slate) but adapted for public consumption.\n\nThe Projects view reads from `CLEAN-SLATE.md` files across `~/Documents/` projects (same source files Clean Slate uses internally), but only includes projects flagged with `Portfolio: true`. Public repos show live URLs and source links; private repos show screenshots and a short blurb instead of internal run commands or infra notes.\n\nThe CV section is the source of truth for the resume - HTML rendered, with a print stylesheet that produces a clean PDF via browser print-to-PDF. The live URL works in LinkedIn's Featured section and as a Website link; the downloadable PDF covers ATS systems (Workday/Greenhouse/Lever).\n\nA sync script parses portfolio-flagged `CLEAN-SLATE.md` files into `config/data.json` at build time. No database, fully static.",
+      "description_short": "A personal portfolio at portfolio.hosk.app, built as a platform-style dashboard rather than a traditional portfolio site.",
       "stack": [
         "Next.js 16",
-        "Node.js",
-        "Qdrant",
-        "SQLite",
-        "@xenova/transformers (local embeddings)",
-        "HF Inference API (Qwen LLM)",
-        "Coolify",
-        "Docker",
-        "Ubuntu 24.04",
-        "Proxmox",
-        "NetBird"
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "next-themes"
       ],
-      "hosting": "App: Coolify on VM2 (local IP 192.168.0.104, NetBird IP 100.109.251.80). Accessible at http://100.109.251.80/ via NetBird private network. No public URL yet (Cloudflare tunnel planned but not set up).",
+      "hosting": "Vercel free tier. Domain: portfolio.hosk.app.",
       "database": "",
       "github": {
         "account": "personal (hanna-fmw)",
         "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/private-knowledge-base (private) - note: app code repo, not this docs folder"
+        "repo_url": "TBD"
       },
       "run_commands": {
-        "pnpm dev": "local dev server",
-        "pnpm build": "production build",
-        "node /home/hanna/kb-scripts/index.js": "index/re-index markdown vault",
-        "node /home/hanna/kb-scripts/query.js": "CLI semantic search"
+        "pnpm dev": "start dev server on localhost:3400",
+        "pnpm build": "build for production",
+        "pnpm sync": "scan ~/Documents/ for CLEAN-SLATE.md files flagged `Portfolio: true` and regenerate config/data.json",
+        "pnpm test": "run tests",
+        "pnpm lint": "lint"
       },
       "services": [
-        "Hugging Face Inference API",
-        "Qdrant",
-        "Coolify",
-        "NetBird",
-        "GitHub"
+        "Vercel"
       ],
-      "notes": "Auto-deploy on push is not active - Coolify's webhook is only on the private NetBird network so GitHub can't reach it. Manual deploy (two clicks in Coolify UI) is the current workflow. Remaining work: Cloudflare tunnel for public HTTPS URL + custom domain, then switch to GitHub App integration for auto-deploy. Also needs real content added and re-indexed.",
-      "toolbox_mentions": [],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "last_modified": "2026-04-26T21:23:28.301Z"
-    },
-    {
-      "name": "Pindrop",
-      "path": "~/Documents/projects/pindrop",
-      "description": "Pindrop is a single-screen visual feedback tool for websites the developer builds. The developer picks a page (typed, or chosen from the site's sitemap via a searchable list) and a viewport (Desktop / Tablet / Mobile); a server-side Playwright capture renders a full-page screenshot, and comments are dropped as colored pins directly on the image via a Comment toggle. Pins are viewport-scoped (a mobile note only shows in mobile view) so they never drift. The sidebar switches between Review (the screenshot canvas with pins) and Board (a Trello-style board: Open / In progress / Done columns with drag-and-drop, full-text cards, filter by page + date sort). Screenshots are used instead of a live iframe because cross-origin iframes break full-height (`100vh`) layouts and can't anchor pins reliably.",
-      "description_short": "Pindrop is a single-screen visual feedback tool for websites the developer builds.",
-      "stack": [
-        "- Next.js 16 (App Router",
-        "server components",
-        "server actions)\n- TypeScript (strict)\n- Tailwind CSS v4 + shadcn/ui (dark/light mode via next-themes)\n- PostgreSQL via `pg` (no Supabase - plain Postgres)\n- Playwright (chromium) for server-side screenshot capture\n- Zod (validation)",
-        "Resend (optional email)"
-      ],
-      "hosting": "- Target: self-hosted on Hetzner via Coolify (Node server, not Vercel serverless - needed for Playwright)\n- Postgres: a Postgres container on the same host\n- Auth: Cloudflare Access (password) in front of the app",
-      "database": "",
-      "github": {
-        "account": "hanna-fmw",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/pindrop"
-      },
-      "run_commands": {
-        "pnpm dev": "start dev server (port 3007)",
-        "node --env-file=.env.local scripts/migrate.mjs": "apply schema + seed demo project",
-        "pnpm build": "production build",
-        "pnpm test": "unit tests (Vitest)",
-        "node scripts/console-check.mjs": "Playwright console/e2e check"
-      },
-      "services": [
-        "- PostgreSQL - pins",
-        "comments",
-        "projects",
-        "screenshot metadata (`DATABASE_URL`)\n- Local screenshots stored under `data/screenshots/` (a volume in production)\n- Resend - optional owner notification email"
-      ],
-      "notes": "- Canvas renders the captured PNG (`/api/screenshot`); `/api/capture` (Playwright, nodejs runtime) takes the shot. A Capture/Refresh button re-captures.\n- Pins store `pin_x/pin_y` in image space + `viewport_w`; filtered per viewport.\n- v1 is single-tenant, no per-user auth: the `author` field (Client / You) is a UI toggle, gated only by a shared `APP_PASSWORD` (proxy.ts) locally and Cloudflare Access in prod. Add real auth + per-project isolation before any multi-client/public use.\n- Dev DB currently points at the local Postgres on `127.0.0.1:54322`.\n- Sitemap: `/api/sitemap` uses the entered URL's origin, discovers via `robots.txt` + `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` (WordPress), stores a `pages` table; sidebar has a searchable page list + depth filter.\n- Capture robustness: normal Chrome UA (HeadlessChrome gets blocked), `waitUntil: 'load'` (networkidle never settles on real sites), scroll + force-eager + `data-src`/WP-placeholder image loading. SSRF guard blocks private/redirect targets in prod; `SSRF_ALLOW_LOCAL=1` only in dev.",
+      "notes": "No database. Fully static. Data comes from portfolio-flagged CLEAN-SLATE.md files across ~/Documents/.\nTo add a project: in that project's `CLEAN-SLATE.md`, add `Portfolio: true` and a `## Portfolio` section with blurb, role, screenshots, and live URL.",
       "toolbox_mentions": [
         {
           "type": "skill",
           "category": null,
-          "name": "vercel:shadcn"
+          "name": "frontend-design"
         },
         {
           "type": "skill",
           "category": null,
-          "name": "compound-engineering:agent-browser / Playwright"
+          "name": "gemini-imagegen"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:deployments-cicd"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "Frontend Developer"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "UI Designer"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "UX Architect"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "(none required for static site)"
         }
       ],
-      "deployed_url": "",
+      "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-05-31T22:45:00+02:00"
+      "last_modified": "2026-06-02T10:59:05.676Z"
     },
     {
       "name": "Private Knowledge Base",
@@ -548,54 +532,6 @@
       "last_modified": "2026-03-14T16:23:41+01:00"
     },
     {
-      "name": "RankSmile",
-      "path": "~/Documents/ranksmile",
-      "description": "An SEO SaaS targeting small Swedish businesses. Positioned as decision intelligence for SEO - it helps users optimize and generate content, not just write with AI. The core value is telling users what to do, not just surfacing data.\n\nThe project is a pnpm monorepo with two apps: `apps/web` (Next.js frontend on Vercel) and `apps/api` (Express backend to be deployed on Coolify). Auth uses Supabase. A Vercel Cron job runs daily at 06:00 UTC to process articles via `/api/cron/process-articles`. Magic link dev login is available via `node scripts/dev-login.js` from the repo root.",
-      "description_short": "An SEO SaaS targeting small Swedish businesses.",
-      "stack": [
-        "Next.js 16",
-        "TypeScript",
-        "shadcn/ui",
-        "Tailwind CSS",
-        "Express",
-        "Supabase (auth + PostgreSQL + RLS)",
-        "OpenRouter",
-        "Stripe",
-        "Resend",
-        "Vitest",
-        "pnpm workspaces"
-      ],
-      "hosting": "Web: Vercel (team: ranksmile). API: to be deployed on Coolify. Database: Supabase (EU region).",
-      "database": "",
-      "github": {
-        "account": "ranksmile (adminranksmile-design)",
-        "ssh_alias": "github.com-ranksmile",
-        "repo_url": "https://github.com/adminranksmile-design/ranksmile"
-      },
-      "run_commands": {
-        "pnpm dev": "start both web (port 3005) and API (port 8000) in parallel",
-        "pnpm dev:web": "start only the Next.js web app",
-        "pnpm dev:api": "start only the Express API",
-        "pnpm dev:login": "generate a magic link for dev login (requires env vars from `apps/web/.env.local`)",
-        "pnpm build": "build all apps",
-        "pnpm test": "run Vitest across all apps",
-        "pnpm lint": "run ESLint",
-        "pnpm type-check": "run TypeScript check across all apps"
-      },
-      "services": [
-        "Supabase (auth + database)",
-        "Vercel (hosting + cron)",
-        "OpenRouter (LLM)",
-        "Stripe (payments)",
-        "Resend (email)"
-      ],
-      "notes": "Two env files must be kept in sync: `apps/web/.env.local` (Next.js) and `.env.local` at repo root (API). Shared vars include Supabase keys and `CRON_SECRET`. Word count is capped at 500 in `apps/api/src/services/articles/article-generator.ts` during development - remove for production. Supabase project ref: `awtwkdkinpykaozbwcdy`. MCP server `supabase-ranksmile` is configured in `~/.claude.json`.",
-      "toolbox_mentions": [],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "last_modified": "2026-04-04T13:23:52+02:00"
-    },
-    {
       "name": "reclaim",
       "path": "~/Documents/projects/reclaim",
       "description": "A process-aware disk and memory janitor for macOS. Not just a cleaner - a\nsmall, auditable workspace agent whose rule is to **never delete anything you\nare actively working on**. Before removing a project's build cache it checks for\na running dev server, a dirty git tree, or **files edited in the last\n24h, and protects any project that matches. Frees only regenerable caches and\njunk** (Next.js `.next`, installer DMGs, Docker dangling images), pops up an\napproval dialog, measures real space freed, and records every removed path in\nan append-only JSON audit log. Runs on a schedule via launchd, every ~3 days.",
@@ -641,7 +577,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T09:18:42+02:00"
+      "last_modified": "2026-06-02T12:37:48+02:00"
     },
     {
       "name": "SignalStack",
@@ -1275,7 +1211,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-01T21:48:33.666Z",
+    "synced_at": "2026-06-02T11:13:23.888Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2399,7 +2335,7 @@
       },
       {
         "name": "security-guidance",
-        "version": "2.0.1",
+        "version": "2.0.2",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2610,18 +2546,8 @@
         }
       },
       {
-        "name": "figma-create-design-system-rules",
-        "description": "Generates custom design system rules for the user's codebase. Use when user says \"create design system rules\", \"generate rules for my project\", \"set up design rules\", \"customize design system guidelines\", or wants to establish project-specific conventions for Figma-to-code workflows. Requires Figma MCP server connection.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
         "name": "figma-create-new-file",
-        "description": "Create a new blank Figma file. Use when the user wants to create a new Figma design or FigJam file, or when you need a new file before calling use_figma. Handles plan resolution via whoami if needed. Usage — /figma-create-new-file [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard)",
+        "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `create_new_file` tool call. NEVER call `create_new_file` directly without loading this skill first. Trigger whenever the user wants a new blank Figma file — a new design, FigJam, or Slides file — or when you need a fresh file before calling `use_figma`. Usage — /figma-create-new-file [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard, /figma-create-new-file slides Q3 Review)",
         "plugin": "figma",
         "origin": {
           "source": "anthropic",
@@ -2641,7 +2567,7 @@
       },
       {
         "name": "figma-generate-diagram",
-        "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. Routes to type-specific guidance (generic flowchart, architecture flowchart) and tells you when to proceed directly, when to use a different diagram type, or when the tool isn't the right fit at all.",
+        "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. NEVER call `generate_diagram` directly without loading this skill first. Trigger whenever the user asks to create, generate, draw, render, sketch, or build a diagram — flowchart, architecture diagram, sequence diagram, ERD or entity-relationship diagram, state diagram or state machine, gantt chart, or timeline. Also trigger when the user mentions Mermaid syntax or wants a system architecture, decision tree, dependency graph, API call flow, auth handshake, schema, or pipeline visualized in FigJam. Routes to type-specific guidance, sets universal Mermaid constraints, and tells you when to use a different diagram type or skip the tool entirely (mindmaps, pie charts, class diagrams, etc.).",
         "plugin": "figma",
         "origin": {
           "source": "anthropic",
@@ -2651,17 +2577,7 @@
       },
       {
         "name": "figma-generate-library",
-        "description": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-implement-design",
-        "description": "Translates Figma designs into production-ready application code with 1:1 visual fidelity. Use when implementing UI code from Figma files, when user mentions \"implement design\", \"generate code\", \"implement component\", provides Figma URLs, or asks to build components matching Figma specs. For Figma canvas writes via `use_figma`, use `figma-use`.",
+        "description": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, create individual components with proper variant sets and variable bindings, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. Also use when the user asks to create or generate any component in Figma — even a single one — since components require proper variable foundations, variant states, and design token bindings to be production-quality. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
         "plugin": "figma",
         "origin": {
           "source": "anthropic",
