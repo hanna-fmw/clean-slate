@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T09:34:31.433Z",
+  "generated_at": "2026-06-04T15:44:56.682Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-04T00:46:31+02:00"
+      "last_modified": "2026-06-04T11:34:32+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -630,54 +630,35 @@
       "last_modified": "2026-03-14T16:23:41+01:00"
     },
     {
-      "name": "reclaim",
-      "path": "~/Documents/projects/reclaim",
-      "description": "A process-aware disk and memory janitor for macOS. Not just a cleaner - a\nsmall, auditable workspace agent whose rule is to **never delete anything you\nare actively working on**. Before removing a project's build cache it checks for\na running dev server, a dirty git tree, or **files edited in the last\n24h, and protects any project that matches. Frees only regenerable caches and\njunk** (Next.js `.next`, installer DMGs, Docker dangling images), pops up an\napproval dialog, measures real space freed, and records every removed path in\nan append-only JSON audit log. Runs on a schedule via launchd, every ~3 days.",
-      "description_short": "A process-aware disk and memory janitor for macOS.",
+      "name": "Reclaim",
+      "path": "~/Documents/projects/utilities/reclaim",
+      "description": "Process-aware macOS disk + memory janitor. ~250 lines of auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with an approval dialog.",
+      "description_short": "Process-aware macOS disk + memory janitor.",
       "stack": [
-        "- **Language:** Bash (3.2-compatible) + a little Python 3 (system default) for log parsing\n- **UI:** macOS native dialogs/notifications via `osascript` (AppleScript)\n- **Scheduler:** launchd LaunchAgent (daily 08:45",
-        "3-day gate in script)\n- **Data:** flat-file append-only `history.jsonl` (the \"git for data\" approach)\n- No external dependencies",
-        "no telemetry"
+        "Bash",
+        "Python 3 (for history/stats/trend)",
+        "AppleScript (for the approval dialog and Chrome tab inspection)",
+        "launchd"
       ],
-      "hosting": "Local only - runs on the Mac. No server, no cloud.",
+      "hosting": "Local macOS tool. Deployed to `~/.disk-cleanup/` by `install.sh`, CLI symlinked onto PATH.",
       "database": "",
       "github": {
-        "account": "hanna-fmw",
+        "account": "**hanna-fmw** (personal)",
         "ssh_alias": "github.com-personal",
         "repo_url": "https://github.com/hanna-fmw/reclaim"
       },
-      "run_commands": {
-        "./install.sh": "deploy to `~/.disk-cleanup/`, symlink CLI, load schedule",
-        "./uninstall.sh` (": "-purge` to also delete state)",
-        "reclaim help": "list all commands",
-        "reclaim monitor` / `monitor --free": "text Activity Monitor (CPU/memory/swap) + quit heavy apps",
-        "reclaim doctor": "self-check"
-      },
+      "run_commands": {},
       "services": [
-        "None. Optionally interacts with the local Docker daemon (skipped if not running)\nand Google Chrome (for the `ram` tab breakdown",
-        "read-only via AppleScript)."
+        "- **launchd** — `dev.reclaim.plist`",
+        "label `dev.reclaim`",
+        "daily 08:45",
+        "with a 3-day gate inside `cleanup.sh` so it only actually acts every ~3 days.\n- **Docker** — pruned at clean time (images + build cache; never volumes). Step skipped silently if daemon is not running."
       ],
-      "notes": "- Runtime install lives in `~/.disk-cleanup/`; this folder is the editable source.\n  Edit here, re-run `./install.sh` to deploy.\n- Deliberately **no Trash-recovery**: macOS Trash is same-volume (moving frees ~0\n  bytes) and `.next` is regenerable, so recovery has no value and would defeat the\n  purpose. This is a defensible design decision, not a missing feature.\n- launchd is intentionally unremarkable - every comparable tool uses it. The\n  differentiators are active-work awareness, auditability, and transparency.\n- Built collaboratively 2026-06-01 by extracting the methodology from a manual\n  disk-cleanup session (16 GB Mac that had dropped to 878 MB free).\n- Config knobs at top of `cleanup.sh`: `INTERVAL_DAYS`, `PROTECT_HOURS`, `DOCS`, `DMG_DIR`.",
-      "toolbox_mentions": [
-        {
-          "type": "skill",
-          "category": null,
-          "name": "update-config"
-        },
-        {
-          "type": "agent",
-          "category": null,
-          "name": "None specific. `Performance Benchmarker` or `DevOps Automator` could help if extending to system-wide profiling."
-        },
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "None required."
-        }
-      ],
-      "deployed_url": "",
+      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- Runtime state lives at `~/.disk-cleanup/` (audit log `history.jsonl`, last-run timestamp). Not part of the repo.\n- The cloned folder is the source of truth — edit there, then re-run `./install.sh` to redeploy.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only).",
+      "toolbox_mentions": [],
+      "deployed_url": "https://install.sh",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T12:37:48+02:00"
+      "last_modified": "2026-06-04T13:50:09+02:00"
     },
     {
       "name": "SignalStack",
@@ -726,7 +707,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-01T22:37:33+02:00"
+      "last_modified": "2026-06-04T13:34:59+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -766,6 +747,64 @@
       "deployed_url": "",
       "chrome_profile": "",
       "last_modified": "2026-01-11T21:21:43+01:00"
+    },
+    {
+      "name": "Unlogged",
+      "path": "~/Documents/projects/utilities/unlogged",
+      "description": "Fullscreen macOS overlay that takes over the screen on Friday afternoons and refuses to be ignored until time is logged in Harvest. Built with Tauri 2 (Rust + WebView), runs at ~15 MB and ~0% idle CPU. Active animation: a terminal-style ASCII skull reveal with typed alert lines.",
+      "description_short": "Fullscreen macOS overlay that takes over the screen on Friday afternoons and refuses to be ignored until time is logged in Harvest.",
+      "stack": [
+        "Tauri 2",
+        "Rust",
+        "React",
+        "TypeScript",
+        "Vite",
+        "pnpm"
+      ],
+      "hosting": "Local macOS app (not hosted). LaunchAgent schedule + tray menu integration.",
+      "database": "",
+      "github": {
+        "account": "**hanna-fmw** (personal)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/unlogged"
+      },
+      "run_commands": {
+        "pnpm dev": "vite",
+        "pnpm build": "tsc && vite build",
+        "pnpm test": "vitest"
+      },
+      "services": [
+        "- **Harvest API** — Personal Access Token + Account ID",
+        "stored at `~/Library/Application Support/dev.unlogged/state.json` (0600 perms). Set via tray menu → \"Harvest credentials…\".\n- **launchd** — schedule fires `dev.unlogged.plist`",
+        "label `dev.unlogged`",
+        "default Friday 16:45.\n- **macOS Login Items** — app added so Cmd+Shift+H survives reboots."
+      ],
+      "notes": "- Bundle identifier: `dev.unlogged` (NOT `com.hanna.timereport`; changed during open-source prep to remove personal name from public artifacts).\n- State file location depends on bundle identifier — if identifier changes again, migrate `~/Library/Application Support/<old-id>/state.json` to the new dir.\n- TCC (Automation permission for System Events) is keyed by bundle identifier; identifier change re-prompts once.\n- `docs/` is gitignored except `docs/screenshot.png`. Walkthrough, handoffs, planning files stay local.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "session-handoff"
+        },
+        {
+          "type": "plugin",
+          "category": null,
+          "name": "firecrawl-mcp-stormfors"
+        },
+        {
+          "type": "plugin",
+          "category": null,
+          "name": "plugin:compound-engineering:context7"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-06-04T15:31:32+02:00"
     },
     {
       "name": "Yllw",
@@ -1311,7 +1350,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-04T09:34:31.978Z",
+    "synced_at": "2026-06-04T15:44:57.852Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
