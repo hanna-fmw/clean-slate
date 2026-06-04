@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T18:24:26.475Z",
+  "generated_at": "2026-06-04T18:28:50.732Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-04T17:44:58+02:00"
+      "last_modified": "2026-06-04T20:24:28+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1350,7 +1350,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-04T18:24:27.988Z",
+    "synced_at": "2026-06-04T18:28:51.734Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
