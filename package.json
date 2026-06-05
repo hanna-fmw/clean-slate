@@ -10,7 +10,8 @@
     "sync": "npx tsx scripts/sync.ts",
     "sync:tools": "npx tsx scripts/sync-tools.ts",
     "sync:toolbox": "npx tsx scripts/build-toolbox.ts",
-    "sync:all": "npx tsx scripts/sync.ts && npx tsx scripts/sync-tools.ts && npx tsx scripts/build-toolbox.ts",
+    "sync:reference": "npx tsx scripts/sync-reference.ts",
+    "sync:all": "npx tsx scripts/sync.ts && npx tsx scripts/sync-tools.ts && npx tsx scripts/build-toolbox.ts && npx tsx scripts/sync-reference.ts",
     "test": "vitest run",
     "test:watch": "vitest"
   },
