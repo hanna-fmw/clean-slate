@@ -38,7 +38,7 @@ function firstLine(text: string): string {
     if (line.startsWith('#')) continue
     if (line.startsWith('---')) continue
     if (line.startsWith('<!--')) continue
-    return line.replace(/[*_`]/g, '').slice(0, 600)
+    return line.replace(/^[-*+]\s+/, '').replace(/[*_`]/g, '').slice(0, 600)
   }
   return ''
 }

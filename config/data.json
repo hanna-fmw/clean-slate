@@ -3799,7 +3799,7 @@
     }
   ],
   "reference": {
-    "synced_at": "2026-06-05T21:48:41.019Z",
+    "synced_at": "2026-06-05T21:59:24.572Z",
     "root": "~/.claude",
     "groups": [
       {
@@ -3834,7 +3834,7 @@
           {
             "name": "preferences.md",
             "path": "~/.claude/preferences.md",
-            "description": "- Keep responses SHORT and CONCISE",
+            "description": "Keep responses SHORT and CONCISE",
             "kind": "file"
           },
           {
@@ -3865,7 +3865,7 @@
           {
             "name": "browser-devtools.md",
             "path": "~/.claude/rules/browser-devtools.md",
-            "description": "- When entering test data in forms, screenshots, or Playwright scripts, NEVER use real names, emails, phone numbers, addresses, or ANY PII from memory or other projects. ALWAYS use generic/fictional data (e.g., \"Acme AB\", \"test@example.com\", \"+46 00 000 0000\").",
+            "description": "When entering test data in forms, screenshots, or Playwright scripts, NEVER use real names, emails, phone numbers, addresses, or ANY PII from memory or other projects. ALWAYS use generic/fictional data (e.g., \"Acme AB\", \"test@example.com\", \"+46 00 000 0000\").",
             "kind": "file"
           },
           {
@@ -3883,13 +3883,13 @@
           {
             "name": "custom-agents.md",
             "path": "~/.claude/rules/custom-agents.md",
-            "description": "- When dispatching agents, NEVER include real names, emails, phone numbers, addresses, or ANY PII from memory or other projects in agent prompts. ALWAYS use generic/fictional data unless the user explicitly provided real data in the current conversation for the current project.",
+            "description": "When dispatching agents, NEVER include real names, emails, phone numbers, addresses, or ANY PII from memory or other projects in agent prompts. ALWAYS use generic/fictional data unless the user explicitly provided real data in the current conversation for the current project.",
             "kind": "file"
           },
           {
             "name": "github-accounts.md",
             "path": "~/.claude/rules/github-accounts.md",
-            "description": "- Before ANY commit or push, verify that NO real client names, business names, emails, phone numbers, addresses, or ANY PII from memory or other projects appear in the code, comments, mockups, placeholder text, test data, or commit messages.",
+            "description": "Before ANY commit or push, verify that NO real client names, business names, emails, phone numbers, addresses, or ANY PII from memory or other projects appear in the code, comments, mockups, placeholder text, test data, or commit messages.",
             "kind": "file"
           },
           {
@@ -4602,7 +4602,7 @@
           {
             "name": "MEMORY.md",
             "path": "~/.claude/memory/MEMORY.md",
-            "description": "- [Shopify MCP setup guide](referenceshopify-mcp-setup.md) - How to set up shopify-dev-mcp + shopify-mcp for any Shopify store (project-scoped per store)",
+            "description": "[Shopify MCP setup guide](referenceshopify-mcp-setup.md) - How to set up shopify-dev-mcp + shopify-mcp for any Shopify store (project-scoped per store)",
             "kind": "file"
           },
           {
