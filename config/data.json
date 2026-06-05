@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-04T18:28:50.732Z",
+  "generated_at": "2026-06-05T07:32:25.618Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-04T20:24:28+02:00"
+      "last_modified": "2026-06-04T20:28:51+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -804,7 +804,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-04T15:31:32+02:00"
+      "last_modified": "2026-06-05T07:46:59+02:00"
     },
     {
       "name": "Yllw",
@@ -1350,7 +1350,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-04T18:28:51.734Z",
+    "synced_at": "2026-06-05T07:32:26.167Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2893,6 +2893,16 @@
         }
       },
       {
+        "name": "huggingface-zerogpu",
+        "description": "AI demos and GPU compute with Gradio Spaces and Hugging Face Spaces ZeroGPU. Use when writing or reviewing code that uses `@spaces.GPU`, configuring `python_version` or `requirements.txt` for a ZeroGPU Space, or handling ZeroGPU-specific code constraints — pickle-based process isolation, `gr.State` semantics across the worker boundary, no `torch.compile` (use AoTI instead), CUDA wheel-only builds (no `nvcc` at build or runtime), large vs xlarge sizing, and dynamic duration callables. Make sure to use this skill whenever the user mentions ZeroGPU, `@spaces.GPU`, or the `spaces` Python package, or hits ZeroGPU-specific code errors like `PicklingError` across the worker boundary, `illegal duration`, or `flash-attn` wheel-build failures — even when the user does not explicitly ask for ZeroGPU coding guidance. Trigger on `import spaces` or `@spaces.GPU` in code.",
+        "plugin": "huggingface-skills",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "huggingface-skills"
+        }
+      },
+      {
         "name": "train-sentence-transformers",
         "description": "Train or fine-tune sentence-transformers models across `SentenceTransformer` (bi-encoder; dense or static embedding model; for retrieval, similarity, clustering, classification, paraphrase mining, dedup, multimodal), `CrossEncoder` (reranker; pair scoring for two-stage retrieval / pair classification), and `SparseEncoder` (SPLADE, sparse embedding model; for learned-sparse retrieval). Covers loss selection, hard-negative mining, evaluators, distillation, LoRA, Matryoshka, and Hugging Face Hub publishing. Use for any sentence-transformers training task.",
         "plugin": "huggingface-skills",
@@ -2905,16 +2915,6 @@
       {
         "name": "transformers-js",
         "description": "Use Transformers.js to run state-of-the-art machine learning models directly in JavaScript/TypeScript. Supports NLP (text classification, translation, summarization), computer vision (image classification, object detection), audio (speech recognition, audio classification), and multimodal tasks. Works in browsers and server-side runtimes (Node.js, Bun, Deno) with WebGPU/WASM using pre-trained models from Hugging Face Hub.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-zerogpu",
-        "description": "AI demos and GPU compute with Gradio Spaces and Hugging Face Spaces ZeroGPU. Use when writing or reviewing code that uses `@spaces.GPU`, configuring `python_version` or `requirements.txt` for a ZeroGPU Space, or handling ZeroGPU-specific code constraints — pickle-based process isolation, `gr.State` semantics across the worker boundary, no `torch.compile` (use AoTI instead), CUDA wheel-only builds (no `nvcc` at build or runtime), large vs xlarge sizing, and dynamic duration callables. Make sure to use this skill whenever the user mentions ZeroGPU, `@spaces.GPU`, or the `spaces` Python package, or hits ZeroGPU-specific code errors like `PicklingError` across the worker boundary, `illegal duration`, or `flash-attn` wheel-build failures — even when the user does not explicitly ask for ZeroGPU coding guidance. Trigger on `import spaces` or `@spaces.GPU` in code.",
         "plugin": "huggingface-skills",
         "origin": {
           "source": "anthropic",
