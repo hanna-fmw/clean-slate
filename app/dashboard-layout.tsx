@@ -47,11 +47,13 @@ export function DashboardLayout({
           </div>
         </header>
         <main className="flex-1 px-[var(--card-padding)] md:px-[var(--space-section)] py-[var(--space-section)] max-w-5xl">
-          {active === 'projects' && projectList}
-          {active === 'services' && serviceList}
-          {active === 'tools' && toolsList}
-          {active === 'toolbox' && toolboxList}
-          {active === 'reference' && referenceList}
+          {({
+            projects: projectList,
+            services: serviceList,
+            tools: toolsList,
+            toolbox: toolboxList,
+            reference: referenceList,
+          } as Record<Section, React.ReactNode>)[active]}
         </main>
       </div>
     </div>
