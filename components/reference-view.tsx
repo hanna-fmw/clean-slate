@@ -108,9 +108,13 @@ function ReferenceGroupCard({ group, forceOpen }: { group: ReferenceGroup; force
       </CardHeader>
       <CardContent>
         {group.items.length > 0 && <ItemList items={group.items} />}
-        {group.subdirs.map(sd => (
-          <SubdirSection key={sd.path} subdir={sd} forceOpen={forceOpen} />
-        ))}
+        {group.subdirs.length > 0 && (
+          <div className={group.items.length > 0 ? 'mt-2' : ''}>
+            {group.subdirs.map(sd => (
+              <SubdirSection key={sd.path} subdir={sd} forceOpen={forceOpen} />
+            ))}
+          </div>
+        )}
       </CardContent>
     </Card>
   )
@@ -120,16 +124,16 @@ function SubdirSection({ subdir, forceOpen }: { subdir: ReferenceSubdir; forceOp
   const [open, setOpen] = useState(false)
   const isOpen = forceOpen || open
   return (
-    <div className="mt-3 border border-[var(--border)]/60 rounded-[var(--card-radius)] overflow-hidden">
+    <div className="border-t border-[var(--border)]/40 first:border-t-0">
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center gap-2 px-3 py-2 bg-[var(--hover)]/40 hover:bg-[var(--hover)] transition-colors cursor-pointer text-left"
+        className="w-full flex items-center gap-2 py-1.5 hover:bg-[var(--hover)]/50 transition-colors cursor-pointer text-left rounded-sm"
       >
         <svg
           width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-          className={`shrink-0 transition-transform ${isOpen ? 'rotate-90' : ''}`}
+          className={`shrink-0 text-muted-foreground transition-transform ${isOpen ? 'rotate-90' : ''}`}
         >
           <polyline points="9 18 15 12 9 6" />
         </svg>
@@ -142,7 +146,7 @@ function SubdirSection({ subdir, forceOpen }: { subdir: ReferenceSubdir; forceOp
         </span>
       </button>
       {isOpen && (
-        <div className="px-3 pt-2 pb-1">
+        <div className="pl-5 ml-1.5 border-l border-[var(--border)]/60 pb-2">
           <ItemList items={subdir.items} />
         </div>
       )}
