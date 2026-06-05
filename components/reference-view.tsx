@@ -92,7 +92,7 @@ function totalCount(group: ReferenceGroup) {
 }
 
 function ReferenceGroupCard({ group, forceOpen }: { group: ReferenceGroup; forceOpen: boolean }) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const isOpen = forceOpen || open
   return (
     <Card>
