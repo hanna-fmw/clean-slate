@@ -249,6 +249,7 @@ function listPluginsSummary(): ReferenceItem[] {
 
 function buildReference(): ReferenceGroup[] {
   const rulesTree = listMarkdownTree(join(CLAUDE_ROOT, 'rules'))
+  const agentsTree = listMarkdownTree(join(CLAUDE_ROOT, 'agents'))
   return [
     {
       name: 'Root configs',
@@ -268,8 +269,8 @@ function buildReference(): ReferenceGroup[] {
       name: 'Agents',
       path: shortenPath(join(CLAUDE_ROOT, 'agents')),
       description: 'Custom subagents available via the Task tool',
-      items: listMarkdownFiles(join(CLAUDE_ROOT, 'agents')),
-      subdirs: [],
+      items: agentsTree.items,
+      subdirs: agentsTree.subdirs,
     },
     {
       name: 'Skills',

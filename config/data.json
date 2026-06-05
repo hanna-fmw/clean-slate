@@ -3799,7 +3799,7 @@
     }
   ],
   "reference": {
-    "synced_at": "2026-06-05T22:03:13.656Z",
+    "synced_at": "2026-06-05T22:09:08.351Z",
     "root": "~/.claude",
     "groups": [
       {
@@ -4419,7 +4419,38 @@
             "kind": "file"
           }
         ],
-        "subdirs": []
+        "subdirs": [
+          {
+            "name": "examples",
+            "path": "~/.claude/agents/examples",
+            "items": [
+              {
+                "name": "nexus-spatial-discovery.md",
+                "path": "~/.claude/agents/examples/nexus-spatial-discovery.md",
+                "description": "> Exercise type: Multi-agent product discovery",
+                "kind": "file"
+              },
+              {
+                "name": "README.md",
+                "path": "~/.claude/agents/examples/README.md",
+                "description": "This directory contains example outputs demonstrating how the agency's agents can be orchestrated together to tackle real-world tasks.",
+                "kind": "file"
+              },
+              {
+                "name": "workflow-landing-page.md",
+                "path": "~/.claude/agents/examples/workflow-landing-page.md",
+                "description": "> Ship a conversion-optimized landing page in one day using 4 agents.",
+                "kind": "file"
+              },
+              {
+                "name": "workflow-startup-mvp.md",
+                "path": "~/.claude/agents/examples/workflow-startup-mvp.md",
+                "description": "> A step-by-step example of how to coordinate multiple agents to go from idea to shipped MVP.",
+                "kind": "file"
+              }
+            ]
+          }
+        ]
       },
       {
         "name": "Skills",
