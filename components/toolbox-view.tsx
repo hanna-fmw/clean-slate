@@ -146,7 +146,7 @@ function ToolboxRow({ entry }: { entry: ToolboxEntry }) {
     <div className="px-3 py-2.5 border-b border-[var(--border)] last:border-b-0 flex flex-col sm:flex-row sm:items-start gap-2 hover:bg-[var(--hover)] transition-colors">
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="font-mono text-[13px] font-medium truncate">{entry.name}</span>
+          <span className="font-mono text-sm font-medium truncate">{entry.name}</span>
           <Badge variant="outline" className={`text-[10px] font-mono ${TYPE_COLORS[entry.type]}`}>
             {TYPE_LABEL[entry.type]}
           </Badge>
@@ -162,7 +162,7 @@ function ToolboxRow({ entry }: { entry: ToolboxEntry }) {
           )}
         </div>
         {entry.one_liner && (
-          <p className="text-[12px] text-[var(--muted)] mt-1 line-clamp-2">{entry.one_liner}</p>
+          <p className="text-sm text-[var(--muted)] mt-1 line-clamp-2">{entry.one_liner}</p>
         )}
         {entry.projects.length > 0 && (
           <p className="text-[10px] text-[var(--muted)]/70 font-mono mt-1">

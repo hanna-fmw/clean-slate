@@ -76,8 +76,8 @@ function ReferenceGroupCard({ group }: { group: ReferenceGroup }) {
               {group.items.length}
             </Badge>
           </CardTitle>
-          <p className="text-[11px] text-muted-foreground">{group.description}</p>
-          <p className="text-[10px] font-mono text-muted-foreground/60">{group.path}</p>
+          <p className="text-xs text-muted-foreground">{group.description}</p>
+          <p className="text-[11px] font-mono text-muted-foreground/60">{group.path}</p>
         </div>
       </CardHeader>
       <CardContent>
@@ -85,17 +85,17 @@ function ReferenceGroupCard({ group }: { group: ReferenceGroup }) {
           {group.items.map(item => (
             <li
               key={item.path}
-              className="grid grid-cols-[minmax(0,1fr)_2fr] gap-3 text-[12px] py-1 border-b border-[var(--border)]/40 last:border-0"
+              className="grid grid-cols-[minmax(0,1fr)_2fr] gap-3 py-1.5 border-b border-[var(--border)]/40 last:border-0"
             >
               <div className="min-w-0">
-                <div className="font-mono break-all">
+                <div className="font-mono text-sm break-all">
                   {item.kind === 'dir' ? `${item.name.replace(/\/$/, '')}/` : item.name}
                 </div>
-                <div className="font-mono text-[10px] text-muted-foreground/60 break-all">
+                <div className="font-mono text-[11px] text-muted-foreground/60 break-all">
                   {item.path}
                 </div>
               </div>
-              <div className="text-muted-foreground text-[11px] leading-snug whitespace-pre-wrap break-words">
+              <div className="text-muted-foreground text-sm leading-relaxed whitespace-pre-wrap break-words">
                 {item.description || <span className="text-muted-foreground/40 italic">no description</span>}
               </div>
             </li>

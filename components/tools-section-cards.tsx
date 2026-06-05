@@ -174,7 +174,7 @@ function AgentCards({ agents }: { agents: ToolsInventory['agents'] }) {
                   </CardHeader>
                   <CardContent>
                     {agent.description && (
-                        <p className="text-xs text-muted-foreground">{agent.description}</p>
+                        <p className="text-sm text-muted-foreground">{agent.description}</p>
                     )}
                     <OriginDetail origin={agent.origin} />
                   </CardContent>
@@ -245,7 +245,7 @@ function McpServerCards({ servers }: { servers: ToolsInventory['mcp_servers'] })
               {(server.notes || server.origin.repo_url) && (
                 <CardContent>
                   {server.notes && (
-                    <p className="text-xs text-muted-foreground">{server.notes}</p>
+                    <p className="text-sm text-muted-foreground">{server.notes}</p>
                   )}
                   <OriginDetail origin={server.origin} />
                 </CardContent>
@@ -287,7 +287,7 @@ function SkillCards({ skills }: { skills: ToolsInventory['skills'] }) {
                   {(skill.description || skill.origin.repo_url) && (
                     <CardContent>
                       {skill.description && (
-                        <p className="text-xs text-muted-foreground">{skill.description}</p>
+                        <p className="text-sm text-muted-foreground">{skill.description}</p>
                       )}
                       <OriginDetail origin={skill.origin} />
                     </CardContent>
@@ -349,7 +349,7 @@ function HooksSection() {
                 </CardAction>
               </CardHeader>
               <CardContent>
-                <p className="text-xs text-muted-foreground">{hook.description}</p>
+                <p className="text-sm text-muted-foreground">{hook.description}</p>
                 <OriginDetail origin={hook.origin} />
               </CardContent>
             </Card>
