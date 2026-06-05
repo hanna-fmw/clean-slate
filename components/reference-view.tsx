@@ -115,7 +115,9 @@ function ReferenceGroupCard({ group, forceOpen }: { group: ReferenceGroup; force
             </Badge>
           </CardTitle>
           <p className="text-xs text-muted-foreground pl-[18px]">{group.description}</p>
-          <p className="text-[11px] font-mono text-muted-foreground/60 pl-[18px]">{group.path}</p>
+          <p className="pl-[18px]">
+            <span className="text-xs font-mono text-foreground/80 bg-foreground/5 px-1.5 py-0.5 rounded">{group.path}</span>
+          </p>
         </div>
       </CardHeader>
       {isOpen && (
@@ -155,7 +157,7 @@ function SubdirSection({ subdir, forceOpen }: { subdir: ReferenceSubdir; forceOp
         <Badge variant="outline" className="text-[10px] font-mono ml-1">
           {subdir.items.length}
         </Badge>
-        <span className="ml-auto font-mono text-[11px] text-muted-foreground/60 truncate">
+        <span className="ml-auto font-mono text-xs text-foreground/80 bg-foreground/5 px-1.5 py-0.5 rounded truncate">
           {subdir.path}
         </span>
       </button>
@@ -180,8 +182,10 @@ function ItemList({ items }: { items: ReferenceGroup['items'] }) {
             <div className="font-mono text-sm break-all">
               {item.kind === 'dir' ? `${item.name.replace(/\/$/, '')}/` : item.name}
             </div>
-            <div className="font-mono text-[11px] text-muted-foreground/60 break-all">
-              {item.path}
+            <div className="mt-0.5">
+              <span className="font-mono text-xs text-foreground/80 bg-foreground/5 px-1.5 py-0.5 rounded break-all inline-block">
+                {item.path}
+              </span>
             </div>
           </div>
           <div className="text-muted-foreground text-sm leading-relaxed whitespace-pre-wrap break-words">
