@@ -9,11 +9,18 @@ interface ReferenceItem {
   kind: 'file' | 'dir'
 }
 
+interface ReferenceSubdir {
+  name: string
+  path: string
+  items: ReferenceItem[]
+}
+
 interface ReferenceGroup {
   name: string
   path: string
   description: string
   items: ReferenceItem[]
+  subdirs: ReferenceSubdir[]
 }
 
 const CLAUDE_ROOT = join(homedir(), '.claude')
@@ -81,21 +88,15 @@ function describeFile(path: string): string {
   }
 }
 
-function listMarkdownFiles(dir: string, recursive = false): ReferenceItem[] {
+function listMarkdownFiles(dir: string): ReferenceItem[] {
   if (!existsSync(dir)) return []
   const items: ReferenceItem[] = []
   try {
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isFile() || !entry.name.endsWith('.md')) continue
       const full = join(dir, entry.name)
-      if (entry.isDirectory()) {
-        if (recursive && !NOISE_DIRS.has(entry.name)) {
-          items.push(...listMarkdownFiles(full, true))
-        }
-        continue
-      }
-      if (!entry.name.endsWith('.md')) continue
       items.push({
-        name: relative(dir, full),
+        name: entry.name,
         path: shortenPath(full),
         description: describeMarkdown(full),
         kind: 'file',
@@ -103,6 +104,38 @@ function listMarkdownFiles(dir: string, recursive = false): ReferenceItem[] {
     }
   } catch { /* skip */ }
   return items.sort((a, b) => a.name.localeCompare(b.name))
+}
+
+function listMarkdownTree(dir: string): { items: ReferenceItem[]; subdirs: ReferenceSubdir[] } {
+  if (!existsSync(dir)) return { items: [], subdirs: [] }
+  const items: ReferenceItem[] = []
+  const subdirs: ReferenceSubdir[] = []
+  try {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, entry.name)
+      if (entry.isDirectory()) {
+        if (NOISE_DIRS.has(entry.name)) continue
+        const childItems = listMarkdownFiles(full)
+        if (childItems.length === 0) continue
+        subdirs.push({
+          name: entry.name,
+          path: shortenPath(full),
+          items: childItems,
+        })
+      } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        items.push({
+          name: entry.name,
+          path: shortenPath(full),
+          description: describeMarkdown(full),
+          kind: 'file',
+        })
+      }
+    }
+  } catch { /* skip */ }
+  return {
+    items: items.sort((a, b) => a.name.localeCompare(b.name)),
+    subdirs: subdirs.sort((a, b) => a.name.localeCompare(b.name)),
+  }
 }
 
 function listFilesByExt(dir: string, exts: string[]): ReferenceItem[] {
@@ -159,7 +192,7 @@ function listCommandDirs(dir: string): ReferenceItem[] {
           kind: 'file',
         })
       } else if (entry.isDirectory() && !NOISE_DIRS.has(entry.name)) {
-        const nested = listMarkdownFiles(full, true)
+        const nested = listMarkdownFiles(full)
         items.push({
           name: entry.name + '/',
           path: shortenPath(full),
@@ -215,56 +248,65 @@ function listPluginsSummary(): ReferenceItem[] {
 }
 
 function buildReference(): ReferenceGroup[] {
+  const rulesTree = listMarkdownTree(join(CLAUDE_ROOT, 'rules'))
   return [
     {
       name: 'Root configs',
       path: shortenPath(CLAUDE_ROOT),
       description: 'Top-level Claude Code config and entry point files',
       items: listRootConfigs(),
+      subdirs: [],
     },
     {
       name: 'Rules',
       path: shortenPath(join(CLAUDE_ROOT, 'rules')),
       description: 'Global instruction files imported by CLAUDE.md',
-      items: listMarkdownFiles(join(CLAUDE_ROOT, 'rules'), true),
+      items: rulesTree.items,
+      subdirs: rulesTree.subdirs,
     },
     {
       name: 'Agents',
       path: shortenPath(join(CLAUDE_ROOT, 'agents')),
       description: 'Custom subagents available via the Task tool',
-      items: listMarkdownFiles(join(CLAUDE_ROOT, 'agents'), false),
+      items: listMarkdownFiles(join(CLAUDE_ROOT, 'agents')),
+      subdirs: [],
     },
     {
       name: 'Skills',
       path: shortenPath(join(CLAUDE_ROOT, 'skills')),
       description: 'User-authored skills (each is a folder with SKILL.md)',
       items: listSkillDirs(join(CLAUDE_ROOT, 'skills')),
+      subdirs: [],
     },
     {
       name: 'Commands',
       path: shortenPath(join(CLAUDE_ROOT, 'commands')),
       description: 'Custom slash commands',
       items: listCommandDirs(join(CLAUDE_ROOT, 'commands')),
+      subdirs: [],
     },
     {
       name: 'Hooks',
       path: shortenPath(join(CLAUDE_ROOT, 'hooks')),
       description: 'Hook scripts that run on Claude Code events',
       items: listFilesByExt(join(CLAUDE_ROOT, 'hooks'), ['.js', '.mjs', '.sh']),
+      subdirs: [],
     },
     {
       name: 'Memory',
       path: shortenPath(join(CLAUDE_ROOT, 'memory')),
       description: 'Auto-memory files (also lives per-project under ~/.claude/projects/*/memory/)',
-      items: listMarkdownFiles(join(CLAUDE_ROOT, 'memory'), false),
+      items: listMarkdownFiles(join(CLAUDE_ROOT, 'memory')),
+      subdirs: [],
     },
     {
       name: 'Plugins',
       path: shortenPath(join(CLAUDE_ROOT, 'plugins')),
       description: 'Installed plugin packages (managed by Claude Code)',
       items: listPluginsSummary(),
+      subdirs: [],
     },
-  ].filter(g => g.items.length > 0)
+  ].filter(g => g.items.length > 0 || g.subdirs.length > 0)
 }
 
 function main() {

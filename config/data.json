@@ -3799,7 +3799,7 @@
     }
   ],
   "reference": {
-    "synced_at": "2026-06-05T21:59:24.572Z",
+    "synced_at": "2026-06-05T22:03:13.656Z",
     "root": "~/.claude",
     "groups": [
       {
@@ -3849,7 +3849,8 @@
             "description": "CSS for PDF export styling",
             "kind": "file"
           }
-        ]
+        ],
+        "subdirs": []
       },
       {
         "name": "Rules",
@@ -3866,18 +3867,6 @@
             "name": "browser-devtools.md",
             "path": "~/.claude/rules/browser-devtools.md",
             "description": "When entering test data in forms, screenshots, or Playwright scripts, NEVER use real names, emails, phone numbers, addresses, or ANY PII from memory or other projects. ALWAYS use generic/fictional data (e.g., \"Acme AB\", \"test@example.com\", \"+46 00 000 0000\").",
-            "kind": "file"
-          },
-          {
-            "name": "cloudflare-access.md",
-            "path": "~/.claude/rules/gotchas/cloudflare-access.md",
-            "description": "The old Access → Applications path no longer exists in the zone sidebar. To manage Access apps and policies:",
-            "kind": "file"
-          },
-          {
-            "name": "coolify-docker.md",
-            "path": "~/.claude/rules/gotchas/coolify-docker.md",
-            "description": "Symptom: After every deploy, the first request gets a 404 or bad gateway. Deploy log says \"Application has ports mapped to the host system, rolling update is not supported.\" Adding a Docker HEALTHCHECK makes it worse - causes a restart loop.",
             "kind": "file"
           },
           {
@@ -3899,51 +3888,9 @@
             "kind": "file"
           },
           {
-            "name": "netbird-vpn.md",
-            "path": "~/.claude/rules/gotchas/netbird-vpn.md",
-            "description": "NetBird VPN does not start automatically when macOS reboots. Any app hosted on a server accessed via NetBird (Coolify dashboard, deployed apps) will be unreachable - browser tab just shows a spinner with no error.",
-            "kind": "file"
-          },
-          {
-            "name": "nextjs-docker.md",
-            "path": "~/.claude/rules/gotchas/nextjs-docker.md",
-            "description": "pnpm stores one copy of each package centrally and symlinks to it from nodemodules. When you COPY --from=builder in a multi-stage Docker build, the symlinks copy as broken pointers because the central store doesn't exist in the new stage. Any CLI tool (like prisma) that lives in nodemodules/.bin will fail silently or crash.",
-            "kind": "file"
-          },
-          {
-            "name": "oauth-google.md",
-            "path": "~/.claude/rules/gotchas/oauth-google.md",
-            "description": "An app with both NextAuth login AND a Google API connector (e.g. Google Drive) needs two redirect URIs registered in Google Cloud Console - one per flow. Adding only one breaks the other.",
-            "kind": "file"
-          },
-          {
-            "name": "pnpm-docker.md",
-            "path": "~/.claude/rules/gotchas/pnpm-docker.md",
-            "description": "pnpm 11 ships two supply-chain guards that fail pnpm install inside Docker by default:",
-            "kind": "file"
-          },
-          {
-            "name": "postgres-database.md",
-            "path": "~/.claude/rules/gotchas/postgres-database.md",
-            "description": "Serverless platforms (Vercel, Netlify, etc.) can spin up hundreds of function instances simultaneously. Each instance tries to open its own Postgres connection. Postgres has a hard connection limit and will reject connections or degrade badly under this pattern.",
-            "kind": "file"
-          },
-          {
-            "name": "prisma-migrations.md",
-            "path": "~/.claude/rules/gotchas/prisma-migrations.md",
-            "description": "prisma db push --accept-data-loss silently drops and recreates tables when schema changes require it. This wipes all data with zero warning. Even without the flag, db push can refuse changes that migrate deploy handles cleanly.",
-            "kind": "file"
-          },
-          {
             "name": "project-standards.md",
             "path": "~/.claude/rules/project-standards.md",
             "description": "These are defaults - ask me before applying if the project already has its own config or if I specify something different.",
-            "kind": "file"
-          },
-          {
-            "name": "rag-vector-db.md",
-            "path": "~/.claude/rules/gotchas/rag-vector-db.md",
-            "description": "These apply to any vector database (Qdrant, Pinecone, Weaviate, etc.) used for retrieval-augmented generation.",
             "kind": "file"
           },
           {
@@ -3951,36 +3898,98 @@
             "path": "~/.claude/rules/repo-hygiene.md",
             "description": "Personal-account / open-source repo conventions. Apply before committing or pushing public repos.",
             "kind": "file"
-          },
+          }
+        ],
+        "subdirs": [
           {
-            "name": "shopify-cli.md",
-            "path": "~/.claude/rules/gotchas/shopify-cli.md",
-            "description": "shopify theme push --live --only sections/foo.json does NOT only upload that file. It performs a sync step that can delete unrelated files from the remote theme (incident 2026-05-24: sections/header-group.json was wiped from the live Moiwak theme by an --only push of a sibling file, removing the entire navbar with zero warning).",
-            "kind": "file"
-          },
-          {
-            "name": "supabase-auth.md",
-            "path": "~/.claude/rules/gotchas/supabase-auth.md",
-            "description": "Every issue below was hit during yllw-new Phase 1 setup (2026-05-27) despite ranksmile and signalstack already having working magic-link auth. Before touching auth, read the canonical implementation at /Users/hanna/Documents/ranksmile/apps/web/app/(auth)/callback/route.ts and /Users/hanna/Documents/ranksmile/apps/web/lib/supabase/server.ts.",
-            "kind": "file"
-          },
-          {
-            "name": "tailwind-v4.md",
-            "path": "~/.claude/rules/gotchas/tailwind-v4.md",
-            "description": "In Tailwind v4 there is no tailwind.config.js font config - the font-sans/font-mono utilities are driven by --font-sans / --font-mono CSS variables declared in an @theme block in globals.css. next/font loaders generate their OWN variable name. The two must match, or the font is downloaded but never rendered and the page falls back to the browser default sans-serif.",
-            "kind": "file"
-          },
-          {
-            "name": "vercel.md",
-            "path": "~/.claude/rules/gotchas/vercel.md",
-            "description": "Vercel Hobby plan no longer auto-deploys private GitHub repos. Use vercel --prod from the project directory (CLI deploy) to work around this. The CLI deploys local code directly without reading the GitHub repo.",
-            "kind": "file"
-          },
-          {
-            "name": "whalesync-supabase-webflow.md",
-            "path": "~/.claude/rules/gotchas/whalesync-supabase-webflow.md",
-            "description": "> Cross-tool file. These gotchas involve WhaleSync, Supabase (source), and Webflow (destination) together. Cross-listed in the index under all three tools — read this whenever you debug any of them in a sync context.",
-            "kind": "file"
+            "name": "gotchas",
+            "path": "~/.claude/rules/gotchas",
+            "items": [
+              {
+                "name": "cloudflare-access.md",
+                "path": "~/.claude/rules/gotchas/cloudflare-access.md",
+                "description": "The old Access → Applications path no longer exists in the zone sidebar. To manage Access apps and policies:",
+                "kind": "file"
+              },
+              {
+                "name": "coolify-docker.md",
+                "path": "~/.claude/rules/gotchas/coolify-docker.md",
+                "description": "Symptom: After every deploy, the first request gets a 404 or bad gateway. Deploy log says \"Application has ports mapped to the host system, rolling update is not supported.\" Adding a Docker HEALTHCHECK makes it worse - causes a restart loop.",
+                "kind": "file"
+              },
+              {
+                "name": "netbird-vpn.md",
+                "path": "~/.claude/rules/gotchas/netbird-vpn.md",
+                "description": "NetBird VPN does not start automatically when macOS reboots. Any app hosted on a server accessed via NetBird (Coolify dashboard, deployed apps) will be unreachable - browser tab just shows a spinner with no error.",
+                "kind": "file"
+              },
+              {
+                "name": "nextjs-docker.md",
+                "path": "~/.claude/rules/gotchas/nextjs-docker.md",
+                "description": "pnpm stores one copy of each package centrally and symlinks to it from nodemodules. When you COPY --from=builder in a multi-stage Docker build, the symlinks copy as broken pointers because the central store doesn't exist in the new stage. Any CLI tool (like prisma) that lives in nodemodules/.bin will fail silently or crash.",
+                "kind": "file"
+              },
+              {
+                "name": "oauth-google.md",
+                "path": "~/.claude/rules/gotchas/oauth-google.md",
+                "description": "An app with both NextAuth login AND a Google API connector (e.g. Google Drive) needs two redirect URIs registered in Google Cloud Console - one per flow. Adding only one breaks the other.",
+                "kind": "file"
+              },
+              {
+                "name": "pnpm-docker.md",
+                "path": "~/.claude/rules/gotchas/pnpm-docker.md",
+                "description": "pnpm 11 ships two supply-chain guards that fail pnpm install inside Docker by default:",
+                "kind": "file"
+              },
+              {
+                "name": "postgres-database.md",
+                "path": "~/.claude/rules/gotchas/postgres-database.md",
+                "description": "Serverless platforms (Vercel, Netlify, etc.) can spin up hundreds of function instances simultaneously. Each instance tries to open its own Postgres connection. Postgres has a hard connection limit and will reject connections or degrade badly under this pattern.",
+                "kind": "file"
+              },
+              {
+                "name": "prisma-migrations.md",
+                "path": "~/.claude/rules/gotchas/prisma-migrations.md",
+                "description": "prisma db push --accept-data-loss silently drops and recreates tables when schema changes require it. This wipes all data with zero warning. Even without the flag, db push can refuse changes that migrate deploy handles cleanly.",
+                "kind": "file"
+              },
+              {
+                "name": "rag-vector-db.md",
+                "path": "~/.claude/rules/gotchas/rag-vector-db.md",
+                "description": "These apply to any vector database (Qdrant, Pinecone, Weaviate, etc.) used for retrieval-augmented generation.",
+                "kind": "file"
+              },
+              {
+                "name": "shopify-cli.md",
+                "path": "~/.claude/rules/gotchas/shopify-cli.md",
+                "description": "shopify theme push --live --only sections/foo.json does NOT only upload that file. It performs a sync step that can delete unrelated files from the remote theme (incident 2026-05-24: sections/header-group.json was wiped from the live Moiwak theme by an --only push of a sibling file, removing the entire navbar with zero warning).",
+                "kind": "file"
+              },
+              {
+                "name": "supabase-auth.md",
+                "path": "~/.claude/rules/gotchas/supabase-auth.md",
+                "description": "Every issue below was hit during yllw-new Phase 1 setup (2026-05-27) despite ranksmile and signalstack already having working magic-link auth. Before touching auth, read the canonical implementation at /Users/hanna/Documents/ranksmile/apps/web/app/(auth)/callback/route.ts and /Users/hanna/Documents/ranksmile/apps/web/lib/supabase/server.ts.",
+                "kind": "file"
+              },
+              {
+                "name": "tailwind-v4.md",
+                "path": "~/.claude/rules/gotchas/tailwind-v4.md",
+                "description": "In Tailwind v4 there is no tailwind.config.js font config - the font-sans/font-mono utilities are driven by --font-sans / --font-mono CSS variables declared in an @theme block in globals.css. next/font loaders generate their OWN variable name. The two must match, or the font is downloaded but never rendered and the page falls back to the browser default sans-serif.",
+                "kind": "file"
+              },
+              {
+                "name": "vercel.md",
+                "path": "~/.claude/rules/gotchas/vercel.md",
+                "description": "Vercel Hobby plan no longer auto-deploys private GitHub repos. Use vercel --prod from the project directory (CLI deploy) to work around this. The CLI deploys local code directly without reading the GitHub repo.",
+                "kind": "file"
+              },
+              {
+                "name": "whalesync-supabase-webflow.md",
+                "path": "~/.claude/rules/gotchas/whalesync-supabase-webflow.md",
+                "description": "> Cross-tool file. These gotchas involve WhaleSync, Supabase (source), and Webflow (destination) together. Cross-listed in the index under all three tools — read this whenever you debug any of them in a sync context.",
+                "kind": "file"
+              }
+            ]
           }
         ]
       },
@@ -4409,7 +4418,8 @@
             "description": "Expert process improvement specialist focused on analyzing, optimizing, and automating workflows across all business functions for maximum productivity and efficiency",
             "kind": "file"
           }
-        ]
+        ],
+        "subdirs": []
       },
       {
         "name": "Skills",
@@ -4530,7 +4540,8 @@
             "description": "Wrap up a session - update docs, commit, verify, and save a handoff prompt for the next session",
             "kind": "dir"
           }
-        ]
+        ],
+        "subdirs": []
       },
       {
         "name": "Commands",
@@ -4549,7 +4560,8 @@
             "description": "31 commands",
             "kind": "dir"
           }
-        ]
+        ],
+        "subdirs": []
       },
       {
         "name": "Hooks",
@@ -4574,7 +4586,8 @@
             "description": "Hook script",
             "kind": "file"
           }
-        ]
+        ],
+        "subdirs": []
       },
       {
         "name": "Memory",
@@ -4611,7 +4624,8 @@
             "description": "Step-by-step guide for setting up shopify-dev-mcp (docs) and shopify-mcp (Admin API) MCP servers for any Shopify store",
             "kind": "file"
           }
-        ]
+        ],
+        "subdirs": []
       },
       {
         "name": "Plugins",
@@ -4666,7 +4680,8 @@
             "description": "Installed from plugins",
             "kind": "dir"
           }
-        ]
+        ],
+        "subdirs": []
       }
     ]
   }
