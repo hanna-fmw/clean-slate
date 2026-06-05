@@ -250,6 +250,7 @@ function listPluginsSummary(): ReferenceItem[] {
 function buildReference(): ReferenceGroup[] {
   const rulesTree = listMarkdownTree(join(CLAUDE_ROOT, 'rules'))
   const agentsTree = listMarkdownTree(join(CLAUDE_ROOT, 'agents'))
+  const commandsTree = listMarkdownTree(join(CLAUDE_ROOT, 'commands'))
   return [
     {
       name: 'Root configs',
@@ -283,8 +284,8 @@ function buildReference(): ReferenceGroup[] {
       name: 'Commands',
       path: shortenPath(join(CLAUDE_ROOT, 'commands')),
       description: 'Custom slash commands',
-      items: listCommandDirs(join(CLAUDE_ROOT, 'commands')),
-      subdirs: [],
+      items: commandsTree.items,
+      subdirs: commandsTree.subdirs,
     },
     {
       name: 'Hooks',

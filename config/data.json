@@ -3799,7 +3799,7 @@
     }
   ],
   "reference": {
-    "synced_at": "2026-06-05T22:09:08.351Z",
+    "synced_at": "2026-06-05T22:12:09.815Z",
     "root": "~/.claude",
     "groups": [
       {
@@ -4584,15 +4584,202 @@
             "path": "~/.claude/commands/create-pdf.md",
             "description": "Convert one or more markdown files to professionally styled A4 PDF documents.",
             "kind": "file"
-          },
-          {
-            "name": "gsd/",
-            "path": "~/.claude/commands/gsd",
-            "description": "31 commands",
-            "kind": "dir"
           }
         ],
-        "subdirs": []
+        "subdirs": [
+          {
+            "name": "gsd",
+            "path": "~/.claude/commands/gsd",
+            "items": [
+              {
+                "name": "add-phase.md",
+                "path": "~/.claude/commands/gsd/add-phase.md",
+                "description": "Add phase to end of current milestone in roadmap",
+                "kind": "file"
+              },
+              {
+                "name": "add-tests.md",
+                "path": "~/.claude/commands/gsd/add-tests.md",
+                "description": "Generate tests for a completed phase based on UAT criteria and implementation",
+                "kind": "file"
+              },
+              {
+                "name": "add-todo.md",
+                "path": "~/.claude/commands/gsd/add-todo.md",
+                "description": "Capture idea or task as todo from current conversation context",
+                "kind": "file"
+              },
+              {
+                "name": "audit-milestone.md",
+                "path": "~/.claude/commands/gsd/audit-milestone.md",
+                "description": "Audit milestone completion against original intent before archiving",
+                "kind": "file"
+              },
+              {
+                "name": "check-todos.md",
+                "path": "~/.claude/commands/gsd/check-todos.md",
+                "description": "List pending todos and select one to work on",
+                "kind": "file"
+              },
+              {
+                "name": "cleanup.md",
+                "path": "~/.claude/commands/gsd/cleanup.md",
+                "description": "Archive accumulated phase directories from completed milestones",
+                "kind": "file"
+              },
+              {
+                "name": "complete-milestone.md",
+                "path": "~/.claude/commands/gsd/complete-milestone.md",
+                "description": "Archive completed milestone and prepare for next version",
+                "kind": "file"
+              },
+              {
+                "name": "debug.md",
+                "path": "~/.claude/commands/gsd/debug.md",
+                "description": "Systematic debugging with persistent state across context resets",
+                "kind": "file"
+              },
+              {
+                "name": "discuss-phase.md",
+                "path": "~/.claude/commands/gsd/discuss-phase.md",
+                "description": "Gather phase context through adaptive questioning before planning",
+                "kind": "file"
+              },
+              {
+                "name": "execute-phase.md",
+                "path": "~/.claude/commands/gsd/execute-phase.md",
+                "description": "Execute all plans in a phase with wave-based parallelization",
+                "kind": "file"
+              },
+              {
+                "name": "health.md",
+                "path": "~/.claude/commands/gsd/health.md",
+                "description": "Diagnose planning directory health and optionally repair issues",
+                "kind": "file"
+              },
+              {
+                "name": "help.md",
+                "path": "~/.claude/commands/gsd/help.md",
+                "description": "Show available GSD commands and usage guide",
+                "kind": "file"
+              },
+              {
+                "name": "insert-phase.md",
+                "path": "~/.claude/commands/gsd/insert-phase.md",
+                "description": "Insert urgent work as decimal phase (e.g., 72.1) between existing phases",
+                "kind": "file"
+              },
+              {
+                "name": "join-discord.md",
+                "path": "~/.claude/commands/gsd/join-discord.md",
+                "description": "Join the GSD Discord community",
+                "kind": "file"
+              },
+              {
+                "name": "list-phase-assumptions.md",
+                "path": "~/.claude/commands/gsd/list-phase-assumptions.md",
+                "description": "Surface Claude's assumptions about a phase approach before planning",
+                "kind": "file"
+              },
+              {
+                "name": "map-codebase.md",
+                "path": "~/.claude/commands/gsd/map-codebase.md",
+                "description": "Analyze codebase with parallel mapper agents to produce .planning/codebase/ documents",
+                "kind": "file"
+              },
+              {
+                "name": "new-milestone.md",
+                "path": "~/.claude/commands/gsd/new-milestone.md",
+                "description": "Start a new milestone cycle — update PROJECT.md and route to requirements",
+                "kind": "file"
+              },
+              {
+                "name": "new-project.md",
+                "path": "~/.claude/commands/gsd/new-project.md",
+                "description": "Initialize a new project with deep context gathering and PROJECT.md",
+                "kind": "file"
+              },
+              {
+                "name": "pause-work.md",
+                "path": "~/.claude/commands/gsd/pause-work.md",
+                "description": "Create context handoff when pausing work mid-phase",
+                "kind": "file"
+              },
+              {
+                "name": "plan-milestone-gaps.md",
+                "path": "~/.claude/commands/gsd/plan-milestone-gaps.md",
+                "description": "Create phases to close all gaps identified by milestone audit",
+                "kind": "file"
+              },
+              {
+                "name": "plan-phase.md",
+                "path": "~/.claude/commands/gsd/plan-phase.md",
+                "description": "Create detailed phase plan (PLAN.md) with verification loop",
+                "kind": "file"
+              },
+              {
+                "name": "progress.md",
+                "path": "~/.claude/commands/gsd/progress.md",
+                "description": "Check project progress, show context, and route to next action (execute or plan)",
+                "kind": "file"
+              },
+              {
+                "name": "quick.md",
+                "path": "~/.claude/commands/gsd/quick.md",
+                "description": "Execute a quick task with GSD guarantees (atomic commits, state tracking) but skip optional agents",
+                "kind": "file"
+              },
+              {
+                "name": "reapply-patches.md",
+                "path": "~/.claude/commands/gsd/reapply-patches.md",
+                "description": "Reapply local modifications after a GSD update",
+                "kind": "file"
+              },
+              {
+                "name": "remove-phase.md",
+                "path": "~/.claude/commands/gsd/remove-phase.md",
+                "description": "Remove a future phase from roadmap and renumber subsequent phases",
+                "kind": "file"
+              },
+              {
+                "name": "research-phase.md",
+                "path": "~/.claude/commands/gsd/research-phase.md",
+                "description": "Research how to implement a phase (standalone - usually use /gsd:plan-phase instead)",
+                "kind": "file"
+              },
+              {
+                "name": "resume-work.md",
+                "path": "~/.claude/commands/gsd/resume-work.md",
+                "description": "Resume work from previous session with full context restoration",
+                "kind": "file"
+              },
+              {
+                "name": "set-profile.md",
+                "path": "~/.claude/commands/gsd/set-profile.md",
+                "description": "Switch model profile for GSD agents (quality/balanced/budget)",
+                "kind": "file"
+              },
+              {
+                "name": "settings.md",
+                "path": "~/.claude/commands/gsd/settings.md",
+                "description": "Configure GSD workflow toggles and model profile",
+                "kind": "file"
+              },
+              {
+                "name": "update.md",
+                "path": "~/.claude/commands/gsd/update.md",
+                "description": "Update GSD to latest version with changelog display",
+                "kind": "file"
+              },
+              {
+                "name": "verify-work.md",
+                "path": "~/.claude/commands/gsd/verify-work.md",
+                "description": "Validate built features through conversational UAT",
+                "kind": "file"
+              }
+            ]
+          }
+        ]
       },
       {
         "name": "Hooks",

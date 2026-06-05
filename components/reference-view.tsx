@@ -92,30 +92,44 @@ function totalCount(group: ReferenceGroup) {
 }
 
 function ReferenceGroupCard({ group, forceOpen }: { group: ReferenceGroup; forceOpen: boolean }) {
+  const [open, setOpen] = useState(true)
+  const isOpen = forceOpen || open
   return (
     <Card>
-      <CardHeader>
+      <CardHeader
+        onClick={() => setOpen(o => !o)}
+        className="cursor-pointer hover:bg-[var(--hover)]/40 transition-colors rounded-t-xl"
+      >
         <div className="flex flex-col gap-0.5">
           <CardTitle className="text-sm flex items-center gap-2">
+            <svg
+              width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+              className={`shrink-0 text-muted-foreground transition-transform ${isOpen ? 'rotate-90' : ''}`}
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
             {group.name}
             <Badge variant="outline" className="text-[10px] font-mono">
               {totalCount(group)}
             </Badge>
           </CardTitle>
-          <p className="text-xs text-muted-foreground">{group.description}</p>
-          <p className="text-[11px] font-mono text-muted-foreground/60">{group.path}</p>
+          <p className="text-xs text-muted-foreground pl-[18px]">{group.description}</p>
+          <p className="text-[11px] font-mono text-muted-foreground/60 pl-[18px]">{group.path}</p>
         </div>
       </CardHeader>
-      <CardContent>
-        {group.items.length > 0 && <ItemList items={group.items} />}
-        {group.subdirs.length > 0 && (
-          <div className={group.items.length > 0 ? 'mt-2' : ''}>
-            {group.subdirs.map(sd => (
-              <SubdirSection key={sd.path} subdir={sd} forceOpen={forceOpen} />
-            ))}
-          </div>
-        )}
-      </CardContent>
+      {isOpen && (
+        <CardContent>
+          {group.items.length > 0 && <ItemList items={group.items} />}
+          {group.subdirs.length > 0 && (
+            <div className={group.items.length > 0 ? 'mt-2' : ''}>
+              {group.subdirs.map(sd => (
+                <SubdirSection key={sd.path} subdir={sd} forceOpen={forceOpen} />
+              ))}
+            </div>
+          )}
+        </CardContent>
+      )}
     </Card>
   )
 }
