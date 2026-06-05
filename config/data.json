@@ -3799,7 +3799,7 @@
     }
   ],
   "reference": {
-    "synced_at": "2026-06-05T20:38:17.450Z",
+    "synced_at": "2026-06-05T21:48:41.019Z",
     "root": "~/.claude",
     "groups": [
       {
@@ -3859,13 +3859,13 @@
           {
             "name": "agent-accessibility.md",
             "path": "~/.claude/rules/agent-accessibility.md",
-            "description": "Every product I build must be usable by an AI agent, not just a human in a browser. Users increasingly delegate work to agents (Claude, ChatGPT, Cursor, etc.); ",
+            "description": "Every product I build must be usable by an AI agent, not just a human in a browser. Users increasingly delegate work to agents (Claude, ChatGPT, Cursor, etc.); a product without an agent surface is a dead-end and will lose to competitors that have one.",
             "kind": "file"
           },
           {
             "name": "browser-devtools.md",
             "path": "~/.claude/rules/browser-devtools.md",
-            "description": "- When entering test data in forms, screenshots, or Playwright scripts, NEVER use real names, emails, phone numbers, addresses, or ANY PII from memory or other ",
+            "description": "- When entering test data in forms, screenshots, or Playwright scripts, NEVER use real names, emails, phone numbers, addresses, or ANY PII from memory or other projects. ALWAYS use generic/fictional data (e.g., \"Acme AB\", \"test@example.com\", \"+46 00 000 0000\").",
             "kind": "file"
           },
           {
@@ -3877,19 +3877,19 @@
           {
             "name": "coolify-docker.md",
             "path": "~/.claude/rules/gotchas/coolify-docker.md",
-            "description": "Symptom: After every deploy, the first request gets a 404 or bad gateway. Deploy log says \"Application has ports mapped to the host system, rolling update is no",
+            "description": "Symptom: After every deploy, the first request gets a 404 or bad gateway. Deploy log says \"Application has ports mapped to the host system, rolling update is not supported.\" Adding a Docker HEALTHCHECK makes it worse - causes a restart loop.",
             "kind": "file"
           },
           {
             "name": "custom-agents.md",
             "path": "~/.claude/rules/custom-agents.md",
-            "description": "- When dispatching agents, NEVER include real names, emails, phone numbers, addresses, or ANY PII from memory or other projects in agent prompts. ALWAYS use gen",
+            "description": "- When dispatching agents, NEVER include real names, emails, phone numbers, addresses, or ANY PII from memory or other projects in agent prompts. ALWAYS use generic/fictional data unless the user explicitly provided real data in the current conversation for the current project.",
             "kind": "file"
           },
           {
             "name": "github-accounts.md",
             "path": "~/.claude/rules/github-accounts.md",
-            "description": "- Before ANY commit or push, verify that NO real client names, business names, emails, phone numbers, addresses, or ANY PII from memory or other projects appear",
+            "description": "- Before ANY commit or push, verify that NO real client names, business names, emails, phone numbers, addresses, or ANY PII from memory or other projects appear in the code, comments, mockups, placeholder text, test data, or commit messages.",
             "kind": "file"
           },
           {
@@ -3901,19 +3901,19 @@
           {
             "name": "netbird-vpn.md",
             "path": "~/.claude/rules/gotchas/netbird-vpn.md",
-            "description": "NetBird VPN does not start automatically when macOS reboots. Any app hosted on a server accessed via NetBird (Coolify dashboard, deployed apps) will be unreacha",
+            "description": "NetBird VPN does not start automatically when macOS reboots. Any app hosted on a server accessed via NetBird (Coolify dashboard, deployed apps) will be unreachable - browser tab just shows a spinner with no error.",
             "kind": "file"
           },
           {
             "name": "nextjs-docker.md",
             "path": "~/.claude/rules/gotchas/nextjs-docker.md",
-            "description": "pnpm stores one copy of each package centrally and symlinks to it from nodemodules. When you COPY --from=builder in a multi-stage Docker build, the symlinks cop",
+            "description": "pnpm stores one copy of each package centrally and symlinks to it from nodemodules. When you COPY --from=builder in a multi-stage Docker build, the symlinks copy as broken pointers because the central store doesn't exist in the new stage. Any CLI tool (like prisma) that lives in nodemodules/.bin will fail silently or crash.",
             "kind": "file"
           },
           {
             "name": "oauth-google.md",
             "path": "~/.claude/rules/gotchas/oauth-google.md",
-            "description": "An app with both NextAuth login AND a Google API connector (e.g. Google Drive) needs two redirect URIs registered in Google Cloud Console - one per flow. Adding",
+            "description": "An app with both NextAuth login AND a Google API connector (e.g. Google Drive) needs two redirect URIs registered in Google Cloud Console - one per flow. Adding only one breaks the other.",
             "kind": "file"
           },
           {
@@ -3925,13 +3925,13 @@
           {
             "name": "postgres-database.md",
             "path": "~/.claude/rules/gotchas/postgres-database.md",
-            "description": "Serverless platforms (Vercel, Netlify, etc.) can spin up hundreds of function instances simultaneously. Each instance tries to open its own Postgres connection.",
+            "description": "Serverless platforms (Vercel, Netlify, etc.) can spin up hundreds of function instances simultaneously. Each instance tries to open its own Postgres connection. Postgres has a hard connection limit and will reject connections or degrade badly under this pattern.",
             "kind": "file"
           },
           {
             "name": "prisma-migrations.md",
             "path": "~/.claude/rules/gotchas/prisma-migrations.md",
-            "description": "prisma db push --accept-data-loss silently drops and recreates tables when schema changes require it. This wipes all data with zero warning. Even without the fl",
+            "description": "prisma db push --accept-data-loss silently drops and recreates tables when schema changes require it. This wipes all data with zero warning. Even without the flag, db push can refuse changes that migrate deploy handles cleanly.",
             "kind": "file"
           },
           {
@@ -3955,31 +3955,31 @@
           {
             "name": "shopify-cli.md",
             "path": "~/.claude/rules/gotchas/shopify-cli.md",
-            "description": "shopify theme push --live --only sections/foo.json does NOT only upload that file. It performs a sync step that can delete unrelated files from the remote theme",
+            "description": "shopify theme push --live --only sections/foo.json does NOT only upload that file. It performs a sync step that can delete unrelated files from the remote theme (incident 2026-05-24: sections/header-group.json was wiped from the live Moiwak theme by an --only push of a sibling file, removing the entire navbar with zero warning).",
             "kind": "file"
           },
           {
             "name": "supabase-auth.md",
             "path": "~/.claude/rules/gotchas/supabase-auth.md",
-            "description": "Every issue below was hit during yllw-new Phase 1 setup (2026-05-27) despite ranksmile and signalstack already having working magic-link auth. Before touching a",
+            "description": "Every issue below was hit during yllw-new Phase 1 setup (2026-05-27) despite ranksmile and signalstack already having working magic-link auth. Before touching auth, read the canonical implementation at /Users/hanna/Documents/ranksmile/apps/web/app/(auth)/callback/route.ts and /Users/hanna/Documents/ranksmile/apps/web/lib/supabase/server.ts.",
             "kind": "file"
           },
           {
             "name": "tailwind-v4.md",
             "path": "~/.claude/rules/gotchas/tailwind-v4.md",
-            "description": "In Tailwind v4 there is no tailwind.config.js font config - the font-sans/font-mono utilities are driven by --font-sans / --font-mono CSS variables declared in ",
+            "description": "In Tailwind v4 there is no tailwind.config.js font config - the font-sans/font-mono utilities are driven by --font-sans / --font-mono CSS variables declared in an @theme block in globals.css. next/font loaders generate their OWN variable name. The two must match, or the font is downloaded but never rendered and the page falls back to the browser default sans-serif.",
             "kind": "file"
           },
           {
             "name": "vercel.md",
             "path": "~/.claude/rules/gotchas/vercel.md",
-            "description": "Vercel Hobby plan no longer auto-deploys private GitHub repos. Use vercel --prod from the project directory (CLI deploy) to work around this. The CLI deploys lo",
+            "description": "Vercel Hobby plan no longer auto-deploys private GitHub repos. Use vercel --prod from the project directory (CLI deploy) to work around this. The CLI deploys local code directly without reading the GitHub repo.",
             "kind": "file"
           },
           {
             "name": "whalesync-supabase-webflow.md",
             "path": "~/.claude/rules/gotchas/whalesync-supabase-webflow.md",
-            "description": "> Cross-tool file. These gotchas involve WhaleSync, Supabase (source), and Webflow (destination) together. Cross-listed in the index under all three tools — rea",
+            "description": "> Cross-tool file. These gotchas involve WhaleSync, Supabase (source), and Webflow (destination) together. Cross-listed in the index under all three tools — read this whenever you debug any of them in a sync context.",
             "kind": "file"
           }
         ]
@@ -3992,7 +3992,7 @@
           {
             "name": "agentic-identity-trust.md",
             "path": "~/.claude/agents/agentic-identity-trust.md",
-            "description": "Designs identity, authentication, and trust verification systems for autonomous AI agents operating in multi-agent environments. Ensures agents can prove who th",
+            "description": "Designs identity, authentication, and trust verification systems for autonomous AI agents operating in multi-agent environments. Ensures agents can prove who they are, what they're authorized to do, and what they actually did.",
             "kind": "file"
           },
           {
@@ -4004,7 +4004,7 @@
           {
             "name": "data-analytics-reporter.md",
             "path": "~/.claude/agents/data-analytics-reporter.md",
-            "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strate",
+            "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visualization and reporting.",
             "kind": "file"
           },
           {
@@ -4022,7 +4022,7 @@
           {
             "name": "design-image-prompt-engineer.md",
             "path": "~/.claude/agents/design-image-prompt-engineer.md",
-            "description": "Expert photography prompt engineer specializing in crafting detailed, evocative prompts for AI image generation. Masters the art of translating visual concepts ",
+            "description": "Expert photography prompt engineer specializing in crafting detailed, evocative prompts for AI image generation. Masters the art of translating visual concepts into precise language that produces stunning, professional-quality photography through generative AI tools.",
             "kind": "file"
           },
           {
@@ -4034,7 +4034,7 @@
           {
             "name": "design-ui-designer.md",
             "path": "~/.claude/agents/design-ui-designer.md",
-            "description": "Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible u",
+            "description": "Expert UI designer specializing in visual design systems, component libraries, and pixel-perfect interface creation. Creates beautiful, consistent, accessible user interfaces that enhance UX and reflect brand identity",
             "kind": "file"
           },
           {
@@ -4046,25 +4046,25 @@
           {
             "name": "design-ux-researcher.md",
             "path": "~/.claude/agents/design-ux-researcher.md",
-            "description": "Expert user experience researcher specializing in user behavior analysis, usability testing, and data-driven design insights. Provides actionable research findi",
+            "description": "Expert user experience researcher specializing in user behavior analysis, usability testing, and data-driven design insights. Provides actionable research findings that improve product usability and user satisfaction",
             "kind": "file"
           },
           {
             "name": "design-visual-storyteller.md",
             "path": "~/.claude/agents/design-visual-storyteller.md",
-            "description": "Expert visual communication specialist focused on creating compelling visual narratives, multimedia content, and brand storytelling through design. Specializes ",
+            "description": "Expert visual communication specialist focused on creating compelling visual narratives, multimedia content, and brand storytelling through design. Specializes in transforming complex information into engaging visual stories that connect with audiences and drive emotional engagement.",
             "kind": "file"
           },
           {
             "name": "design-whimsy-injector.md",
             "path": "~/.claude/agents/design-whimsy-injector.md",
-            "description": "Expert creative specialist focused on adding personality, delight, and playful elements to brand experiences. Creates memorable, joyful interactions that differ",
+            "description": "Expert creative specialist focused on adding personality, delight, and playful elements to brand experiences. Creates memorable, joyful interactions that differentiate brands through unexpected moments of whimsy",
             "kind": "file"
           },
           {
             "name": "engineering-ai-engineer.md",
             "path": "~/.claude/agents/engineering-ai-engineer.md",
-            "description": "Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent f",
+            "description": "Expert AI/ML engineer specializing in machine learning model development, deployment, and integration into production systems. Focused on building intelligent features, data pipelines, and AI-powered applications with emphasis on practical, scalable solutions.",
             "kind": "file"
           },
           {
@@ -4076,13 +4076,13 @@
           {
             "name": "engineering-backend-architect.md",
             "path": "~/.claude/agents/engineering-backend-architect.md",
-            "description": "Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, perfor",
+            "description": "Senior backend architect specializing in scalable system design, database architecture, API development, and cloud infrastructure. Builds robust, secure, performant server-side applications and microservices",
             "kind": "file"
           },
           {
             "name": "engineering-data-engineer.md",
             "path": "~/.claude/agents/engineering-data-engineer.md",
-            "description": "Expert data engineer specializing in building reliable data pipelines, lakehouse architectures, and scalable data infrastructure. Masters ETL/ELT, Apache Spark,",
+            "description": "Expert data engineer specializing in building reliable data pipelines, lakehouse architectures, and scalable data infrastructure. Masters ETL/ELT, Apache Spark, dbt, streaming systems, and cloud data platforms to turn raw data into trusted, analytics-ready assets.",
             "kind": "file"
           },
           {
@@ -4112,7 +4112,7 @@
           {
             "name": "engineering-security-engineer.md",
             "path": "~/.claude/agents/engineering-security-engineer.md",
-            "description": "Expert application security engineer specializing in threat modeling, vulnerability assessment, secure code review, and security architecture design for modern ",
+            "description": "Expert application security engineer specializing in threat modeling, vulnerability assessment, secure code review, and security architecture design for modern web and cloud-native applications.",
             "kind": "file"
           },
           {
@@ -4124,13 +4124,13 @@
           {
             "name": "engineering-technical-writer.md",
             "path": "~/.claude/agents/engineering-technical-writer.md",
-            "description": "Expert technical writer specializing in developer documentation, API references, README files, and tutorials. Transforms complex engineering concepts into clear",
+            "description": "Expert technical writer specializing in developer documentation, API references, README files, and tutorials. Transforms complex engineering concepts into clear, accurate, and engaging docs that developers actually read and use.",
             "kind": "file"
           },
           {
             "name": "gsd-codebase-mapper.md",
             "path": "~/.claude/agents/gsd-codebase-mapper.md",
-            "description": "Explores codebase and writes structured analysis documents. Spawned by map-codebase with a focus area (tech, arch, quality, concerns). Writes documents directly",
+            "description": "Explores codebase and writes structured analysis documents. Spawned by map-codebase with a focus area (tech, arch, quality, concerns). Writes documents directly to reduce orchestrator context load.",
             "kind": "file"
           },
           {
@@ -4142,7 +4142,7 @@
           {
             "name": "gsd-executor.md",
             "path": "~/.claude/agents/gsd-executor.md",
-            "description": "Executes GSD plans with atomic commits, deviation handling, checkpoint protocols, and state management. Spawned by execute-phase orchestrator or execute-plan co",
+            "description": "Executes GSD plans with atomic commits, deviation handling, checkpoint protocols, and state management. Spawned by execute-phase orchestrator or execute-plan command.",
             "kind": "file"
           },
           {
@@ -4172,7 +4172,7 @@
           {
             "name": "gsd-project-researcher.md",
             "path": "~/.claude/agents/gsd-project-researcher.md",
-            "description": "Researches domain ecosystem before roadmap creation. Produces files in .planning/research/ consumed during roadmap creation. Spawned by /gsd:new-project or /gsd",
+            "description": "Researches domain ecosystem before roadmap creation. Produces files in .planning/research/ consumed during roadmap creation. Spawned by /gsd:new-project or /gsd:new-milestone orchestrators.",
             "kind": "file"
           },
           {
@@ -4184,13 +4184,13 @@
           {
             "name": "gsd-roadmapper.md",
             "path": "~/.claude/agents/gsd-roadmapper.md",
-            "description": "Creates project roadmaps with phase breakdown, requirement mapping, success criteria derivation, and coverage validation. Spawned by /gsd:new-project orchestrat",
+            "description": "Creates project roadmaps with phase breakdown, requirement mapping, success criteria derivation, and coverage validation. Spawned by /gsd:new-project orchestrator.",
             "kind": "file"
           },
           {
             "name": "gsd-verifier.md",
             "path": "~/.claude/agents/gsd-verifier.md",
-            "description": "Verifies phase goal achievement through goal-backward analysis. Checks codebase delivers what phase promised, not just that tasks completed. Creates VERIFICATIO",
+            "description": "Verifies phase goal achievement through goal-backward analysis. Checks codebase delivers what phase promised, not just that tasks completed. Creates VERIFICATION.md report.",
             "kind": "file"
           },
           {
@@ -4208,43 +4208,43 @@
           {
             "name": "marketing-content-creator.md",
             "path": "~/.claude/agents/marketing-content-creator.md",
-            "description": "Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optim",
+            "description": "Expert content strategist and creator for multi-platform campaigns. Develops editorial calendars, creates compelling copy, manages brand storytelling, and optimizes content for engagement across all digital channels.",
             "kind": "file"
           },
           {
             "name": "marketing-growth-hacker.md",
             "path": "~/.claude/agents/marketing-growth-hacker.md",
-            "description": "Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and fin",
+            "description": "Expert growth strategist specializing in rapid user acquisition through data-driven experimentation. Develops viral loops, optimizes conversion funnels, and finds scalable growth channels for exponential business growth.",
             "kind": "file"
           },
           {
             "name": "marketing-instagram-curator.md",
             "path": "~/.claude/agents/marketing-instagram-curator.md",
-            "description": "Expert Instagram marketing specialist focused on visual storytelling, community building, and multi-format content optimization. Masters aesthetic development a",
+            "description": "Expert Instagram marketing specialist focused on visual storytelling, community building, and multi-format content optimization. Masters aesthetic development and drives meaningful engagement.",
             "kind": "file"
           },
           {
             "name": "marketing-reddit-community-builder.md",
             "path": "~/.claude/agents/marketing-reddit-community-builder.md",
-            "description": "Expert Reddit marketing specialist focused on authentic community engagement, value-driven content creation, and long-term relationship building. Masters Reddit",
+            "description": "Expert Reddit marketing specialist focused on authentic community engagement, value-driven content creation, and long-term relationship building. Masters Reddit culture navigation.",
             "kind": "file"
           },
           {
             "name": "marketing-social-media-strategist.md",
             "path": "~/.claude/agents/marketing-social-media-strategist.md",
-            "description": "Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engage",
+            "description": "Expert social media strategist for LinkedIn, Twitter, and professional platforms. Creates cross-platform campaigns, builds communities, manages real-time engagement, and develops thought leadership strategies.",
             "kind": "file"
           },
           {
             "name": "marketing-tiktok-strategist.md",
             "path": "~/.claude/agents/marketing-tiktok-strategist.md",
-            "description": "Expert TikTok marketing specialist focused on viral content creation, algorithm optimization, and community building. Masters TikTok's unique culture and featur",
+            "description": "Expert TikTok marketing specialist focused on viral content creation, algorithm optimization, and community building. Masters TikTok's unique culture and features for brand growth.",
             "kind": "file"
           },
           {
             "name": "marketing-twitter-engager.md",
             "path": "~/.claude/agents/marketing-twitter-engager.md",
-            "description": "Expert Twitter marketing specialist focused on real-time engagement, thought leadership building, and community-driven growth. Builds brand authority through au",
+            "description": "Expert Twitter marketing specialist focused on real-time engagement, thought leadership building, and community-driven growth. Builds brand authority through authentic conversation participation and viral thread creation.",
             "kind": "file"
           },
           {
@@ -4256,43 +4256,43 @@
           {
             "name": "product-feedback-synthesizer.md",
             "path": "~/.claude/agents/product-feedback-synthesizer.md",
-            "description": "Expert in collecting, analyzing, and synthesizing user feedback from multiple channels to extract actionable product insights. Transforms qualitative feedback i",
+            "description": "Expert in collecting, analyzing, and synthesizing user feedback from multiple channels to extract actionable product insights. Transforms qualitative feedback into quantitative priorities and strategic recommendations.",
             "kind": "file"
           },
           {
             "name": "product-sprint-prioritizer.md",
             "path": "~/.claude/agents/product-sprint-prioritizer.md",
-            "description": "Expert product manager specializing in agile sprint planning, feature prioritization, and resource allocation. Focused on maximizing team velocity and business ",
+            "description": "Expert product manager specializing in agile sprint planning, feature prioritization, and resource allocation. Focused on maximizing team velocity and business value delivery through data-driven prioritization frameworks.",
             "kind": "file"
           },
           {
             "name": "product-trend-researcher.md",
             "path": "~/.claude/agents/product-trend-researcher.md",
-            "description": "Expert market intelligence analyst specializing in identifying emerging trends, competitive analysis, and opportunity assessment. Focused on providing actionabl",
+            "description": "Expert market intelligence analyst specializing in identifying emerging trends, competitive analysis, and opportunity assessment. Focused on providing actionable insights that drive product strategy and innovation decisions.",
             "kind": "file"
           },
           {
             "name": "project-management-experiment-tracker.md",
             "path": "~/.claude/agents/project-management-experiment-tracker.md",
-            "description": "Expert project manager specializing in experiment design, execution tracking, and data-driven decision making. Focused on managing A/B tests, feature experiment",
+            "description": "Expert project manager specializing in experiment design, execution tracking, and data-driven decision making. Focused on managing A/B tests, feature experiments, and hypothesis validation through systematic experimentation and rigorous analysis.",
             "kind": "file"
           },
           {
             "name": "project-management-project-shepherd.md",
             "path": "~/.claude/agents/project-management-project-shepherd.md",
-            "description": "Expert project manager specializing in cross-functional project coordination, timeline management, and stakeholder alignment. Focused on shepherding projects fr",
+            "description": "Expert project manager specializing in cross-functional project coordination, timeline management, and stakeholder alignment. Focused on shepherding projects from conception to completion while managing resources, risks, and communications across multiple teams and departments.",
             "kind": "file"
           },
           {
             "name": "project-management-studio-operations.md",
             "path": "~/.claude/agents/project-management-studio-operations.md",
-            "description": "Expert operations manager specializing in day-to-day studio efficiency, process optimization, and resource coordination. Focused on ensuring smooth operations, ",
+            "description": "Expert operations manager specializing in day-to-day studio efficiency, process optimization, and resource coordination. Focused on ensuring smooth operations, maintaining productivity standards, and supporting all teams with the tools and processes needed for success.",
             "kind": "file"
           },
           {
             "name": "project-management-studio-producer.md",
             "path": "~/.claude/agents/project-management-studio-producer.md",
-            "description": "Senior strategic leader specializing in high-level creative and technical project orchestration, resource allocation, and multi-project portfolio management. Fo",
+            "description": "Senior strategic leader specializing in high-level creative and technical project orchestration, resource allocation, and multi-project portfolio management. Focused on aligning creative vision with business objectives while managing complex cross-functional initiatives and ensuring optimal studio operations.",
             "kind": "file"
           },
           {
@@ -4322,55 +4322,55 @@
           {
             "name": "specialized-developer-advocate.md",
             "path": "~/.claude/agents/specialized-developer-advocate.md",
-            "description": "Expert developer advocate specializing in building developer communities, creating compelling technical content, optimizing developer experience (DX), and drivi",
+            "description": "Expert developer advocate specializing in building developer communities, creating compelling technical content, optimizing developer experience (DX), and driving platform adoption through authentic engineering engagement. Bridges product and engineering teams with external developers.",
             "kind": "file"
           },
           {
             "name": "support-analytics-reporter.md",
             "path": "~/.claude/agents/support-analytics-reporter.md",
-            "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strate",
+            "description": "Expert data analyst transforming raw data into actionable business insights. Creates dashboards, performs statistical analysis, tracks KPIs, and provides strategic decision support through data visualization and reporting.",
             "kind": "file"
           },
           {
             "name": "support-executive-summary-generator.md",
             "path": "~/.claude/agents/support-executive-summary-generator.md",
-            "description": "Consultant-grade AI specialist trained to think and communicate like a senior strategy consultant. Transforms complex business inputs into concise, actionable e",
+            "description": "Consultant-grade AI specialist trained to think and communicate like a senior strategy consultant. Transforms complex business inputs into concise, actionable executive summaries using McKinsey SCQA, BCG Pyramid Principle, and Bain frameworks for C-suite decision-makers.",
             "kind": "file"
           },
           {
             "name": "support-finance-tracker.md",
             "path": "~/.claude/agents/support-finance-tracker.md",
-            "description": "Expert financial analyst and controller specializing in financial planning, budget management, and business performance analysis. Maintains financial health, op",
+            "description": "Expert financial analyst and controller specializing in financial planning, budget management, and business performance analysis. Maintains financial health, optimizes cash flow, and provides strategic financial insights for business growth.",
             "kind": "file"
           },
           {
             "name": "support-infrastructure-maintainer.md",
             "path": "~/.claude/agents/support-infrastructure-maintainer.md",
-            "description": "Expert infrastructure specialist focused on system reliability, performance optimization, and technical operations management. Maintains robust, scalable infras",
+            "description": "Expert infrastructure specialist focused on system reliability, performance optimization, and technical operations management. Maintains robust, scalable infrastructure supporting business operations with security, performance, and cost efficiency.",
             "kind": "file"
           },
           {
             "name": "support-legal-compliance-checker.md",
             "path": "~/.claude/agents/support-legal-compliance-checker.md",
-            "description": "Expert legal and compliance specialist ensuring business operations, data handling, and content creation comply with relevant laws, regulations, and industry st",
+            "description": "Expert legal and compliance specialist ensuring business operations, data handling, and content creation comply with relevant laws, regulations, and industry standards across multiple jurisdictions.",
             "kind": "file"
           },
           {
             "name": "support-support-responder.md",
             "path": "~/.claude/agents/support-support-responder.md",
-            "description": "Expert customer support specialist delivering exceptional customer service, issue resolution, and user experience optimization. Specializes in multi-channel sup",
+            "description": "Expert customer support specialist delivering exceptional customer service, issue resolution, and user experience optimization. Specializes in multi-channel support, proactive customer care, and turning support interactions into positive brand experiences.",
             "kind": "file"
           },
           {
             "name": "testing-accessibility-auditor.md",
             "path": "~/.claude/agents/testing-accessibility-auditor.md",
-            "description": "Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to findi",
+            "description": "Expert accessibility specialist who audits interfaces against WCAG standards, tests with assistive technologies, and ensures inclusive design. Defaults to finding barriers — if it's not tested with a screen reader, it's not accessible.",
             "kind": "file"
           },
           {
             "name": "testing-api-tester.md",
             "path": "~/.claude/agents/testing-api-tester.md",
-            "description": "Expert API testing specialist focused on comprehensive API validation, performance testing, and quality assurance across all systems and third-party integration",
+            "description": "Expert API testing specialist focused on comprehensive API validation, performance testing, and quality assurance across all systems and third-party integrations",
             "kind": "file"
           },
           {
@@ -4382,7 +4382,7 @@
           {
             "name": "testing-performance-benchmarker.md",
             "path": "~/.claude/agents/testing-performance-benchmarker.md",
-            "description": "Expert performance testing and optimization specialist focused on measuring, analyzing, and improving system performance across all applications and infrastruct",
+            "description": "Expert performance testing and optimization specialist focused on measuring, analyzing, and improving system performance across all applications and infrastructure",
             "kind": "file"
           },
           {
@@ -4394,19 +4394,19 @@
           {
             "name": "testing-test-results-analyzer.md",
             "path": "~/.claude/agents/testing-test-results-analyzer.md",
-            "description": "Expert test analysis specialist focused on comprehensive test result evaluation, quality metrics analysis, and actionable insight generation from testing activi",
+            "description": "Expert test analysis specialist focused on comprehensive test result evaluation, quality metrics analysis, and actionable insight generation from testing activities",
             "kind": "file"
           },
           {
             "name": "testing-tool-evaluator.md",
             "path": "~/.claude/agents/testing-tool-evaluator.md",
-            "description": "Expert technology assessment specialist focused on evaluating, testing, and recommending tools, software, and platforms for business use and productivity optimi",
+            "description": "Expert technology assessment specialist focused on evaluating, testing, and recommending tools, software, and platforms for business use and productivity optimization",
             "kind": "file"
           },
           {
             "name": "testing-workflow-optimizer.md",
             "path": "~/.claude/agents/testing-workflow-optimizer.md",
-            "description": "Expert process improvement specialist focused on analyzing, optimizing, and automating workflows across all business functions for maximum productivity and effi",
+            "description": "Expert process improvement specialist focused on analyzing, optimizing, and automating workflows across all business functions for maximum productivity and efficiency",
             "kind": "file"
           }
         ]
@@ -4425,97 +4425,97 @@
           {
             "name": "content-notebooklm",
             "path": "~/.claude/skills/content-notebooklm",
-            "description": "Complete API for Google NotebookLM - full programmatic access including features not in the web UI. Create notebooks, add sources, generate all artifact types, ",
+            "description": "Complete API for Google NotebookLM - full programmatic access including features not in the web UI. Create notebooks, add sources, generate all artifact types, download in multiple formats. Activates on explicit /notebooklm or intent like \"create a podcast about X",
             "kind": "dir"
           },
           {
             "name": "content-research-youtube",
             "path": "~/.claude/skills/content-research-youtube",
-            "description": "YouTube-powered research pipeline that finds videos on a topic, feeds them into NotebookLM for deep analysis, and optionally generates deliverables (podcasts, f",
+            "description": "YouTube-powered research pipeline that finds videos on a topic, feeds them into NotebookLM for deep analysis, and optionally generates deliverables (podcasts, flashcards, quizzes, infographics, etc.). Use this skill whenever the user wants to research a topic using YouTube content, build a knowledge base from videos, analyze what YouTube creators are saying about something, or wants a \"YouTube research\" workflow. Triggers on phrases like \"research this topic on YouTube\", \"what are YouTubers saying about\", \"build a research notebook from YouTube\", \"analyze YouTube videos about\", or any multi-st",
             "kind": "dir"
           },
           {
             "name": "content-search-youtube",
             "path": "~/.claude/skills/content-search-youtube",
-            "description": "Search YouTube for videos and return structured results with metadata and engagement metrics. Use this skill whenever the user wants to search YouTube, find vid",
+            "description": "Search YouTube for videos and return structured results with metadata and engagement metrics. Use this skill whenever the user wants to search YouTube, find videos on a topic, discover content creators, research video performance, compare channels, or analyze YouTube engagement — even if they don't say \"YouTube search\" explicitly. Triggers on phrases like \"search YouTube\", \"find videos about\", \"what videos are there on\", \"look up on YouTube\", \"YouTube results for\", or any request to find or discover video content.",
             "kind": "dir"
           },
           {
             "name": "content-transcribe-video",
             "path": "~/.claude/skills/content-transcribe-video",
-            "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are s",
+            "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Handles any meeting shape — 1-on-1 walkthroughs, multi-person standups, client calls — and labels unknown voices as Speaker N. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings, standup",
             "kind": "dir"
           },
           {
             "name": "content-transcribe-youtube",
             "path": "~/.claude/skills/content-transcribe-youtube",
-            "description": "Transcribe a YouTube video into a near-transcript summary and save it to the knowledge base. Use this skill whenever the user shares a YouTube URL and wants a t",
+            "description": "Transcribe a YouTube video into a near-transcript summary and save it to the knowledge base. Use this skill whenever the user shares a YouTube URL and wants a transcript, summary, near-transcript, or wants to save/ingest a video into their knowledge base. Also triggers when the user says \"transcribe this video\", \"save this tutorial\", \"add this to my knowledge base\", \"get the transcript\", or pastes a youtube.com URL with intent to capture its content.",
             "kind": "dir"
           },
           {
             "name": "content-write-article",
             "path": "~/.claude/skills/content-write-article",
-            "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use th",
+            "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (u",
             "kind": "dir"
           },
           {
             "name": "frontend-slides",
             "path": "~/.claude/skills/frontend-slides",
-            "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PP",
+            "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
             "kind": "dir"
           },
           {
             "name": "invoice-creator",
             "path": "~/.claude/skills/invoice-creator",
-            "description": "Create a Swedish-style invoice (faktura) for the user's business as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to",
+            "description": "Create a Swedish-style invoice (faktura) for the user's business as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
             "kind": "dir"
           },
           {
             "name": "learn",
             "path": "~/.claude/skills/learn",
-            "description": "Run a personal tutoring session on one isolated topic. Reads the topic's checklist + progress, picks up where the last session left off (or starts a new topic),",
+            "description": "Run a personal tutoring session on one isolated topic. Reads the topic's checklist + progress, picks up where the last session left off (or starts a new topic), teaches incrementally with assess-before-explain and AskUserQuestion quizzes, can interleave real hands-on actions (SSH into a server, run a command, inspect a schema), and ends with the standard session-log + checklist + progress update routine. Triggers on \"/learn\", \"let's do a learn session\", \"tutor me on X\", \"continue the learn session\", \"add a topic for X\", \"add this to my learn references\".",
             "kind": "dir"
           },
           {
             "name": "n8n-code-javascript",
             "path": "~/.claude/skills/n8n-code-javascript",
-            "description": "Write JavaScript code in n8n Code nodes. Use when writing JavaScript in n8n, using $input/$json/$node syntax, making HTTP requests with $helpers, working with d",
+            "description": "Write JavaScript code in n8n Code nodes. Use when writing JavaScript in n8n, using $input/$json/$node syntax, making HTTP requests with $helpers, working with dates using DateTime, troubleshooting Code node errors, or choosing between Code node modes.",
             "kind": "dir"
           },
           {
             "name": "n8n-code-python",
             "path": "~/.claude/skills/n8n-code-python",
-            "description": "Write Python code in n8n Code nodes. Use when writing Python in n8n, using _input/_json/_node syntax, working with standard library, or need to understand Pytho",
+            "description": "Write Python code in n8n Code nodes. Use when writing Python in n8n, using _input/_json/_node syntax, working with standard library, or need to understand Python limitations in n8n Code nodes.",
             "kind": "dir"
           },
           {
             "name": "n8n-expression-syntax",
             "path": "~/.claude/skills/n8n-expression-syntax",
-            "description": "Validate n8n expression syntax and fix common errors. Use when writing n8n expressions, using {{}} syntax, accessing $json/$node variables, troubleshooting expr",
+            "description": "Validate n8n expression syntax and fix common errors. Use when writing n8n expressions, using {{}} syntax, accessing $json/$node variables, troubleshooting expression errors, or working with webhook data in workflows.",
             "kind": "dir"
           },
           {
             "name": "n8n-mcp-tools-expert",
             "path": "~/.claude/skills/n8n-mcp-tools-expert",
-            "description": "Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using",
+            "description": "Expert guide for using n8n-mcp MCP tools effectively. Use when searching for nodes, validating configurations, accessing templates, managing workflows, or using any n8n-mcp tool. Provides tool selection guidance, parameter formats, and common patterns.",
             "kind": "dir"
           },
           {
             "name": "n8n-node-configuration",
             "path": "~/.claude/skills/n8n-node-configuration",
-            "description": "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_",
+            "description": "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node_essentials and get_node_info, or learning common configuration patterns by node type.",
             "kind": "dir"
           },
           {
             "name": "n8n-validation-expert",
             "path": "~/.claude/skills/n8n-validation-expert",
-            "description": "Interpret validation errors and guide fixing them. Use when encountering validation errors, validation warnings, false positives, operator structure issues, or ",
+            "description": "Interpret validation errors and guide fixing them. Use when encountering validation errors, validation warnings, false positives, operator structure issues, or need help understanding validation results. Also use when asking about validation profiles, error types, or the validation loop process.",
             "kind": "dir"
           },
           {
             "name": "n8n-workflow-patterns",
             "path": "~/.claude/skills/n8n-workflow-patterns",
-            "description": "Proven workflow architectural patterns from real n8n workflows. Use when building new workflows, designing workflow structure, choosing workflow patterns, plann",
+            "description": "Proven workflow architectural patterns from real n8n workflows. Use when building new workflows, designing workflow structure, choosing workflow patterns, planning workflow architecture, or asking about webhook processing, HTTP API integration, database operations, AI agent workflows, or scheduled tasks.",
             "kind": "dir"
           },
           {
