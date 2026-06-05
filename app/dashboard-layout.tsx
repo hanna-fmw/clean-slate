@@ -3,6 +3,14 @@
 import { useState } from 'react'
 import { Sidebar, type Section } from '@/components/sidebar'
 import { SyncInfoDialog } from '@/components/sync-info-dialog'
+import { GlobalSearch } from '@/components/global-search'
+import type {
+  Project,
+  Service,
+  ToolsInventory,
+  ToolboxEntry,
+  ReferenceInventory,
+} from '@/lib/types'
 
 interface DashboardLayoutProps {
   counts: Record<Section, number>
@@ -11,6 +19,13 @@ interface DashboardLayoutProps {
   toolsList: React.ReactNode
   toolboxList: React.ReactNode
   referenceList: React.ReactNode
+  searchData: {
+    projects: Project[]
+    services: Service[]
+    tools: ToolsInventory | undefined
+    toolbox: ToolboxEntry[] | undefined
+    reference: ReferenceInventory | undefined
+  }
 }
 
 const TITLES: Record<Section, string> = {
@@ -28,6 +43,7 @@ export function DashboardLayout({
   toolsList,
   toolboxList,
   referenceList,
+  searchData,
 }: DashboardLayoutProps) {
   const [active, setActive] = useState<Section>('projects')
 
@@ -35,14 +51,17 @@ export function DashboardLayout({
     <div className="flex min-h-screen">
       <Sidebar active={active} onNavigate={setActive} counts={counts} />
       <div className="flex-1 min-w-0 md:ml-[var(--sidebar-width)] flex flex-col min-h-screen pt-[var(--header-height)] md:pt-0">
-        <header className="h-[var(--header-height)] border-b border-[var(--border)] flex items-center px-[var(--card-padding)] md:px-[var(--space-section)] shrink-0">
-          <div className="flex items-center gap-2 text-sm">
+        <header className="h-[var(--header-height)] border-b border-[var(--border)] flex items-center gap-4 px-[var(--card-padding)] md:px-[var(--space-section)] shrink-0">
+          <div className="flex items-center gap-2 text-sm shrink-0">
             <span className="text-[var(--muted)] hidden sm:inline">clean-slate</span>
             <span className="text-[var(--muted)] hidden sm:inline">/</span>
             <span className="font-medium">{TITLES[active]}</span>
           </div>
-          <div className="ml-auto flex items-center gap-3 text-xs text-[var(--muted)]">
-            {counts[active]} items
+          <div className="flex-1 flex justify-end">
+            <GlobalSearch data={searchData} onSelect={setActive} />
+          </div>
+          <div className="flex items-center gap-3 text-xs text-[var(--muted)] shrink-0">
+            <span className="hidden sm:inline">{counts[active]} items</span>
             <SyncInfoDialog />
           </div>
         </header>

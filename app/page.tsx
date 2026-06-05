@@ -77,6 +77,7 @@ export default function Home() {
       }
       toolboxList={<ToolboxView toolbox={toolbox ?? []} />}
       referenceList={<ReferenceView reference={reference} />}
+      searchData={{ projects, services: allServices, tools, toolbox, reference }}
     />
   )
 }
