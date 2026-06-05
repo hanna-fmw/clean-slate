@@ -83,25 +83,36 @@ function ReferenceGroupCard({ group }: { group: ReferenceGroup }) {
       <CardContent>
         <ul className="space-y-1.5">
           {group.items.map(item => (
-            <li
-              key={item.path}
-              className="grid grid-cols-[minmax(0,1fr)_2fr] gap-3 text-[12px] py-1 border-b border-[var(--border)]/40 last:border-0"
-            >
-              <div className="min-w-0">
-                <div className="font-mono truncate" title={item.name}>
-                  {item.kind === 'dir' ? `${item.name.replace(/\/$/, '')}/` : item.name}
-                </div>
-                <div className="font-mono text-[10px] text-muted-foreground/60 truncate" title={item.path}>
-                  {item.path}
-                </div>
-              </div>
-              <div className="text-muted-foreground text-[11px] leading-snug">
-                {item.description || <span className="text-muted-foreground/40 italic">no description</span>}
-              </div>
-            </li>
+            <ReferenceItemRow key={item.path} item={item} />
           ))}
         </ul>
       </CardContent>
     </Card>
+  )
+}
+
+function ReferenceItemRow({ item }: { item: ReferenceGroup['items'][number] }) {
+  const [open, setOpen] = useState(false)
+  const hasDescription = !!item.description
+  return (
+    <li className="border-b border-[var(--border)]/40 last:border-0">
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className="w-full grid grid-cols-[minmax(0,1fr)_2fr] gap-3 text-[12px] py-1 text-left hover:bg-[var(--hover)] rounded-sm cursor-pointer"
+      >
+        <div className="min-w-0">
+          <div className={`font-mono ${open ? 'whitespace-normal break-all' : 'truncate'}`}>
+            {item.kind === 'dir' ? `${item.name.replace(/\/$/, '')}/` : item.name}
+          </div>
+          <div className={`font-mono text-[10px] text-muted-foreground/60 ${open ? 'whitespace-normal break-all' : 'truncate'}`}>
+            {item.path}
+          </div>
+        </div>
+        <div className={`text-muted-foreground text-[11px] leading-snug ${open ? 'whitespace-pre-wrap break-words' : 'truncate'}`}>
+          {hasDescription ? item.description : <span className="text-muted-foreground/40 italic">no description</span>}
+        </div>
+      </button>
+    </li>
   )
 }

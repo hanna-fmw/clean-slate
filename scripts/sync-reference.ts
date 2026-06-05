@@ -38,7 +38,7 @@ function firstLine(text: string): string {
     if (line.startsWith('#')) continue
     if (line.startsWith('---')) continue
     if (line.startsWith('<!--')) continue
-    return line.replace(/[*_`]/g, '').slice(0, 160)
+    return line.replace(/[*_`]/g, '').slice(0, 600)
   }
   return ''
 }
@@ -48,7 +48,7 @@ function readFrontmatterDescription(content: string): string {
   if (!m) return ''
   const line = m[1].split('\n').find(l => l.trim().startsWith('description:'))
   if (!line) return ''
-  return line.replace(/^\s*description:\s*"?/, '').replace(/"?\s*$/, '').trim().slice(0, 160)
+  return line.replace(/^\s*description:\s*"?/, '').replace(/"?\s*$/, '').trim().slice(0, 600)
 }
 
 function describeMarkdown(path: string): string {
