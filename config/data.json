@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T07:32:25.618Z",
+  "generated_at": "2026-06-05T16:27:33.439Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -235,7 +235,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-04T20:28:51+02:00"
+      "last_modified": "2026-06-05T09:32:26+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -747,6 +747,46 @@
       "deployed_url": "",
       "chrome_profile": "",
       "last_modified": "2026-01-11T21:21:43+01:00"
+    },
+    {
+      "name": "Todo",
+      "path": "~/Documents/projects/utilities/todo",
+      "description": "A tiny personal Todo app for macOS. Tauri + React with local JSON storage. Folders to separate tasks (Personal, Work, etc.), native macOS traffic-light buttons, dark UI inspired by the AI Hub start-learning card.",
+      "description_short": "A tiny personal Todo app for macOS.",
+      "stack": [
+        "- **Tauri 2** (Rust backend)\n- **React 19** + **TypeScript** + **Vite**\n- **serde / serde_json** for JSON storage\n- Plain CSS (no Tailwind",
+        "no shadcn — too heavy for one-window app)"
+      ],
+      "hosting": "- Local desktop app, no server.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/todo"
+      },
+      "run_commands": {
+        "pnpm dev": "vite",
+        "pnpm build": "tsc && vite build"
+      },
+      "services": [
+        "- None. Storage is local JSON at `~/Library/Application Support/dev.todo/todos.json`."
+      ],
+      "notes": "- Window has native macOS traffic lights (`titleBarStyle: \"Overlay\"`, `hiddenTitle: true`) — sidebar/titlebar regions are `-webkit-app-region: drag` for moving.\n- Default folders on first run: Personal, Work.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None needed."
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "None specific."
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-06-05T18:15:56+02:00"
     },
     {
       "name": "Unlogged",
@@ -1350,7 +1390,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-05T07:32:26.167Z",
+    "synced_at": "2026-06-05T16:27:33.997Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
