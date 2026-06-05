@@ -121,6 +121,26 @@ export interface ToolboxEntry {
   installed: boolean
 }
 
+export interface ReferenceItem {
+  name: string
+  path: string
+  description: string
+  kind: 'file' | 'dir'
+}
+
+export interface ReferenceGroup {
+  name: string
+  path: string
+  description: string
+  items: ReferenceItem[]
+}
+
+export interface ReferenceInventory {
+  synced_at: string
+  root: string
+  groups: ReferenceGroup[]
+}
+
 export interface DashboardData {
   generated_at: string
   projects: Project[]
@@ -128,4 +148,5 @@ export interface DashboardData {
   infrastructure: Infrastructure[]
   tools?: ToolsInventory
   toolbox?: ToolboxEntry[]
+  reference?: ReferenceInventory
 }

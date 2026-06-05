@@ -10,6 +10,7 @@ export HOME="$HOME"
 pnpm sync
 pnpm sync:tools
 pnpm sync:toolbox
+pnpm sync:reference
 
 if git diff --quiet config/data.json; then
   echo "No changes detected."
