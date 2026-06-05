@@ -1,12 +1,20 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import type { ReferenceInventory, ReferenceGroup } from '@/lib/types'
+import type {
+  ReferenceInventory,
+  ReferenceGroup,
+  ReferenceSubdir,
+} from '@/lib/types'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
 interface ReferenceViewProps {
   reference: ReferenceInventory | undefined
+}
+
+function matchesQuery(text: string, q: string) {
+  return text.toLowerCase().includes(q)
 }
 
 export function ReferenceView({ reference }: ReferenceViewProps) {
@@ -17,16 +25,28 @@ export function ReferenceView({ reference }: ReferenceViewProps) {
     const q = query.trim().toLowerCase()
     if (!q) return reference.groups
     return reference.groups
-      .map(g => ({
-        ...g,
-        items: g.items.filter(
+      .map(g => {
+        const items = g.items.filter(
           item =>
-            item.name.toLowerCase().includes(q) ||
-            item.description.toLowerCase().includes(q) ||
-            item.path.toLowerCase().includes(q),
-        ),
-      }))
-      .filter(g => g.items.length > 0)
+            matchesQuery(item.name, q) ||
+            matchesQuery(item.description, q) ||
+            matchesQuery(item.path, q),
+        )
+        const subdirs = g.subdirs
+          .map(sd => ({
+            ...sd,
+            items: sd.items.filter(
+              item =>
+                matchesQuery(item.name, q) ||
+                matchesQuery(item.description, q) ||
+                matchesQuery(item.path, q) ||
+                matchesQuery(sd.name, q),
+            ),
+          }))
+          .filter(sd => sd.items.length > 0)
+        return { ...g, items, subdirs }
+      })
+      .filter(g => g.items.length > 0 || g.subdirs.length > 0)
   }, [reference, query])
 
   if (!reference) {
@@ -36,6 +56,8 @@ export function ReferenceView({ reference }: ReferenceViewProps) {
       </p>
     )
   }
+
+  const forceOpen = query.trim().length > 0
 
   return (
     <div className="space-y-4">
@@ -57,7 +79,7 @@ export function ReferenceView({ reference }: ReferenceViewProps) {
       ) : (
         <div className="space-y-3">
           {filtered.map(group => (
-            <ReferenceGroupCard key={group.name} group={group} />
+            <ReferenceGroupCard key={group.name} group={group} forceOpen={forceOpen} />
           ))}
         </div>
       )}
@@ -65,7 +87,11 @@ export function ReferenceView({ reference }: ReferenceViewProps) {
   )
 }
 
-function ReferenceGroupCard({ group }: { group: ReferenceGroup }) {
+function totalCount(group: ReferenceGroup) {
+  return group.items.length + group.subdirs.reduce((sum, sd) => sum + sd.items.length, 0)
+}
+
+function ReferenceGroupCard({ group, forceOpen }: { group: ReferenceGroup; forceOpen: boolean }) {
   return (
     <Card>
       <CardHeader>
@@ -73,7 +99,7 @@ function ReferenceGroupCard({ group }: { group: ReferenceGroup }) {
           <CardTitle className="text-sm flex items-center gap-2">
             {group.name}
             <Badge variant="outline" className="text-[10px] font-mono">
-              {group.items.length}
+              {totalCount(group)}
             </Badge>
           </CardTitle>
           <p className="text-xs text-muted-foreground">{group.description}</p>
@@ -81,27 +107,70 @@ function ReferenceGroupCard({ group }: { group: ReferenceGroup }) {
         </div>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-1.5">
-          {group.items.map(item => (
-            <li
-              key={item.path}
-              className="grid grid-cols-[minmax(0,1fr)_2fr] gap-3 py-1.5 border-b border-[var(--border)]/40 last:border-0"
-            >
-              <div className="min-w-0">
-                <div className="font-mono text-sm break-all">
-                  {item.kind === 'dir' ? `${item.name.replace(/\/$/, '')}/` : item.name}
-                </div>
-                <div className="font-mono text-[11px] text-muted-foreground/60 break-all">
-                  {item.path}
-                </div>
-              </div>
-              <div className="text-muted-foreground text-sm leading-relaxed whitespace-pre-wrap break-words">
-                {item.description || <span className="text-muted-foreground/40 italic">no description</span>}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {group.items.length > 0 && <ItemList items={group.items} />}
+        {group.subdirs.map(sd => (
+          <SubdirSection key={sd.path} subdir={sd} forceOpen={forceOpen} />
+        ))}
       </CardContent>
     </Card>
+  )
+}
+
+function SubdirSection({ subdir, forceOpen }: { subdir: ReferenceSubdir; forceOpen: boolean }) {
+  const [open, setOpen] = useState(false)
+  const isOpen = forceOpen || open
+  return (
+    <div className="mt-3 border border-[var(--border)]/60 rounded-[var(--card-radius)] overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen(o => !o)}
+        className="w-full flex items-center gap-2 px-3 py-2 bg-[var(--hover)]/40 hover:bg-[var(--hover)] transition-colors cursor-pointer text-left"
+      >
+        <svg
+          width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          className={`shrink-0 transition-transform ${isOpen ? 'rotate-90' : ''}`}
+        >
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+        <span className="font-mono text-sm font-medium">{subdir.name}/</span>
+        <Badge variant="outline" className="text-[10px] font-mono ml-1">
+          {subdir.items.length}
+        </Badge>
+        <span className="ml-auto font-mono text-[11px] text-muted-foreground/60 truncate">
+          {subdir.path}
+        </span>
+      </button>
+      {isOpen && (
+        <div className="px-3 pt-2 pb-1">
+          <ItemList items={subdir.items} />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ItemList({ items }: { items: ReferenceGroup['items'] }) {
+  return (
+    <ul className="space-y-1.5">
+      {items.map(item => (
+        <li
+          key={item.path}
+          className="grid grid-cols-[minmax(0,1fr)_2fr] gap-3 py-1.5 border-b border-[var(--border)]/40 last:border-0"
+        >
+          <div className="min-w-0">
+            <div className="font-mono text-sm break-all">
+              {item.kind === 'dir' ? `${item.name.replace(/\/$/, '')}/` : item.name}
+            </div>
+            <div className="font-mono text-[11px] text-muted-foreground/60 break-all">
+              {item.path}
+            </div>
+          </div>
+          <div className="text-muted-foreground text-sm leading-relaxed whitespace-pre-wrap break-words">
+            {item.description || <span className="text-muted-foreground/40 italic">no description</span>}
+          </div>
+        </li>
+      ))}
+    </ul>
   )
 }

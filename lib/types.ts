@@ -128,11 +128,18 @@ export interface ReferenceItem {
   kind: 'file' | 'dir'
 }
 
+export interface ReferenceSubdir {
+  name: string
+  path: string
+  items: ReferenceItem[]
+}
+
 export interface ReferenceGroup {
   name: string
   path: string
   description: string
   items: ReferenceItem[]
+  subdirs: ReferenceSubdir[]
 }
 
 export interface ReferenceInventory {
