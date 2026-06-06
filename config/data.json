@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T13:34:17.671Z",
+  "generated_at": "2026-06-06T15:21:28.469Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -94,6 +94,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T09:45:37.759Z"
     },
     {
@@ -196,6 +197,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T15:20:37+02:00"
     },
     {
@@ -237,6 +239,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T15:13:41+02:00"
     },
     {
@@ -276,7 +279,8 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T15:33:26+02:00"
+      "vault": "~/Documents/clean-slate/private/vault.md",
+      "last_modified": "2026-06-06T15:44:04+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -320,10 +324,11 @@
         "Coolify (deployment)",
         "Hetzner (server hosting)"
       ],
-      "notes": "- Deploy by pushing to main - Coolify auto-deploys via GitHub webhook\n- Embedding runs locally inside the container using `@xenova/transformers` - no external embedding API needed\n- After any Prisma schema change: create migration locally, deploy, then run `npx prisma migrate deploy` in Coolify terminal\n- Default LLM model: `qwen/qwen-2.5-7b-instruct` via OpenRouter\n- See `TASKS.md` for known issues and pending work\n- Reference repo (read-only): `~/Desktop/private-knowledge-base`",
+      "notes": "- Deploy by pushing to main - Coolify auto-deploys via GitHub webhook\n- Embedding runs locally inside the container using `@xenova/transformers` - no external embedding API needed\n- After any Prisma schema change: create migration locally, deploy, then run `npx prisma migrate deploy` in Coolify terminal\n- Default LLM model: `qwen/qwen-2.5-7b-instruct` via OpenRouter\n- See `TASKS.md` for known issues and pending work\n- Reference repo (read-only): `~/private-knowledge-base`",
       "toolbox_mentions": [],
       "deployed_url": "https://kb.stormfors.ai",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
@@ -361,6 +366,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-02T08:30:16+02:00"
     },
     {
@@ -397,6 +403,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-02T22:48:47+02:00"
     },
     {
@@ -446,6 +453,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://aeo.stormfors.ai",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-17T22:42:00+02:00"
     },
     {
@@ -508,6 +516,7 @@
       ],
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
@@ -543,12 +552,13 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
       "name": "Personal Knowledge Base",
       "path": "~/Documents/knowledge-base-md-files",
-      "description": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes. The system lets you ask natural-language questions and get answers sourced from your own documents.\n\nThe pipeline works as follows: markdown notes live on VM2 at `/home/hanna/markdown-vault/` and are edited via VS Code Remote-SSH. A Node.js indexing script uses local embeddings (`@xenova/transformers`) to chunk and embed the documents, storing them in Qdrant (a vector database deployed via Coolify). At query time, a Node.js script performs semantic search against Qdrant and sends the top chunks to the HF Inference API (Qwen/Qwen2.5-7B-Instruct) to generate an answer with source attribution.\n\nA Next.js 16 web UI provides a chat interface, document management admin panel, dark mode, and markdown rendering. The UI is deployed via Coolify using a deploy key from GitHub, with nixpacks as the build system. A SQLite database (persisted via Coolify volume) tracks indexed document metadata.\n\nThis local folder (`knowledge-base-md-files/`) contains documentation and guides about the project, not the application code itself. The actual app code lives at `~/Desktop/private-knowledge-base/`.",
+      "description": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes. The system lets you ask natural-language questions and get answers sourced from your own documents.\n\nThe pipeline works as follows: markdown notes live on VM2 at `/home/hanna/markdown-vault/` and are edited via VS Code Remote-SSH. A Node.js indexing script uses local embeddings (`@xenova/transformers`) to chunk and embed the documents, storing them in Qdrant (a vector database deployed via Coolify). At query time, a Node.js script performs semantic search against Qdrant and sends the top chunks to the HF Inference API (Qwen/Qwen2.5-7B-Instruct) to generate an answer with source attribution.\n\nA Next.js 16 web UI provides a chat interface, document management admin panel, dark mode, and markdown rendering. The UI is deployed via Coolify using a deploy key from GitHub, with nixpacks as the build system. A SQLite database (persisted via Coolify volume) tracks indexed document metadata.\n\nThis local folder (`knowledge-base-md-files/`) contains documentation and guides about the project, not the application code itself. The actual app code lives at `~/private-knowledge-base/`.",
       "description_short": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes.",
       "stack": [
         "Next.js 16",
@@ -587,7 +597,8 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-04-26T21:23:28.301Z"
+      "vault": "~/Documents/clean-slate/private/vault.md",
+      "last_modified": "2026-06-06T14:10:39.593Z"
     },
     {
       "name": "Pindrop",
@@ -635,6 +646,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-31T22:45:00+02:00"
     },
     {
@@ -711,6 +723,7 @@
       ],
       "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-02T11:21:16.755Z"
     },
     {
@@ -760,6 +773,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-03-14T16:23:41+01:00"
     },
     {
@@ -808,6 +822,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-04-04T13:23:52+02:00"
     },
     {
@@ -839,6 +854,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-04T13:50:09+02:00"
     },
     {
@@ -860,7 +876,7 @@
         "React Testing Library",
         "npm workspaces"
       ],
-      "hosting": "Web: not yet deployed (Vercel target, `app.hosk.app`). API: not yet deployed; Coolify server provisioned at Hetzner CPX22 in Helsinki (`coolify-1`, IP 62.238.38.28), target domain `api.hosk.app`. Database: Supabase (EU, free tier).",
+      "hosting": "Web: not yet deployed (Vercel target, `app.hosk.app`). API: not yet deployed; Coolify server provisioned at Hetzner CPX22 in Helsinki (`coolify-1`), target domain `api.hosk.app`. Database: Supabase (EU, free tier).",
       "database": "",
       "github": {
         "account": "personal (hanna-fmw)",
@@ -888,6 +904,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-01T22:37:33+02:00"
     },
     {
@@ -927,6 +944,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
@@ -967,6 +985,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-05T23:30:41+02:00"
     },
     {
@@ -1025,6 +1044,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-05T07:46:59+02:00"
     },
     {
@@ -1057,6 +1077,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-20T16:42:41+02:00"
     }
   ],

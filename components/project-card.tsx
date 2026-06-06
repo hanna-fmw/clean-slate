@@ -12,6 +12,32 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 
+function VaultChip({ path, slug }: { path: string; slug?: string }) {
+  const [copied, setCopied] = useState(false)
+  const cmd = `code ${path}`
+  const handleCopy = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    navigator.clipboard.writeText(cmd).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1400)
+    })
+  }
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      title={copied ? 'Copied — paste in terminal' : `Copy: ${cmd}`}
+      className="inline-flex items-center gap-1 text-xs font-mono px-1.5 py-0.5 rounded border border-amber-500/40 bg-amber-500/5 text-amber-700 dark:text-amber-300 hover:bg-amber-500/15 hover:border-amber-500/60 transition-colors"
+    >
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+        <rect x="3" y="11" width="18" height="11" rx="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      </svg>
+      {copied ? 'copied' : `vault${slug ? `#${slug}` : ''}`}
+    </button>
+  )
+}
+
 const GRADIENTS = [
   'from-blue-500/10 to-purple-500/10',
   'from-emerald-500/10 to-teal-500/10',
@@ -100,6 +126,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 {project.chrome_profile}
               </span>
             )}
+            {project.vault && <VaultChip path={project.vault} slug={project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')} />}
           </div>
         </CardHeader>
         <CardContent>
@@ -185,6 +212,7 @@ export function ProjectCard({ project }: { project: Project }) {
                   {project.chrome_profile}
                 </span>
               )}
+              {project.vault && <VaultChip path={project.vault} slug={project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')} />}
             </div>
           </DialogHeader>
 

@@ -118,6 +118,7 @@ function scanProject(dirPath: string): Project | null {
     toolbox_mentions: parsed.toolbox_mentions,
     deployed_url: parsed.deployed_url,
     chrome_profile: parsed.chrome_profile,
+    vault: parsed.vault,
     last_modified: getLastModified(dirPath),
   }
 }

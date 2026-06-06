@@ -20,6 +20,7 @@ interface ParsedProject {
   toolbox_mentions: ToolboxMention[]
   deployed_url: string
   chrome_profile: string
+  vault: string
 }
 
 export function parseCleanSlate(markdown: string): ParsedProject {
@@ -38,12 +39,31 @@ export function parseCleanSlate(markdown: string): ParsedProject {
   const toolbox_mentions = parseToolboxSection(findToolboxSection(sections))
   const deployed_url = extractDeployedUrl(sections['hosting'] ?? '')
   const chrome_profile = extractChromeProfile(sections)
+  const vault = extractVault(sections)
 
   return {
     name, description, description_short, stack, hosting, database,
     github, run_commands, services, notes, toolbox_mentions, deployed_url,
-    chrome_profile,
+    chrome_profile, vault,
   }
+}
+
+function extractVault(sections: Record<string, string>): string {
+  // Dedicated "## Vault" section: first non-empty line is the path.
+  const dedicated = sections['vault']
+  if (dedicated?.trim()) {
+    const firstLine = dedicated.split('\n').find((l) => l.trim())
+    if (firstLine) return firstLine.trim().replace(/^[-*]\s+/, '').replace(/^`|`$/g, '').trim()
+  }
+  // Inline "Vault:" label anywhere in any section.
+  const labelPattern = /^(?:[-*]\s+)?(?:\*\*)?vault(?:\*\*)?\s*[:\-]\s*(.+)$/i
+  for (const text of Object.values(sections)) {
+    for (const line of text.split('\n')) {
+      const m = line.match(labelPattern)
+      if (m) return m[1].trim().replace(/^`|`$/g, '').trim()
+    }
+  }
+  return ''
 }
 
 function extractChromeProfile(sections: Record<string, string>): string {
