@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T13:33:08.401Z",
+  "generated_at": "2026-06-06T13:34:17.671Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -276,7 +276,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T14:18:15+02:00"
+      "last_modified": "2026-06-06T15:33:26+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -3982,22 +3982,19 @@
   "api_keys": [
     {
       "provider": "Anthropic",
-      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_ref": "",
       "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://console.anthropic.com/settings/billing",
       "keysUrl": "https://console.anthropic.com/settings/keys",
-      "spendLimit": "$20/mo",
-      "spendLimitSet": true,
-      "lastRotated": "2026-03-15",
-      "projects": [
-        "signal-stack",
-        "clean-slate"
-      ],
-      "notes": "Personal key. Hard monthly cap at $20."
+      "spendLimit": "",
+      "spendLimitSet": false,
+      "lastRotated": "",
+      "projects": [],
+      "notes": "TODO: fill in your real spend limit, rotation date, and which projects use this key."
     },
     {
       "provider": "OpenAI",
-      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_ref": "",
       "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://platform.openai.com/account/billing/overview",
       "keysUrl": "https://platform.openai.com/api-keys",
@@ -4005,37 +4002,31 @@
       "spendLimitSet": false,
       "lastRotated": "",
       "projects": [],
-      "notes": "TODO: set a hard spend limit."
+      "notes": "TODO: fill in your real spend limit, rotation date, and which projects use this key."
     },
     {
       "provider": "OpenRouter",
-      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_ref": "",
       "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://openrouter.ai/credits",
       "keysUrl": "https://openrouter.ai/keys",
-      "spendLimit": "$10/mo",
-      "spendLimitSet": true,
-      "lastRotated": "2026-02-01",
-      "projects": [
-        "json-ld-generator",
-        "social-media-generator"
-      ],
-      "notes": "Topped up manually. Used for model comparisons before committing to a provider."
+      "spendLimit": "",
+      "spendLimitSet": false,
+      "lastRotated": "",
+      "projects": [],
+      "notes": "TODO: fill in your real spend limit, rotation date, and which projects use this key."
     },
     {
       "provider": "Supabase",
-      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_ref": "",
       "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://supabase.com/dashboard/org/_/billing",
       "keysUrl": "https://supabase.com/dashboard/project/_/settings/api",
-      "spendLimit": "Free tier",
-      "spendLimitSet": true,
+      "spendLimit": "",
+      "spendLimitSet": false,
       "lastRotated": "",
-      "projects": [
-        "signal-stack",
-        "ranksmile"
-      ],
-      "notes": "Free tier across personal projects."
+      "projects": [],
+      "notes": "TODO: fill in your real spend limit, rotation date, and which projects use this key."
     }
   ]
 }
