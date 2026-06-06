@@ -12,29 +12,27 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 
-function VaultChip({ path, slug }: { path: string; slug?: string }) {
-  const [copied, setCopied] = useState(false)
-  const cmd = `code ${path}`
-  const handleCopy = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    navigator.clipboard.writeText(cmd).then(() => {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1400)
-    })
-  }
+function VaultLink({ path }: { path: string }) {
+  // The synced `path` arrives in `~/...` form so the absolute home prefix
+  // never leaks into git. We expand it here using NEXT_PUBLIC_VAULT_HOME
+  // (configured per environment in Vercel project settings). VS Code's
+  // registered vscode:// scheme then opens the file at :line if present.
+  // See ~/.claude/rules/gotchas/clean-slate-sync-and-paths.md.
+  const home = process.env.NEXT_PUBLIC_VAULT_HOME ?? ''
+  const absPath = path.startsWith('~/') && home ? `${home}/${path.slice(2)}` : path
   return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      title={copied ? 'Copied — paste in terminal' : `Copy: ${cmd}`}
-      className="inline-flex items-center gap-1 text-xs font-mono px-1.5 py-0.5 rounded border border-amber-500/40 bg-amber-500/5 text-amber-700 dark:text-amber-300 hover:bg-amber-500/15 hover:border-amber-500/60 transition-colors"
+    <a
+      href={`vscode://file${absPath}`}
+      onClick={(e) => e.stopPropagation()}
+      title={home ? 'Open infra vault in VS Code' : 'Set NEXT_PUBLIC_VAULT_HOME to enable this link'}
+      className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
     >
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 opacity-70">
         <rect x="3" y="11" width="18" height="11" rx="2" />
         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
-      {copied ? 'copied' : `vault${slug ? `#${slug}` : ''}`}
-    </button>
+      vault
+    </a>
   )
 }
 
@@ -126,7 +124,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 {project.chrome_profile}
               </span>
             )}
-            {project.vault && <VaultChip path={project.vault} slug={project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')} />}
+            {project.vault && <VaultLink path={project.vault} />}
           </div>
         </CardHeader>
         <CardContent>
@@ -212,7 +210,7 @@ export function ProjectCard({ project }: { project: Project }) {
                   {project.chrome_profile}
                 </span>
               )}
-              {project.vault && <VaultChip path={project.vault} slug={project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')} />}
+              {project.vault && <VaultLink path={project.vault} />}
             </div>
           </DialogHeader>
 

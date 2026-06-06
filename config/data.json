@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T15:21:28.469Z",
+  "generated_at": "2026-06-06T16:59:08.845Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -197,7 +197,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md",
+      "vault": "~/Documents/clean-slate/private/vault.md:144",
       "last_modified": "2026-06-06T15:20:37+02:00"
     },
     {
@@ -280,7 +280,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-06T15:44:04+02:00"
+      "last_modified": "2026-06-06T18:05:58+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -516,7 +516,7 @@
       ],
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md",
+      "vault": "~/Documents/clean-slate/private/vault.md:156",
       "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
@@ -822,7 +822,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md",
+      "vault": "~/Documents/clean-slate/private/vault.md:69",
       "last_modified": "2026-04-04T13:23:52+02:00"
     },
     {
@@ -904,7 +904,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md",
+      "vault": "~/Documents/clean-slate/private/vault.md:39",
       "last_modified": "2026-06-01T22:37:33+02:00"
     },
     {

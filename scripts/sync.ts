@@ -16,6 +16,49 @@ const API_KEYS_DIR = path.join(__dirname, '..', 'data', 'api-keys')
 const HIDDEN_PATH = path.join(__dirname, '..', 'config', 'hidden-projects.json')
 const CLEAN_SLATE_FILE = 'CLEAN-SLATE.md'
 
+// Build a (project name → 1-indexed line) map of all `## headings` inside the
+// vault file once per sync. Lets us deep-link from the dashboard straight to
+// the right section in VS Code via vscode://file/<path>:<line>.
+//
+// IMPORTANT: this function reads the file from disk (needs an absolute path
+// to do so), but the OUTPUT we store in data.json keeps the `~/...` form so
+// the synced JSON contains no `/Users/<username>` strings. The dashboard
+// component expands `~` at render time via NEXT_PUBLIC_VAULT_HOME. See
+// ~/.claude/rules/gotchas/clean-slate-sync-and-paths.md for the full reason.
+function buildVaultIndex(vaultRel: string): { tildePath: string; lineByProject: Map<string, number> } | null {
+  if (!vaultRel) return null
+  const abs = vaultRel.startsWith('~/') ? path.join(HOME_DIR, vaultRel.slice(2)) : vaultRel
+  if (!fs.existsSync(abs)) return null
+  const content = fs.readFileSync(abs, 'utf8')
+  const lineByProject = new Map<string, number>()
+  content.split('\n').forEach((line, i) => {
+    const m = line.match(/^##\s+(.+?)\s*$/)
+    if (!m) return
+    const heading = m[1]
+    // First word before any whitespace or paren = canonical project key
+    const head = heading.split(/[\s(]/)[0].toLowerCase().trim()
+    if (head && !lineByProject.has(head)) lineByProject.set(head, i + 1)
+    // Also index every name listed inside parentheses, e.g.
+    //   "## rookie (rookie-platform, rookie-api, rookie-ongoing)"
+    const paren = heading.match(/\(([^)]+)\)/)
+    if (paren) {
+      for (const part of paren[1].split(',')) {
+        const key = part.trim().toLowerCase().split(/\s+/)[0]
+        if (key && !lineByProject.has(key)) lineByProject.set(key, i + 1)
+      }
+    }
+  })
+  return { tildePath: vaultRel, lineByProject }
+}
+
+function resolveVault(vaultRel: string, projectName: string, index: ReturnType<typeof buildVaultIndex>): string {
+  if (!vaultRel) return ''
+  if (!index) return vaultRel
+  const key = projectName.toLowerCase().trim()
+  const line = index.lineByProject.get(key)
+  return line ? `${index.tildePath}:${line}` : index.tildePath
+}
+
 // Directories never worth descending into when hunting for CLEAN-SLATE.md
 const IGNORE_DIRS = new Set([
   'node_modules', '.next', 'dist', 'build', '.turbo', '.vercel', 'coverage', 'out',
@@ -81,7 +124,7 @@ function readJsonIfExists(filePath: string): Record<string, unknown> | null {
   }
 }
 
-function scanProject(dirPath: string): Project | null {
+function scanProject(dirPath: string, vaultIndex: ReturnType<typeof buildVaultIndex>): Project | null {
   const dirName = path.basename(dirPath)
   const cleanSlatePath = path.join(dirPath, CLEAN_SLATE_FILE)
   const cleanSlateContent = readFileIfExists(cleanSlatePath)
@@ -118,7 +161,7 @@ function scanProject(dirPath: string): Project | null {
     toolbox_mentions: parsed.toolbox_mentions,
     deployed_url: parsed.deployed_url,
     chrome_profile: parsed.chrome_profile,
-    vault: parsed.vault,
+    vault: resolveVault(parsed.vault, parsed.name || dirName, vaultIndex),
     last_modified: getLastModified(dirPath),
   }
 }
@@ -157,9 +200,10 @@ export function filterHidden(projects: Project[], hiddenNames: string[]): Projec
 function main() {
   const projects: Project[] = []
   const byName = new Map<string, Project>()
+  const vaultIndex = buildVaultIndex('~/Documents/clean-slate/private/vault.md')
 
   for (const dirPath of collectProjectDirs()) {
-    const project = scanProject(dirPath)
+    const project = scanProject(dirPath, vaultIndex)
     if (!project) continue
 
     // A project can transiently exist in two places during migration into
