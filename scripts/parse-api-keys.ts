@@ -77,7 +77,8 @@ export function parseApiKeyFile(content: string): ApiKeyEntry | null {
   if (!provider) return null
   return {
     provider,
-    onePasswordRef: asString(meta.onePasswordRef),
+    vault_ref: asString(meta.vault_ref),
+    vault_url: asString(meta.vault_url),
     billingUrl: asString(meta.billingUrl),
     keysUrl: asString(meta.keysUrl),
     spendLimit: asString(meta.spendLimit),

@@ -1,6 +1,7 @@
 ---
 provider: Anthropic
-onePasswordRef: "Private / Anthropic – Personal"
+vault_ref: "TODO — pick folder/entry name in NordPass"
+vault_url: https://my.nordpass.com
 billingUrl: https://console.anthropic.com/settings/billing
 keysUrl: https://console.anthropic.com/settings/keys
 spendLimit: "$20/mo"

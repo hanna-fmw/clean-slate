@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T11:59:05.025Z",
+  "generated_at": "2026-06-06T13:33:08.401Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -196,7 +196,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T13:50:16+02:00"
+      "last_modified": "2026-06-06T15:20:37+02:00"
     },
     {
       "name": "browse-me",
@@ -237,7 +237,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T13:07:56+02:00"
+      "last_modified": "2026-06-06T15:13:41+02:00"
     },
     {
       "name": "Clean Slate",
@@ -276,7 +276,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T13:05:27+02:00"
+      "last_modified": "2026-06-06T14:18:15+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -3982,7 +3982,8 @@
   "api_keys": [
     {
       "provider": "Anthropic",
-      "onePasswordRef": "Private / Anthropic – Personal",
+      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://console.anthropic.com/settings/billing",
       "keysUrl": "https://console.anthropic.com/settings/keys",
       "spendLimit": "$20/mo",
@@ -3996,7 +3997,8 @@
     },
     {
       "provider": "OpenAI",
-      "onePasswordRef": "Private / OpenAI – Personal",
+      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://platform.openai.com/account/billing/overview",
       "keysUrl": "https://platform.openai.com/api-keys",
       "spendLimit": "",
@@ -4007,7 +4009,8 @@
     },
     {
       "provider": "OpenRouter",
-      "onePasswordRef": "Private / OpenRouter",
+      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://openrouter.ai/credits",
       "keysUrl": "https://openrouter.ai/keys",
       "spendLimit": "$10/mo",
@@ -4021,7 +4024,8 @@
     },
     {
       "provider": "Supabase",
-      "onePasswordRef": "Private / Supabase",
+      "vault_ref": "TODO — pick folder/entry name in NordPass",
+      "vault_url": "https://my.nordpass.com",
       "billingUrl": "https://supabase.com/dashboard/org/_/billing",
       "keysUrl": "https://supabase.com/dashboard/project/_/settings/api",
       "spendLimit": "Free tier",

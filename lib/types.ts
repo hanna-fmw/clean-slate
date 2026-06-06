@@ -150,7 +150,8 @@ export interface ReferenceInventory {
 
 export interface ApiKeyEntry {
   provider: string
-  onePasswordRef: string
+  vault_ref: string
+  vault_url: string
   billingUrl: string
   keysUrl: string
   spendLimit: string

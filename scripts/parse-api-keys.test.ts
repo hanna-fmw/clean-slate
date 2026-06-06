@@ -3,7 +3,8 @@ import { parseApiKeyFile } from './parse-api-keys'
 
 const FULL = `---
 provider: Anthropic
-onePasswordRef: "Private / Anthropic – Personal"
+vault_ref: "TODO — folder/entry in NordPass"
+vault_url: https://my.nordpass.com
 billingUrl: https://console.anthropic.com/settings/billing
 keysUrl: https://console.anthropic.com/settings/keys
 spendLimit: "$20/mo"
@@ -33,7 +34,8 @@ describe('parseApiKeyFile', () => {
     const r = parseApiKeyFile(FULL)
     expect(r).not.toBeNull()
     expect(r!.provider).toBe('Anthropic')
-    expect(r!.onePasswordRef).toBe('Private / Anthropic – Personal')
+    expect(r!.vault_ref).toBe('TODO — folder/entry in NordPass')
+    expect(r!.vault_url).toBe('https://my.nordpass.com')
     expect(r!.spendLimit).toBe('$20/mo')
     expect(r!.spendLimitSet).toBe(true)
     expect(r!.projects).toEqual(['signal-stack', 'clean-slate'])

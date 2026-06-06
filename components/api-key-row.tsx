@@ -36,9 +36,22 @@ function ApiKeyDetail({ entry }: { entry: ApiKeyEntry }) {
   return (
     <div className="space-y-4 text-sm">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {entry.onePasswordRef && (
-          <Field label="1Password">
-            <span className="font-mono text-xs">{entry.onePasswordRef}</span>
+        {entry.vault_ref && (
+          <Field label="Vault reference">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs">{entry.vault_ref}</span>
+              {entry.vault_url && (
+                <a
+                  href={entry.vault_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[var(--link)] hover:text-[var(--link-hover)] transition-colors"
+                  title="Open NordPass"
+                >
+                  open →
+                </a>
+              )}
+            </div>
           </Field>
         )}
         {entry.spendLimit && (

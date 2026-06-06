@@ -1,6 +1,7 @@
 ---
 provider: OpenRouter
-onePasswordRef: "Private / OpenRouter"
+vault_ref: "TODO — pick folder/entry name in NordPass"
+vault_url: https://my.nordpass.com
 billingUrl: https://openrouter.ai/credits
 keysUrl: https://openrouter.ai/keys
 spendLimit: "$10/mo"
