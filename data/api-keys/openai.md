@@ -1,6 +1,6 @@
 ---
 provider: OpenAI
-vault_ref: "TODO — pick folder/entry name in NordPass"
+vault_ref: ""
 vault_url: https://my.nordpass.com
 billingUrl: https://platform.openai.com/account/billing/overview
 keysUrl: https://platform.openai.com/api-keys
@@ -10,4 +10,4 @@ lastRotated:
 projects: []
 ---
 
-TODO: set a hard spend limit.
+TODO: fill in your real spend limit, rotation date, and which projects use this key.
