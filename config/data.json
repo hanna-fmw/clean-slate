@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-05T22:27:37.043Z",
+  "generated_at": "2026-06-06T11:05:26.487Z",
   "projects": [
     {
       "name": "AI Hub Project",
-      "path": "~/Documents/ai-hub-project",
+      "path": "~/Documents/projects/ai-hub-project",
       "description": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
       "description_short": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
       "stack": [
@@ -94,7 +94,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T07:40:28.094Z"
+      "last_modified": "2026-06-06T09:45:37.759Z"
     },
     {
       "name": "baby-claw",
@@ -199,6 +199,47 @@
       "last_modified": "2026-05-31T22:51:02+02:00"
     },
     {
+      "name": "browse-me",
+      "path": "~/Documents/projects/browse-me",
+      "description": "AI browser agent demo. Natural-language task in, browser-driven answer out. Claude is the reasoning loop; Playwright is the execution + extraction layer. Built to demonstrate the \"Fat Playwright, Thin Claude\" pattern — extracting clean structured data with Playwright before sending anything to the LLM, instead of dumping raw DOM/screenshots into context. Educational reference for how computer-use agents actually work without using a framework like Stagehand or Browser Use.",
+      "description_short": "AI browser agent demo.",
+      "stack": [
+        "- Node.js 22",
+        "ES modules\n- Express (server + SSE streaming)\n- Playwright (headless Chromium)\n- Anthropic SDK (Claude Haiku 4.5 by default)\n- Plain HTML/CSS/JS frontend (no framework)\n- Zod (validation",
+        "for future tool input parsing)"
+      ],
+      "hosting": "Local only. No production deploy planned.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {
+        "pnpm dev": "node --watch --env-file=.env src/server.js",
+        "pnpm start": "node --env-file=.env src/server.js"
+      },
+      "services": [
+        "- **Anthropic API** — required. Default model `claude-haiku-4-5`. Set a spend cap in Anthropic Console."
+      ],
+      "notes": "- Screenshots are NOT sent back to Claude — shown to the user only, to keep tokens cheap.\n- No framework chains (no LangChain, no Stagehand). Agentic loop is ~80 lines in `src/agent/loop.js`.\n- Port 3030 (not 3000 — that's blog-next14-prisma on this machine).",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "claude-api"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None project-specific"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-06-06T09:59:40.741Z"
+    },
+    {
       "name": "Clean Slate",
       "path": "~/Documents/clean-slate",
       "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dense, monospace UI with dark/light mode - no fluff, just information.\n\nA tools inventory section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.\n\nA My Toolbox view aggregates the per-project \"Skills, Agents & Plugins\" sections from each CLEAN-SLATE.md into a single, glanceable reference grouped by purpose - showing only the tools actually used across projects (not everything installed), with frequency counts, project lists, and origin tags. A manual overrides file (`toolbox-overrides.md`) pins favorites, normalizes categories, and supplies custom one-liners.\n\nEach project can also declare a Chrome profile to use when opening it (via a `## Chrome Profile` H2 section, or a `Chrome Profile:` line inside the GitHub section). The dashboard shows this as a small chip next to the project name so you know which browser profile to switch to.\n\nA clickable deployed-URL chip next to the project name opens the live deployment. The URL is auto-extracted from the Hosting section (or from an explicit `Live URL:` / `Deployed URL:` / `Domain:` line). Private/VPN-only and undeployed projects are correctly skipped.\n\nA macOS launchd job runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.\n\nA scheduled remote agent (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.",
@@ -235,7 +276,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T00:26:18+02:00"
+      "last_modified": "2026-06-06T00:27:37+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -662,7 +703,7 @@
     },
     {
       "name": "SignalStack",
-      "path": "~/Documents/signalstack",
+      "path": "~/Documents/projects/signalstack",
       "description": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO. Built for non-technical users - natural language chat is the primary interface, not dashboards full of charts.\n\nThe two core selling points are: (1) Talk to your data - ask any marketing data a question in plain language, and (2) Your weekly action plan - cross-subsystem LangGraph agents extract top findings from each area and a consolidator synthesizes them into a ranked action plan. This \"action plan\" feature is the main differentiator - it replaces what an SEO agency decision-maker does.\n\nNavigation is workflow-based: 5 main pages (Home, Research, Visibility, Content, Ads) with progressive disclosure (\"More tools\" sections). Old domain-based routes redirect to new pages.\n\nThe architecture is an npm workspaces monorepo with `apps/web` (Next.js), `apps/api` (Express on port 5000), and `packages/shared`. The Express API is a persistent server (avoids serverless timeouts for AI workloads). Auth is Supabase with JWT verified via jose + JWKS in Express middleware.",
       "description_short": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO.",
       "stack": [
@@ -707,7 +748,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-04T13:34:59+02:00"
+      "last_modified": "2026-06-01T22:37:33+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -848,7 +889,7 @@
     },
     {
       "name": "Yllw",
-      "path": "~/Documents/yllw",
+      "path": "~/Documents/yllw-old",
       "description": "Supplier document management system for Yllw, a Swedish workplace transformation company and one of the largest furniture brokers in the Nordics. Replaces Henrik's manual workflow of managing ~500 suppliers' price lists across SharePoint, Webflow assets, and Webflow CMS. Built on Supabase (database + file storage), synced to Webflow via WhaleSync. Hard deadline: August 24, 2026 for Adda compliance portal.",
       "description_short": "Supplier document management system for Yllw, a Swedish workplace transformation company and one of the largest furniture brokers in the Nordics.",
       "stack": [
@@ -1390,7 +1431,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-05T22:27:37.607Z",
+    "synced_at": "2026-06-06T11:05:27.043Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
