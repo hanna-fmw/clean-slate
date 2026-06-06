@@ -11,5 +11,6 @@ export function getData(): DashboardData {
     tools: data.tools,
     toolbox: data.toolbox,
     reference: data.reference,
+    api_keys: data.api_keys,
   }
 }

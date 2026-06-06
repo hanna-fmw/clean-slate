@@ -148,6 +148,18 @@ export interface ReferenceInventory {
   groups: ReferenceGroup[]
 }
 
+export interface ApiKeyEntry {
+  provider: string
+  onePasswordRef: string
+  billingUrl: string
+  keysUrl: string
+  spendLimit: string
+  spendLimitSet: boolean
+  lastRotated: string
+  projects: string[]
+  notes: string
+}
+
 export interface DashboardData {
   generated_at: string
   projects: Project[]
@@ -156,4 +168,5 @@ export interface DashboardData {
   tools?: ToolsInventory
   toolbox?: ToolboxEntry[]
   reference?: ReferenceInventory
+  api_keys?: ApiKeyEntry[]
 }

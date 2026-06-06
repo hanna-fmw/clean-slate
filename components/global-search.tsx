@@ -17,6 +17,7 @@ const SECTION_LABELS: Record<Section, string> = {
   tools: 'Tools',
   toolbox: 'My Toolbox',
   reference: 'Reference',
+  'api-keys': 'API Keys',
 }
 
 interface GlobalSearchProps {

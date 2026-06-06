@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-06T11:05:26.487Z",
+  "generated_at": "2026-06-06T11:59:05.025Z",
   "projects": [
     {
       "name": "AI Hub Project",
@@ -196,7 +196,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-05-31T22:51:02+02:00"
+      "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
       "name": "browse-me",
@@ -237,7 +237,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T09:59:40.741Z"
+      "last_modified": "2026-06-06T13:07:56+02:00"
     },
     {
       "name": "Clean Slate",
@@ -276,7 +276,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-06T00:27:37+02:00"
+      "last_modified": "2026-06-06T13:05:27+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -324,7 +324,7 @@
       "toolbox_mentions": [],
       "deployed_url": "https://kb.stormfors.ai",
       "chrome_profile": "",
-      "last_modified": "2026-03-14T15:00:32+01:00"
+      "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
       "name": "Flatfile Playbook",
@@ -508,7 +508,7 @@
       ],
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
-      "last_modified": "2026-06-02T16:31:16+02:00"
+      "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
       "name": "OpenClaw",
@@ -543,7 +543,99 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-02-15T18:15:06+01:00"
+      "last_modified": "2026-06-06T13:50:16+02:00"
+    },
+    {
+      "name": "Personal Knowledge Base",
+      "path": "~/Documents/knowledge-base-md-files",
+      "description": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes. The system lets you ask natural-language questions and get answers sourced from your own documents.\n\nThe pipeline works as follows: markdown notes live on VM2 at `/home/hanna/markdown-vault/` and are edited via VS Code Remote-SSH. A Node.js indexing script uses local embeddings (`@xenova/transformers`) to chunk and embed the documents, storing them in Qdrant (a vector database deployed via Coolify). At query time, a Node.js script performs semantic search against Qdrant and sends the top chunks to the HF Inference API (Qwen/Qwen2.5-7B-Instruct) to generate an answer with source attribution.\n\nA Next.js 16 web UI provides a chat interface, document management admin panel, dark mode, and markdown rendering. The UI is deployed via Coolify using a deploy key from GitHub, with nixpacks as the build system. A SQLite database (persisted via Coolify volume) tracks indexed document metadata.\n\nThis local folder (`knowledge-base-md-files/`) contains documentation and guides about the project, not the application code itself. The actual app code lives at `~/Desktop/private-knowledge-base/`.",
+      "description_short": "A personal semantic search and RAG (Retrieval-Augmented Generation) system over private markdown notes.",
+      "stack": [
+        "Next.js 16",
+        "Node.js",
+        "Qdrant",
+        "SQLite",
+        "@xenova/transformers (local embeddings)",
+        "HF Inference API (Qwen LLM)",
+        "Coolify",
+        "Docker",
+        "Ubuntu 24.04",
+        "Proxmox",
+        "NetBird"
+      ],
+      "hosting": "App: Coolify on VM2 (local IP 192.168.0.104, NetBird IP 100.109.251.80). Accessible at http://100.109.251.80/ via NetBird private network. No public URL yet (Cloudflare tunnel planned but not set up).",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/private-knowledge-base (private) - note: app code repo, not this docs folder"
+      },
+      "run_commands": {
+        "pnpm dev": "local dev server",
+        "pnpm build": "production build",
+        "node /home/hanna/kb-scripts/index.js": "index/re-index markdown vault",
+        "node /home/hanna/kb-scripts/query.js": "CLI semantic search"
+      },
+      "services": [
+        "Hugging Face Inference API",
+        "Qdrant",
+        "Coolify",
+        "NetBird",
+        "GitHub"
+      ],
+      "notes": "Auto-deploy on push is not active - Coolify's webhook is only on the private NetBird network so GitHub can't reach it. Manual deploy (two clicks in Coolify UI) is the current workflow. Remaining work: Cloudflare tunnel for public HTTPS URL + custom domain, then switch to GitHub App integration for auto-deploy. Also needs real content added and re-indexed.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-04-26T21:23:28.301Z"
+    },
+    {
+      "name": "Pindrop",
+      "path": "~/Documents/projects/pindrop",
+      "description": "Pindrop is a single-screen visual feedback tool for websites the developer builds. The developer picks a page (typed, or chosen from the site's sitemap via a searchable list) and a viewport (Desktop / Tablet / Mobile); a server-side Playwright capture renders a full-page screenshot, and comments are dropped as colored pins directly on the image via a Comment toggle. Pins are viewport-scoped (a mobile note only shows in mobile view) so they never drift. The sidebar switches between Review (the screenshot canvas with pins) and Board (a Trello-style board: Open / In progress / Done columns with drag-and-drop, full-text cards, filter by page + date sort). Screenshots are used instead of a live iframe because cross-origin iframes break full-height (`100vh`) layouts and can't anchor pins reliably.",
+      "description_short": "Pindrop is a single-screen visual feedback tool for websites the developer builds.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "server components",
+        "server actions)\n- TypeScript (strict)\n- Tailwind CSS v4 + shadcn/ui (dark/light mode via next-themes)\n- PostgreSQL via `pg` (no Supabase - plain Postgres)\n- Playwright (chromium) for server-side screenshot capture\n- Zod (validation)",
+        "Resend (optional email)"
+      ],
+      "hosting": "- Target: self-hosted on Hetzner via Coolify (Node server, not Vercel serverless - needed for Playwright)\n- Postgres: a Postgres container on the same host\n- Auth: Cloudflare Access (password) in front of the app",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pindrop"
+      },
+      "run_commands": {
+        "pnpm dev": "start dev server (port 3007)",
+        "node --env-file=.env.local scripts/migrate.mjs": "apply schema + seed demo project",
+        "pnpm build": "production build",
+        "pnpm test": "unit tests (Vitest)",
+        "node scripts/console-check.mjs": "Playwright console/e2e check"
+      },
+      "services": [
+        "- PostgreSQL - pins",
+        "comments",
+        "projects",
+        "screenshot metadata (`DATABASE_URL`)\n- Local screenshots stored under `data/screenshots/` (a volume in production)\n- Resend - optional owner notification email"
+      ],
+      "notes": "- Canvas renders the captured PNG (`/api/screenshot`); `/api/capture` (Playwright, nodejs runtime) takes the shot. A Capture/Refresh button re-captures.\n- Pins store `pin_x/pin_y` in image space + `viewport_w`; filtered per viewport.\n- v1 is single-tenant, no per-user auth: the `author` field (Client / You) is a UI toggle, gated only by a shared `APP_PASSWORD` (proxy.ts) locally and Cloudflare Access in prod. Add real auth + per-project isolation before any multi-client/public use.\n- Dev DB currently points at the local Postgres on `127.0.0.1:54322`.\n- Sitemap: `/api/sitemap` uses the entered URL's origin, discovers via `robots.txt` + `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` (WordPress), stores a `pages` table; sidebar has a searchable page list + depth filter.\n- Capture robustness: normal Chrome UA (HeadlessChrome gets blocked), `waitUntil: 'load'` (networkidle never settles on real sites), scroll + force-eager + `data-src`/WP-placeholder image loading. SSRF guard blocks private/redirect targets in prod; `SSRF_ALLOW_LOCAL=1` only in dev.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:shadcn"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:agent-browser / Playwright"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-05-31T22:45:00+02:00"
     },
     {
       "name": "Portfolio Platform",
@@ -671,6 +763,54 @@
       "last_modified": "2026-03-14T16:23:41+01:00"
     },
     {
+      "name": "RankSmile",
+      "path": "~/Documents/ranksmile",
+      "description": "An SEO SaaS targeting small Swedish businesses. Positioned as decision intelligence for SEO - it helps users optimize and generate content, not just write with AI. The core value is telling users what to do, not just surfacing data.\n\nThe project is a pnpm monorepo with two apps: `apps/web` (Next.js frontend on Vercel) and `apps/api` (Express backend to be deployed on Coolify). Auth uses Supabase. A Vercel Cron job runs daily at 06:00 UTC to process articles via `/api/cron/process-articles`. Magic link dev login is available via `node scripts/dev-login.js` from the repo root.",
+      "description_short": "An SEO SaaS targeting small Swedish businesses.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Express",
+        "Supabase (auth + PostgreSQL + RLS)",
+        "OpenRouter",
+        "Stripe",
+        "Resend",
+        "Vitest",
+        "pnpm workspaces"
+      ],
+      "hosting": "Web: Vercel (team: ranksmile). API: to be deployed on Coolify. Database: Supabase (EU region).",
+      "database": "",
+      "github": {
+        "account": "ranksmile (adminranksmile-design)",
+        "ssh_alias": "github.com-ranksmile",
+        "repo_url": "https://github.com/adminranksmile-design/ranksmile"
+      },
+      "run_commands": {
+        "pnpm dev": "start both web (port 3005) and API (port 8000) in parallel",
+        "pnpm dev:web": "start only the Next.js web app",
+        "pnpm dev:api": "start only the Express API",
+        "pnpm dev:login": "generate a magic link for dev login (requires env vars from `apps/web/.env.local`)",
+        "pnpm build": "build all apps",
+        "pnpm test": "run Vitest across all apps",
+        "pnpm lint": "run ESLint",
+        "pnpm type-check": "run TypeScript check across all apps"
+      },
+      "services": [
+        "Supabase (auth + database)",
+        "Vercel (hosting + cron)",
+        "OpenRouter (LLM)",
+        "Stripe (payments)",
+        "Resend (email)"
+      ],
+      "notes": "Two env files must be kept in sync: `apps/web/.env.local` (Next.js) and `.env.local` at repo root (API). Shared vars include Supabase keys and `CRON_SECRET`. Word count is capped at 500 in `apps/api/src/services/articles/article-generator.ts` during development - remove for production. Supabase project ref: `awtwkdkinpykaozbwcdy`. MCP server `supabase-ranksmile` is configured in `~/.claude.json`.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "last_modified": "2026-04-04T13:23:52+02:00"
+    },
+    {
       "name": "Reclaim",
       "path": "~/Documents/projects/utilities/reclaim",
       "description": "Process-aware macOS disk + memory janitor. ~250 lines of auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with an approval dialog.",
@@ -787,7 +927,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "last_modified": "2026-01-11T21:21:43+01:00"
+      "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
       "name": "Todo",
@@ -3837,6 +3977,61 @@
       "one_liner": "",
       "pinned": false,
       "installed": false
+    }
+  ],
+  "api_keys": [
+    {
+      "provider": "Anthropic",
+      "onePasswordRef": "Private / Anthropic – Personal",
+      "billingUrl": "https://console.anthropic.com/settings/billing",
+      "keysUrl": "https://console.anthropic.com/settings/keys",
+      "spendLimit": "$20/mo",
+      "spendLimitSet": true,
+      "lastRotated": "2026-03-15",
+      "projects": [
+        "signal-stack",
+        "clean-slate"
+      ],
+      "notes": "Personal key. Hard monthly cap at $20."
+    },
+    {
+      "provider": "OpenAI",
+      "onePasswordRef": "Private / OpenAI – Personal",
+      "billingUrl": "https://platform.openai.com/account/billing/overview",
+      "keysUrl": "https://platform.openai.com/api-keys",
+      "spendLimit": "",
+      "spendLimitSet": false,
+      "lastRotated": "",
+      "projects": [],
+      "notes": "TODO: set a hard spend limit."
+    },
+    {
+      "provider": "OpenRouter",
+      "onePasswordRef": "Private / OpenRouter",
+      "billingUrl": "https://openrouter.ai/credits",
+      "keysUrl": "https://openrouter.ai/keys",
+      "spendLimit": "$10/mo",
+      "spendLimitSet": true,
+      "lastRotated": "2026-02-01",
+      "projects": [
+        "json-ld-generator",
+        "social-media-generator"
+      ],
+      "notes": "Topped up manually. Used for model comparisons before committing to a provider."
+    },
+    {
+      "provider": "Supabase",
+      "onePasswordRef": "Private / Supabase",
+      "billingUrl": "https://supabase.com/dashboard/org/_/billing",
+      "keysUrl": "https://supabase.com/dashboard/project/_/settings/api",
+      "spendLimit": "Free tier",
+      "spendLimitSet": true,
+      "lastRotated": "",
+      "projects": [
+        "signal-stack",
+        "ranksmile"
+      ],
+      "notes": "Free tier across personal projects."
     }
   ]
 }

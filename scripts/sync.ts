@@ -3,12 +3,14 @@ import path from 'path'
 import { execSync } from 'child_process'
 import { parseCleanSlate } from './parse-clean-slate'
 import { detectFromPackageJson, detectFromGitConfig } from './detect-project'
+import { readApiKeys } from './parse-api-keys'
 import type { Project, DashboardData } from '../lib/types'
 
 const HOME_DIR = process.env.HOME ?? ''
 const DOCUMENTS_DIR = path.join(HOME_DIR, 'Documents')
 const PROJECTS_DIR = path.join(DOCUMENTS_DIR, 'projects')
 const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
+const API_KEYS_DIR = path.join(__dirname, '..', 'data', 'api-keys')
 // Local, gitignored list of project names to exclude from data.json entirely
 // (e.g. to hide projects during a demo). Names never reach the deployed app.
 const HIDDEN_PATH = path.join(__dirname, '..', 'config', 'hidden-projects.json')
@@ -181,6 +183,8 @@ function main() {
 
   const existing = readJsonIfExists(OUTPUT_PATH) as Partial<DashboardData> | null
 
+  const apiKeys = readApiKeys(API_KEYS_DIR)
+
   const data: DashboardData = {
     generated_at: new Date().toISOString(),
     projects: visible,
@@ -188,6 +192,8 @@ function main() {
     infrastructure: existing?.infrastructure ?? [],
     tools: existing?.tools,
     toolbox: existing?.toolbox,
+    reference: existing?.reference,
+    api_keys: apiKeys,
   }
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true })
