@@ -2,7 +2,7 @@ import rawData from '@/config/data.json'
 import type { DashboardData } from './types'
 
 export function getData(): DashboardData {
-  const data = rawData as Partial<DashboardData>
+  const data = rawData as unknown as Partial<DashboardData>
   return {
     generated_at: data.generated_at ?? '',
     projects: data.projects ?? [],
