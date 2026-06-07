@@ -1,6 +1,49 @@
 {
-  "generated_at": "2026-06-06T16:59:08.845Z",
+  "generated_at": "2026-06-07T11:28:53.723Z",
   "projects": [
+    {
+      "name": "Abril Aventura Shopify",
+      "path": "~/Documents/projects/personal/abril-aventura",
+      "description": "Pre-launch Shopify storefront for Abril Aventura (r1yrmc-th.myshopify.com). Password-protected, not yet live. Setup, theme work, products, collections, pages, blog.",
+      "description_short": "Pre-launch Shopify storefront for Abril Aventura (r1yrmc-th.myshopify.com).",
+      "stack": [
+        "- Shopify (Liquid theme",
+        "native)\n- Shopify CLI for theme sync\n- Admin GraphQL via shopify-mcp-abril + shopify store execute + custom app token"
+      ],
+      "hosting": "Shopify-hosted. Public domain TBD.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Shopify store: `r1yrmc-th.myshopify.com` (admin: https://admin.shopify.com/store/abril-aventura)\n- Custom app (Admin API) — credentials in `.claude/settings.local.json` env block + `.env`"
+      ],
+      "notes": "Pre-launch but treat with the same publishing discipline: drafts by default, development theme by default. Ask before publishing or `--live`.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify-dev-mcp-abril"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify-mcp-abril"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify:dev"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
+      "last_modified": "2026-05-14T20:55:12.279Z"
+    },
     {
       "name": "AI Hub Project",
       "path": "~/Documents/projects/ai-hub-project",
@@ -197,7 +240,7 @@
       ],
       "deployed_url": "",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md:144",
+      "vault": "~/Documents/clean-slate/private/vault.md:145",
       "last_modified": "2026-06-06T15:20:37+02:00"
     },
     {
@@ -280,7 +323,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-06T18:05:58+02:00"
+      "last_modified": "2026-06-06T19:01:52+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -370,6 +413,65 @@
       "last_modified": "2026-06-02T08:30:16+02:00"
     },
     {
+      "name": "git-guard",
+      "path": "~/Documents/projects/utilities/git-guard",
+      "description": "A small bash pre-commit hook that catches sensitive content (paths with username, real names, client emails, server IPs, AI-assistant config files like `CLAUDE.md` / `.claude/`, local-only folders like `private/` / `docs/`) before a commit ships. When something matches, the commit is blocked and on macOS an unmissable dialog opens with three buttons: Cancel, Open in editor, or Commit anyway. The dialog title and body show which repo the commit is in and which process invoked git (terminal, launchd auto-sync, AI session) so a popup that fires without an active session is interpretable.\n\nDesigned for the workflow of using AI coding assistants where a \"helpful\" `git add .` can sweep in machine-local config or absolute paths before you notice.",
+      "description_short": "A small bash pre-commit hook that catches sensitive content (paths with username, real names, client emails, server IPs, AI-assistant config files like `CLAUDE.md` / `.claude/`, local-only folders like `private/` / `docs/`) before a commit ships.",
+      "stack": [
+        "Bash",
+        "AppleScript (macOS dialog)",
+        "POSIX extended regex (`grep -E`)"
+      ],
+      "hosting": "Local on this Mac. Public open-source repo on GitHub. No build, no deploy.",
+      "database": "",
+      "github": {
+        "account": "personal (`hanna-fmw`)",
+        "ssh_alias": "`github.com-personal`",
+        "repo_url": "https://github.com/hanna-fmw/git-guard"
+      },
+      "run_commands": {
+        "./install.sh": "install the hook into `~/.git-hooks/` and wire `core.hooksPath`",
+        "./uninstall.sh": "remove the hook script and unset `core.hooksPath`"
+      },
+      "services": [
+        "None — entirely local."
+      ],
+      "notes": "The actual active patterns live at `~/.git-hooks/sensitive-patterns` (gitignored, never copied into this repo). This repo ships only generic `.example` templates. Companion Claude Code permission deny rules in `~/.claude/settings.json` block the AI from running `--no-verify` or rewriting `core.hooksPath` to bypass the hook. Full gotcha around launchd auto-sync + absolute paths interacting with this hook is documented at `~/.claude/rules/gotchas/clean-slate-sync-and-paths.md`.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-07T11:19:24+02:00"
+    },
+    {
+      "name": "heartbeat-hook",
+      "path": "~/Documents/projects/utilities/heartbeat-hook",
+      "description": "A tiny Claude Code `UserPromptSubmit` hook that periodically re-injects the most important rules (style, security, project isolation) into the active session so the model doesn't drift halfway through a long conversation.\n\nEvery Nth prompt (default 8) the hook fires a short reminder back into the model's context, pointing it at `CLAUDE.md` and `MEMORY.md`. A matching statusline indicator (magenta `♥ N/8`) shows the cycle position so you can see at a glance when the next fire is due.\n\nBuilt for personal use after one too many sessions where the model echoed an API key into chat or quietly started ignoring the global CLAUDE.md rules. Tiny, copyable, immediately useful.",
+      "description_short": "A tiny Claude Code `UserPromptSubmit` hook that periodically re-injects the most important rules (style, security, project isolation) into the active session so the model doesn't drift halfway through a long conversation.",
+      "stack": [
+        "Bash",
+        "jq. No build step",
+        "no dependencies beyond a POSIX shell."
+      ],
+      "hosting": "N/A - runs locally as a Claude Code hook.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/heartbeat-hook"
+      },
+      "run_commands": {},
+      "services": [
+        "None."
+      ],
+      "notes": "- Live install location: `~/.claude/hooks/heartbeat.sh`, wired in `~/.claude/settings.json`.\n- Statusline snippet lives in `~/.claude/statusline.sh` and reads the per-session counter file.\n- The reminder text is inline in the script - the rules it nudges about are personal and should be edited to match what matters most for the user reading them.\n- Public + MIT - good portfolio piece, immediately useful for anyone using Claude Code on long sessions.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-06T23:42:46+02:00"
+    },
+    {
       "name": "infra-test",
       "path": "~/Documents/projects/infra-test",
       "description": "Tiny CRUD demo app used to validate first-time deployment to the Stormfors stage LXC. Next.js todo app backed by Postgres in Docker.",
@@ -457,6 +559,50 @@
       "last_modified": "2026-05-17T22:42:00+02:00"
     },
     {
+      "name": "Moiwak",
+      "path": "~/Documents/projects/personal/moiwak",
+      "description": "Moiwak is a physical-product store launching summer 2026. This folder is a parent workspace containing two independent subprojects plus shared strategy documentation. The two subprojects must be kept strictly separate.\n\nmarketing-site/ is a Next.js 16 marketing site that launches first. Its purpose is to announce the store, build SEO foundations, and capture early interest before the shop is live.\n\nshopify-site/ is the Shopify storefront, targeting a mid-June to early July 2026 launch once enough products are ready.\n\nShared strategy lives in `/docs`: project overview, active tasks, backlog, SEO/AEO/GEO strategy, and retail operations (POS, inventory, suppliers, finance automation). Google Workspace is live.",
+      "description_short": "Moiwak is a physical-product store launching summer 2026.",
+      "stack": [
+        "Next.js 16 (marketing site)",
+        "Shopify (storefront)",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Vercel"
+      ],
+      "hosting": "Marketing site: Vercel. Shopify storefront: Shopify platform. No shared database.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw) - repos under the Moiwak GitHub organization",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "No single repo - each subproject has its own repo under the Moiwak GitHub org"
+      },
+      "run_commands": {
+        "pnpm dev": "start local dev server",
+        "pnpm build": "production build",
+        "pnpm lint": "run ESLint"
+      },
+      "services": [
+        "Vercel",
+        "Shopify",
+        "Google Workspace\n\n**Commerce/finance backbone:** Shopify ↔ Specter (ERP/POS hub",
+        "source of truth for stock and orders) ↔ Fortnox (accounting). Shopify is not wired to Fortnox directly - everything flows through Specter via its first-party connectors. Specter offer received 2026-05-22",
+        "under evaluation. Integration notes",
+        "API summary",
+        "and the Specter API doc live in `docs/integrations/`.\n\n**Analytics/compliance:** GA4 (G-JSQ0Q5KDBQ) via GTM (GTM-PG7ZCRD7)",
+        "Google Search Console",
+        "cookie consent (Cookiebot or alternative) on both sites",
+        "Signal Stack for SEO/AEO/GEO + tracking once the store is live."
+      ],
+      "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md:113",
+      "last_modified": "2026-05-31T19:06:12.839Z"
+    },
+    {
       "name": "no-excuses",
       "path": "~/Documents/projects/no-excuses",
       "description": "Personal home-workout cheat sheet PWA. Browse exercises by muscle group, see a minimum effective set, and log workouts on a calendar (per-day entries, pick from cheat sheet or free text). Single user (Hanna).",
@@ -516,7 +662,7 @@
       ],
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md:156",
+      "vault": "~/Documents/clean-slate/private/vault.md:157",
       "last_modified": "2026-06-06T13:50:16+02:00"
     },
     {
@@ -648,6 +794,44 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-31T22:45:00+02:00"
+    },
+    {
+      "name": "Portfolio",
+      "path": "~/Documents/projects/personal/portfolio",
+      "description": "Personal portfolio website. Built with Next.js 16 using the App Router, server components by default, with Framer Motion animations for page transitions and scroll effects.\n\nSupports two languages (English and Swedish) via next-intl, with translation files in `messages/en.json` and `messages/sv.json`. Swedish text must use real characters (å, ä, ö). Dark/light theme toggle via next-themes.",
+      "description_short": "Personal portfolio website.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "next-intl (i18n)",
+        "next-themes",
+        "shadcn/ui",
+        "Playwright"
+      ],
+      "hosting": "Not configured yet (no remote in git config). Likely Vercel.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "Not yet pushed to remote"
+      },
+      "run_commands": {
+        "pnpm dev": "Start dev server",
+        "pnpm build": "Production build",
+        "pnpm start": "Start production server",
+        "pnpm lint": "Run ESLint"
+      },
+      "services": [
+        "None"
+      ],
+      "notes": "- No remote configured in `.git/config` yet - repo has not been pushed\n- Client components only when browser APIs, state, or event handlers are needed\n- i18n: add translations to both `messages/en.json` and `messages/sv.json` for every string",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/Documents/clean-slate/private/vault.md",
+      "last_modified": "2026-03-26T18:04:05+01:00"
     },
     {
       "name": "Portfolio Platform",
@@ -822,7 +1006,7 @@
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md:69",
+      "vault": "~/Documents/clean-slate/private/vault.md:70",
       "last_modified": "2026-04-04T13:23:52+02:00"
     },
     {
@@ -1592,7 +1776,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-06T11:05:27.043Z",
+    "synced_at": "2026-06-07T11:28:54.333Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2838,7 +3022,7 @@
       },
       {
         "name": "invoice-creator",
-        "description": "Create a Swedish-style invoice (faktura) for the user's business as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
+        "description": "Create a Swedish-style invoice (faktura) as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
