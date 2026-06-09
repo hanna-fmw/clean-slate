@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08T16:44:25.898Z",
+  "generated_at": "2026-06-09T05:19:55.256Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -323,7 +323,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/projects/clean-slate/private/vault.md",
-      "last_modified": "2026-06-07T13:28:54+02:00"
+      "last_modified": "2026-06-08T18:44:26+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1185,7 +1185,7 @@
       "deployed_url": "https://app.signalstack.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/projects/clean-slate/private/vault.md:39",
-      "last_modified": "2026-06-07T22:11:27+02:00"
+      "last_modified": "2026-06-08T20:55:42+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1917,7 +1917,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-08T16:44:26.454Z",
+    "synced_at": "2026-06-09T05:19:55.800Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
