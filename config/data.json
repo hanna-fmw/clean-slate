@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T05:19:55.256Z",
+  "generated_at": "2026-06-09T11:19:59.404Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -323,7 +323,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/projects/clean-slate/private/vault.md",
-      "last_modified": "2026-06-08T18:44:26+02:00"
+      "last_modified": "2026-06-09T07:19:55+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1917,7 +1917,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-09T05:19:55.800Z",
+    "synced_at": "2026-06-09T11:19:59.962Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
