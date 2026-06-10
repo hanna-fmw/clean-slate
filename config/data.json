@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T17:20:03.897Z",
+  "generated_at": "2026-06-10T07:50:38.589Z",
   "projects": [
     {
       "name": "Abril Aventura Shopify",
@@ -42,7 +42,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/projects/clean-slate/private/vault.md",
-      "last_modified": "2026-05-14T20:55:12.279Z"
+      "last_modified": "2026-06-10T05:57:52.416Z"
     },
     {
       "name": "AI Hub Project",
@@ -323,7 +323,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/projects/clean-slate/private/vault.md",
-      "last_modified": "2026-06-09T13:20:00+02:00"
+      "last_modified": "2026-06-09T19:20:04+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1917,7 +1917,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-09T17:20:04.485Z",
+    "synced_at": "2026-06-10T07:50:39.155Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
