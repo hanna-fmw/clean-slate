@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T09:35:16.171Z",
+  "generated_at": "2026-06-11T09:37:55.152Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T11:21:42+02:00"
+      "last_modified": "2026-06-11T11:35:26+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1223,43 +1223,6 @@
       "chrome_profile": "",
       "vault": "",
       "last_modified": "2026-04-27T15:16:32+02:00"
-    },
-    {
-      "name": "Rookie Marketing Website",
-      "path": "~/Documents/work/stormfors/clients/rookie/rookie-marketing-website",
-      "description": "The public marketing website for Rookie. Next.js site with Supabase-backed content and Vercel analytics.",
-      "description_short": "The public marketing website for Rookie.",
-      "stack": [
-        "- Next.js (App Router)",
-        "TypeScript\n- Tailwind CSS",
-        "Base UI / Radix primitives\n- Supabase (supabase-js)\n- Vercel Analytics + Speed Insights"
-      ],
-      "hosting": "- Vercel",
-      "database": "",
-      "github": {
-        "account": "rookieworkdev",
-        "ssh_alias": "github.com-rookie",
-        "repo_url": "https://github.com/rookieworkdev/rookie-marketing-website"
-      },
-      "run_commands": {
-        "npm run dev": "dev server"
-      },
-      "services": [
-        "- Supabase",
-        "Vercel"
-      ],
-      "notes": "- Current branch in working tree: `fix/footer-mailto`",
-      "toolbox_mentions": [
-        {
-          "type": "skill",
-          "category": null,
-          "name": "vercel:nextjs, vercel:deployments-cicd"
-        }
-      ],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "vault": "",
-      "last_modified": "2026-04-30T11:38:00+02:00"
     },
     {
       "name": "Rookie Ongoing",
