@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T09:21:31.496Z",
+  "generated_at": "2026-06-11T09:35:16.171Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T10:43:53+02:00"
+      "last_modified": "2026-06-11T11:21:42+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1179,6 +1179,240 @@
       "last_modified": "2026-06-04T13:50:09+02:00"
     },
     {
+      "name": "Rookie API",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-api",
+      "description": "Production Express.js webhook/API service for the Rookie recruitment lead-processing workflow, converted from an n8n flow. Handles inbound leads, scraping via Apify, CV parsing (pdf-parse), and OpenAI-assisted processing on a cron schedule.",
+      "description_short": "Production Express.js webhook/API service for the Rookie recruitment lead-processing workflow, converted from an n8n flow.",
+      "stack": [
+        "- Express.js",
+        "TypeScript\n- Supabase (supabase-js)",
+        "Apify client",
+        "OpenAI\n- node-cron",
+        "helmet",
+        "express-rate-limit"
+      ],
+      "hosting": "- See repo deploy config (webhook service)",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-api"
+      },
+      "run_commands": {
+        "npm run dev": "dev server"
+      },
+      "services": [
+        "- Supabase",
+        "Apify",
+        "OpenAI"
+      ],
+      "notes": "- Originally an n8n workflow; this repo is the code conversion",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "nodejs-backend-patterns"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "n8n-workflow-patterns (for reference against the original flows)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-04-27T15:16:32+02:00"
+    },
+    {
+      "name": "Rookie Marketing Website",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-marketing-website",
+      "description": "The public marketing website for Rookie. Next.js site with Supabase-backed content and Vercel analytics.",
+      "description_short": "The public marketing website for Rookie.",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript\n- Tailwind CSS",
+        "Base UI / Radix primitives\n- Supabase (supabase-js)\n- Vercel Analytics + Speed Insights"
+      ],
+      "hosting": "- Vercel",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-marketing-website"
+      },
+      "run_commands": {
+        "npm run dev": "dev server"
+      },
+      "services": [
+        "- Supabase",
+        "Vercel"
+      ],
+      "notes": "- Current branch in working tree: `fix/footer-mailto`",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs, vercel:deployments-cicd"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-04-30T11:38:00+02:00"
+    },
+    {
+      "name": "Rookie Ongoing",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-ongoing/rookie-ongoing",
+      "description": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts. No application code.",
+      "description_short": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts.",
+      "stack": [
+        "- Markdown docs",
+        "n8n flow JSON exports",
+        "shell scripts"
+      ],
+      "hosting": "- None (docs repo)",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/rookie-ongoing"
+      },
+      "run_commands": {},
+      "services": [
+        "- n8n (flow exports under n8n-flows/)"
+      ],
+      "notes": "- Default branch is `master` (not main)\n- Contains PRD.md, BACKLOG.md, TASKS.md, TEMPLATE-* setup docs",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "n8n-workflow-patterns, n8n-node-configuration (when editing flow exports)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-01-23T16:31:36+01:00"
+    },
+    {
+      "name": "Rookie Platform",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-platform",
+      "description": "The main recruiting agency platform connecting candidates with companies, managed by Rookie internal staff. Three portals: candidate, company (client), and admin, plus public routes for landing and job listings.\n\nThe flagship app of the Rookie client engagement - active development.",
+      "description_short": "The main recruiting agency platform connecting candidates with companies, managed by Rookie internal staff.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "Server Components",
+        "Server Actions)",
+        "TypeScript strict\n- Tailwind CSS v4",
+        "shadcn/ui\n- Supabase (PostgreSQL + RLS",
+        "Auth)\n- AWS S3 (file storage)",
+        "dnd-kit (drag and drop)\n- pnpm"
+      ],
+      "hosting": "- Vercel (project linked via .vercel)\n- Supabase cloud",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-platform"
+      },
+      "run_commands": {
+        "pnpm dev": "dev server",
+        "pnpm db:generate-types": "regenerate Supabase types"
+      },
+      "services": [
+        "- Supabase",
+        "Vercel",
+        "AWS S3",
+        "Apify (via MCP)"
+      ],
+      "notes": "- Has a project-scoped MCP server `rookie-apify` configured in ~/.claude.json",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-apify"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs, vercel:deployments-cicd, vercel:shadcn"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-04-30T16:06:37+02:00"
+    },
+    {
+      "name": "Rookie Test Form",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-test-form",
+      "description": "Scratch/test project for Rookie form flows (candidate/client intake forms). Local-only - no remote.",
+      "description_short": "Scratch/test project for Rookie form flows (candidate/client intake forms).",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix primitives",
+        "motion"
+      ],
+      "hosting": "- None (local testing)",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "eslint"
+      },
+      "services": [
+        "- None"
+      ],
+      "notes": "- Test bed - has uncommitted experiments in the working tree",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-01-21T12:32:00+01:00"
+    },
+    {
+      "name": "Rookie Version 1",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie_version_1",
+      "description": "Earlier iteration of the Rookie site/platform (repo name `rookie_2.0`). Kept for reference - superseded by rookie-platform and rookie-marketing-website.",
+      "description_short": "Earlier iteration of the Rookie site/platform (repo name `rookie_2.0`).",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript\n- Tailwind CSS",
+        "Base UI primitives\n- Supabase (supabase-js)"
+      ],
+      "hosting": "- Not actively deployed (reference only)",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie_2.0"
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "eslint"
+      },
+      "services": [
+        "- Supabase"
+      ],
+      "notes": "- Archive/reference - active work happens in rookie-platform",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-02-17T14:09:02+01:00"
+    },
+    {
       "name": "SignalStack",
       "path": "~/Documents/personal/apps/signalstack",
       "description": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO. Built for non-technical users - natural language chat is the primary interface, not dashboards full of charts.\n\nThe two core selling points are: (1) Talk to your data - ask any marketing data a question in plain language, and (2) Your weekly action plan - cross-subsystem LangGraph agents extract top findings from each area and a consolidator synthesizes them into a ranked action plan. This \"action plan\" feature is the main differentiator - it replaces what an SEO agency decision-maker does.\n\nNavigation is workflow-based: 5 main pages (Home, Research, Visibility, Content, Ads) with progressive disclosure (\"More tools\" sections). Old domain-based routes redirect to new pages.\n\nThe architecture is an npm workspaces monorepo with `apps/web` (Next.js), `apps/api` (Express on port 5000), and `packages/shared`. The Express API is a persistent server (avoids serverless timeouts for AI workloads). Auth is Supabase with JWT verified via jose + JWKS in Express middleware.",
@@ -1267,6 +1501,40 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
+    },
+    {
+      "name": "Testing Rookie Queries",
+      "path": "~/Documents/work/stormfors/clients/rookie/testing-rookie-queries/frontend",
+      "description": "Scratch/test project for trying Supabase queries against Rookie data (frontend harness). Local-only - no remote.",
+      "description_short": "Scratch/test project for trying Supabase queries against Rookie data (frontend harness).",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript",
+        "Supabase (ssr + supabase-js)",
+        "Tailwind CSS"
+      ],
+      "hosting": "- None (local testing)",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "eslint"
+      },
+      "services": [
+        "- Supabase (test queries)"
+      ],
+      "notes": "- Query test bed - has uncommitted experiments in the working tree",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-01-16T10:22:59+01:00"
     },
     {
       "name": "Todo",
