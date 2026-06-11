@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T08:43:33.511Z",
+  "generated_at": "2026-06-11T09:21:31.496Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -326,8 +326,8 @@
       "toolbox_mentions": [],
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
-      "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-11T10:42:00+02:00"
+      "vault": "",
+      "last_modified": "2026-06-11T10:43:53+02:00"
     },
     {
       "name": "Company Knowledge Base",
