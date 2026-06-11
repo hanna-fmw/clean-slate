@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-11T14:42:03.789Z",
+  "generated_at": "2026-06-11T20:48:11.099Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T11:38:03+02:00"
+      "last_modified": "2026-06-11T16:42:04+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1045,7 +1045,7 @@
       "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-02T11:21:16.755Z"
+      "last_modified": "2026-06-11T21:11:00+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -1423,7 +1423,7 @@
       "deployed_url": "https://app.signalstack.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:39",
-      "last_modified": "2026-06-08T20:55:42+02:00"
+      "last_modified": "2026-06-11T21:43:08+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1676,6 +1676,52 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-20T16:42:41+02:00"
+    },
+    {
+      "name": "yllw-app",
+      "path": "~/Documents/work/stormfors/clients/yllw/yllw-app",
+      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nCurrently mid infrastructure migration from temporary dev infra to the client's own (Vercel, Supabase, WhaleSync, Webflow). Real-PDF migration completed 2026-06-11.",
+      "description_short": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts.",
+      "stack": [
+        "Next.js (App Router) + TypeScript",
+        "Tailwind",
+        "Supabase (Postgres + Storage + Auth magic link)",
+        "WhaleSync",
+        "Webflow CMS",
+        "Zod."
+      ],
+      "hosting": "Client Vercel (Hobby), deploys via GitHub Actions (push = preview, main = production).",
+      "database": "",
+      "github": {
+        "account": "LeadfrontAB",
+        "ssh_alias": "github.com-leadfront",
+        "repo_url": "https://github.com/LeadfrontAB/yllw-app"
+      },
+      "run_commands": {},
+      "services": [
+        "Client Supabase (eu-north-1)",
+        "client Vercel",
+        "WhaleSync (paused",
+        "pending rewire)",
+        "Webflow Copy site (sandbox) + live site (untouched until go-live)."
+      ],
+      "notes": "- Go-live sequence and open gaps: `docs/tasks.md` (\"SEQUENCE TO GO-LIVE\") and `docs/findings-2026-06-11-gaps-a-b.md`.\n- Nothing touches the live Webflow site until the Copy-site rehearsal is fully verified.\n- Agent-accessibility opt-out: internal admin tool for a handful of client users; no public API surface planned.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None configured for this project (Supabase access via CLI/REST with project-scoped credentials)."
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "session-handoff"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-11T16:04:37+02:00"
     }
   ],
   "services": [
@@ -2189,7 +2235,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-11T14:42:04.354Z",
+    "synced_at": "2026-06-11T20:48:11.723Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
