@@ -8,7 +8,6 @@ import type { Project, DashboardData } from '../lib/types'
 
 const HOME_DIR = process.env.HOME ?? ''
 const DOCUMENTS_DIR = path.join(HOME_DIR, 'Documents')
-const PROJECTS_DIR = path.join(DOCUMENTS_DIR, 'projects')
 const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
 const API_KEYS_DIR = path.join(__dirname, '..', 'data', 'api-keys')
 // Local, gitignored list of project names to exclude from data.json entirely
@@ -166,18 +165,11 @@ function scanProject(dirPath: string, vaultIndex: ReturnType<typeof buildVaultIn
   }
 }
 
-// Collect candidate project directories: every top-level folder in ~/Documents
-// (one level, as before), plus a recursive scan of ~/Documents/projects.
+// Collect candidate project directories: recursive scan of all of ~/Documents.
+// Projects live nested under work/, personal/, etc. - findProjectRoots stops
+// descending at the first CLEAN-SLATE.md it finds on a path.
 function collectProjectDirs(): string[] {
-  const dirs = new Set<string>()
-
-  for (const entry of fs.readdirSync(DOCUMENTS_DIR, { withFileTypes: true })) {
-    if (entry.isDirectory()) dirs.add(path.join(DOCUMENTS_DIR, entry.name))
-  }
-
-  for (const dir of findProjectRoots(PROJECTS_DIR)) dirs.add(dir)
-
-  return [...dirs]
+  return findProjectRoots(DOCUMENTS_DIR)
 }
 
 function readHiddenNames(): string[] {
