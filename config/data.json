@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T09:52:57.322Z",
+  "generated_at": "2026-06-12T22:20:52.704Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T22:48:11+02:00"
+      "last_modified": "2026-06-12T11:52:58+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1705,7 +1705,7 @@
         "pending rewire)",
         "Webflow Copy site (sandbox) + live site (untouched until go-live)."
       ],
-      "notes": "- Go-live sequence and open gaps: `docs/tasks.md` (\"SEQUENCE TO GO-LIVE\") and `docs/findings-2026-06-11-gaps-a-b.md`.\n- Nothing touches the live Webflow site until the Copy-site rehearsal is fully verified.\n- Agent-accessibility opt-out: internal admin tool for a handful of client users; no public API surface planned.",
+      "notes": "- Go-live sequence: `docs/tasks.md` (\"SEQUENCE TO GO-LIVE\"). Steps 1-3 done 2026-06-12 (per-delområde publish keying, Webflow-to-app structure bridge, recurring-date publish windows - all merged + deployed). Next: WhaleSync rehearsal (step 4) + Copy-site verification (step 5).\n- Nothing touches the live Webflow site until the Copy-site rehearsal is fully verified.\n- Agent-accessibility opt-out: internal admin tool for a handful of client users; no public API surface planned.",
       "toolbox_mentions": [
         {
           "type": "mcp",
@@ -1721,7 +1721,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T16:04:37+02:00"
+      "last_modified": "2026-06-12T16:03:23+02:00"
     }
   ],
   "services": [
@@ -2235,7 +2235,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-12T09:52:58.079Z",
+    "synced_at": "2026-06-12T22:20:53.282Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3359,7 +3359,7 @@
       },
       {
         "name": "security-guidance",
-        "version": "2.0.4",
+        "version": "2.0.6",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
