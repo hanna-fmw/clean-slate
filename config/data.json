@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-12T22:20:52.704Z",
+  "generated_at": "2026-06-13T13:57:13.195Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-12T11:52:58+02:00"
+      "last_modified": "2026-06-13T00:20:53+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -381,8 +381,8 @@
     {
       "name": "djapo",
       "path": "~/Documents/personal/clients/djapo",
-      "description": "Research and setup project for a photographer friend's new portfolio + small print shop website. Currently in the platform-evaluation phase: comparing Squarespace vs Shopify for an elegant portfolio-first site with optional self-fulfilled print sales (she prints and ships herself). Her current site runs on Portfoliobox; the domain is registered at Namecheap, so migration is a DNS change.\n\nLeaning toward Shopify (full theme code control, CLI, APIs, free Translate & Adapt for two languages, built-in consent banner, hidden-cart portfolio mode) but awaiting the client's answer on whether she wants real e-commerce or contact-to-buy.\n\ndescription_short: Platform research and site setup for a photographer's portfolio + print shop.",
-      "description_short": "Research and setup project for a photographer friend's new portfolio + small print shop website.",
+      "description": "Setup project for a photographer friend's new portfolio + small print shop website. Platform chosen: Shopify, starting as a portfolio-first site with contact-to-buy (hidden cart/prices) and optional self-fulfilled print sales later (she prints and ships herself). Her current site runs on Portfoliobox; the domain is registered at Namecheap, so migration is a DNS change.\n\nShopify chosen for full theme code control (Liquid, CLI, git), official Dev MCP + APIs, free Translate & Adapt for two languages, built-in consent banner, and hidden-cart portfolio mode that flips on to full commerce later without a rebuild.\n\ndescription_short: Platform research and site setup for a photographer's portfolio + print shop.",
+      "description_short": "Setup project for a photographer friend's new portfolio + small print shop website.",
       "stack": [
         "- TBD: Squarespace or Shopify (Liquid theme via Shopify CLI if Shopify)"
       ],
@@ -397,7 +397,7 @@
       "services": [
         "- Domain: Namecheap (client's)\n- Current site: Portfoliobox (to be replaced)"
       ],
-      "notes": "- Account will be set up in the developer's name, then handed over\n- Agent-accessibility: opt-out for now - platform-hosted site builder, no custom app surface yet",
+      "notes": "- Platform decision: Shopify, starting as contact-to-buy (hidden cart/prices), commerce flipped on later without rebuild.\n- Handover plan: dev creates the store under own Gmail + own card to build. At handover, change the store-owner email (Settings -> Users and permissions) to the client's domain email, client sets her own password + MFA, client swaps billing card. No formal ownership transfer needed - just the email change.\n- MFA: leave OFF during dev (so no codes needed from client); enable with the client's device at handover.\n- Dev keeps access post-handover via a free Shopify Partner collaborator account (own email, doesn't use a staff slot, revocable). Create the Partner account anytime, even at the end.\n- Do NOT use a shared Google account.\n- Client domain email: set up hello@/studio@/linda@lindadjapo.com at Namecheap. Free = email forwarding to her Gmail (receive only); ~$1/mo = Namecheap Private Email (real mailbox, can send as the address).\n- Agent-accessibility: opt-out for now - platform-hosted site builder, no custom app surface yet",
       "toolbox_mentions": [
         {
           "type": "skill",
@@ -413,7 +413,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T07:54:13.313Z"
+      "last_modified": "2026-06-13T10:41:19.521Z"
     },
     {
       "name": "Flatfile Playbook",
@@ -2235,7 +2235,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-12T22:20:53.282Z",
+    "synced_at": "2026-06-13T13:57:13.769Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3400,15 +3400,6 @@
         "name": "coolify-personal",
         "origin": {
           "source": "3rd-party"
-        },
-        "transport": "stdio",
-        "notes": ""
-      },
-      {
-        "name": "supabase-signalstack",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/supabase-community/supabase-mcp"
         },
         "transport": "stdio",
         "notes": ""
