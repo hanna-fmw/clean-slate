@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-13T20:41:10.526Z",
+  "generated_at": "2026-06-14T10:06:12.085Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-13T15:57:13+02:00"
+      "last_modified": "2026-06-13T22:41:11+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1045,7 +1045,7 @@
       "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-12T08:31:22+02:00"
+      "last_modified": "2026-06-14T09:53:08+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -2235,7 +2235,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-13T20:41:11.093Z",
+    "synced_at": "2026-06-14T10:06:12.649Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -2868,96 +2868,6 @@
         "category": "testing"
       },
       {
-        "name": "agent-sdk-verifier-py",
-        "description": "Use this agent to verify that a Python Agent SDK application is properly configured, follows SDK best practices and documentation recommendations, and is ready for deployment or testing. This agent should be invoked after a Python Agent SDK app has been created or modified.",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "agent-sdk-dev"
-        },
-        "category": "agent-sdk-dev"
-      },
-      {
-        "name": "agent-sdk-verifier-ts",
-        "description": "Use this agent to verify that a TypeScript Agent SDK application is properly configured, follows SDK best practices and documentation recommendations, and is ready for deployment or testing. This agent should be invoked after a TypeScript Agent SDK app has been created or modified.",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "agent-sdk-dev"
-        },
-        "category": "agent-sdk-dev"
-      },
-      {
-        "name": "code-simplifier",
-        "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Focuses on recently modified code unless instructed otherwise.",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "code-simplifier"
-        },
-        "category": "code-simplifier"
-      },
-      {
-        "name": "AGENTS",
-        "description": "",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        },
-        "category": "huggingface-skills"
-      },
-      {
-        "name": "code-reviewer",
-        "description": "Use this agent when you need to review code for adherence to project guidelines, style guides, and best practices. This agent should be used proactively after writing or modifying code, especially before committing changes or creating pull requests. It will check for style violations, potential issues, and ensure code follows the established patterns in CLAUDE.md. Also the agent needs to know which files to focus on for the review. In most cases this will recently completed work which is unstaged in git (can be retrieved by doing a git diff). However there can be cases where this is different, make sure to specify this as the agent input when calling the agent. \\n\\nExamples:\\n<example>\\nContext: The user has just implemented a new feature with several TypeScript files.\\nuser: \"I've added the new authentication feature. Can you check if everything looks good?\"\\nassistant: \"I'll use the Task tool to launch the code-reviewer agent to review your recent changes.\"\\n<commentary>\\nSince the user has completed a feature and wants validation, use the code-reviewer agent to ensure the code meets project standards.\\n</commentary>\\n</example>\\n<example>\\nContext: The assistant has just written a new utility function.\\nuser: \"Please create a function to validate email addresses\"\\nassistant: \"Here's the email validation function:\"\\n<function call omitted for brevity>\\nassistant: \"Now I'll use the Task tool to launch the code-reviewer agent to review this implementation.\"\\n<commentary>\\nProactively use the code-reviewer agent after writing new code to catch issues early.\\n</commentary>\\n</example>\\n<example>\\nContext: The user is about to create a PR.\\nuser: \"I think I'm ready to create a PR for this feature\"\\nassistant: \"Before creating the PR, I'll use the Task tool to launch the code-reviewer agent to ensure all code meets our standards.\"\\n<commentary>\\nProactively review code before PR creation to avoid review comments and iterations.\\n</commentary>\\n</example>",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "pr-review-toolkit"
-        },
-        "category": "pr-review-toolkit"
-      },
-      {
-        "name": "comment-analyzer",
-        "description": "Use this agent when you need to analyze code comments for accuracy, completeness, and long-term maintainability. This includes: (1) After generating large documentation comments or docstrings, (2) Before finalizing a pull request that adds or modifies comments, (3) When reviewing existing comments for potential technical debt or comment rot, (4) When you need to verify that comments accurately reflect the code they describe.\\n\\n<example>\\nContext: The user is working on a pull request that adds several documentation comments to functions.\\nuser: \"I've added documentation to these functions. Can you check if the comments are accurate?\"\\nassistant: \"I'll use the comment-analyzer agent to thoroughly review all the comments in this pull request for accuracy and completeness.\"\\n<commentary>\\nSince the user has added documentation comments and wants them checked, use the comment-analyzer agent to verify their accuracy against the actual code.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user just asked to generate comprehensive documentation for a complex function.\\nuser: \"Add detailed documentation for this authentication handler function\"\\nassistant: \"I've added the documentation. Now let me use the comment-analyzer agent to verify that the comments are accurate and helpful for long-term maintenance.\"\\n<commentary>\\nAfter generating large documentation comments, proactively use the comment-analyzer to ensure quality.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: The user is preparing to create a pull request with multiple code changes and comments.\\nuser: \"I think we're ready to create the PR now\"\\nassistant: \"Before creating the pull request, let me use the comment-analyzer agent to review all the comments we've added or modified to ensure they're accurate and won't create technical debt.\"\\n<commentary>\\nBefore finalizing a PR, use the comment-analyzer to review all comment changes.\\n</commentary>\\n</example>",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "pr-review-toolkit"
-        },
-        "category": "pr-review-toolkit"
-      },
-      {
-        "name": "pr-test-analyzer",
-        "description": "Use this agent when you need to review a pull request for test coverage quality and completeness. This agent should be invoked after a PR is created or updated to ensure tests adequately cover new functionality and edge cases. Examples:\\n\\n<example>\\nContext: Daisy has just created a pull request with new functionality.\\nuser: \"I've created the PR. Can you check if the tests are thorough?\"\\nassistant: \"I'll use the pr-test-analyzer agent to review the test coverage and identify any critical gaps.\"\\n<commentary>\\nSince Daisy is asking about test thoroughness in a PR, use the Task tool to launch the pr-test-analyzer agent.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: A pull request has been updated with new code changes.\\nuser: \"The PR is ready for review - I added the new validation logic we discussed\"\\nassistant: \"Let me analyze the PR to ensure the tests adequately cover the new validation logic and edge cases.\"\\n<commentary>\\nThe PR has new functionality that needs test coverage analysis, so use the pr-test-analyzer agent.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Reviewing PR feedback before marking as ready.\\nuser: \"Before I mark this PR as ready, can you double-check the test coverage?\"\\nassistant: \"I'll use the pr-test-analyzer agent to thoroughly review the test coverage and identify any critical gaps before you mark it ready.\"\\n<commentary>\\nDaisy wants a final test coverage check before marking PR ready, use the pr-test-analyzer agent.\\n</commentary>\\n</example>",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "pr-review-toolkit"
-        },
-        "category": "pr-review-toolkit"
-      },
-      {
-        "name": "silent-failure-hunter",
-        "description": "Use this agent when reviewing code changes in a pull request to identify silent failures, inadequate error handling, and inappropriate fallback behavior. This agent should be invoked proactively after completing a logical chunk of work that involves error handling, catch blocks, fallback logic, or any code that could potentially suppress errors. Examples:\\n\\n<example>\\nContext: Daisy has just finished implementing a new feature that fetches data from an API with fallback behavior.\\nDaisy: \"I've added error handling to the API client. Can you review it?\"\\nAssistant: \"Let me use the silent-failure-hunter agent to thoroughly examine the error handling in your changes.\"\\n<Task tool invocation to launch silent-failure-hunter agent>\\n</example>\\n\\n<example>\\nContext: Daisy has created a PR with changes that include try-catch blocks.\\nDaisy: \"Please review PR #1234\"\\nAssistant: \"I'll use the silent-failure-hunter agent to check for any silent failures or inadequate error handling in this PR.\"\\n<Task tool invocation to launch silent-failure-hunter agent>\\n</example>\\n\\n<example>\\nContext: Daisy has just refactored error handling code.\\nDaisy: \"I've updated the error handling in the authentication module\"\\nAssistant: \"Let me proactively use the silent-failure-hunter agent to ensure the error handling changes don't introduce silent failures.\"\\n<Task tool invocation to launch silent-failure-hunter agent>\\n</example>",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "pr-review-toolkit"
-        },
-        "category": "pr-review-toolkit"
-      },
-      {
-        "name": "type-design-analyzer",
-        "description": "Use this agent when you need expert analysis of type design in your codebase. Specifically use it: (1) when introducing a new type to ensure it follows best practices for encapsulation and invariant expression, (2) during pull request creation to review all types being added, (3) when refactoring existing types to improve their design quality. The agent will provide both qualitative feedback and quantitative ratings on encapsulation, invariant expression, usefulness, and enforcement.\\n\\n<example>\\nContext: Daisy is writing code that introduces a new UserAccount type and wants to ensure it has well-designed invariants.\\nuser: \"I've just created a new UserAccount type that handles user authentication and permissions\"\\nassistant: \"I'll use the type-design-analyzer agent to review the UserAccount type design\"\\n<commentary>\\nSince a new type is being introduced, use the type-design-analyzer to ensure it has strong invariants and proper encapsulation.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Daisy is creating a pull request and wants to review all newly added types.\\nuser: \"I'm about to create a PR with several new data model types\"\\nassistant: \"Let me use the type-design-analyzer agent to review all the types being added in this PR\"\\n<commentary>\\nDuring PR creation with new types, use the type-design-analyzer to review their design quality.\\n</commentary>\\n</example>",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "pr-review-toolkit"
-        },
-        "category": "pr-review-toolkit"
-      },
-      {
         "name": "ai-architect",
         "description": "Specializes in architecting AI-powered applications on Vercel — choosing between AI SDK patterns, configuring providers, building agents, setting up durable workflows, and integrating MCP servers. Use when designing AI features, building chatbots, or creating agentic applications.",
         "origin": {
@@ -3559,86 +3469,6 @@
         }
       },
       {
-        "name": "figma-code-connect",
-        "description": "Creates and maintains Figma Code Connect template files that map Figma components to code snippets. Use when the user mentions Code Connect, Figma component mapping, design-to-code translation, or asks to create/update .figma.ts or .figma.js files.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-create-new-file",
-        "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `create_new_file` tool call. NEVER call `create_new_file` directly without loading this skill first. Trigger whenever the user wants a new blank Figma file — a new design, FigJam, or Slides file — or when you need a fresh file before calling `use_figma`. Usage — /figma-create-new-file [editorType] [fileName] (e.g. /figma-create-new-file figjam My Whiteboard, /figma-create-new-file slides Q3 Review)",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-generate-design",
-        "description": "Use this skill alongside figma-use when the task involves translating an application page, view, or multi-section layout into Figma. Triggers: 'write to Figma', 'create in Figma from code', 'push page to Figma', 'take this app/page and build it in Figma', 'create a screen', 'build a landing page in Figma', 'update the Figma screen to match code', 'convert this modal/dialog/drawer/panel to Figma'. This is the preferred workflow skill whenever the user wants to build or update a full page, modal, dialog, drawer, sidebar, panel, or any composed multi-section view in Figma from code or a description. Discovers design system components, variables, and styles from Code Connect files, existing screens, and library search, then imports them and assembles views incrementally section-by-section using design system tokens instead of hardcoded values.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-generate-diagram",
-        "description": "MANDATORY prerequisite — load this skill BEFORE every `generate_diagram` tool call. NEVER call `generate_diagram` directly without loading this skill first. Trigger whenever the user asks to create, generate, draw, render, sketch, or build a diagram — flowchart, architecture diagram, sequence diagram, ERD or entity-relationship diagram, state diagram or state machine, gantt chart, or timeline. Also trigger when the user mentions Mermaid syntax or wants a system architecture, decision tree, dependency graph, API call flow, auth handshake, schema, or pipeline visualized in FigJam. Routes to type-specific guidance, sets universal Mermaid constraints, and tells you when to use a different diagram type or skip the tool entirely (mindmaps, pie charts, class diagrams, etc.).",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-generate-library",
-        "description": "Build or update a professional-grade design system in Figma from a codebase. Use when the user wants to create variables/tokens, build component libraries, create individual components with proper variant sets and variable bindings, set up theming (light/dark modes), document foundations, or reconcile gaps between code and Figma. Also use when the user asks to create or generate any component in Figma — even a single one — since components require proper variable foundations, variant states, and design token bindings to be production-quality. This skill teaches WHAT to build and in WHAT ORDER — it complements the `figma-use` skill which teaches HOW to call the Plugin API. Both skills should be loaded together.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-use",
-        "description": "**MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-use-figjam",
-        "description": "This skill helps agents use Figma's use_figma MCP tool in the FigJam context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
-        "name": "figma-use-slides",
-        "description": "This skill helps agents use Figma's use_figma MCP tool in the Slides context. Can be used alongside figma-use which has foundational context for using the use_figma tool.",
-        "plugin": "figma",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "figma"
-        }
-      },
-      {
         "name": "frontend-design",
         "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
         "plugin": "frontend-design",
@@ -3646,156 +3476,6 @@
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
           "plugin": "frontend-design"
-        }
-      },
-      {
-        "name": "hf-cli",
-        "description": "Hugging Face Hub CLI (`hf`) for downloading, uploading, and managing models, datasets, spaces, buckets, repos, papers, jobs, and more on the Hugging Face Hub. Use when: handling authentication; managing local cache; managing Hugging Face Buckets; running or scheduling jobs on Hugging Face infrastructure; managing Hugging Face repos; discussions and pull requests; browsing models, datasets and spaces; reading, searching, or browsing academic papers; managing collections; querying datasets; configuring spaces; setting up webhooks; or deploying and managing HF Inference Endpoints. Make sure to use this skill whenever the user mentions 'hf', 'huggingface', 'Hugging Face', 'huggingface-cli', or 'hugging face cli', or wants to do anything related to the Hugging Face ecosystem and to AI and ML in general. Also use for cloud storage needs like training checkpoints, data pipelines, or agent traces. Use even if the user doesn't explicitly ask for a CLI command. Replaces the deprecated `huggingface-cli`.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-best",
-        "description": ">",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-community-evals",
-        "description": "Run evaluations for Hugging Face Hub models using inspect-ai and lighteval on local hardware. Use for backend selection, local GPU evals, and choosing between vLLM / Transformers / accelerate. Not for HF Jobs orchestration, model-card PRs, .eval_results publication, or community-evals automation.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-datasets",
-        "description": "",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-gradio",
-        "description": "Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, components, event listeners, layouts, or chatbots.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-llm-trainer",
-        "description": "Train or fine-tune language and vision models using TRL (Transformer Reinforcement Learning) or Unsloth with Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, model selection/leaderboards and model persistence. Use for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-local-models",
-        "description": "Use to select models to run locally with llama.cpp and GGUF on CPU, Mac Metal, CUDA, or ROCm. Covers finding GGUFs, quant selection, running servers, exact GGUF file lookup, conversion, and OpenAI-compatible local serving.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-paper-publisher",
-        "description": "Publish and manage research papers on Hugging Face Hub. Supports creating paper pages, linking papers to models/datasets, claiming authorship, and generating professional markdown-based research articles.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-papers",
-        "description": "Look up and read Hugging Face paper pages in markdown, and use the papers API for structured metadata such as authors, linked models/datasets/spaces, Github repo and project page. Use when the user shares a Hugging Face paper page URL, an arXiv URL or ID, or asks to summarize, explain, or analyze an AI research paper.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-tool-builder",
-        "description": "Use this skill when the user wants to build tool/scripts or achieve a task where using data from the Hugging Face API would help. This is especially useful when chaining or combining API calls or the task will be repeated/automated. This Skill creates a reusable script to fetch, enrich or process data.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-trackio",
-        "description": "Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-vision-trainer",
-        "description": "Trains and fine-tunes vision models for object detection (D-FINE, RT-DETR v2, DETR, YOLOS), image classification (timm models — MobileNetV3, MobileViT, ResNet, ViT/DINOv3 — plus any Transformers classifier), and SAM/SAM2 segmentation using Hugging Face Transformers on Hugging Face Jobs cloud GPUs. Covers COCO-format dataset preparation, Albumentations augmentation, mAP/mAR evaluation, accuracy metrics, SAM segmentation with bbox/point prompts, DiceCE loss, hardware selection, cost estimation, Trackio monitoring, and Hub persistence. Use when users mention training object detection, image classification, SAM, SAM2, segmentation, image matting, DETR, D-FINE, RT-DETR, ViT, timm, MobileNet, ResNet, bounding box models, or fine-tuning vision models on Hugging Face Jobs.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "huggingface-zerogpu",
-        "description": "AI demos and GPU compute with Gradio Spaces and Hugging Face Spaces ZeroGPU. Use when writing or reviewing code that uses `@spaces.GPU`, configuring `python_version` or `requirements.txt` for a ZeroGPU Space, or handling ZeroGPU-specific code constraints — pickle-based process isolation, `gr.State` semantics across the worker boundary, no `torch.compile` (use AoTI instead), CUDA wheel-only builds (no `nvcc` at build or runtime), large vs xlarge sizing, and dynamic duration callables. Make sure to use this skill whenever the user mentions ZeroGPU, `@spaces.GPU`, or the `spaces` Python package, or hits ZeroGPU-specific code errors like `PicklingError` across the worker boundary, `illegal duration`, or `flash-attn` wheel-build failures — even when the user does not explicitly ask for ZeroGPU coding guidance. Trigger on `import spaces` or `@spaces.GPU` in code.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "train-sentence-transformers",
-        "description": "Train or fine-tune sentence-transformers models across `SentenceTransformer` (bi-encoder; dense or static embedding model; for retrieval, similarity, clustering, classification, paraphrase mining, dedup, multimodal), `CrossEncoder` (reranker; pair scoring for two-stage retrieval / pair classification), and `SparseEncoder` (SPLADE, sparse embedding model; for learned-sparse retrieval). Covers loss selection, hard-negative mining, evaluators, distillation, LoRA, Matryoshka, and Hugging Face Hub publishing. Use for any sentence-transformers training task.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
-        }
-      },
-      {
-        "name": "transformers-js",
-        "description": "Use Transformers.js to run state-of-the-art machine learning models directly in JavaScript/TypeScript. Supports NLP (text classification, translation, summarization), computer vision (image classification, object detection), audio (speech recognition, audio classification), and multimodal tasks. Works in browsers and server-side runtimes (Node.js, Bun, Deno) with WebGPU/WASM using pre-trained models from Hugging Face Hub.",
-        "plugin": "huggingface-skills",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "huggingface-skills"
         }
       },
       {
@@ -4149,6 +3829,16 @@
         }
       },
       {
+        "name": "vercel-firewall",
+        "description": "Vercel Firewall expert guidance — automatic DDoS mitigation, the Vercel WAF (custom rules, IP blocking, managed rulesets, rate limiting), Attack Mode, system bypass, bot management, and the `vercel firewall` CLI. Use when configuring platform-level security, responding to attacks, or staging firewall rules.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
         "name": "vercel-functions",
         "description": "Vercel Functions expert guidance — Serverless Functions, Edge Functions, Fluid Compute, streaming, Cron Jobs, and runtime configuration. Use when configuring, debugging, or optimizing server-side code running on Vercel.",
         "plugin": "vercel",
@@ -4191,16 +3881,6 @@
       {
         "name": "workflow",
         "description": "Vercel Workflow DevKit (WDK) expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume, retries, step-based execution, or crash-safe orchestration with Vercel Workflow.",
-        "plugin": "vercel",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "vercel"
-        }
-      },
-      {
-        "name": "vercel-firewall",
-        "description": "Vercel Firewall expert guidance — automatic DDoS mitigation, the Vercel WAF (custom rules, IP blocking, managed rulesets, rate limiting), Attack Mode, system bypass, bot management, and the `vercel firewall` CLI. Use when configuring platform-level security, responding to attacks, or staging firewall rules.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
