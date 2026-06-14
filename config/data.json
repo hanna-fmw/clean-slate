@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-14T10:06:12.085Z",
+  "generated_at": "2026-06-14T16:06:16.305Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-13T22:41:11+02:00"
+      "last_modified": "2026-06-14T12:06:12+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -384,9 +384,10 @@
       "description": "Setup project for a photographer friend's new portfolio + small print shop website. Platform chosen: Shopify, starting as a portfolio-first site with contact-to-buy (hidden cart/prices) and optional self-fulfilled print sales later (she prints and ships herself). Her current site runs on Portfoliobox; the domain is registered at Namecheap, so migration is a DNS change.\n\nShopify chosen for full theme code control (Liquid, CLI, git), official Dev MCP + APIs, free Translate & Adapt for two languages, built-in consent banner, and hidden-cart portfolio mode that flips on to full commerce later without a rebuild.\n\ndescription_short: Platform research and site setup for a photographer's portfolio + print shop.",
       "description_short": "Setup project for a photographer friend's new portfolio + small print shop website.",
       "stack": [
-        "- TBD: Squarespace or Shopify (Liquid theme via Shopify CLI if Shopify)"
+        "- Shopify (Online Store 2.0",
+        "Liquid). Live theme: **Atelier**. Unpublished: Horizon. Edited locally via Shopify CLI; theme files in `shopify-site/theme/`."
       ],
-      "hosting": "- TBD (platform-hosted: Squarespace or Shopify)",
+      "hosting": "- Shopify-hosted. Store: **td8jti-ye.myshopify.com** (no custom domain connected yet).",
       "database": "",
       "github": {
         "account": "",
@@ -395,9 +396,10 @@
       },
       "run_commands": {},
       "services": [
-        "- Domain: Namecheap (client's)\n- Current site: Portfoliobox (to be replaced)"
+        "- Domain: Namecheap (client's)",
+        "not yet connected to Shopify\n- Current site: Portfoliobox (to be replaced)\n- Shopify store: td8jti-ye.myshopify.com"
       ],
-      "notes": "- Platform decision: Shopify, starting as contact-to-buy (hidden cart/prices), commerce flipped on later without rebuild.\n- Handover plan: dev creates the store under own Gmail + own card to build. At handover, change the store-owner email (Settings -> Users and permissions) to the client's domain email, client sets her own password + MFA, client swaps billing card. No formal ownership transfer needed - just the email change.\n- MFA: leave OFF during dev (so no codes needed from client); enable with the client's device at handover.\n- Dev keeps access post-handover via a free Shopify Partner collaborator account (own email, doesn't use a staff slot, revocable). Create the Partner account anytime, even at the end.\n- Do NOT use a shared Google account.\n- Client domain email: set up hello@/studio@/linda@lindadjapo.com at Namecheap. Free = email forwarding to her Gmail (receive only); ~$1/mo = Namecheap Private Email (real mailbox, can send as the address).\n- Agent-accessibility: opt-out for now - platform-hosted site builder, no custom app surface yet",
+      "notes": "- Platform decision: Shopify, starting as contact-to-buy (hidden cart/prices), commerce flipped on later without rebuild.\n- Handover plan: dev creates the store under own Gmail + own card to build. At handover, change the store-owner email (Settings -> Users and permissions) to the client's domain email, client sets her own password + MFA, client swaps billing card. No formal ownership transfer needed - just the email change.\n- MFA: leave OFF during dev (so no codes needed from client); enable with the client's device at handover.\n- Dev keeps access post-handover via a free Shopify Partner collaborator account (own email, doesn't use a staff slot, revocable). Create the Partner account anytime, even at the end.\n- Do NOT use a shared Google account.\n- Client domain email: set up hello@/studio@/linda@lindadjapo.com at Namecheap. Free = email forwarding to her Gmail (receive only); ~$1/mo = Namecheap Private Email (real mailbox, can send as the address).\n- Claude CLI/MCP wiring (done): `shopify-site/.mcp.json` has `shopify-dev-mcp` (docs/validation, active) + `shopify-mcp` (store data, idle until Client ID/Secret filled). CLI auth uses a per-store **Theme Access token** (`SHOPIFY_CLI_THEME_TOKEN` in gitignored `.env`), NOT global login - so it runs in parallel with the Moiwak CLI session under a different account. Do not `shopify auth logout` (would break Moiwak's session).\n- Store-data MCP (`shopify-mcp`) needs a custom-app Client ID + Secret - NOT yet created. Only needed when Claude should manage products/collections/orders/pages. Theme/design work needs none of it.\n- Storefront password was removed (was blocking `theme dev`). RE-ENABLE before connecting the real domain so Google doesn't index the half-built site.\n- Agent-accessibility: opt-out for now - platform-hosted site builder, no custom app surface yet",
       "toolbox_mentions": [
         {
           "type": "skill",
@@ -410,10 +412,10 @@
           "name": "Shopify Dev MCP (if Shopify is chosen)"
         }
       ],
-      "deployed_url": "",
+      "deployed_url": "https://td8jti-ye.myshopify.com",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-13T10:41:19.521Z"
+      "last_modified": "2026-06-14T12:19:58.664Z"
     },
     {
       "name": "Flatfile Playbook",
@@ -1538,7 +1540,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-05T23:30:41+02:00"
+      "last_modified": "2026-06-14T12:28:04+02:00"
     },
     {
       "name": "UJD Shopify",
@@ -2235,7 +2237,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-14T10:06:12.649Z",
+    "synced_at": "2026-06-14T16:06:17.085Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
