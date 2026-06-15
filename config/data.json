@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T02:06:08.782Z",
+  "generated_at": "2026-06-15T07:35:23.573Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-14T18:06:17+02:00"
+      "last_modified": "2026-06-15T04:06:10+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1540,7 +1540,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-14T12:28:04+02:00"
+      "last_modified": "2026-06-15T07:41:14+02:00"
     },
     {
       "name": "UJD Shopify",
@@ -2237,7 +2237,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-15T02:06:10.342Z",
+    "synced_at": "2026-06-15T07:35:24.969Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3232,7 +3232,7 @@
       },
       {
         "name": "vercel",
-        "version": "0.43.0",
+        "version": "0.44.0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -3883,6 +3883,16 @@
       {
         "name": "workflow",
         "description": "Vercel Workflow DevKit (WDK) expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume, retries, step-based execution, or crash-safe orchestration with Vercel Workflow.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "microfrontends",
+        "description": "Guide for building, configuring, and deploying microfrontends on Vercel. Use this skill when the user mentions microfrontends, multi-zones, splitting an app across teams, independent deployments, cross-app routing, incremental migration, composing multiple frontends under one domain, microfrontends.json, @vercel/microfrontends, the microfrontends local proxy, or path-based routing between Vercel projects. Also use when the user asks about shared layouts across projects, navigation between microfrontends, fallback environments, asset prefixes, or feature flag controlled routing.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
