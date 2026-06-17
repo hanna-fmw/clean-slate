@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T14:09:36.266Z",
+  "generated_at": "2026-06-17T06:13:50.854Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-16T10:09:32+02:00"
+      "last_modified": "2026-06-16T16:09:37+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2237,7 +2237,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-16T14:09:36.940Z",
+    "synced_at": "2026-06-17T06:13:51.427Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3202,7 +3202,7 @@
     "plugins": [
       {
         "name": "superpowers",
-        "version": "5.1.0",
+        "version": "6.0.0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/obra/superpowers",
