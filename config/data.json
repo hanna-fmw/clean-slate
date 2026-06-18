@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T09:24:55.622Z",
+  "generated_at": "2026-06-18T15:25:00.214Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-17T22:24:14+02:00"
+      "last_modified": "2026-06-18T11:24:56+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -377,6 +377,44 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
+    },
+    {
+      "name": "demoflow",
+      "path": "~/Documents/personal/apps/demoflow",
+      "description": "AI-driven walkthrough video generator. Point it at a web app, get back a narrated MP4 demo. Playwright performs the clicks, Claude writes the narration, ElevenLabs voices it, ffmpeg stitches the final video. Built as a Loom alternative for onboarding videos that doesn't require live recording or video editing skills.",
+      "description_short": "AI-driven walkthrough video generator.",
+      "stack": [
+        "- Node.js / TypeScript\n- Playwright (browser automation + screen recording)\n- Anthropic Claude API (narration generation)\n- ElevenLabs API (TTS",
+        "optional)\n- ffmpeg (video stitching)"
+      ],
+      "hosting": "Local CLI for now. Possible future: hosted SaaS.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Anthropic API\n- ElevenLabs API"
+      ],
+      "notes": "Early prototype. Inspired by frustration with live screen recordings - this turns a 1-hour Loom session into a 5-minute config edit.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "frontend-design"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "context7"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-18T12:24:10.731Z"
     },
     {
       "name": "djapo",
@@ -2237,7 +2275,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-18T09:24:56.189Z",
+    "synced_at": "2026-06-18T15:25:00.862Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
