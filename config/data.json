@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T06:19:37.823Z",
+  "generated_at": "2026-06-20T12:19:41.946Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-19T10:21:55+02:00"
+      "last_modified": "2026-06-20T08:19:38+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1761,7 +1761,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-20T05:49:39+02:00"
+      "last_modified": "2026-06-20T13:44:36+02:00"
     }
   ],
   "services": [
@@ -2275,7 +2275,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-20T06:19:38.381Z",
+    "synced_at": "2026-06-20T12:19:42.524Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3356,6 +3356,14 @@
       }
     ],
     "skills": [
+      {
+        "name": "check-gotchas",
+        "description": "Look up Hanna's hard-won, verified fixes from past projects before debugging or setting up known-trap tools. Use whenever the session involves Supabase (auth, CLI, Storage, new API keys), WhaleSync, Webflow, Shopify (CLI, Fabric theme, Horizon/Atelier theme, Dev Dashboard app auth), Prisma, Postgres (pooling, schema changes, container ports), pnpm-in-Docker, NetBird VPN, Coolify, Docker, Next.js (App Router, server actions, force-dynamic, googleapis), Tailwind v4 fonts, OAuth / Google APIs, Vercel (Hobby plan, commit-author-email, deploys), Cloudflare Access, RAG / vector databases (Qdrant etc.), or the clean-slate dashboard. Also trigger when the user says \"check the global gotchas\", \"check gotchas\", or mentions a bug/setup step in any of those areas — BEFORE attempting a fix or running setup commands.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
       {
         "name": "compact-handoff",
         "description": "Quick checkpoint before /compact or session break. Updates docs and memory if needed, copies a continuation prompt to clipboard. Minimal output.",
