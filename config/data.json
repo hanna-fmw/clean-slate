@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-20T18:19:46.215Z",
+  "generated_at": "2026-06-21T08:31:45.191Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-20T14:19:42+02:00"
+      "last_modified": "2026-06-20T20:19:46+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1720,7 +1720,7 @@
     {
       "name": "yllw-app",
       "path": "~/Documents/work/stormfors/clients/yllw/yllw-app",
-      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. All 4 migrations live on production; smoke-tested clean. Next phase: portal UI implementation against drafted specs in docs/rebuild/05-09 (recommended build order 06 → 07 → 08 → 05 → 09). Real-PDF migration completed 2026-06-11.",
+      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. All 4 migrations live on production; smoke-tested clean. Portal procurement-detail page live 2026-06-20 with read-only meta block + accordion of discount categories + per-category linked-documents table. Next phase: chunks 4-9 of the detail accordion (link/unlink modals, inline edit panel, create/delete category) per docs/rebuild/06. Real-PDF migration completed 2026-06-11.",
       "description_short": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts.",
       "stack": [
         "Next.js (App Router) + TypeScript",
@@ -1761,7 +1761,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-20T19:07:07+02:00"
+      "last_modified": "2026-06-21T00:58:03+02:00"
     }
   ],
   "services": [
@@ -2275,7 +2275,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-20T18:19:46.779Z",
+    "synced_at": "2026-06-21T08:31:45.783Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
