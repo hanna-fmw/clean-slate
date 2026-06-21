@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-21T08:31:45.191Z",
+  "generated_at": "2026-06-21T14:51:40.215Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-20T20:19:46+02:00"
+      "last_modified": "2026-06-21T10:31:45+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -384,8 +384,8 @@
       "description": "AI-driven walkthrough video generator. Point it at a web app, get back a narrated MP4 demo. Playwright performs the clicks, Claude writes the narration, ElevenLabs voices it, ffmpeg stitches the final video. Built as a Loom alternative for onboarding videos that doesn't require live recording or video editing skills.",
       "description_short": "AI-driven walkthrough video generator.",
       "stack": [
-        "- Node.js / TypeScript\n- Playwright (browser automation + screen recording)\n- Anthropic Claude API (narration generation)\n- ElevenLabs API (TTS",
-        "optional)\n- ffmpeg (video stitching)"
+        "- Node.js / TypeScript\n- Playwright (browser automation + screen recording)\n- Anthropic Claude API (narration generation)\n- Voicebox (local TTS via REST API on `127.0.0.1:17493`",
+        "default)\n- ElevenLabs API (optional fallback TTS)\n- ffmpeg (video stitching)"
       ],
       "hosting": "Local CLI for now. Possible future: hosted SaaS.",
       "database": "",
@@ -414,7 +414,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-18T12:24:10.731Z"
+      "last_modified": "2026-06-21T13:39:04.652Z"
     },
     {
       "name": "djapo",
@@ -686,6 +686,43 @@
       "last_modified": "2026-06-02T22:48:47+02:00"
     },
     {
+      "name": "Infrastructure",
+      "path": "~/Documents/infra",
+      "description": "Infrastructure notes and access reference for the Hetzner VPS (Coolify) and the homelab (Proxmox host + Ubuntu VM running Coolify). Source of truth for SSH aliases, dashboard URLs, and where credentials live.",
+      "description_short": "Infrastructure notes and access reference for the Hetzner VPS (Coolify) and the homelab (Proxmox host + Ubuntu VM running Coolify).",
+      "stack": [
+        "- Hetzner Cloud (CPX22)\n- Proxmox VE (homelab)\n- Ubuntu Server VM\n- Coolify (on both Hetzner and homelab)\n- NetBird (mesh VPN to reach homelab remotely)"
+      ],
+      "hosting": "- **Hetzner VPS** — `ssh coolify-hetzner` — Coolify dashboard exposed via sslip.io\n- **Homelab Proxmox host** — web UI at `192.168.0.50:8006` (local network only)\n- **Homelab Ubuntu VM** — `ssh ubuntu-vm` — local `192.168.0.102`, NetBird `100.109.75.79`\n- **Homelab Coolify** — `192.168.0.102:8000` (local) or `100.109.75.79:8000` (via NetBird)",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Coolify on Hetzner — deploys public apps\n- Coolify on homelab VM — deploys private/dev apps\n- Proxmox — manages homelab VMs"
+      ],
+      "notes": "- Coolify passwords are saved in the password manager (entries: **Coolify coolify-1** and **Coolify .env coolify-1** for Hetzner; homelab Coolify entry likewise)\n- Proxmox root password is in the password manager\n- NetBird is NOT needed for Hetzner (public internet); it IS needed for the homelab when off the local network\n- NetBird breaks IPv6 for some CLIs (Supabase, Vercel) — disconnect when doing public-internet CLI work\n- Full reference: `~/Documents/infra/proxmox/Home Server Cheatsheet.md`\n- Hetzner setup log: `~/Documents/infra/hetzner/2026-06-01-coolify-1-setup.md`",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "coolify-personal"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "proxmox"
+        }
+      ],
+      "deployed_url": "https://sslip.io",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-21T13:35:10.421Z"
+    },
+    {
       "name": "JSON-LD Schema Generator",
       "path": "~/Documents/work/stormfors/json-ld-generator",
       "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
@@ -777,7 +814,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-06-07T15:24:33.224Z"
+      "last_modified": "2026-06-21T12:38:23.848Z"
     },
     {
       "name": "no-excuses",
@@ -2275,7 +2312,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-21T08:31:45.783Z",
+    "synced_at": "2026-06-21T14:51:40.874Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
