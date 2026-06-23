@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T06:02:48.097Z",
+  "generated_at": "2026-06-23T12:02:52.702Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-22T16:16:42+02:00"
+      "last_modified": "2026-06-23T08:02:48+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -390,9 +390,9 @@
       "hosting": "Local CLI for now. Possible future: hosted SaaS.",
       "database": "",
       "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/demoflow"
       },
       "run_commands": {},
       "services": [
@@ -414,7 +414,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-21T13:39:04.652Z"
+      "last_modified": "2026-06-23T13:53:08+02:00"
     },
     {
       "name": "djapo",
@@ -1008,6 +1008,49 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-31T22:45:00+02:00"
+    },
+    {
+      "name": "pipeline-guardrails",
+      "path": "~/Documents/utilities/pipeline-guardrails",
+      "description": "Modular safety and best-practice kit for the full code delivery pipeline. Covers secrets, git hygiene, local hooks, CI/CD, PR review, AI-assistant guardrails, and deploy safety. Built for small teams that depend on AI assistants and need senior-dev safety nets baked in.",
+      "description_short": "Modular safety and best-practice kit for the full code delivery pipeline.",
+      "stack": [
+        "Bash scripts",
+        "GitHub Actions YAML",
+        "markdown docs. Optional Node CLI (planned)."
+      ],
+      "hosting": "N/A — meta tooling. Distributed as a template repo + CLI.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "1Password CLI",
+        "GitHub Actions",
+        "CodeRabbit",
+        "Vercel",
+        "Coolify (referenced by modules)."
+      ],
+      "notes": "- Builds on existing `~/Documents/utilities/git-guard` (referenced by module 03).\n- Builds on existing Claude Code rules in `~/.claude/rules/` (referenced by module 06).\n- `docs/` is local-only (gitignored).",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "check-gotchas"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "update-config"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-23T08:47:13.355Z"
     },
     {
       "name": "Portfolio",
@@ -1757,7 +1800,7 @@
     {
       "name": "yllw-app",
       "path": "~/Documents/work/stormfors/clients/yllw/yllw-app",
-      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. All 4 migrations live on production; smoke-tested clean. Portal procurement-detail page live 2026-06-20 with read-only meta block + accordion of discount categories + per-category linked-documents table. Next phase: chunks 4-9 of the detail accordion (link/unlink modals, inline edit panel, create/delete category) per docs/rebuild/06. Real-PDF migration completed 2026-06-11.",
+      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. Portal procurement-detail page fully shipped (read-only meta + accordion of discount categories + link/unlink modals + inline edit + create/delete category). E2E testing pass 2 merged 2026-06-22. Cover-page schema migrated from FK to direct URL field. In-app Help section added 2026-06-23 with Hjälp link in the sidebar; upload-limits flipped from free-tier to Supabase Pro (bucket cap raised to 1 GB, no client-side size check, friendly Swedish error mapping for tus failures). Real-PDF migration completed 2026-06-11.",
       "description_short": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts.",
       "stack": [
         "Next.js (App Router) + TypeScript",
@@ -1782,7 +1825,7 @@
         "Webflow live site (built) + Copy site (sandbox). Plus a separate TESTING stack: test Supabase on the company account + Copy Webflow",
         "deployed to a personal Vercel via CLI."
       ],
-      "notes": "- LIVE cutover done 2026-06-20 (all migrations applied, Phase 6 smoke test green, storage orphans cleaned, stray test procurement removed). Remaining infra polish: replicate migration 20260620150000 + storage cleanup on yllw-testing, switch countries source from (new) to LIVE Länder/countries (attempted + reverted today — needs Webflow schema change on Procurements (new).Country + Regions (new).Country reference fields, test on yllw-testing first).\n- TWO environments, never to be mixed: PRODUCTION (`yllw-app` -> client Vercel via GitHub Actions, client Supabase, LIVE Webflow) and TESTING (`yllw-testing` -> personal Vercel via `vercel` CLI, test Supabase, COPY Webflow). The testing clone has its push URL disabled and no deploy workflow so it can never reach live. Full map in CLAUDE.md / AGENTS.md.\n- Testing deploy is interim CLI-from-local; a durable GitHub-Actions staging pipeline is to be written after the demo.\n- Files >50 MB can only be validated on LIVE (client Supabase is Pro; free test Supabase caps at 50 MB).\n- Nothing touches the live Webflow site except deliberate, confirmed go-live steps.\n- Agent-accessibility opt-out: internal admin tool for a handful of client users; no public API surface planned.",
+      "notes": "- LIVE cutover done 2026-06-20 (all migrations applied, Phase 6 smoke test green, storage orphans cleaned, stray test procurement removed). Remaining infra polish: replicate migration 20260620150000 + storage cleanup on yllw-testing, switch countries source from (new) to LIVE Länder/countries (attempted + reverted today — needs Webflow schema change on Procurements (new).Country + Regions (new).Country reference fields, test on yllw-testing first).\n- TWO environments, never to be mixed: PRODUCTION (`yllw-app` -> client Vercel via GitHub Actions, client Supabase, LIVE Webflow) and TESTING (`yllw-testing` -> personal Vercel via `vercel` CLI, test Supabase, COPY Webflow). The testing clone has its push URL disabled and no deploy workflow so it can never reach live. Full map in CLAUDE.md / AGENTS.md.\n- Testing deploy is interim CLI-from-local; a durable GitHub-Actions staging pipeline is to be written after the demo.\n- LIVE bucket `documents` is on Supabase Pro with `file_size_limit = 1 GB`. Test Supabase is still free-tier (~50 MB cap) so very large files can only be validated on LIVE.\n- Nothing touches the live Webflow site except deliberate, confirmed go-live steps.\n- Agent-accessibility opt-out: internal admin tool for a handful of client users; no public API surface planned.",
       "toolbox_mentions": [
         {
           "type": "mcp",
@@ -1798,7 +1841,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-22T18:20:06+02:00"
+      "last_modified": "2026-06-23T10:50:36+02:00"
     }
   ],
   "services": [
@@ -2312,7 +2355,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-23T06:02:48.764Z",
+    "synced_at": "2026-06-23T12:02:53.344Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3548,6 +3591,14 @@
       {
         "name": "session-handoff",
         "description": "Wrap up a session - update docs, commit, verify, and save a handoff prompt for the next session",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "session-quickstart-card",
+        "description": "Fast project cockpit card. Prints a compact magenta card with how to spin up the dev server (port-conflict aware), live URL, test accounts, and key services. Reads the `## Quickstart` section from the project's CLAUDE.md (falls back to CLEAN-SLATE.md). Auto-runs at session start (per global CLAUDE.md rule). Use when the user runs /session-quickstart-card, says \"spin up\", \"get me started\", \"how do I run this\", or at the very start of a project session.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
