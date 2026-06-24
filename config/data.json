@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T11:45:03.497Z",
+  "generated_at": "2026-06-24T17:45:08.585Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-24T07:44:59+02:00"
+      "last_modified": "2026-06-24T13:45:04+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -414,7 +414,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-23T15:29:51+02:00"
+      "last_modified": "2026-06-24T18:02:41+02:00"
     },
     {
       "name": "djapo",
@@ -1269,7 +1269,7 @@
     {
       "name": "Reclaim",
       "path": "~/Documents/utilities/reclaim",
-      "description": "Process-aware macOS disk + memory janitor. ~250 lines of auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with an approval dialog.",
+      "description": "Process-aware macOS disk + memory janitor. Auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with a per-category tickbox approval dialog and an \"Ask Claude\" escape hatch.\n\nCleans 6 categories (each opt-in via tickbox, with size + risk note shown):\n1. `.next` caches — rebuilds on next dev\n2. Installer DMGs — old auto-update installers\n3. Docker unused images (full prune) — volumes never touched\n4. npm cache (`~/.npm/_cacache`) — rebuilds on next `npm install`\n5. Claude `vm_bundles` — skipped if Claude.app is running\n6. Dormant `node_modules` — per-project sub-picker, 30d+ idle only",
       "description_short": "Process-aware macOS disk + memory janitor.",
       "stack": [
         "Bash",
@@ -1291,7 +1291,7 @@
         "daily 08:45",
         "with a 3-day gate inside `cleanup.sh` so it only actually acts every ~3 days.\n- **Docker** — pruned at clean time (images + build cache; never volumes). Step skipped silently if daemon is not running."
       ],
-      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- Runtime state lives at `~/.disk-cleanup/` (audit log `history.jsonl`, last-run timestamp). Not part of the repo.\n- The cloned folder is the source of truth — edit there, then re-run `./install.sh` to redeploy.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only).",
+      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- Runtime state lives at `~/.disk-cleanup/` (audit log `history.jsonl`, last-run timestamp). Not part of the repo.\n- The cloned folder is the source of truth — edit there, then re-run `./install.sh` to redeploy.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only). Scope-expansion plan at `docs/TODO-expand-scope.md` — items 1-4 shipped 2026-06-23 (v1.4), items 5-6 still open.\n- **Ask Claude button** (in the main dialog): opens Terminal.app in the repo dir, prints the cleanup plan, then drops into an interactive `claude` session so you can ask questions before deciding. After exiting Claude the dialog re-appears.\n- Version 1.4 (`reclaim --version`).",
       "toolbox_mentions": [],
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
@@ -1841,7 +1841,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-24T13:31:46+02:00"
+      "last_modified": "2026-06-24T16:26:05+02:00"
     }
   ],
   "services": [
@@ -2355,7 +2355,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-24T11:45:04.111Z",
+    "synced_at": "2026-06-24T17:45:09.219Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
