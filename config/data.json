@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T18:02:57.142Z",
+  "generated_at": "2026-06-24T05:44:58.589Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-23T14:02:53+02:00"
+      "last_modified": "2026-06-23T20:02:57+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1800,7 +1800,7 @@
     {
       "name": "yllw-app",
       "path": "~/Documents/work/stormfors/clients/yllw/yllw-app",
-      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. Portal procurement-detail page fully shipped (read-only meta + accordion of discount categories + link/unlink modals + inline edit + create/delete category). E2E testing pass 2 merged 2026-06-22. Cover-page schema migrated from FK to direct URL field. In-app Help section added 2026-06-23 with Hjälp link in the sidebar; upload-limits flipped from free-tier to Supabase Pro (bucket cap raised to 1 GB, no client-side size check, friendly Swedish error mapping for tus failures). Real-PDF migration completed 2026-06-11.",
+      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. Portal procurement-detail page fully shipped (read-only meta + accordion of discount categories + link/unlink modals + inline edit + create/delete category). E2E testing pass 2 merged 2026-06-22. Cover-page schema migrated from FK to direct URL field. In-app Help section added 2026-06-23 with Hjälp link in the sidebar; upload-limits flipped from free-tier to Supabase Pro (bucket cap raised to 1 GB, no client-side size check, friendly Swedish error mapping for tus failures). Real-PDF migration completed 2026-06-11. Demo-prep round 2026-06-23 added a `documents.description` text column (Beskrivning) surfaced to Webflow one-way + an editable field in upload and archive-edit forms, dropped the Status column / Land filter / Rabattkategorier trash icon / detail-page banner / \"Ersatt\" wording (now \"Tidigare version\"), renamed the nav \"Arkiv\" → \"Dokumentarkiv\", added required-asterisks to upload form, added inline ⚠ warning icons on the Upphandlingar list when `upload_rules` + `allowed_dates` are inconsistent, and added a Koppling filter to the link-documents modal.",
       "description_short": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts.",
       "stack": [
         "Next.js (App Router) + TypeScript",
@@ -1841,7 +1841,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-23T19:19:23+02:00"
+      "last_modified": "2026-06-24T07:22:40+02:00"
     }
   ],
   "services": [
@@ -2355,7 +2355,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-23T18:02:57.739Z",
+    "synced_at": "2026-06-24T05:44:59.224Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
