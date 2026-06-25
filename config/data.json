@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T06:52:51.935Z",
+  "generated_at": "2026-06-25T12:52:56.366Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-24T19:45:09+02:00"
+      "last_modified": "2026-06-25T08:52:52+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1401,7 +1401,7 @@
         "Server Actions)",
         "TypeScript strict\n- Tailwind CSS v4",
         "shadcn/ui\n- Supabase (PostgreSQL + RLS",
-        "Auth)\n- AWS S3 (file storage)",
+        "Auth)\n- Cloudflare R2 (file storage)",
         "dnd-kit (drag and drop)\n- pnpm"
       ],
       "hosting": "- Vercel (project linked via .vercel)\n- Supabase cloud",
@@ -1418,11 +1418,39 @@
       "services": [
         "- Supabase",
         "Vercel",
-        "AWS S3",
-        "Apify (via MCP)"
+        "Railway",
+        "Cloudflare R2",
+        "Resend",
+        "Apify",
+        "OpenRouter"
       ],
-      "notes": "- Has a project-scoped MCP server `rookie-apify` configured in ~/.claude.json",
+      "notes": "- Six project-scoped MCP servers prefixed `rookie-` (see below). Configured in ~/.claude.json.\n- Rebrand in progress: Rookie → Prefeo AB (Bolagsverket confirmed 2026-06-12). Codebase + repos still use \"rookie\" naming during transition. Working folder: `docs/rebrand-prefeo/`.",
       "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-supabase"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-railway"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-cloudflare"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-resend"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-trello"
+        },
         {
           "type": "mcp",
           "category": null,
@@ -1437,7 +1465,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-11T11:38:58+02:00"
+      "last_modified": "2026-06-25T12:14:45+02:00"
     },
     {
       "name": "Rookie Test Form",
@@ -2367,7 +2395,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-25T06:52:52.630Z",
+    "synced_at": "2026-06-25T12:52:56.935Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3449,15 +3477,7 @@
     ],
     "skills": [
       {
-        "name": "frontend-slides",
-        "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
-        "plugin": "custom",
-        "origin": {
-          "source": "custom"
-        }
-      },
-      {
-        "name": "hh-check-gotchas",
+        "name": "fmw-check-gotchas",
         "description": "Look up Hanna's hard-won, verified fixes from past projects before debugging or setting up known-trap tools. Use whenever the session involves Supabase (auth, CLI, Storage, new API keys), WhaleSync, Webflow, Shopify (CLI, Fabric theme, Horizon/Atelier theme, Dev Dashboard app auth), Prisma, Postgres (pooling, schema changes, container ports), pnpm-in-Docker, NetBird VPN, Coolify, Docker, Next.js (App Router, server actions, force-dynamic, googleapis), Tailwind v4 fonts, OAuth / Google APIs, Vercel (Hobby plan, commit-author-email, deploys), Cloudflare Access, RAG / vector databases (Qdrant etc.), or the clean-slate dashboard. Also trigger when the user says \"check the global gotchas\", \"check gotchas\", or mentions a bug/setup step in any of those areas — BEFORE attempting a fix or running setup commands.",
         "plugin": "custom",
         "origin": {
@@ -3465,7 +3485,7 @@
         }
       },
       {
-        "name": "hh-compact-handoff",
+        "name": "fmw-compact-handoff",
         "description": "Quick checkpoint before /compact or session break. Updates docs and memory if needed, copies a continuation prompt to clipboard. Minimal output.",
         "plugin": "custom",
         "origin": {
@@ -3473,7 +3493,7 @@
         }
       },
       {
-        "name": "hh-content-notebooklm",
+        "name": "fmw-content-notebooklm",
         "description": "Complete API for Google NotebookLM - full programmatic access including features not in the web UI. Create notebooks, add sources, generate all artifact types, download in multiple formats. Activates on explicit /notebooklm or intent like \"create a podcast about X",
         "plugin": "custom",
         "origin": {
@@ -3481,7 +3501,7 @@
         }
       },
       {
-        "name": "hh-content-research-youtube",
+        "name": "fmw-content-research-youtube",
         "description": "YouTube-powered research pipeline that finds videos on a topic, feeds them into NotebookLM for deep analysis, and optionally generates deliverables (podcasts, flashcards, quizzes, infographics, etc.). Use this skill whenever the user wants to research a topic using YouTube content, build a knowledge base from videos, analyze what YouTube creators are saying about something, or wants a \"YouTube research\" workflow. Triggers on phrases like \"research this topic on YouTube\", \"what are YouTubers saying about\", \"build a research notebook from YouTube\", \"analyze YouTube videos about\", or any multi-step request combining video discovery with analysis.",
         "plugin": "custom",
         "origin": {
@@ -3489,7 +3509,7 @@
         }
       },
       {
-        "name": "hh-content-search-youtube",
+        "name": "fmw-content-search-youtube",
         "description": "Search YouTube for videos and return structured results with metadata and engagement metrics. Use this skill whenever the user wants to search YouTube, find videos on a topic, discover content creators, research video performance, compare channels, or analyze YouTube engagement — even if they don't say \"YouTube search\" explicitly. Triggers on phrases like \"search YouTube\", \"find videos about\", \"what videos are there on\", \"look up on YouTube\", \"YouTube results for\", or any request to find or discover video content.",
         "plugin": "custom",
         "origin": {
@@ -3497,7 +3517,7 @@
         }
       },
       {
-        "name": "hh-content-transcribe-video",
+        "name": "fmw-content-transcribe-video",
         "description": "Transcribe a local meeting/screen recording (.mov, .mp4, .m4a, .mp3, .wav) into a timestamped, speaker-labelled transcript, flag the moments where screens are shown so the user can screenshot them, pair those screenshots back to the transcript, and optionally turn the whole thing into a readable textbook-style HTML article. Handles any meeting shape — 1-on-1 walkthroughs, multi-person standups, client calls — and labels unknown voices as Speaker N. Use this skill whenever the user points at a recording file (often on the Desktop) and wants it transcribed, especially Swedish recordings, standups, or meetings where a colleague demonstrates tools/workflows on screen. Triggers on \"transcribe this recording/meeting/video\", \"I recorded a meeting with my boss\", \"transcribe our standup\", \"get the transcript of this .mov\", \"turn this recording into notes/an article\", \"I only care about the part about X\", or when the user mentions a large local video file they want to learn from. NOT for YouTube URLs (use content-transcribe-youtube) and NOT for live audio.",
         "plugin": "custom",
         "origin": {
@@ -3505,7 +3525,7 @@
         }
       },
       {
-        "name": "hh-content-transcribe-youtube",
+        "name": "fmw-content-transcribe-youtube",
         "description": "Transcribe a YouTube video into a near-transcript summary and save it to the knowledge base. Use this skill whenever the user shares a YouTube URL and wants a transcript, summary, near-transcript, or wants to save/ingest a video into their knowledge base. Also triggers when the user says \"transcribe this video\", \"save this tutorial\", \"add this to my knowledge base\", \"get the transcript\", or pastes a youtube.com URL with intent to capture its content.",
         "plugin": "custom",
         "origin": {
@@ -3513,7 +3533,7 @@
         }
       },
       {
-        "name": "hh-content-write-article",
+        "name": "fmw-content-write-article",
         "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use content-transcribe-youtube for those).",
         "plugin": "custom",
         "origin": {
@@ -3521,7 +3541,7 @@
         }
       },
       {
-        "name": "hh-invoice-creator",
+        "name": "fmw-invoice-creator",
         "description": "Create a Swedish-style invoice (faktura) as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
         "plugin": "custom",
         "origin": {
@@ -3529,7 +3549,7 @@
         }
       },
       {
-        "name": "hh-learn",
+        "name": "fmw-learn",
         "description": "Run a personal tutoring session on one isolated topic. Reads the topic's checklist + progress, picks up where the last session left off (or starts a new topic), teaches incrementally with assess-before-explain and AskUserQuestion quizzes, can interleave real hands-on actions (SSH into a server, run a command, inspect a schema), and ends with the standard session-log + checklist + progress update routine. Triggers on \"/learn\", \"let's do a learn session\", \"tutor me on X\", \"continue the learn session\", \"add a topic for X\", \"add this to my learn references\".",
         "plugin": "custom",
         "origin": {
@@ -3537,7 +3557,15 @@
         }
       },
       {
-        "name": "hh-session-handoff",
+        "name": "fmw-new-worktree",
+        "description": "Create a new git worktree for the current project so Hanna can work on a separate branch in parallel from another terminal. Sets up env files, installs dependencies, picks a free dev port, and prints a loud warning about not deleting the worktree before committing + pushing. Triggers on \"/fmw-new-worktree\", \"new worktree\", \"spin up a worktree\", \"open a worktree\", or when Hanna wants to work on the same repo in a second terminal/branch without conflicts.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-session-handoff",
         "description": "Wrap up a session - update docs, commit, verify, and save a handoff prompt for the next session",
         "plugin": "custom",
         "origin": {
@@ -3545,8 +3573,16 @@
         }
       },
       {
-        "name": "hh-session-quickstart-card",
+        "name": "fmw-session-quickstart-card",
         "description": "Fast project cockpit card. Prints a compact magenta card with how to spin up the dev server (port-conflict aware), live URL, test accounts, and key services. Reads the `## Quickstart` section from the project's CLAUDE.md (falls back to CLEAN-SLATE.md). Auto-runs at session start (per global CLAUDE.md rule). Use when the user runs /session-quickstart-card, says \"spin up\", \"get me started\", \"how do I run this\", or at the very start of a project session.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "frontend-slides",
+        "description": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
