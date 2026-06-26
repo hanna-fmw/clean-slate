@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T09:32:42.341Z",
+  "generated_at": "2026-06-26T15:32:46.775Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-25T22:42:39+02:00"
+      "last_modified": "2026-06-26T11:32:43+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -826,7 +826,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-06-21T12:38:23.848Z"
+      "last_modified": "2026-06-26T12:45:27.605Z"
     },
     {
       "name": "no-excuses",
@@ -1180,6 +1180,129 @@
       "last_modified": "2026-06-14T09:53:08+02:00"
     },
     {
+      "name": "Prefeo API",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-api",
+      "description": "Production Express.js webhook/API service for the Prefeo recruitment lead-processing workflow, converted from an n8n flow. Handles inbound leads, scraping via Apify, CV parsing (pdf-parse), and OpenAI-assisted processing on a cron schedule.",
+      "description_short": "Production Express.js webhook/API service for the Prefeo recruitment lead-processing workflow, converted from an n8n flow.",
+      "stack": [
+        "- Express.js",
+        "TypeScript\n- Supabase (supabase-js)",
+        "Apify client",
+        "OpenAI\n- node-cron",
+        "helmet",
+        "express-rate-limit"
+      ],
+      "hosting": "- See repo deploy config (webhook service)",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-api"
+      },
+      "run_commands": {
+        "npm run dev": "dev server"
+      },
+      "services": [
+        "- Supabase",
+        "Apify",
+        "OpenAI"
+      ],
+      "notes": "- Originally an n8n workflow; this repo is the code conversion",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "nodejs-backend-patterns"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "n8n-workflow-patterns (for reference against the original flows)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-26T14:36:19+02:00"
+    },
+    {
+      "name": "Prefeo Platform",
+      "path": "~/Documents/work/stormfors/clients/rookie/rookie-platform",
+      "description": "The main recruiting agency platform connecting candidates with companies, managed by Prefeo internal staff. Three portals: candidate, company (client), and admin, plus public routes for landing and job listings.\n\nThe flagship app of the Prefeo client engagement - active development.",
+      "description_short": "The main recruiting agency platform connecting candidates with companies, managed by Prefeo internal staff.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "Server Components",
+        "Server Actions)",
+        "TypeScript strict\n- Tailwind CSS v4",
+        "shadcn/ui\n- Supabase (PostgreSQL + RLS",
+        "Auth)\n- Cloudflare R2 (file storage)",
+        "dnd-kit (drag and drop)\n- pnpm"
+      ],
+      "hosting": "- Vercel (project linked via .vercel)\n- Supabase cloud",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-platform"
+      },
+      "run_commands": {
+        "pnpm dev": "dev server",
+        "pnpm db:generate-types": "regenerate Supabase types"
+      },
+      "services": [
+        "- Supabase",
+        "Vercel",
+        "Railway",
+        "Cloudflare R2",
+        "Resend",
+        "Apify",
+        "OpenRouter"
+      ],
+      "notes": "- Six project-scoped MCP servers prefixed `rookie-` (see below). Configured in ~/.claude.json.\n- Rebrand in progress: Rookie → Prefeo AB (Bolagsverket confirmed 2026-06-12). Codebase + repos still use \"rookie\" naming during transition. Working folder: `docs/rebrand-prefeo/`.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-supabase"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-railway"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-cloudflare"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-resend"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-trello"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-apify"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs, vercel:deployments-cicd, vercel:shadcn"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-26T14:36:10+02:00"
+    },
+    {
       "name": "Private Knowledge Base",
       "path": "~/Documents/personal/knowledge-base/private-knowledge-base",
       "description": "A personal knowledge base with semantic search and RAG over private markdown notes and documents. Three content sources feed into the system: a local `~/knowledge-base/` folder auto-synced to GitHub via `fswatch`, Google Drive folders (OAuth2, delta sync hourly / full sync every 6h), and manual drag-and-drop uploads in the admin UI.\n\nAll sources go through an ingestion pipeline that chunks content, embeds it using `all-MiniLM-L6-v2` (384-dim vectors, runs locally), and stores vectors in Qdrant. Users ask questions in a chat UI; the app retrieves relevant chunks and passes them to an LLM (Qwen 2.5 7B via HF Inference API) which streams the answer with source citations.\n\nThe web UI includes a TipTap markdown editor, a unified file sidebar showing content from all three sources (Repo / Google Drive / Uploads), and a chat interface. Deployed via Coolify on a dedicated VM (VM2) that is separate and isolated from other VMs on the home server.",
@@ -1311,52 +1434,6 @@
       "last_modified": "2026-06-04T13:50:09+02:00"
     },
     {
-      "name": "Rookie API",
-      "path": "~/Documents/work/stormfors/clients/rookie/rookie-api",
-      "description": "Production Express.js webhook/API service for the Rookie recruitment lead-processing workflow, converted from an n8n flow. Handles inbound leads, scraping via Apify, CV parsing (pdf-parse), and OpenAI-assisted processing on a cron schedule.",
-      "description_short": "Production Express.js webhook/API service for the Rookie recruitment lead-processing workflow, converted from an n8n flow.",
-      "stack": [
-        "- Express.js",
-        "TypeScript\n- Supabase (supabase-js)",
-        "Apify client",
-        "OpenAI\n- node-cron",
-        "helmet",
-        "express-rate-limit"
-      ],
-      "hosting": "- See repo deploy config (webhook service)",
-      "database": "",
-      "github": {
-        "account": "rookieworkdev",
-        "ssh_alias": "github.com-rookie",
-        "repo_url": "https://github.com/rookieworkdev/rookie-api"
-      },
-      "run_commands": {
-        "npm run dev": "dev server"
-      },
-      "services": [
-        "- Supabase",
-        "Apify",
-        "OpenAI"
-      ],
-      "notes": "- Originally an n8n workflow; this repo is the code conversion",
-      "toolbox_mentions": [
-        {
-          "type": "skill",
-          "category": null,
-          "name": "nodejs-backend-patterns"
-        },
-        {
-          "type": "skill",
-          "category": null,
-          "name": "n8n-workflow-patterns (for reference against the original flows)"
-        }
-      ],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "vault": "",
-      "last_modified": "2026-06-26T11:05:17+02:00"
-    },
-    {
       "name": "Rookie Ongoing",
       "path": "~/Documents/work/stormfors/clients/rookie/rookie-ongoing/rookie-ongoing",
       "description": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts. No application code.",
@@ -1389,83 +1466,6 @@
       "chrome_profile": "",
       "vault": "",
       "last_modified": "2026-01-23T16:31:36+01:00"
-    },
-    {
-      "name": "Rookie Platform",
-      "path": "~/Documents/work/stormfors/clients/rookie/rookie-platform",
-      "description": "The main recruiting agency platform connecting candidates with companies, managed by Rookie internal staff. Three portals: candidate, company (client), and admin, plus public routes for landing and job listings.\n\nThe flagship app of the Rookie client engagement - active development.",
-      "description_short": "The main recruiting agency platform connecting candidates with companies, managed by Rookie internal staff.",
-      "stack": [
-        "- Next.js 16 (App Router",
-        "Server Components",
-        "Server Actions)",
-        "TypeScript strict\n- Tailwind CSS v4",
-        "shadcn/ui\n- Supabase (PostgreSQL + RLS",
-        "Auth)\n- Cloudflare R2 (file storage)",
-        "dnd-kit (drag and drop)\n- pnpm"
-      ],
-      "hosting": "- Vercel (project linked via .vercel)\n- Supabase cloud",
-      "database": "",
-      "github": {
-        "account": "rookieworkdev",
-        "ssh_alias": "github.com-rookie",
-        "repo_url": "https://github.com/rookieworkdev/rookie-platform"
-      },
-      "run_commands": {
-        "pnpm dev": "dev server",
-        "pnpm db:generate-types": "regenerate Supabase types"
-      },
-      "services": [
-        "- Supabase",
-        "Vercel",
-        "Railway",
-        "Cloudflare R2",
-        "Resend",
-        "Apify",
-        "OpenRouter"
-      ],
-      "notes": "- Six project-scoped MCP servers prefixed `rookie-` (see below). Configured in ~/.claude.json.\n- Rebrand in progress: Rookie → Prefeo AB (Bolagsverket confirmed 2026-06-12). Codebase + repos still use \"rookie\" naming during transition. Working folder: `docs/rebrand-prefeo/`.",
-      "toolbox_mentions": [
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "rookie-supabase"
-        },
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "rookie-railway"
-        },
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "rookie-cloudflare"
-        },
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "rookie-resend"
-        },
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "rookie-trello"
-        },
-        {
-          "type": "mcp",
-          "category": null,
-          "name": "rookie-apify"
-        },
-        {
-          "type": "skill",
-          "category": null,
-          "name": "vercel:nextjs, vercel:deployments-cicd, vercel:shadcn"
-        }
-      ],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "vault": "",
-      "last_modified": "2026-06-25T15:39:39+02:00"
     },
     {
       "name": "Rookie Test Form",
@@ -2395,7 +2395,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-26T09:32:42.928Z",
+    "synced_at": "2026-06-26T15:32:47.410Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3558,7 +3558,7 @@
       },
       {
         "name": "fmw-new-worktree",
-        "description": "Create a new git worktree for the current project so Hanna can work on a separate branch in parallel from another terminal. Sets up env files, installs dependencies, picks a free dev port, and prints a loud warning about not deleting the worktree before committing + pushing. Triggers on \"/fmw-new-worktree\", \"new worktree\", \"spin up a worktree\", \"open a worktree\", or when Hanna wants to work on the same repo in a second terminal/branch without conflicts.",
+        "description": "Create a new git worktree for the current project so Hanna can work on a separate branch in parallel from another terminal. Sets up env files, installs dependencies, picks a free dev port, writes a HANDOFF.md with full context for the new session, and prints a copy-paste first message to give the new Claude. Triggers on \"/fmw-new-worktree\", \"new worktree\", \"spin up a worktree\", \"open a worktree\", or when Hanna wants to work on the same repo in a second terminal/branch without conflicts.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
