@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T21:33:53.589Z",
+  "generated_at": "2026-06-27T10:50:20.399Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-26T17:32:47+02:00"
+      "last_modified": "2026-06-26T23:33:54+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1746,6 +1746,44 @@
       "last_modified": "2026-05-22T13:59:28.590Z"
     },
     {
+      "name": "Ultracode Weekly Audit",
+      "path": "~/Documents/utilities/ultracode-weekly-audit",
+      "description": "A standing weekly routine that spends any leftover Claude Code Max weekly usage on a deep, read-only ultracode audit of one active project, right before the weekly limit resets. \"Use it or lose it\" budget for free deep code reviews.",
+      "description_short": "A standing weekly routine that spends any leftover Claude Code Max weekly usage on a deep, read-only ultracode audit of one active project, right before the weekly limit resets.",
+      "stack": [
+        "- Claude Code (multi-agent **Workflow** mode",
+        "triggered by the `ultracode` keyword)\n- Cloud routine on claude.ai (cron) + Gmail MCP connector for the reminder email"
+      ],
+      "hosting": "- Routine runs in Anthropic cloud (CCR) on cron `0 10 * * 5` UTC (Fri 12:00 Stockholm)\n- Audit itself runs locally in Claude Code on the user's machine",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- claude.ai routine ID: `trig_01RLiQ1hrmHVfgUuXh1nCixA`\n- Manage / disable: https://claude.ai/code/routines/trig_01RLiQ1hrmHVfgUuXh1nCixA\n- Gmail MCP connector (sends the weekly reminder email)"
+      ],
+      "notes": "- Reset time: **Friday 14:00 Stockholm**. Reminder fires 2h before.\n- Audit output goes to each target project's `docs/audits/<date>.md` (gitignored by default).\n- Start audits early enough to finish before reset — a big run can take 20–60+ minutes.\n- Read-only by design — the prompt explicitly forbids code modification so the report can be reviewed later or fed to a second LLM for a judge pass.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "schedule"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "Gmail (claude.ai connector)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-27T07:34:02.374Z"
+    },
+    {
       "name": "Unlogged",
       "path": "~/Documents/utilities/unlogged",
       "description": "Fullscreen macOS overlay that takes over the screen on Friday afternoons and refuses to be ignored until time is logged in Harvest. Built with Tauri 2 (Rust + WebView), runs at ~15 MB and ~0% idle CPU. Active animation: a terminal-style ASCII skull reveal with typed alert lines.",
@@ -2395,7 +2433,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-26T21:33:54.147Z",
+    "synced_at": "2026-06-27T10:50:20.974Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
