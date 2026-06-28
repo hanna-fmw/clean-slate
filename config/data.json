@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T13:15:38.681Z",
+  "generated_at": "2026-06-28T19:15:43.113Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-28T09:15:34+02:00"
+      "last_modified": "2026-06-28T15:15:39+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -381,14 +381,24 @@
     {
       "name": "demoflow",
       "path": "~/Documents/personal/apps/demoflow",
-      "description": "AI-driven walkthrough video generator. Point it at a web app, get back a narrated MP4 demo. Playwright performs the clicks, an LLM writes the narration, Voicebox voices it locally, ffmpeg stitches the final video. Built as a Loom alternative for onboarding videos that doesn't require live recording or video editing skills.",
-      "description_short": "AI-driven walkthrough video generator.",
+      "description": "AI-driven demo authoring and rendering. Author a step-based demo once via AI chat (give it URLs, intent, audience), then render the same step JSON as: auto-play screenshot walkthrough, interactive click-through, live-app video, or animated explainer (Bytemonk-style scene library). One tool, four output modes, one brand theme. The v0 CLI (Playwright-records-live-app → MP4) is archived under `legacy/v0-cli/` and will be folded back in as the video renderer in sub-plan 7.",
+      "description_short": "AI-driven demo authoring and rendering.",
       "stack": [
-        "- Node.js / TypeScript (ESM",
-        "Node 22+)\n- Playwright (browser automation + screen recording)\n- OpenRouter (narration generation",
-        "Gemini Flash Lite by default — model is configurable)\n- Voicebox (local TTS via REST API on `127.0.0.1:17493`)\n- ffmpeg (video stitching)\n- commander (CLI)"
+        "- Next.js 16 (App Router",
+        "server components",
+        "server actions",
+        "standalone build)\n- TypeScript strict",
+        "Tailwind v4",
+        "shadcn/ui (added in sub-plan 2)\n- Drizzle ORM + Postgres 16\n- graphile-worker (Postgres-backed job queue",
+        "no Redis)\n- Cloudflare R2 (S3-compatible) for screenshots",
+        "audio",
+        "video\n- TTS: OpenAI `tts-1` default",
+        "ElevenLabs toggle per project",
+        "plus own / own-polished / cloned modes\n- LLM script chat: OpenRouter (model decided at implementation time)\n- Playwright (screenshot capture in sub-plan 6",
+        "live-app recording in sub-plan 7)\n- Remotion (animated explainer renderer in sub-plan 8)\n- ffmpeg (audio polish",
+        "video assembly)"
       ],
-      "hosting": "Local CLI. Possible future: hosted SaaS + small UI wrapper.",
+      "hosting": "- Production: Coolify on Hetzner CX22 VPS (Docker compose: web + db + worker). Cloudflare Access in front for auth (email allowlist, OTP).\n- Files: Cloudflare R2 from day one (10 GB free, no egress fees).\n- Local dev: `docker compose -f docker/compose.yml up` (same Dockerfiles as prod).",
       "database": "",
       "github": {
         "account": "hanna-fmw",
@@ -403,11 +413,20 @@
         "pnpm test": "vitest run"
       },
       "services": [
-        "- OpenRouter (narration LLM)\n- Voicebox (local",
-        "no account)"
+        "- Cloudflare (R2 bucket + Zero Trust / Access) — to be set up in Task 7\n- Hetzner VPS + Coolify — to be set up in Task 7\n- OpenAI (TTS) — sub-plan 3\n- ElevenLabs (TTS toggle) — sub-plan 3\n- OpenRouter (script chat LLM) — sub-plan 4"
       ],
-      "notes": "- v0 shipped 2026-06-24: end-to-end record → narrate → voice → build pipeline works against example.com.\n- Kokoro is preset-voice only — needs a preset profile, not a cloned one. For cloned voices, download Qwen3-TTS or Chatterbox in Voicebox.\n- Builder pads video with a freeze frame when audio is longer than the recorded segment, and pads audio with silence when video is longer.",
+      "notes": "- **Foundation sub-plan complete (2026-06-28):** branch `feat/v1-foundation`, commits `d5b0656..c00a5b1`. Schema migrated, R2 client + worker + Docker compose all verified end-to-end locally. Spec at `docs/superpowers/specs/2026-06-27-demoflow-v1-design.md`, plan at `docs/superpowers/plans/2026-06-27-demoflow-v1-foundation.md` (both local-only).\n- **Known issue to fix before Task 7:** Local pnpm is 9.15.4, Docker uses pnpm 11.9.0. The supply-chain allowlist in `pnpm-workspace.yaml` works locally but pnpm 11 inside Docker still errors on `ERR_PNPM_IGNORED_BUILDS`. Fix: add `\"packageManager\": \"pnpm@9.15.4\"` (or pick a single pinned 11.x) to `package.json` and regenerate the lockfile. Once pinned, `pnpm docker:up` should succeed.\n- **Next session:** Task 7 (deploy to Hetzner via Coolify + R2 bucket + Cloudflare Access). Requires user-in-the-loop for cloud provisioning. Detailed step-by-step in the plan file.\n- Voicebox / Qwen / Kokoro from v0 are NOT used by v1 (Voicebox is local-only and would not run on the Hetzner VPS). The local TTS work survives in `legacy/v0-cli/` for reference.",
       "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers:brainstorming"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "fmw-check-gotchas"
+        },
         {
           "type": "skill",
           "category": null,
@@ -424,12 +443,22 @@
           "name": "frontend-design"
         },
         {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs"
+        },
+        {
           "type": "mcp",
           "category": null,
           "name": "context7"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "coolify-personal"
         }
       ],
-      "deployed_url": "",
+      "deployed_url": "https://compose.yml",
       "chrome_profile": "",
       "vault": "",
       "last_modified": "2026-06-28T10:49:45+02:00"
@@ -832,7 +861,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-06-28T09:58:53.743Z"
+      "last_modified": "2026-06-28T15:12:06.915Z"
     },
     {
       "name": "no-excuses",
@@ -2439,7 +2468,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-28T13:15:39.281Z",
+    "synced_at": "2026-06-28T19:15:43.712Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3619,6 +3648,14 @@
       {
         "name": "fmw-session-quickstart-card",
         "description": "Fast project cockpit card. Prints a compact magenta card with how to spin up the dev server (port-conflict aware), live URL, test accounts, and key services. Reads the `## Quickstart` section from the project's CLAUDE.md (falls back to CLEAN-SLATE.md). Auto-runs at session start (per global CLAUDE.md rule). Use when the user runs /session-quickstart-card, says \"spin up\", \"get me started\", \"how do I run this\", or at the very start of a project session.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-worktree-closedown",
+        "description": "Safely close down a finished git worktree session — verify the PR is merged, pull main in the canonical repo, remove the worktree, delete the local branch, optionally preserve a handoff doc and check out a follow-up branch, and print a clean exit card that tells Hanna exactly where to resume. Triggers on \"/fmw-worktree-closedown\", \"close down this worktree\", \"wrap up this worktree\", \"this branch is merged, clean up\", or when Hanna is done with a worktree session and wants safe cleanup without losing anything.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
