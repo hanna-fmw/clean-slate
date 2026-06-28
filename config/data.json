@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T07:15:34.146Z",
+  "generated_at": "2026-06-28T13:15:38.681Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-27T18:50:25+02:00"
+      "last_modified": "2026-06-28T09:15:34+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -399,7 +399,8 @@
         "pnpm dev": "next dev",
         "pnpm build": "next build",
         "pnpm start": "next start",
-        "pnpm lint": "next lint"
+        "pnpm lint": "next lint",
+        "pnpm test": "vitest run"
       },
       "services": [
         "- OpenRouter (narration LLM)\n- Voicebox (local",
@@ -431,7 +432,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-27T21:17:29+02:00"
+      "last_modified": "2026-06-28T10:49:45+02:00"
     },
     {
       "name": "djapo",
@@ -831,7 +832,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-06-28T07:13:31.747Z"
+      "last_modified": "2026-06-28T09:58:53.743Z"
     },
     {
       "name": "no-excuses",
@@ -2438,7 +2439,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-28T07:15:34.738Z",
+    "synced_at": "2026-06-28T13:15:39.281Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
