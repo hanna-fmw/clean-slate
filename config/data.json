@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T16:50:24.829Z",
+  "generated_at": "2026-06-28T07:15:34.146Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-27T12:50:21+02:00"
+      "last_modified": "2026-06-27T18:50:25+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -395,7 +395,12 @@
         "ssh_alias": "github.com-personal",
         "repo_url": "https://github.com/hanna-fmw/demoflow"
       },
-      "run_commands": {},
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "next lint"
+      },
       "services": [
         "- OpenRouter (narration LLM)\n- Voicebox (local",
         "no account)"
@@ -426,7 +431,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-24T21:35:50+02:00"
+      "last_modified": "2026-06-27T21:17:29+02:00"
     },
     {
       "name": "djapo",
@@ -826,7 +831,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-06-26T12:45:27.605Z"
+      "last_modified": "2026-06-28T07:13:31.747Z"
     },
     {
       "name": "no-excuses",
@@ -2433,7 +2438,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-27T16:50:25.408Z",
+    "synced_at": "2026-06-28T07:15:34.738Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3613,6 +3618,14 @@
       {
         "name": "fmw-session-quickstart-card",
         "description": "Fast project cockpit card. Prints a compact magenta card with how to spin up the dev server (port-conflict aware), live URL, test accounts, and key services. Reads the `## Quickstart` section from the project's CLAUDE.md (falls back to CLEAN-SLATE.md). Auto-runs at session start (per global CLAUDE.md rule). Use when the user runs /session-quickstart-card, says \"spin up\", \"get me started\", \"how do I run this\", or at the very start of a project session.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-write-sms-email",
+        "description": "Draft an SMS or email message in Hanna's own voice, matching the recipient archetype, from a rough/badly-worded brief. Use whenever Hanna wants help writing an SMS, text message, or email to someone — e.g. \"write an SMS to mom about...\", \"draft an email to a client saying...\", \"help me text X that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\". Defaults to Swedish. Reads style samples from ~/Documents/utilities/write-sms-email/{sms,email}/{archetype}.md and mimics that archetype's tone, vocabulary, punctuation, length, and emoji usage.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
