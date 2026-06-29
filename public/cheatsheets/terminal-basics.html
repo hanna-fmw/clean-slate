@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Terminal Basics</title>
+<style>
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 640px; margin: 2rem auto; color: #111; line-height: 1.5; }
+  h1 { font-size: 1.3rem; border-bottom: 2px solid #111; padding-bottom: 0.3rem; }
+  h2 { font-size: 1rem; margin-top: 1.4rem; }
+  code { background: #f2f2f2; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
+  td, th { border: 1px solid #999; padding: 5px 9px; text-align: left; font-size: 0.9rem; vertical-align: top; }
+  td:first-child { white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .note { font-size: 0.85rem; color: #444; margin-top: 1.2rem; }
+</style>
+</head>
+<body>
+<h1>Terminal Basics</h1>
+
+<h2>Typing tilde (~) on a Swedish keyboard</h2>
+<table>
+  <tr><td><code>Alt + ¨ → Space</code></td><td>Hold Alt, press <code>¨</code>, release, then press Space. Produces <code>~</code>. In the shell <code>~</code> expands to your home directory.</td></tr>
+  <tr><td><code>cd ~/Documents</code></td><td>Jump straight to your Documents folder from anywhere</td></tr>
+  <tr><td><code>cd ~</code> or just <code>cd</code></td><td>Go home</td></tr>
+</table>
+
+<h2>Move around the filesystem</h2>
+<table>
+  <tr><td><code>pwd</code></td><td>Print working directory (where am I?)</td></tr>
+  <tr><td><code>ls</code></td><td>List files in current dir</td></tr>
+  <tr><td><code>ls -la</code></td><td>List everything, including hidden files, with details</td></tr>
+  <tr><td><code>cd foo</code></td><td>Go into folder <code>foo</code></td></tr>
+  <tr><td><code>cd ..</code></td><td>Go up one folder</td></tr>
+  <tr><td><code>cd -</code></td><td>Go back to the previous folder you were in</td></tr>
+  <tr><td><code>open .</code></td><td>Open the current folder in Finder</td></tr>
+</table>
+
+<h2>Work with files</h2>
+<table>
+  <tr><td><code>mv a.txt b.txt</code></td><td>Rename <code>a.txt</code> to <code>b.txt</code></td></tr>
+  <tr><td><code>mv file ~/Documents/</code></td><td>Move <code>file</code> into Documents</td></tr>
+  <tr><td><code>cp a.txt b.txt</code></td><td>Copy <code>a.txt</code> to <code>b.txt</code></td></tr>
+  <tr><td><code>cp -r foo bar</code></td><td>Copy folder <code>foo</code> (and contents) to <code>bar</code></td></tr>
+  <tr><td><code>rm file</code></td><td>Delete a file (no trash, gone immediately)</td></tr>
+  <tr><td><code>rm -rf folder</code></td><td>Delete a folder and everything inside. Dangerous - check twice.</td></tr>
+  <tr><td><code>mkdir new-folder</code></td><td>Create a folder</td></tr>
+</table>
+
+<h2>Read a file</h2>
+<table>
+  <tr><td><code>cat file</code></td><td>Print the whole file to the terminal</td></tr>
+  <tr><td><code>less file</code></td><td>Paged view (better for long files). Press <code>q</code> to quit, <code>/word</code> to search.</td></tr>
+  <tr><td><code>head file</code></td><td>First 10 lines</td></tr>
+  <tr><td><code>tail file</code></td><td>Last 10 lines</td></tr>
+  <tr><td><code>tail -f log.txt</code></td><td>Follow a log file live as it grows. <code>Ctrl + C</code> to stop.</td></tr>
+</table>
+
+<h2>How to escape vim / nano / less</h2>
+<table>
+  <tr><td><strong>vim</strong></td><td>Press <code>Esc</code> first. Then: <code>:q</code> quit, <code>:wq</code> save+quit, <code>:q!</code> quit without saving. Then <code>Enter</code>.</td></tr>
+  <tr><td><strong>nano</strong></td><td><code>Ctrl + X</code> to exit. It asks if you want to save - press <code>Y</code> or <code>N</code>.</td></tr>
+  <tr><td><strong>less / man pages</strong></td><td>Press <code>q</code>.</td></tr>
+  <tr><td>Anything stuck</td><td><code>Ctrl + C</code> usually cancels. <code>Ctrl + D</code> sends end-of-input.</td></tr>
+</table>
+
+<h2>Find things</h2>
+<table>
+  <tr><td><code>find . -name "*.md"</code></td><td>Find all <code>.md</code> files under the current folder</td></tr>
+  <tr><td><code>grep -r "word" .</code></td><td>Search for <code>word</code> in every file under the current folder</td></tr>
+  <tr><td><code>which command</code></td><td>Where is this command installed?</td></tr>
+</table>
+
+<p class="note">Works in any macOS terminal (Terminal.app, iTerm2, Warp, VS Code / Cursor / Claude Code shells).</p>
+</body>
+</html>
