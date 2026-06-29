@@ -16,6 +16,7 @@ const SECTION_LABELS: Record<Section, string> = {
   services: 'Services',
   tools: 'Tools',
   toolbox: 'My Toolbox',
+  cheatsheets: 'Cheatsheets',
   reference: 'Reference',
   'api-keys': 'API Keys',
 }

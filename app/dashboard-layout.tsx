@@ -18,6 +18,7 @@ interface DashboardLayoutProps {
   serviceList: React.ReactNode
   toolsList: React.ReactNode
   toolboxList: React.ReactNode
+  cheatsheetsList: React.ReactNode
   referenceList: React.ReactNode
   apiKeysList: React.ReactNode
   searchData: {
@@ -34,6 +35,7 @@ const TITLES: Record<Section, string> = {
   services: 'Services',
   tools: 'Tools',
   toolbox: 'My Toolbox',
+  cheatsheets: 'Cheatsheets',
   reference: 'Reference',
   'api-keys': 'API Keys',
 }
@@ -44,6 +46,7 @@ export function DashboardLayout({
   serviceList,
   toolsList,
   toolboxList,
+  cheatsheetsList,
   referenceList,
   apiKeysList,
   searchData,
@@ -74,6 +77,7 @@ export function DashboardLayout({
             services: serviceList,
             tools: toolsList,
             toolbox: toolboxList,
+            cheatsheets: cheatsheetsList,
             reference: referenceList,
             'api-keys': apiKeysList,
           } as Record<Section, React.ReactNode>)[active]}

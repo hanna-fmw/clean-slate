@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>reclaim</title>
+<style>
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 640px; margin: 2rem auto; color: #111; line-height: 1.5; }
+  h1 { font-size: 1.3rem; border-bottom: 2px solid #111; padding-bottom: 0.3rem; }
+  h2 { font-size: 1rem; margin-top: 1.4rem; }
+  code { background: #f2f2f2; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
+  td, th { border: 1px solid #999; padding: 5px 9px; text-align: left; font-size: 0.9rem; vertical-align: top; }
+  td:first-child { white-space: nowrap; }
+  .note { font-size: 0.85rem; color: #444; margin-top: 1.2rem; }
+</style>
+</head>
+<body>
+<h1>reclaim</h1>
+
+<p>Disk + memory janitor. Runs automatically every 3 days.</p>
+
+<table>
+  <tr><td><code>reclaim clean</code></td><td>Scan + tickbox dialog (Cancel / Ask Claude / Continue)</td></tr>
+  <tr><td><code>reclaim clean -y</code></td><td>Headless: low-risk set only (.next, DMGs, Docker, npm, Claude VM)</td></tr>
+  <tr><td><code>reclaim scan</code></td><td>Notify how much is cleanable, delete nothing</td></tr>
+  <tr><td><code>reclaim dry</code></td><td>Print the plan to stdout, delete nothing</td></tr>
+  <tr><td><code>reclaim history</code></td><td>Past runs + space freed</td></tr>
+  <tr><td><code>reclaim stats</code> · <code>trend</code></td><td>Lifetime totals; regrowth forecast</td></tr>
+  <tr><td><code>reclaim top</code></td><td>Biggest space users on disk</td></tr>
+  <tr><td><code>reclaim ram</code> · <code>monitor</code></td><td>Memory hogs / text Activity Monitor</td></tr>
+  <tr><td><code>reclaim monitor --free</code></td><td>Pick heavy apps to quit</td></tr>
+  <tr><td><code>reclaim doctor</code></td><td>Self-check (install, PATH, schedule, deps)</td></tr>
+  <tr><td><code>reclaim status</code></td><td>Schedule state, last run, free space</td></tr>
+  <tr><td><code>reclaim enable</code> · <code>disable</code></td><td>Toggle the 3-day schedule</td></tr>
+</table>
+
+<p class="note">Source at <code>~/Documents/utilities/reclaim/</code>.</p>
+</body>
+</html>
