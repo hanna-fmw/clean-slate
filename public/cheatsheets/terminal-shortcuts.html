@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Terminal Shortcuts</title>
+<style>
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 640px; margin: 2rem auto; color: #111; line-height: 1.5; }
+  h1 { font-size: 1.3rem; border-bottom: 2px solid #111; padding-bottom: 0.3rem; }
+  h2 { font-size: 1rem; margin-top: 1.4rem; }
+  code { background: #f2f2f2; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
+  td, th { border: 1px solid #999; padding: 5px 9px; text-align: left; font-size: 0.9rem; vertical-align: top; }
+  td:first-child { white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .note { font-size: 0.85rem; color: #444; margin-top: 1.2rem; }
+</style>
+</head>
+<body>
+<h1>Terminal Shortcuts</h1>
+
+<h2>Move around the line</h2>
+<table>
+  <tr><td><code>Opt + ← / →</code></td><td>Jump word left / right</td></tr>
+  <tr><td><code>Cmd + ← / →</code></td><td>Jump to beginning / end of line</td></tr>
+</table>
+
+<h2>Delete</h2>
+<table>
+  <tr><td><code>Ctrl + U</code></td><td>Delete from cursor to start of line</td></tr>
+  <tr><td><code>Ctrl + K</code></td><td>Delete from cursor to end of line</td></tr>
+  <tr><td><code>Ctrl + W</code></td><td>Delete word before cursor</td></tr>
+  <tr><td><code>Opt + Delete</code></td><td>Delete word before cursor</td></tr>
+  <tr><td><code>Ctrl + Y</code></td><td>Paste (yank) last deleted text</td></tr>
+</table>
+
+<h2>Typing tilde (~) on a Swedish keyboard</h2>
+<table>
+  <tr><td><code>Alt + ¨ → Space</code></td><td>Hold Alt, press <code>¨</code>, release, then press Space. Produces <code>~</code>. In the shell <code>~</code> expands to your home dir (<code>~/</code> = your user folder).</td></tr>
+</table>
+
+<p class="note">Works in Terminal, iTerm2, and the shells inside VS Code / Cursor / Claude Code.</p>
+</body>
+</html>

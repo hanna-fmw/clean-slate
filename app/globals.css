@@ -166,3 +166,70 @@ body {
     @apply font-sans;
   }
 }
+
+/* Cheatsheets - inline-rendered HTML cards. Scoped via .cheatsheet-content.
+   Wrapped in @layer base so Tailwind v4 picks them up over preflight. */
+@layer base {
+.cheatsheet-content,
+.cheatsheet-content * {
+  color: var(--foreground);
+  background-color: transparent;
+}
+.cheatsheet-content {
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+.cheatsheet-content h1 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-bottom: 1.5px solid var(--foreground);
+  padding-bottom: 0.35rem;
+  margin: 0 0 0.6rem;
+}
+.cheatsheet-content h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 1rem 0 0.35rem;
+}
+.cheatsheet-content p {
+  margin: 0.5rem 0;
+  color: var(--muted);
+}
+.cheatsheet-content code {
+  background-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  color: var(--foreground);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.85em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.cheatsheet-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0.4rem;
+}
+.cheatsheet-content td,
+.cheatsheet-content th {
+  border: 1px solid var(--border);
+  padding: 5px 9px;
+  text-align: left;
+  font-size: 0.8rem;
+  vertical-align: top;
+}
+.cheatsheet-content td:first-child {
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.cheatsheet-content .note,
+.cheatsheet-content .footnote {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.8rem;
+}
+.cheatsheet-content a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+}
+

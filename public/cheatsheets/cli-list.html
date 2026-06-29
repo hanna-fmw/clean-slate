@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>cli-list</title>
+<style>
+  body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 640px; margin: 2rem auto; color: #111; line-height: 1.5; }
+  h1 { font-size: 1.3rem; border-bottom: 2px solid #111; padding-bottom: 0.3rem; }
+  h2 { font-size: 1rem; margin-top: 1.4rem; }
+  code { background: #f2f2f2; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
+  td, th { border: 1px solid #999; padding: 5px 9px; text-align: left; font-size: 0.9rem; vertical-align: top; }
+  td:first-child { white-space: nowrap; }
+  .note { font-size: 0.85rem; color: #444; margin-top: 1.2rem; }
+</style>
+</head>
+<body>
+<h1>cli-list</h1>
+
+<p>Inventory of every CLI installed in your user-controlled bin dirs.</p>
+
+<table>
+  <tr><td><code>cli-list</code></td><td>Full grouped list (your scripts, cargo, brew, /usr/local)</td></tr>
+  <tr><td><code>cli-list --personal</code></td><td>Only your own scripts in <code>~/.local/bin</code> and <code>~/bin</code></td></tr>
+  <tr><td><code>cli-list --brew</code></td><td>Only Homebrew (<code>/opt/homebrew/bin</code>)</td></tr>
+  <tr><td><code>cli-list --search X</code></td><td>Filter CLIs by substring</td></tr>
+  <tr><td><code>cli-list &lt;name&gt;</code></td><td>Run that tool's <code>--help</code> (falls back to <code>-h</code>)</td></tr>
+</table>
+
+<p class="note">Lives at <code>~/.local/bin/cli-list</code>.</p>
+</body>
+</html>
