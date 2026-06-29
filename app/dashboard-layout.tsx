@@ -21,6 +21,7 @@ interface DashboardLayoutProps {
   cheatsheetsList: React.ReactNode
   referenceList: React.ReactNode
   apiKeysList: React.ReactNode
+  logsList: React.ReactNode
   searchData: {
     projects: Project[]
     services: Service[]
@@ -38,6 +39,7 @@ const TITLES: Record<Section, string> = {
   cheatsheets: 'Cheatsheets',
   reference: 'Reference',
   'api-keys': 'API Keys',
+  logs: 'Logs',
 }
 
 export function DashboardLayout({
@@ -49,6 +51,7 @@ export function DashboardLayout({
   cheatsheetsList,
   referenceList,
   apiKeysList,
+  logsList,
   searchData,
 }: DashboardLayoutProps) {
   const [active, setActive] = useState<Section>('projects')
@@ -80,6 +83,7 @@ export function DashboardLayout({
             cheatsheets: cheatsheetsList,
             reference: referenceList,
             'api-keys': apiKeysList,
+            logs: logsList,
           } as Record<Section, React.ReactNode>)[active]}
         </main>
       </div>
