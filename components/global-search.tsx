@@ -19,6 +19,7 @@ const SECTION_LABELS: Record<Section, string> = {
   cheatsheets: 'Cheatsheets',
   reference: 'Reference',
   'api-keys': 'API Keys',
+  logs: 'Logs',
 }
 
 interface GlobalSearchProps {

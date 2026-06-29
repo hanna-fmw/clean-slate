@@ -7,6 +7,8 @@ import { ReferenceView } from '@/components/reference-view'
 import { ApiKeysView } from '@/components/api-keys-view'
 import { CheatsheetsView } from '@/components/cheatsheets-view'
 import { getCheatsheets } from '@/lib/cheatsheets'
+import { LogsView } from '@/components/logs-view'
+import { getSyncLogs } from '@/lib/logs'
 import { DashboardLayout } from './dashboard-layout'
 import type { Service } from '@/lib/types'
 
@@ -41,6 +43,7 @@ function infraToService(infra: { name: string; access_url: string; login_email: 
 export default function Home() {
   const { projects, services, infrastructure, tools, toolbox, reference, api_keys } = getData()
   const cheatsheets = getCheatsheets()
+  const logs = getSyncLogs()
 
   const allServices = [
     ...services,
@@ -57,6 +60,7 @@ export default function Home() {
         cheatsheets: cheatsheets.length,
         reference: reference?.groups.reduce((sum, g) => sum + g.items.length, 0) ?? 0,
         'api-keys': api_keys?.length ?? 0,
+        logs: logs.length,
       }}
       projectList={<ProjectsView projects={projects} />}
       serviceList={
@@ -79,6 +83,7 @@ export default function Home() {
       cheatsheetsList={<CheatsheetsView cheatsheets={cheatsheets} />}
       referenceList={<ReferenceView reference={reference} />}
       apiKeysList={<ApiKeysView entries={api_keys ?? []} />}
+      logsList={<LogsView logs={logs} />}
       searchData={{ projects, services: allServices, tools, toolbox, reference }}
     />
   )
