@@ -231,5 +231,34 @@ body {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+.cheatsheet-content details {
+  border-bottom: 1px solid var(--border);
+}
+.cheatsheet-content details:last-of-type {
+  border-bottom: none;
+}
+.cheatsheet-content summary {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.cheatsheet-content summary::-webkit-details-marker {
+  display: none;
+}
+.cheatsheet-content summary::before {
+  content: "▸";
+  display: inline-block;
+  color: var(--muted);
+  transition: transform 0.15s;
+  font-size: 0.8em;
+}
+.cheatsheet-content details[open] > summary::before {
+  transform: rotate(90deg);
+}
 }
 

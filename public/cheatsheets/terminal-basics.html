@@ -6,9 +6,14 @@
 <style>
   body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 640px; margin: 2rem auto; color: #111; line-height: 1.5; }
   h1 { font-size: 1.3rem; border-bottom: 2px solid #111; padding-bottom: 0.3rem; }
-  h2 { font-size: 1rem; margin-top: 1.4rem; }
+  details { border-bottom: 1px solid #ddd; }
+  details:last-of-type { border-bottom: none; }
+  summary { font-size: 1rem; font-weight: 600; padding: 0.7rem 0; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.4rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "▸"; display: inline-block; color: #999; transition: transform 0.15s; font-size: 0.8em; }
+  details[open] summary::before { transform: rotate(90deg); }
   code { background: #f2f2f2; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
-  table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
+  table { border-collapse: collapse; width: 100%; margin: 0.25rem 0 0.9rem; }
   td, th { border: 1px solid #999; padding: 5px 9px; text-align: left; font-size: 0.9rem; vertical-align: top; }
   td:first-child { white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
   .note { font-size: 0.85rem; color: #444; margin-top: 1.2rem; }
@@ -17,14 +22,17 @@
 <body>
 <h1>Terminal Basics</h1>
 
-<h2>Typing tilde (~) on a Swedish keyboard</h2>
+<details open>
+<summary>Typing tilde (~) on a Swedish keyboard</summary>
 <table>
   <tr><td><code>Alt + ¨ → Space</code></td><td>Hold Alt, press <code>¨</code>, release, then press Space. Produces <code>~</code>. In the shell <code>~</code> expands to your home directory.</td></tr>
   <tr><td><code>cd ~/Documents</code></td><td>Jump straight to your Documents folder from anywhere</td></tr>
   <tr><td><code>cd ~</code> or just <code>cd</code></td><td>Go home</td></tr>
 </table>
+</details>
 
-<h2>Move around the filesystem</h2>
+<details>
+<summary>Move around the filesystem</summary>
 <table>
   <tr><td><code>pwd</code></td><td>Print working directory (where am I?)</td></tr>
   <tr><td><code>ls</code></td><td>List files in current dir</td></tr>
@@ -34,8 +42,10 @@
   <tr><td><code>cd -</code></td><td>Go back to the previous folder you were in</td></tr>
   <tr><td><code>open .</code></td><td>Open the current folder in Finder</td></tr>
 </table>
+</details>
 
-<h2>Work with files</h2>
+<details>
+<summary>Work with files</summary>
 <table>
   <tr><td><code>mv a.txt b.txt</code></td><td>Rename <code>a.txt</code> to <code>b.txt</code></td></tr>
   <tr><td><code>mv file ~/Documents/</code></td><td>Move <code>file</code> into Documents</td></tr>
@@ -45,30 +55,56 @@
   <tr><td><code>rm -rf folder</code></td><td>Delete a folder and everything inside. Dangerous - check twice.</td></tr>
   <tr><td><code>mkdir new-folder</code></td><td>Create a folder</td></tr>
 </table>
+</details>
 
-<h2>Read a file</h2>
+<details>
+<summary>Read a file</summary>
 <table>
   <tr><td><code>cat file</code></td><td>Print the whole file to the terminal</td></tr>
-  <tr><td><code>less file</code></td><td>Paged view (better for long files). Press <code>q</code> to quit, <code>/word</code> to search.</td></tr>
+  <tr><td><code>less file</code></td><td>Open a paged view (better for long files). Then: <code>q</code> quit, <code>/word</code> search, space = next page.</td></tr>
   <tr><td><code>head file</code></td><td>First 10 lines</td></tr>
   <tr><td><code>tail file</code></td><td>Last 10 lines</td></tr>
   <tr><td><code>tail -f log.txt</code></td><td>Follow a log file live as it grows. <code>Ctrl + C</code> to stop.</td></tr>
 </table>
+</details>
 
-<h2>How to escape vim / nano / less</h2>
+<details>
+<summary>Edit a file (nano, vim) and how to get out</summary>
+<p>You'll usually end up in one of these editors when git asks you to write a commit message, or when you run <code>nano file</code> / <code>vim file</code> yourself.</p>
 <table>
-  <tr><td><strong>vim</strong></td><td>Press <code>Esc</code> first. Then: <code>:q</code> quit, <code>:wq</code> save+quit, <code>:q!</code> quit without saving. Then <code>Enter</code>.</td></tr>
-  <tr><td><strong>nano</strong></td><td><code>Ctrl + X</code> to exit. It asks if you want to save - press <code>Y</code> or <code>N</code>.</td></tr>
-  <tr><td><strong>less / man pages</strong></td><td>Press <code>q</code>.</td></tr>
-  <tr><td>Anything stuck</td><td><code>Ctrl + C</code> usually cancels. <code>Ctrl + D</code> sends end-of-input.</td></tr>
+  <tr>
+    <td><strong>nano</strong> (easy)</td>
+    <td>
+      Open: <code>nano file.txt</code><br>
+      Type normally. Save + exit: <code>Ctrl + X</code>, press <code>Y</code> to confirm, then <code>Enter</code>.<br>
+      Exit without saving: <code>Ctrl + X</code>, then <code>N</code>.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>vim</strong> (harder)</td>
+    <td>
+      Open: <code>vim file.txt</code><br>
+      To start typing: press <code>i</code> (insert mode).<br>
+      To stop typing: press <code>Esc</code>.<br>
+      Save + quit: type <code>:wq</code> then <code>Enter</code>.<br>
+      Quit without saving: type <code>:q!</code> then <code>Enter</code>.
+    </td>
+  </tr>
+  <tr>
+    <td>Stuck</td>
+    <td><code>Ctrl + C</code> usually cancels. <code>Ctrl + D</code> sends end-of-input.</td>
+  </tr>
 </table>
+</details>
 
-<h2>Find things</h2>
+<details>
+<summary>Find things</summary>
 <table>
   <tr><td><code>find . -name "*.md"</code></td><td>Find all <code>.md</code> files under the current folder</td></tr>
   <tr><td><code>grep -r "word" .</code></td><td>Search for <code>word</code> in every file under the current folder</td></tr>
   <tr><td><code>which command</code></td><td>Where is this command installed?</td></tr>
 </table>
+</details>
 
 <p class="note">Works in any macOS terminal (Terminal.app, iTerm2, Warp, VS Code / Cursor / Claude Code shells).</p>
 </body>
