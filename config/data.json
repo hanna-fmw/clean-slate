@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T05:30:00.948Z",
+  "generated_at": "2026-06-30T11:30:05.388Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-29T15:49:35+02:00"
+      "last_modified": "2026-06-30T07:30:01+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1335,7 +1335,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-26T14:36:10+02:00"
+      "last_modified": "2026-06-30T11:41:01+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -2468,7 +2468,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-06-30T05:30:01.592Z",
+    "synced_at": "2026-06-30T11:30:05.987Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
