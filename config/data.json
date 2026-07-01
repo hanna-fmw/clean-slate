@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T07:25:03.592Z",
+  "generated_at": "2026-07-01T14:15:40.401Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-30T19:30:10+02:00"
+      "last_modified": "2026-07-01T09:25:04+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1335,7 +1335,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-30T15:42:38+02:00"
+      "last_modified": "2026-07-01T16:09:41+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -2468,7 +2468,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-01T07:25:04.336Z",
+    "synced_at": "2026-07-01T14:15:41.051Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3863,7 +3863,7 @@
       },
       {
         "name": "using-superpowers",
-        "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+        "description": "Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions",
         "plugin": "superpowers",
         "origin": {
           "source": "anthropic",
