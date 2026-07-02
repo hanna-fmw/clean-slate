@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T21:46:02.155Z",
+  "generated_at": "2026-07-02T09:50:21.677Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-01T16:15:41+02:00"
+      "last_modified": "2026-07-01T23:46:03+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -861,7 +861,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-06-28T15:12:06.915Z"
+      "last_modified": "2026-07-02T09:34:24.933Z"
     },
     {
       "name": "no-excuses",
@@ -1294,7 +1294,7 @@
         "Apify",
         "OpenRouter"
       ],
-      "notes": "- Six project-scoped MCP servers prefixed `rookie-` (see below). Configured in ~/.claude.json.\n- Rebrand in progress: Rookie → Prefeo AB (Bolagsverket confirmed 2026-06-12). Codebase + repos still use \"rookie\" naming during transition. Working folder: `docs/rebrand-prefeo/`.",
+      "notes": "- Six project-scoped MCP servers prefixed `rookie-` (see below). Configured in ~/.claude.json.\n- Rebrand in progress: Rookie → Prefeo AB (Bolagsverket confirmed 2026-06-12). Codebase + repos still use \"rookie\" naming during transition. Working folder: `docs/rebrand-prefeo/`.\n- **Staging environment** (set up 2026-07-02): sibling folder `rookie-platform-staging/` — local clone with GitHub push disabled, own `.env` pointing at staging Supabase (`prefeo-staging`) + staging R2 bucket. `cd` there and `PORT=3003 pnpm dev` to test anything with zero risk to prod code or prod data. `git pull` inside it to refresh from local main. Full how-to: that folder's `CLAUDE.md` + `docs/operations/staging.md`.",
       "toolbox_mentions": [
         {
           "type": "mcp",
@@ -2468,7 +2468,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-01T21:46:02.842Z",
+    "synced_at": "2026-07-02T09:50:22.326Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
