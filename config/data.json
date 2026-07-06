@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T07:24:47.472Z",
+  "generated_at": "2026-07-06T13:24:52.868Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-05T18:49:32+02:00"
+      "last_modified": "2026-07-06T09:24:48+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -461,7 +461,7 @@
       "deployed_url": "https://compose.yml",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-05T20:50:00+02:00"
+      "last_modified": "2026-07-06T14:10:03+02:00"
     },
     {
       "name": "djapo",
@@ -818,6 +818,31 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-05-17T22:42:00+02:00"
+    },
+    {
+      "name": "Leadfront Clean Slate",
+      "path": "~/Documents/work/leadfront/utilities/clean-slate",
+      "description": "",
+      "description_short": "",
+      "stack": [
+        "- Next.js dashboard (adapted from personal `clean-slate`)\n- systemd timer for the 6h sync\n- GitHub API (fine-grained token",
+        "read-only)"
+      ],
+      "hosting": "- Leadfront Linux container, NetBird-only",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [],
+      "notes": "",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-07-06T12:33:25.418Z"
     },
     {
       "name": "Moiwak",
@@ -1335,7 +1360,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-06T07:52:24+02:00"
+      "last_modified": "2026-07-06T13:56:11+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -1461,50 +1486,16 @@
         "daily 08:45",
         "with a 3-day gate inside `cleanup.sh` so it only actually acts every ~3 days.\n- **Docker** — pruned at clean time (images + build cache; never volumes). Step skipped silently if daemon is not running."
       ],
-      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- Runtime state lives at `~/.disk-cleanup/` (audit log `history.jsonl`, last-run timestamp). Not part of the repo.\n- The cloned folder is the source of truth — edit there, then re-run `./install.sh` to redeploy.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only). Scope-expansion plan at `docs/TODO-expand-scope.md` — items 1-4 shipped 2026-06-23 (v1.4), items 5-6 still open.\n- **Ask Claude button** (in the main dialog): opens Terminal.app in the repo dir, prints the cleanup plan, then drops into an interactive `claude` session so you can ask questions before deciding. After exiting Claude the dialog re-appears.\n- Version 1.4 (`reclaim --version`).",
+      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- **Runtime vs source split.** Repo (`~/Documents/utilities/reclaim/`) is the source of truth. `~/.disk-cleanup/` is the deployed runtime + per-machine state (`history.jsonl` audit log, `last-run` timestamp, deployed copies of `cleanup.sh` and `reclaim`). Runtime state is per-user and stays out of git; standard `/source vs /state` split (like `~/.config/*`, `~/.local/state/*`).\n- **Deploy discipline.** Always edit files in the repo, then run `./install.sh` to redeploy. Do NOT `cp` scripts directly into `~/.disk-cleanup/` — that lets the runtime drift ahead of the repo and un-committed source piles up. This bit us in 2026-07: months of source lived only in `~/.disk-cleanup/` before finally being committed.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only). Scope-expansion plan at `docs/TODO-expand-scope.md` — items 1-4 shipped 2026-06-23 (v1.4), items 5-6 still open.\n- **Ask Claude button** (in the main dialog): opens Terminal.app in the repo dir, prints the cleanup plan, then drops into an interactive `claude` session so you can ask questions before deciding. After exiting Claude the dialog re-appears.\n- Version 1.4 (`reclaim --version`).",
       "toolbox_mentions": [],
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-04T13:50:09+02:00"
-    },
-    {
-      "name": "Rookie Ongoing",
-      "path": "~/Documents/work/stormfors/clients/rookie/rookie-ongoing/rookie-ongoing",
-      "description": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts. No application code.",
-      "description_short": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts.",
-      "stack": [
-        "- Markdown docs",
-        "n8n flow JSON exports",
-        "shell scripts"
-      ],
-      "hosting": "- None (docs repo)",
-      "database": "",
-      "github": {
-        "account": "hanna-fmw",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/rookie-ongoing"
-      },
-      "run_commands": {},
-      "services": [
-        "- n8n (flow exports under n8n-flows/)"
-      ],
-      "notes": "- Default branch is `master` (not main)\n- Contains PRD.md, BACKLOG.md, TASKS.md, TEMPLATE-* setup docs",
-      "toolbox_mentions": [
-        {
-          "type": "skill",
-          "category": null,
-          "name": "n8n-workflow-patterns, n8n-node-configuration (when editing flow exports)"
-        }
-      ],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "vault": "",
-      "last_modified": "2026-01-23T16:31:36+01:00"
+      "last_modified": "2026-07-06T14:01:53+02:00"
     },
     {
       "name": "Rookie Test Form",
-      "path": "~/Documents/work/stormfors/clients/rookie/rookie-test-form",
+      "path": "~/Documents/work/stormfors/clients/rookie/misc/rookie-test-form",
       "description": "Scratch/test project for Rookie form flows (candidate/client intake forms). Local-only - no remote.",
       "description_short": "Scratch/test project for Rookie form flows (candidate/client intake forms).",
       "stack": [
@@ -1539,7 +1530,7 @@
     },
     {
       "name": "Rookie Version 1",
-      "path": "~/Documents/work/stormfors/clients/rookie/rookie_version_1",
+      "path": "~/Documents/work/stormfors/clients/rookie/misc/rookie_version_1",
       "description": "Earlier iteration of the Rookie site/platform (repo name `rookie_2.0`). Kept for reference - superseded by rookie-platform and rookie-marketing-website.",
       "description_short": "Earlier iteration of the Rookie site/platform (repo name `rookie_2.0`).",
       "stack": [
@@ -1659,40 +1650,6 @@
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
       "last_modified": "2026-06-06T13:50:16+02:00"
-    },
-    {
-      "name": "Testing Rookie Queries",
-      "path": "~/Documents/work/stormfors/clients/rookie/testing-rookie-queries/frontend",
-      "description": "Scratch/test project for trying Supabase queries against Rookie data (frontend harness). Local-only - no remote.",
-      "description_short": "Scratch/test project for trying Supabase queries against Rookie data (frontend harness).",
-      "stack": [
-        "- Next.js (App Router)",
-        "TypeScript",
-        "Supabase (ssr + supabase-js)",
-        "Tailwind CSS"
-      ],
-      "hosting": "- None (local testing)",
-      "database": "",
-      "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
-      },
-      "run_commands": {
-        "pnpm dev": "next dev",
-        "pnpm build": "next build",
-        "pnpm start": "next start",
-        "pnpm lint": "eslint"
-      },
-      "services": [
-        "- Supabase (test queries)"
-      ],
-      "notes": "- Query test bed - has uncommitted experiments in the working tree",
-      "toolbox_mentions": [],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "vault": "",
-      "last_modified": "2026-06-11T11:38:59+02:00"
     },
     {
       "name": "Todo",
@@ -2468,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-06T07:24:48.379Z",
+    "synced_at": "2026-07-06T13:24:53.709Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
