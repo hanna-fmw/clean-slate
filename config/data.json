@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T17:08:22.381Z",
+  "generated_at": "2026-07-08T07:00:16.380Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-07T13:08:17+02:00"
+      "last_modified": "2026-07-07T19:08:23+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -415,7 +415,7 @@
       "services": [
         "- Cloudflare (R2 bucket + Zero Trust / Access) — to be set up in Task 7\n- Hetzner VPS + Coolify — to be set up in Task 7\n- OpenAI (TTS) — sub-plan 3\n- ElevenLabs (TTS toggle) — sub-plan 3\n- OpenRouter (script chat LLM) — sub-plan 4"
       ],
-      "notes": "- **Foundation sub-plan complete (2026-06-28):** branch `feat/v1-foundation`, commits `d5b0656..c00a5b1`. Schema migrated, R2 client + worker + Docker compose all verified end-to-end locally. Spec at `docs/superpowers/specs/2026-06-27-demoflow-v1-design.md`, plan at `docs/superpowers/plans/2026-06-27-demoflow-v1-foundation.md` (both local-only).\n- **Known issue to fix before Task 7:** Local pnpm is 9.15.4, Docker uses pnpm 11.9.0. The supply-chain allowlist in `pnpm-workspace.yaml` works locally but pnpm 11 inside Docker still errors on `ERR_PNPM_IGNORED_BUILDS`. Fix: add `\"packageManager\": \"pnpm@9.15.4\"` (or pick a single pinned 11.x) to `package.json` and regenerate the lockfile. Once pinned, `pnpm docker:up` should succeed.\n- **Next session:** Task 7 (deploy to Hetzner via Coolify + R2 bucket + Cloudflare Access). Requires user-in-the-loop for cloud provisioning. Detailed step-by-step in the plan file.\n- Voicebox / Qwen / Kokoro from v0 are NOT used by v1 (Voicebox is local-only and would not run on the Hetzner VPS). The local TTS work survives in `legacy/v0-cli/` for reference.",
+      "notes": "- **Sub-plans 1-3 complete (2026-06-28 → 2026-07-07):** branch `feat/v1-foundation`, 33 commits `d5b0656..4249932` (local only, not pushed, no PR). Foundation + full authoring UI + AI chat draft flow all working end-to-end via `pnpm docker:up`.\n- **Docker unblock (2026-07-07):** pnpm pinned to 9.15.4 via packageManager field, DB-touching routes marked `export const dynamic = 'force-dynamic'`, Dockerfile.web builder stage gets dummy env vars so Zod parse passes at build time (runtime values come from compose).\n- **Known runtime issue (open):** screenshot upload returns 500 with TLS `SSL alert number 40` at R2. Root cause TBD — likely a placeholder `R2_ACCOUNT_ID` in `.env.local` or R2 bucket not yet provisioned. Chat drafting works.\n- **Next session:** verify R2 credentials, or wire MinIO as a local S3 emulator to unblock screenshot testing. Then sub-plan 4 (TTS) or Task 7 (deploy).\n- Voicebox / Qwen / Kokoro from v0 are NOT used by v1 (Voicebox is local-only and would not run on the Hetzner VPS). The local TTS work survives in `legacy/v0-cli/` for reference.",
       "toolbox_mentions": [
         {
           "type": "skill",
@@ -886,7 +886,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:113",
-      "last_modified": "2026-07-07T17:07:21.068Z"
+      "last_modified": "2026-07-07T17:08:51.903Z"
     },
     {
       "name": "no-excuses",
@@ -1079,7 +1079,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-05-31T22:45:00+02:00"
+      "last_modified": "2026-07-07T22:03:28+02:00"
     },
     {
       "name": "pipeline-guardrails",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-07T17:08:23.240Z",
+    "synced_at": "2026-07-08T07:00:17.170Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3605,6 +3605,14 @@
       {
         "name": "fmw-session-quickstart-card",
         "description": "Fast project cockpit card. Prints a compact magenta card with how to spin up the dev server (port-conflict aware), live URL, test accounts, and key services. Reads the `## Quickstart` section from the project's CLAUDE.md (falls back to CLEAN-SLATE.md). Auto-runs at session start (per global CLAUDE.md rule). Use when the user runs /session-quickstart-card, says \"spin up\", \"get me started\", \"how do I run this\", or at the very start of a project session.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-timetrack",
+        "description": "Record how long a completed task took into the current project's timetracker.json, so the timetrack app can build data-backed time estimates. Use this whenever Hanna finishes a unit of work (a feature, bugfix, UI change, test pass, migration, or research spike) and wants to log the time, or says \"log this\", \"record this time\", \"track this task\", \"timetrack this\", \"add this to timetracker\", or runs /fmw-timetrack. Also handles enabling or disabling time tracking for the current repo (/fmw-timetrack enable, /fmw-timetrack disable, /fmw-timetrack status). Only records in projects that have been enabled. Trigger it proactively when a task in an enabled project reaches a natural finish, but always confirm with Hanna and get the duration from her - never invent it.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
