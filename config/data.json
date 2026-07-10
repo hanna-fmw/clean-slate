@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T08:47:34.955Z",
+  "generated_at": "2026-07-10T14:47:40.544Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-09T21:44:33+02:00"
+      "last_modified": "2026-07-10T10:47:36+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1079,7 +1079,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-07-09T23:18:47+02:00"
+      "last_modified": "2026-07-10T13:09:31+02:00"
     },
     {
       "name": "pipeline-guardrails",
@@ -1360,7 +1360,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-10T10:46:42+02:00"
+      "last_modified": "2026-07-10T16:21:20+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -1836,7 +1836,7 @@
     },
     {
       "name": "Yllw",
-      "path": "~/Documents/yllw-old",
+      "path": "~/Documents/_yllw-old",
       "description": "Supplier document management system for Yllw, a Swedish workplace transformation company and one of the largest furniture brokers in the Nordics. Replaces Henrik's manual workflow of managing ~500 suppliers' price lists across SharePoint, Webflow assets, and Webflow CMS. Built on Supabase (database + file storage), synced to Webflow via WhaleSync. Hard deadline: August 24, 2026 for Adda compliance portal.",
       "description_short": "Supplier document management system for Yllw, a Swedish workplace transformation company and one of the largest furniture brokers in the Nordics.",
       "stack": [
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-10T08:47:35.664Z",
+    "synced_at": "2026-07-10T14:47:41.362Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3627,8 +3627,16 @@
         }
       },
       {
-        "name": "fmw-write-sms-email",
-        "description": "Draft an SMS or email message in Hanna's own voice, matching the recipient archetype, from a rough/badly-worded brief. Use whenever Hanna wants help writing an SMS, text message, or email to someone — e.g. \"write an SMS to mom about...\", \"draft an email to a client saying...\", \"help me text X that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\". Defaults to Swedish. Reads style samples from ~/Documents/utilities/write-sms-email/{sms,email}/{archetype}.md and mimics that archetype's tone, vocabulary, punctuation, length, and emoji usage.",
+        "name": "fmw-write-report-proposal",
+        "description": "Draft a client-facing report or proposal (typically delivered as PDF) in Hanna's team's voice, matching the structure, tone, section headings, and boilerplate patterns of prior deliverables. Use when Hanna wants help writing a proposal, offer, project report, status report, audit report, scope document, estimate breakdown, or similar long-form client deliverable — e.g. \"draft a proposal for X\", \"write a project report for the client\", \"offert till kund\", \"rapport till kund\", \"put together an audit report\". Defaults to Swedish. Two doc types: `reports` (delivered work summary, audit, status update) and `proposals` (scoping, pricing, next-step recommendation). Reads style samples from ~/Documents/utilities/write-report-proposal/{doc-type}/{lang}/{name}.md and mimics structure, tone, and boilerplate.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-write-sms-email-slack",
+        "description": "Draft an SMS, email, or Slack message in Hanna's voice from a rough brief, optionally pulling the relevant Gmail thread for context and saving the reply as a Gmail draft with empty recipients (so nothing sends without her approval). Use when Hanna wants help writing an SMS, text, email, or Slack/team message — e.g. \"write an SMS to mom about...\", \"reply to the thread with [name] about...\", \"draft an email to a client saying...\", \"message the team that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\", \"skriv till teamet...\". Defaults to Swedish. Three audiences: `clients` (email only, light-formal default), `team-slack` (Slack or email to colleagues), and `friends-family`. Reads style samples from ~/Documents/utilities/write-sms-email-slack/{channel}/{lang}/from-me-to-{audience}.md.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
