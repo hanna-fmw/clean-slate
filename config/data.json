@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T06:06:53.088Z",
+  "generated_at": "2026-07-11T19:16:54.060Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-10T16:47:41+02:00"
+      "last_modified": "2026-07-11T08:06:53+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1079,7 +1079,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-07-10T18:30:08+02:00"
+      "last_modified": "2026-07-11T12:35:41+02:00"
     },
     {
       "name": "pipeline-guardrails",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-11T06:06:53.722Z",
+    "synced_at": "2026-07-11T19:16:54.656Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
