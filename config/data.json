@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T14:35:09.717Z",
+  "generated_at": "2026-07-12T20:38:09.290Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-12T10:35:06+02:00"
+      "last_modified": "2026-07-12T16:35:10+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1035,15 +1035,15 @@
     {
       "name": "Pindrop",
       "path": "~/Documents/personal/apps/pindrop",
-      "description": "Pindrop is a single-screen visual feedback tool for websites the developer builds. The developer picks a page (typed, or chosen from the site's sitemap via a searchable list) and a viewport (Desktop / Tablet / Mobile); a server-side Playwright capture renders a full-page screenshot, and comments are dropped as colored pins directly on the image via a Comment toggle. Pins are viewport-scoped (a mobile note only shows in mobile view) so they never drift. The sidebar switches between Review (the screenshot canvas with pins) and Board (a Trello-style board: Open / In progress / Done columns with drag-and-drop, full-text cards, filter by page + date sort). Screenshots are used instead of a live iframe because cross-origin iframes break full-height (`100vh`) layouts and can't anchor pins reliably.",
-      "description_short": "Pindrop is a single-screen visual feedback tool for websites the developer builds.",
+      "description": "Pindrop is a single-screen visual feedback tool for websites the developer builds, now live in production. The developer picks a page and a viewport (Desktop / Tablet / Mobile); a server-side Playwright capture renders a full-page screenshot, and comments are dropped as colored pins directly on the image. Pins are viewport-scoped so they never drift. Clients are invited per project via a private share link (branded email invite, no password), can add/resolve/react to pins, and get email notifications. Each project also exposes a per-project MCP server + API so an AI coding agent (Claude Code) can read that project's feedback, implement it, and mark pins done / reply - closing the loop from client comment to shipped fix. Screenshots are used instead of a live iframe because cross-origin iframes break full-height layouts and can't anchor pins reliably.",
+      "description_short": "Pindrop is a single-screen visual feedback tool for websites the developer builds, now live in production.",
       "stack": [
         "- Next.js 16 (App Router",
         "server components",
         "server actions)\n- TypeScript (strict)\n- Tailwind CSS v4 + shadcn/ui (dark/light mode via next-themes)\n- PostgreSQL via `pg` (no Supabase - plain Postgres)\n- Playwright (chromium) for server-side screenshot capture\n- Zod (validation)",
         "Resend (optional email)"
       ],
-      "hosting": "- Target: self-hosted on Hetzner via Coolify (Node server, not Vercel serverless - needed for Playwright)\n- Postgres: a Postgres container on the same host\n- Auth: Cloudflare Access (password) in front of the app",
+      "hosting": "- **Live** on Hetzner via Coolify (Node server, not Vercel serverless - needed for Playwright)\n- Postgres: a managed Postgres container on the same host\n- Auth: single shared password gate (`proxy.ts`); clients enter via per-project share-token cookie\n- Email: Resend on a verified domain (branded client invites + notifications)",
       "database": "",
       "github": {
         "account": "hanna-fmw",
@@ -1063,7 +1063,7 @@
         "projects",
         "screenshot metadata (`DATABASE_URL`)\n- Local screenshots stored under `data/screenshots/` (a volume in production)\n- Resend - optional owner notification email"
       ],
-      "notes": "- Canvas renders the captured PNG (`/api/screenshot`); `/api/capture` (Playwright, nodejs runtime) takes the shot. A Capture/Refresh button re-captures.\n- Pins store `pin_x/pin_y` in image space + `viewport_w`; filtered per viewport.\n- v1 is single-tenant, no per-user auth: the `author` field (Client / You) is a UI toggle, gated only by a shared `APP_PASSWORD` (proxy.ts) locally and Cloudflare Access in prod. Add real auth + per-project isolation before any multi-client/public use.\n- Dev DB currently points at the local Postgres on `127.0.0.1:54322`.\n- Sitemap: `/api/sitemap` uses the entered URL's origin, discovers via `robots.txt` + `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` (WordPress), stores a `pages` table; sidebar has a searchable page list + depth filter.\n- Capture robustness: normal Chrome UA (HeadlessChrome gets blocked), `waitUntil: 'load'` (networkidle never settles on real sites), scroll + force-eager + `data-src`/WP-placeholder image loading. SSRF guard blocks private/redirect targets in prod; `SSRF_ALLOW_LOCAL=1` only in dev.",
+      "notes": "- Canvas renders the captured PNG (`/api/screenshot`); `/api/capture` (Playwright, nodejs runtime) takes the shot. A Capture/Refresh button re-captures.\n- Pins store `pin_x/pin_y` in image space + `viewport_w`; filtered per viewport.\n- Owner authed by shared `APP_PASSWORD`; clients by per-project share token (`/r/<token>` sets a 180-day cookie). Identity is derived server-side from the session, never the client.\n- **MCP:** per-project key (`pk_...`, `projects.mcp_token`) generated in the sidebar; `/api/mcp/*` routes bypass the password gate and auth by Bearer key. MCP server at `mcp/pindrop-mcp.mjs`. Setup steps in `docs/mcp-setup.md`; agent spec in `AGENTS.md`.\n- Screenshot display caps at the capture width (mobile renders phone-sized, not upscaled). Board view is parked (future Archive).\n- Dev DB currently points at the local Postgres on `127.0.0.1:54322`.\n- Sitemap: `/api/sitemap` uses the entered URL's origin, discovers via `robots.txt` + `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` (WordPress), stores a `pages` table; sidebar has a searchable page list + depth filter.\n- Capture robustness: normal Chrome UA (HeadlessChrome gets blocked), `waitUntil: 'load'` (networkidle never settles on real sites), scroll + force-eager + `data-src`/WP-placeholder image loading. SSRF guard blocks private/redirect targets in prod; `SSRF_ALLOW_LOCAL=1` only in dev.",
       "toolbox_mentions": [
         {
           "type": "skill",
@@ -1076,10 +1076,10 @@
           "name": "compound-engineering:agent-browser / Playwright"
         }
       ],
-      "deployed_url": "",
+      "deployed_url": "https://proxy.ts",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-07-12T15:40:34+02:00"
+      "last_modified": "2026-07-12T16:41:06+02:00"
     },
     {
       "name": "pipeline-guardrails",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-12T14:35:10.328Z",
+    "synced_at": "2026-07-12T20:38:09.869Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
