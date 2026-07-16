@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T12:55:58.781Z",
+  "generated_at": "2026-07-16T19:35:04.661Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-16T08:55:55+02:00"
+      "last_modified": "2026-07-16T14:56:00+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1283,7 +1283,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-16T13:10:43+02:00"
+      "last_modified": "2026-07-16T19:08:37+02:00"
     },
     {
       "name": "Prefeo Platform",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-16T12:56:00.150Z",
+    "synced_at": "2026-07-16T19:35:05.432Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
