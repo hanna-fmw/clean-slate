@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T19:35:04.661Z",
+  "generated_at": "2026-07-17T08:11:34.395Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-16T14:56:00+02:00"
+      "last_modified": "2026-07-16T21:35:05+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-16T19:35:05.432Z",
+    "synced_at": "2026-07-17T08:11:34.963Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3572,7 +3572,7 @@
       },
       {
         "name": "fmw-invoice-creator",
-        "description": "Create a Swedish-style invoice (faktura) as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/own/.",
+        "description": "Create a Swedish-style invoice (faktura) as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/personal/my-company/invoices/<Client>/.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
