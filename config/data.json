@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:11:34.395Z",
+  "generated_at": "2026-07-17T14:11:38.753Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-16T21:35:05+02:00"
+      "last_modified": "2026-07-17T10:11:35+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1283,7 +1283,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-16T19:08:37+02:00"
+      "last_modified": "2026-07-17T12:34:47+02:00"
     },
     {
       "name": "Prefeo Platform",
@@ -1360,7 +1360,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-16T13:26:51+02:00"
+      "last_modified": "2026-07-17T15:35:52+02:00"
     },
     {
       "name": "Private Knowledge Base",
@@ -1911,7 +1911,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-13T12:29:22+02:00"
+      "last_modified": "2026-07-17T11:14:25+02:00"
     }
   ],
   "services": [
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-17T08:11:34.963Z",
+    "synced_at": "2026-07-17T14:11:39.336Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3572,7 +3572,7 @@
       },
       {
         "name": "fmw-invoice-creator",
-        "description": "Create a Swedish-style invoice (faktura) as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/personal/my-company/invoices/<Client>/.",
+        "description": "Create a Swedish-style invoice (faktura) as a styled HTML file ready to print to PDF. Use this skill ANY time the user wants to create an invoice, faktura, send a bill, or generate billing for a client - even if they don't mention \"skill\" or \"template\". Defaults to saving in ~/Documents/personal/my-company/invoices/<client-folder>/<invoice-nr>/.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
@@ -3589,6 +3589,14 @@
       {
         "name": "fmw-new-worktree",
         "description": "Create a new git worktree for the current project so Hanna can work on a separate branch in parallel from another terminal. Sets up env files, installs dependencies, picks a free dev port, writes a HANDOFF.md with full context for the new session, and prints a copy-paste first message to give the new Claude. Triggers on \"/fmw-new-worktree\", \"new worktree\", \"spin up a worktree\", \"open a worktree\", or when Hanna wants to work on the same repo in a second terminal/branch without conflicts.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-scaffold-agents-md",
+        "description": "Scaffold an AGENTS.md + agent-docs/ structure (the tracked, shareable \"agent & colleague guide\" pattern) into the current repo, using Hanna's personal template at ~/.claude/templates/agents-md/. Use this whenever Hanna wants to add/create/set up an AGENTS.md file, generate agent-docs, prep a project for handover or sharing with a colleague, or bring an existing ad-hoc AGENTS.md up to her standard structure. Triggers on \"/fmw-scaffold-agents-md\", \"set up AGENTS.md\", \"scaffold the agent docs\", \"add agents.md to this project\", \"create the colleague guide\", \"prep this repo for handover\", even if she doesn't name the skill directly. This is the first of a family of \"fmw-scaffold-*\" template-generator skills.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
