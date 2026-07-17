@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T14:11:38.753Z",
+  "generated_at": "2026-07-17T22:06:31.387Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-17T10:11:35+02:00"
+      "last_modified": "2026-07-17T16:11:39+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-17T14:11:39.336Z",
+    "synced_at": "2026-07-17T22:06:31.965Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3517,6 +3517,14 @@
       {
         "name": "fmw-compact-handoff",
         "description": "Quick checkpoint before /compact or session break. Updates docs and memory if needed, copies a continuation prompt to clipboard. Minimal output.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-content-curate-youtube-docs",
+        "description": "Curate long-form YouTube documentaries into a personal, taste-learning watchlist. Use this skill whenever Hanna wants to find documentaries to watch, add documentaries on a topic, refresh her documentary list, browse her curated docs, or give thumbs up/down feedback on documentaries she's been shown. Triggers on \"find documentaries about\", \"add docs on\", \"refresh my doc topics\", \"any good documentaries on\", \"curate documentaries\", \"update my watchlist\", or referencing card numbers to like/dislike (\"thumbs up #3\", \"I liked number 2\", \"dislike #7\").",
         "plugin": "custom",
         "origin": {
           "source": "custom"
