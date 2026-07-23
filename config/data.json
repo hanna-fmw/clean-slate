@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T17:02:17.342Z",
+  "generated_at": "2026-07-23T07:33:25.005Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -46,7 +46,7 @@
       "deployed_url": "https://abril-aventura-marketing-site.vercel.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-11T08:06:08.348Z"
+      "last_modified": "2026-07-22T20:15:53.654Z"
     },
     {
       "name": "AI Hub Project",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-22T13:01:23+02:00"
+      "last_modified": "2026-07-22T19:02:58+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-07-22T17:02:55.788Z",
+    "synced_at": "2026-07-23T07:33:25.615Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3464,6 +3464,15 @@
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
           "plugin": "security-guidance"
+        },
+        "marketplace": "claude-plugins-official"
+      },
+      {
+        "name": "clangd-lsp",
+        "version": "1.0.0",
+        "origin": {
+          "source": "anthropic",
+          "plugin": "clangd-lsp"
         },
         "marketplace": "claude-plugins-official"
       }
