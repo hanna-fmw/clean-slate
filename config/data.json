@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-05T15:03:37.854Z",
+  "generated_at": "2026-08-05T21:06:48.546Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-06T09:45:37.759Z"
+      "last_modified": "2026-08-05T15:23:09.002Z"
     },
     {
       "name": "baby-claw",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-04T23:10:38+02:00"
+      "last_modified": "2026-08-05T17:03:38+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -911,9 +911,8 @@
         "repo_url": "https://github.com/hanna-fmw/no-excuses"
       },
       "run_commands": {
-        "pnpm dev": "next dev",
-        "pnpm build": "next build",
-        "pnpm start": "next start"
+        "pnpm dev": "vite",
+        "pnpm build": "tsc && vite build"
       },
       "services": [
         "- Vercel (hosting)\n- No database yet — workout log uses **localStorage**. Planned: plain Postgres container on home server when cross-device sync is wanted (no Supabase — overkill for one user)."
@@ -949,7 +948,7 @@
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:157",
-      "last_modified": "2026-06-06T13:50:16+02:00"
+      "last_modified": "2026-08-05T19:43:57+02:00"
     },
     {
       "name": "OpenClaw",
@@ -2425,7 +2424,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-05T15:03:38.585Z",
+    "synced_at": "2026-08-05T21:06:49.115Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
