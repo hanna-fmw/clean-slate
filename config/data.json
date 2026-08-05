@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T21:10:37.422Z",
+  "generated_at": "2026-08-05T15:03:37.854Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -46,7 +46,7 @@
       "deployed_url": "https://abril-aventura-marketing-site.vercel.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-07-23T07:48:26.939Z"
+      "last_modified": "2026-08-05T13:09:42.490Z"
     },
     {
       "name": "AI Hub Project",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-03T23:57:06+02:00"
+      "last_modified": "2026-08-04T23:10:38+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1122,7 +1122,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-23T08:47:13.355Z"
+      "last_modified": "2026-08-05T14:17:42.541Z"
     },
     {
       "name": "Portfolio",
@@ -2425,7 +2425,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-04T21:10:38.024Z",
+    "synced_at": "2026-08-05T15:03:38.585Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
