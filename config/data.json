@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07T06:56:45.904Z",
+  "generated_at": "2026-08-07T12:56:50.050Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-06T18:06:10+02:00"
+      "last_modified": "2026-08-07T08:56:46+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -948,7 +948,7 @@
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md:157",
-      "last_modified": "2026-08-06T15:12:11+02:00"
+      "last_modified": "2026-08-07T14:12:36+02:00"
     },
     {
       "name": "OpenClaw",
@@ -2424,7 +2424,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-07T06:56:46.476Z",
+    "synced_at": "2026-08-07T12:56:50.642Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
