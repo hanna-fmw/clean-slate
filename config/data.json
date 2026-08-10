@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T13:16:02.276Z",
+  "generated_at": "2026-08-10T20:14:29.251Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -290,6 +290,48 @@
       "last_modified": "2026-06-06T15:13:41+02:00"
     },
     {
+      "name": "claude-bloat",
+      "path": "~/Documents/utilities/claude-bloat/docs",
+      "description": "CLI that measures what Claude Code loads into context before you type anything — the global\n`CLAUDE.md`, its `@`-imports, `~/.claude/rules/`, plus skill and subagent descriptions — and\ntracks it week over week. Pops a macOS dialog (not a banner: Focus modes suppress those)\nwhen something crosses a threshold, and never edits config itself. Token counts are\ncalibrated against a real `/context` run rather than estimated from word counts, which read\nabout 40% low on dense markdown.\n\nCompanion utility `paths` (separate, local-only) keeps a registry of stable folder keys so\nmoving a folder does not break the skills and hooks pointing at it.",
+      "description_short": "CLI that measures what Claude Code loads into context before you type anything — the global",
+      "stack": [
+        "Node 18+",
+        "plain ESM",
+        "zero dependencies. macOS `launchd` for scheduling",
+        "AppleScript for the\ndialog",
+        "`terminal-notifier` as fallback."
+      ],
+      "hosting": "None — runs locally on the machine it measures.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "None. No network calls",
+        "no API keys. Reads `~/.claude.json` for MCP server **names** only —\nnever values."
+      ],
+      "notes": "- Recalibrate after a Claude Code update: run `/context`, copy the figures into the constants\n  at the top of `claude-bloat.mjs`. The tool detects a version change and reminds you.\n- Only documented size guidance is **under 200 lines per CLAUDE.md file**; there is no\n  documented budget for the total.\n- Files in `~/.claude/rules/` load every session without an `@`-import unless they carry\n  `paths:` frontmatter.\n- This CLEAN-SLATE.md lives in `docs/` rather than the project root, so the Clean Slate sync\n  script will not pick it up unless its glob is widened.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "fmw-move-folder"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None required."
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-10T18:26:19+02:00"
+    },
+    {
       "name": "Clean Slate",
       "path": "~/Documents/clean-slate",
       "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dense, monospace UI with dark/light mode - no fluff, just information.\n\nA tools inventory section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.\n\nA My Toolbox view aggregates the per-project \"Skills, Agents & Plugins\" sections from each CLEAN-SLATE.md into a single, glanceable reference grouped by purpose - showing only the tools actually used across projects (not everything installed), with frequency counts, project lists, and origin tags. A manual overrides file (`toolbox-overrides.md`) pins favorites, normalizes categories, and supplies custom one-liners.\n\nEach project can also declare a Chrome profile to use when opening it (via a `## Chrome Profile` H2 section, or a `Chrome Profile:` line inside the GitHub section). The dashboard shows this as a small chip next to the project name so you know which browser profile to switch to.\n\nA clickable deployed-URL chip next to the project name opens the live deployment. The URL is auto-extracted from the Hosting section (or from an explicit `Live URL:` / `Deployed URL:` / `Domain:` line). Private/VPN-only and undeployed projects are correctly skipped.\n\nA macOS launchd job runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.\n\nA scheduled remote agent (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.",
@@ -327,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-10T09:15:58+02:00"
+      "last_modified": "2026-08-10T15:16:03+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1083,14 +1125,15 @@
     {
       "name": "pipeline-guardrails",
       "path": "~/Documents/utilities/pipeline-guardrails",
-      "description": "Modular safety and best-practice kit for the full code delivery pipeline. Covers secrets, git hygiene, local hooks, CI/CD, PR review, AI-assistant guardrails, and deploy safety. Built for small teams that depend on AI assistants and need senior-dev safety nets baked in.",
-      "description_short": "Modular safety and best-practice kit for the full code delivery pipeline.",
+      "description": "A modular safety and best-practice kit for the full code delivery pipeline — from opening the editor to the client seeing the deploy. Built for small teams that lean on AI coding assistants and need the safety net senior engineers usually carry in their heads.\n\nEight self-contained modules, each with a README covering the practice (what a senior dev does and why), the automation (the config, script, or hook that enforces it), and the maintenance (how it stays current). Reference-first: you read a module and copy its templates, there is no installer.\n\nPublic repo, MIT licensed, intended as a portfolio piece as well as a working reference.",
+      "description_short": "A modular safety and best-practice kit for the full code delivery pipeline — from opening the editor to the client seeing the deploy.",
       "stack": [
-        "Bash scripts",
-        "GitHub Actions YAML",
-        "markdown docs. Optional Node CLI (planned)."
+        "- Markdown documentation + copy-paste templates\n- Bash scripts (POSIX-compatible",
+        "tested on macOS BSD tooling)\n- JSON / YAML config templates\n- No application code",
+        "no build step",
+        "no dependencies"
       ],
-      "hosting": "N/A — meta tooling. Distributed as a template repo + CLI.",
+      "hosting": "Not hosted or deployed anywhere. The Vercel and Coolify templates in module 07 are for *other* projects to copy — nothing in this repo deploys.",
       "database": "",
       "github": {
         "account": "hanna-fmw",
@@ -1099,29 +1142,23 @@
       },
       "run_commands": {},
       "services": [
-        "1Password CLI",
-        "GitHub Actions",
+        "None. No database",
+        "no API keys",
+        "no third-party accounts required to use the repo. Individual templates reference GitHub Actions",
+        "gitleaks",
+        "husky",
         "CodeRabbit",
+        "1Password",
         "Vercel",
-        "Coolify (referenced by modules)."
+        "and Supabase",
+        "but only as things the *reader's* project may use."
       ],
-      "notes": "- Builds on existing `~/Documents/utilities/git-guard` (referenced by module 03).\n- Builds on existing Claude Code rules in `~/.claude/rules/` (referenced by module 06).\n- `docs/` is local-only (gitignored).",
-      "toolbox_mentions": [
-        {
-          "type": "skill",
-          "category": null,
-          "name": "check-gotchas"
-        },
-        {
-          "type": "skill",
-          "category": null,
-          "name": "update-config"
-        }
-      ],
+      "notes": "- **Reference-first, no CLI.** An `init` / `update` CLI is planned but not implemented; the README says so explicitly rather than implying a package exists.\n- **Verification status matters here.** Config and hook templates have been checked against current official docs and the shell templates were executed. The workflow and deploy templates are unverified end-to-end — they can only be proven in a project that adopts them.\n- **The characteristic failure mode is silence.** A hook that stopped firing, a regex that doesn't know a new key format, or a renamed config key all look fine — nothing errors. The README carries a review-cadence table keyed to model releases and agent-tooling releases for this reason.\n- **All examples use fictional data** (`acme-` vaults, `@your-org/maintainers`) so nothing employer-specific ships in a public repo.",
+      "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-10T15:08:28+02:00"
+      "last_modified": "2026-08-10T15:17:30+02:00"
     },
     {
       "name": "Portfolio",
@@ -2424,7 +2461,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-10T13:16:02.896Z",
+    "synced_at": "2026-08-10T20:14:29.808Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
