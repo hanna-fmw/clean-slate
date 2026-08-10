@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10T07:15:57.756Z",
+  "generated_at": "2026-08-10T13:16:02.276Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -327,7 +327,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-09T19:58:43+02:00"
+      "last_modified": "2026-08-10T09:15:58+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1093,9 +1093,9 @@
       "hosting": "N/A — meta tooling. Distributed as a template repo + CLI.",
       "database": "",
       "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pipeline-guardrails"
       },
       "run_commands": {},
       "services": [
@@ -1121,7 +1121,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-05T14:17:42.541Z"
+      "last_modified": "2026-08-10T15:08:28+02:00"
     },
     {
       "name": "Portfolio",
@@ -1236,7 +1236,7 @@
       "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-06-14T09:53:08+02:00"
+      "last_modified": "2026-08-10T12:03:20+02:00"
     },
     {
       "name": "Prefeo API",
@@ -1463,7 +1463,7 @@
     {
       "name": "Reclaim",
       "path": "~/Documents/utilities/reclaim",
-      "description": "Process-aware macOS disk + memory janitor. Auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with a per-category tickbox approval dialog and an \"Ask Claude\" escape hatch.\n\nCleans 6 categories (each opt-in via tickbox, with size + risk note shown):\n1. `.next` caches — rebuilds on next dev\n2. Installer DMGs — old auto-update installers\n3. Docker unused images (full prune) — volumes never touched\n4. npm cache (`~/.npm/_cacache`) — rebuilds on next `npm install`\n5. Claude `vm_bundles` — skipped if Claude.app is running\n6. Dormant `node_modules` — per-project sub-picker, 30d+ idle only",
+      "description": "Process-aware macOS disk + memory janitor. Auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with a per-category tickbox approval dialog and an \"Ask Claude\" escape hatch.\n\nCleans 10 categories (each opt-in via tickbox, with size + why-it-is-safe note shown):\n1. `.next` caches — rebuilds on next dev\n2. Installer DMGs — old auto-update installers\n3. Docker unused images (full prune) — volumes never touched\n4. npm cache (`~/.npm/_cacache`) — rebuilds on next `npm install`\n5. Claude `vm_bundles` — skipped if Claude.app is running\n6. Dormant `node_modules` — per-project sub-picker, 30d+ idle only\n7. Ballooned Turbopack dev caches (2 GB+) — only on projects protection skips; never while that dev server runs\n8. Browser cache — cache dir only, never the profiles holding logins/passwords; needs the browser quit\n9. pnpm store — prune only, existing `node_modules` keep working\n10. Stray recordings (200 MB+, 30d+) — user's own files, never ticked by default\n\nAlso reported, never deleted: reboot gain, plus an offer to start the container runtime and rescan when its daemon is down.",
       "description_short": "Process-aware macOS disk + memory janitor.",
       "stack": [
         "Bash",
@@ -1485,12 +1485,12 @@
         "daily 08:45",
         "with a 3-day gate inside `cleanup.sh` so it only actually acts every ~3 days.\n- **Docker** — pruned at clean time (images + build cache; never volumes). Step skipped silently if daemon is not running."
       ],
-      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- **Runtime vs source split.** Repo (`~/Documents/utilities/reclaim/`) is the source of truth. `~/.disk-cleanup/` is the deployed runtime + per-machine state (`history.jsonl` audit log, `last-run` timestamp, deployed copies of `cleanup.sh` and `reclaim`). Runtime state is per-user and stays out of git; standard `/source vs /state` split (like `~/.config/*`, `~/.local/state/*`).\n- **Deploy discipline.** Always edit files in the repo, then run `./install.sh` to redeploy. Do NOT `cp` scripts directly into `~/.disk-cleanup/` — that lets the runtime drift ahead of the repo and un-committed source piles up. This bit us in 2026-07: months of source lived only in `~/.disk-cleanup/` before finally being committed.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only). Scope-expansion plan at `docs/TODO-expand-scope.md` — items 1-4 shipped 2026-06-23 (v1.4), items 5-6 still open.\n- **Ask Claude button** (in the main dialog): opens Terminal.app in the repo dir, prints the cleanup plan, then drops into an interactive `claude` session so you can ask questions before deciding. After exiting Claude the dialog re-appears.\n- Version 1.4 (`reclaim --version`).",
+      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- **Runtime vs source split.** Repo (`~/Documents/utilities/reclaim/`) is the source of truth. `~/.disk-cleanup/` is the deployed runtime + per-machine state (`history.jsonl` audit log, `last-run` timestamp, deployed copies of `cleanup.sh` and `reclaim`). Runtime state is per-user and stays out of git; standard `/source vs /state` split (like `~/.config/*`, `~/.local/state/*`).\n- **Deploy discipline.** Always edit files in the repo, then run `./install.sh` to redeploy. Do NOT `cp` scripts directly into `~/.disk-cleanup/` — that lets the runtime drift ahead of the repo and un-committed source piles up. This bit us in 2026-07: months of source lived only in `~/.disk-cleanup/` before finally being committed.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only). Scope-expansion plan at `docs/TODO-expand-scope.md` — items 1-4 shipped 2026-06-23 (v1.4), item 5 partially shipped 2026-08-10 (v1.5); item 6 + stopped-container pruning still open.\n- **Ask Claude button** (in the main dialog): opens Terminal.app in the repo dir, prints the cleanup plan, then drops into an interactive `claude` session so you can ask questions before deciding. After exiting Claude the dialog re-appears.\n- Version 1.5 (`reclaim --version`).",
       "toolbox_mentions": [],
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-07-06T14:01:53+02:00"
+      "last_modified": "2026-08-10T12:42:22+02:00"
     },
     {
       "name": "Rookie Test Form",
@@ -2424,7 +2424,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-10T07:15:58.381Z",
+    "synced_at": "2026-08-10T13:16:02.896Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3597,6 +3597,14 @@
       {
         "name": "fmw-learn",
         "description": "Run a personal tutoring session on one isolated topic. Reads the topic's checklist + progress, picks up where the last session left off (or starts a new topic), teaches incrementally with assess-before-explain and AskUserQuestion quizzes, can interleave real hands-on actions (SSH into a server, run a command, inspect a schema), and ends with the standard session-log + checklist + progress update routine. Triggers on \"/learn\", \"let's do a learn session\", \"tutor me on X\", \"continue the learn session\", \"add a topic for X\", \"add this to my learn references\".",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-move-folder",
+        "description": "Move, rename, or reorganize a folder or project on Hanna's machine without silently breaking the skills, hooks, scripts, and CLI symlinks that point at it. Use whenever she wants to move a folder, rename a project, reorganize ~/Documents or ~/Documents/utilities into subfolders, tidy up a directory structure, or asks \"will moving this break anything\". Also use after she has already moved something in Finder and wants to know what broke. Triggers on \"move this folder\", \"rename this project\", \"reorganize my utilities\", \"clean up Documents\", \"restructure these folders\", \"I moved X, did anything break\".",
         "plugin": "custom",
         "origin": {
           "source": "custom"
