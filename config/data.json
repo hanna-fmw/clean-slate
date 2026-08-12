@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-11T15:30:54.238Z",
+  "generated_at": "2026-08-12T05:20:15.329Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-11T11:30:50+02:00"
+      "last_modified": "2026-08-11T17:30:54+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1947,7 +1947,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-17T11:14:25+02:00"
+      "last_modified": "2026-08-12T07:19:02+02:00"
     }
   ],
   "services": [
@@ -2461,7 +2461,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-11T15:30:54.816Z",
+    "synced_at": "2026-08-12T05:20:15.879Z",
     "agents": [
       {
         "name": "Agentic Identity & Trust Architect",
@@ -3618,6 +3618,14 @@
       {
         "name": "fmw-content-write-article",
         "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use content-transcribe-youtube for those).",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-inbox-triage",
+        "description": "Keep Hanna's Gmail inboxes tidy. Reports new recurring senders that no filter covers yet, mail that has aged past its keep-window, and new newsletter subscriptions worth unsubscribing from - each with a paste-ready Gmail search. Use when Hanna says \"triage my inbox\", \"check my email\", \"inbox cleanup\", \"what's cluttering my inbox\", \"run the inbox check\", or when the monthly inbox routine fires.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
