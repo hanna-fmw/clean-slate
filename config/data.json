@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T14:24:14.077Z",
+  "generated_at": "2026-08-17T21:02:24.564Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-08-17T13:54:43.840Z"
+      "last_modified": "2026-08-17T18:16:54.163Z"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-17T10:24:10+02:00"
+      "last_modified": "2026-08-17T16:24:14+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2461,7 +2461,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-17T14:24:14.666Z",
+    "synced_at": "2026-08-17T21:02:25.149Z",
     "agents": [
       {
         "name": "ai-architect",
@@ -2988,6 +2988,14 @@
       {
         "name": "fmw-reclaim",
         "description": "Run Hanna's reclaim disk-cleanup tool from chat - scan, show the plan as a numbered list, let her pick categories, then clean. Use when she says \"/fmw-reclaim\", \"run reclaim\", \"clean up my disk\", \"free up space\", \"disk is full\", or after a Disk Cleanup notification appeared.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-session-handoff",
+        "description": "Wrap up a session - update docs, commit, verify, and save a handoff prompt for the next session",
         "plugin": "custom",
         "origin": {
           "source": "custom"
