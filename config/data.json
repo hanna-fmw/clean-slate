@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-17T08:24:09.697Z",
+  "generated_at": "2026-08-17T14:24:14.077Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -50,7 +50,7 @@
     },
     {
       "name": "AI Hub Project",
-      "path": "~/Documents/ai-hub-project",
+      "path": "~/Documents/learning-hub",
       "description": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
       "description_short": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
       "stack": [
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/Documents/clean-slate/private/vault.md",
-      "last_modified": "2026-08-14T13:49:49.622Z"
+      "last_modified": "2026-08-17T13:54:43.840Z"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-16T16:28:46+02:00"
+      "last_modified": "2026-08-17T10:24:10+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1200,7 +1200,7 @@
     },
     {
       "name": "Portfolio Platform",
-      "path": "~/Documents/personal/portfolio-platform",
+      "path": "~/Documents/job-hub/portfolio-platform",
       "description": "A personal portfolio at portfolio.hosk.app, built as a platform-style dashboard rather than a traditional portfolio site. Visitors land in a sidebar-driven interface with sections for About, Projects, Services & Tools, and CV - mirroring the operational dashboard aesthetic of [clean-slate](https://github.com/hanna-fmw/clean-slate) but adapted for public consumption.\n\nThe Projects view reads from `CLEAN-SLATE.md` files across `~/Documents/` projects (same source files Clean Slate uses internally), but only includes projects flagged with `Portfolio: true`. Public repos show live URLs and source links; private repos show screenshots and a short blurb instead of internal run commands or infra notes.\n\nThe CV section is the source of truth for the resume - HTML rendered, with a print stylesheet that produces a clean PDF via browser print-to-PDF. The live URL works in LinkedIn's Featured section and as a Website link; the downloadable PDF covers ATS systems (Workday/Greenhouse/Lever).\n\nA sync script parses portfolio-flagged `CLEAN-SLATE.md` files into `config/data.json` at build time. No database, fully static.",
       "description_short": "A personal portfolio at portfolio.hosk.app, built as a platform-style dashboard rather than a traditional portfolio site.",
       "stack": [
@@ -2461,7 +2461,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-17T08:24:10.267Z",
+    "synced_at": "2026-08-17T14:24:14.666Z",
     "agents": [
       {
         "name": "ai-architect",
