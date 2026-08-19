@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18T17:35:14.032Z",
+  "generated_at": "2026-08-19T08:00:56.370Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-18T13:35:05+02:00"
+      "last_modified": "2026-08-18T19:35:14+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -813,7 +813,7 @@
     },
     {
       "name": "JSON-LD Schema Generator",
-      "path": "~/Documents/work/stormfors/json-ld-generator",
+      "path": "~/Documents/work/internal/json-ld-generator",
       "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
       "description_short": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website.",
       "stack": [
@@ -1680,7 +1680,7 @@
         "Anthropic Claude API (LLM)",
         "LangGraph.js (agent orchestration)"
       ],
-      "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`",
+      "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`\n- **Scope-down decision 2026-08-19:** do NOT complete the full 12-phase\n  TASKS_V2 refactor before calling this project done. Minimal finish: the app\n  runs, the style-example-to-generated-post flow works end to end, and the\n  README reflects reality. Before calling it done: run a code review\n  (/code-review) and fix findings, then debrief it in learning-hub's\n  built-projects topic, then tell the job-hub session (it strengthens the\n  tone-of-voice claim in the content-manager CV as \"built her own tooling\",\n  side projects stay unnamed there).",
       "toolbox_mentions": [],
       "deployed_url": "",
       "chrome_profile": "",
@@ -2461,7 +2461,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-18T17:35:14.680Z",
+    "synced_at": "2026-08-19T08:00:56.927Z",
     "agents": [
       {
         "name": "ai-architect",
