@@ -7,7 +7,7 @@ import { readApiKeys } from './parse-api-keys'
 import type { Project, DashboardData } from '../lib/types'
 
 const HOME_DIR = process.env.HOME ?? ''
-const DOCUMENTS_DIR = path.join(HOME_DIR, 'Documents')
+const SCAN_ROOTS = ['work', 'personal', 'system'].map((d) => path.join(HOME_DIR, d))
 const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
 const API_KEYS_DIR = path.join(__dirname, '..', 'data', 'api-keys')
 // Local, gitignored list of project names to exclude from data.json entirely
@@ -165,11 +165,10 @@ function scanProject(dirPath: string, vaultIndex: ReturnType<typeof buildVaultIn
   }
 }
 
-// Collect candidate project directories: recursive scan of all of ~/Documents.
-// Projects live nested under work/, personal/, etc. - findProjectRoots stops
-// descending at the first CLEAN-SLATE.md it finds on a path.
+// Collect candidate project directories: recursive scan of the three roots at ~/.
+// findProjectRoots stops descending at the first CLEAN-SLATE.md it finds on a path.
 function collectProjectDirs(): string[] {
-  return findProjectRoots(DOCUMENTS_DIR)
+  return SCAN_ROOTS.flatMap((root) => findProjectRoots(root))
 }
 
 function readHiddenNames(): string[] {
@@ -192,14 +191,14 @@ export function filterHidden(projects: Project[], hiddenNames: string[]): Projec
 function main() {
   const projects: Project[] = []
   const byName = new Map<string, Project>()
-  const vaultIndex = buildVaultIndex('~/Documents/clean-slate/private/vault.md')
+  const vaultIndex = buildVaultIndex('~/system/clean-slate/private/vault.md')
 
   for (const dirPath of collectProjectDirs()) {
     const project = scanProject(dirPath, vaultIndex)
     if (!project) continue
 
-    // A project can transiently exist in two places during migration into
-    // ~/Documents/projects. Dedupe by name, keeping the most recently modified.
+    // A project can transiently exist in two places during a migration.
+    // Dedupe by name, keeping the most recently modified.
     const key = project.name.toLowerCase()
     const existing = byName.get(key)
     if (existing) {

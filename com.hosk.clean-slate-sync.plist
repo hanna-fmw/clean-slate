@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/hanna/Documents/clean-slate/scripts/auto-sync.sh</string>
+        <string>/Users/hanna/system/clean-slate/scripts/auto-sync.sh</string>
     </array>
     <key>StartInterval</key>
     <integer>21600</integer>
