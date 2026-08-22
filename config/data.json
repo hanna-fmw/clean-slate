@@ -1,6 +1,1908 @@
 {
-  "generated_at": "2026-08-22T04:52:09.020Z",
-  "projects": [],
+  "generated_at": "2026-08-22T05:49:47.091Z",
+  "projects": [
+    {
+      "name": "Abril Aventura",
+      "path": "~/_personal/clients/abril-aventura",
+      "description": "Pre-launch brand workspace for Abril Aventura with two sibling subprojects: a Shopify storefront (r1yrmc-th.myshopify.com, password-protected, not yet live) and a marketing site (`marketing-site/`, Next.js, live on Vercel). The marketing site is fully rebranded: monogram logo extracted as vector from the brand PDFs, visual-identity hero carousel, bento photo grid, black footer, monogram favicon.",
+      "description_short": "Pre-launch brand workspace for Abril Aventura with two sibling subprojects: a Shopify storefront (r1yrmc-th.myshopify.com, password-protected, not yet live) and a marketing site (`marketing-site/`, Next.js, live on Vercel).",
+      "stack": [
+        "- Shopify (Liquid theme",
+        "native)",
+        "Shopify CLI for theme sync\n- Admin GraphQL via shopify-mcp-abril + shopify store execute + custom app token\n- Marketing site: Next.js 16 (App Router)",
+        "Tailwind v4",
+        "shadcn/ui",
+        "pnpm"
+      ],
+      "hosting": "- Shopify-hosted storefront. Public domain TBD (likely abrilaventura.com, not yet registered).\n- Marketing site on Vercel (personal account): https://abril-aventura-marketing-site.vercel.app",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Shopify store: `r1yrmc-th.myshopify.com` (admin: https://admin.shopify.com/store/abril-aventura)\n- Custom app (Admin API) — credentials in `.claude/settings.local.json` env block + `.env`"
+      ],
+      "notes": "Pre-launch but treat with the same publishing discipline: drafts by default, development theme by default. Ask before publishing or `--live`.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify-dev-mcp-abril"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify-mcp-abril"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify:dev"
+        }
+      ],
+      "deployed_url": "https://abril-aventura-marketing-site.vercel.app",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-05T13:09:42.490Z"
+    },
+    {
+      "name": "AI Hub Project",
+      "path": "~/_base/learning-hub",
+      "description": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
+      "description_short": "A personal workspace for collecting AI assets, inspiration, ideas, and learning resources.",
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "TypeScript (strict)",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "Zod",
+        "Framer Motion",
+        "next-themes",
+        "Lucide React",
+        "pnpm",
+        "Playwright",
+        "Prettier"
+      ],
+      "hosting": "App (ai-hub-platform): Vercel Hobby plan. Deploy via CLI only - `vercel --prod` from the `ai-hub-platform/` directory (no GitHub auto-deploy on free plan with private repo). Database: Postgres on Hetzner via Coolify - planned but not yet set up.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/ai-hub-platform (private) - git is initialized inside `ai-hub-platform/`, not at the project root"
+      },
+      "run_commands": {
+        "pnpm dev": "start local dev server",
+        "pnpm build": "production build",
+        "pnpm start": "run production build locally",
+        "pnpm lint": "run ESLint",
+        "vercel --prod": "deploy to Vercel production"
+      },
+      "services": [
+        "Vercel",
+        "Coolify",
+        "Hugging Face (planned for LLM features)"
+      ],
+      "notes": "A personal collection of AI assets, ideas, and learning notes. Work in progress.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "yt-transcript"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "yt-research-pipeline"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "youtube-search"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "research-write-article"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "notebooklm"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "frontend-slides"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "frontend-design"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:gemini-imagegen"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "create-pdf"
+        },
+        {
+          "type": "plugin",
+          "category": null,
+          "name": "frontend-slides"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-22T04:03:50.758Z"
+    },
+    {
+      "name": "baby-claw",
+      "path": "~/_personal/baby-claw",
+      "description": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built. Inspired by the OpenClaw teardown.\n\nThe core insight is that generalist agents accumulate context rot - starting at ~7,000 tokens of fixed overhead and ballooning to ~45,000 tokens after months of use, causing up to 40% performance degradation. A sniper agent starts at ~1,400 tokens and stays lean because it only loads what it needs.\n\nEvery agent is defined by four things: Triggers (cron, heartbeat, webhook, CLI/HTTP), Context injection (`SOUL.md`, `AGENTS.md`, `MEMORY.md`, JSONL history, tool schemas), Tools (agentic loop - LLM calls tool, gets result, decides next step), and Outputs (how the agent communicates and writes to the world).\n\nMonorepo structure: `api/` (Express backend), `web/` (Next.js frontend), `agents/` (agent workspaces), `docs/` (references, plans).",
+      "description_short": "A TypeScript/Node.js agent harness - a boilerplate for building focused \"sniper agents\" that outperform generalist agents by staying lean and purpose-built.",
+      "stack": [
+        "**Backend (api/):** TypeScript (strict)",
+        "Node.js 20+",
+        "Vercel AI SDK (`ai`)",
+        "Zod",
+        "node-cron",
+        "Express",
+        "@mattermost/client",
+        "@ai-sdk/google",
+        "@ai-sdk/openai",
+        "@ai-sdk/ollama",
+        "@huggingface/inference",
+        "Docker",
+        "pnpm",
+        "Vitest\n\n**Frontend (web/):** Next.js 16 (App Router)",
+        "React 19",
+        "shadcn/ui",
+        "Tailwind v4",
+        "next-themes"
+      ],
+      "hosting": "**Frontend:** Vercel (not yet deployed)\n**Backend:** Hetzner VPS via Coolify (not yet deployed). Docker container with volume for agents/.\n**Mattermost:** Self-hosted on homelab or Hetzner (future).",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/baby-claw"
+      },
+      "run_commands": {
+        "pnpm dev": "run the backend with tsx (default: CLI mode)",
+        "pnpm observe": "run backend in observe mode on :3333 (HTTP API + SSE + a2a + backlog picker). The Next.js UI talks to this; an old static HTML dashboard at /api/ui/index.html still serves as a fallback.",
+        "pnpm build": "compile TypeScript to dist/",
+        "pnpm start": "run compiled output",
+        "pnpm test": "run Vitest (340/340 passing as of 2026-05-30)",
+        "cd web && pnpm dev": "run Next.js frontend on :3000",
+        "cd web && pnpm build": "build Next.js for production"
+      },
+      "services": [
+        "OpenRouter (LLM routing)",
+        "Hugging Face (image gen",
+        "voice",
+        "multimodal)",
+        "Mattermost (bot messaging)",
+        "Vercel (frontend hosting)",
+        "Coolify (backend hosting)."
+      ],
+      "notes": "No Claude via Anthropic direct — too expensive. Dev default: `openrouter/deepseek/deepseek-v4-flash` ($0.14/$0.28 per 1M) for most agents. **Orchestrator** runs on `openrouter/openai/gpt-4.1-mini` ($0.40/$1.60) — swapped 2026-05-30 because DeepSeek V4 Flash via OpenRouter ignored the per-step abort signal and hung on multi-step orchestration. Team leads (engineering-lead, content-lead, operations-lead) also on gpt-4.1-mini. Local: Ollama. Agent behavior configured in markdown files, not compiled code. Frontend connects to backend via `NEXT_PUBLIC_API_URL` env var (default http://localhost:3333).",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compact-handoff"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "session-handoff"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers:brainstorming"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:kieran-typescript-reviewer"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:code-simplicity-reviewer"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:performance-oracle"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:review:security-sentinel"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "context7"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "coolify"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md:145",
+      "last_modified": "2026-08-21T22:17:32+02:00"
+    },
+    {
+      "name": "browse-me",
+      "path": "~/_personal/apps/browse-me",
+      "description": "AI browser agent demo. Natural-language task in, browser-driven answer out. Claude is the reasoning loop; Playwright is the execution + extraction layer. Built to demonstrate the \"Fat Playwright, Thin Claude\" pattern — extracting clean structured data with Playwright before sending anything to the LLM, instead of dumping raw DOM/screenshots into context. Educational reference for how computer-use agents actually work without using a framework like Stagehand or Browser Use.",
+      "description_short": "AI browser agent demo.",
+      "stack": [
+        "- Node.js 22",
+        "ES modules\n- Express (server + SSE streaming)\n- Playwright (headless Chromium)\n- Anthropic SDK (Claude Haiku 4.5 by default)\n- Plain HTML/CSS/JS frontend (no framework)\n- Zod (validation",
+        "for future tool input parsing)"
+      ],
+      "hosting": "Local only. No production deploy planned.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/browse-me"
+      },
+      "run_commands": {
+        "pnpm dev": "node --watch --env-file=.env src/server.js",
+        "pnpm start": "node --env-file=.env src/server.js"
+      },
+      "services": [
+        "- **Anthropic API** — required. Default model `claude-haiku-4-5`. Set a spend cap in Anthropic Console."
+      ],
+      "notes": "- Screenshots are NOT sent back to Claude — shown to the user only, to keep tokens cheap.\n- No framework chains (no LangChain, no Stagehand). Agentic loop is ~80 lines in `src/agent/loop.js`.\n- Port 3030 (not 3000 — that's blog-next14-prisma on this machine).",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "claude-api"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None project-specific"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:50:32+02:00"
+    },
+    {
+      "name": "claude-bloat",
+      "path": "~/_base/utilities/claude-bloat/docs",
+      "description": "CLI that measures what Claude Code loads into context before you type anything — the global\n`CLAUDE.md`, its `@`-imports, `~/.claude/rules/`, plus skill and subagent descriptions — and\ntracks it week over week. Pops a macOS dialog (not a banner: Focus modes suppress those)\nwhen something crosses a threshold, and never edits config itself. Token counts are\ncalibrated against a real `/context` run rather than estimated from word counts, which read\nabout 40% low on dense markdown.\n\nCompanion utility `paths` (separate, local-only) keeps a registry of stable folder keys so\nmoving a folder does not break the skills and hooks pointing at it.",
+      "description_short": "CLI that measures what Claude Code loads into context before you type anything — the global",
+      "stack": [
+        "Node 18+",
+        "plain ESM",
+        "zero dependencies. macOS `launchd` for scheduling",
+        "AppleScript for the\ndialog",
+        "`terminal-notifier` as fallback."
+      ],
+      "hosting": "None — runs locally on the machine it measures.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "None. No network calls",
+        "no API keys. Reads `~/.claude.json` for MCP server **names** only —\nnever values."
+      ],
+      "notes": "- Recalibrate after a Claude Code update: run `/context`, copy the figures into the constants\n  at the top of `claude-bloat.mjs`. The tool detects a version change and reminds you.\n- Only documented size guidance is **under 200 lines per CLAUDE.md file**; there is no\n  documented budget for the total.\n- Files in `~/.claude/rules/` load every session without an `@`-import unless they carry\n  `paths:` frontmatter.\n- This CLEAN-SLATE.md lives in `docs/` rather than the project root, so the Clean Slate sync\n  script will not pick it up unless its glob is widened.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "fmw-move-folder"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None required."
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-10T18:26:19+02:00"
+    },
+    {
+      "name": "Clean Slate",
+      "path": "~/_base/clean-slate",
+      "description": "A personal project dashboard that auto-syncs from ~/Documents/. Shows every project you work on in a compact, expandable list with everything you need to orient yourself: what the project does, its tech stack, how to run it, where it's hosted, and which accounts it uses.\n\nThe dashboard reads from CLEAN-SLATE.md files placed in each project's root folder. A sync script scans ~/Documents/, parses these files along with package.json and git config, and writes the combined data to config/data.json. The Next.js app reads this at build time and renders a dense, monospace UI with dark/light mode - no fluff, just information.\n\nA tools inventory section tracks all Claude Code agents, plugins, MCP servers, and skills installed locally, with source tagging (official/3rd-party/custom). A separate sync script scans ~/.claude/ for this data.\n\nA My Toolbox view aggregates the per-project \"Skills, Agents & Plugins\" sections from each CLEAN-SLATE.md into a single, glanceable reference grouped by purpose - showing only the tools actually used across projects (not everything installed), with frequency counts, project lists, and origin tags. A manual overrides file (`toolbox-overrides.md`) pins favorites, normalizes categories, and supplies custom one-liners.\n\nEach project can also declare a Chrome profile to use when opening it (via a `## Chrome Profile` H2 section, or a `Chrome Profile:` line inside the GitHub section). The dashboard shows this as a small chip next to the project name so you know which browser profile to switch to.\n\nA clickable deployed-URL chip next to the project name opens the live deployment. The URL is auto-extracted from the Hosting section (or from an explicit `Live URL:` / `Deployed URL:` / `Domain:` line). Private/VPN-only and undeployed projects are correctly skipped.\n\nA macOS launchd job runs both syncs automatically every 6 hours. When data.json changes, it auto-commits and pushes, and Vercel deploys the update. You never have to remember to sync manually.\n\nA scheduled remote agent (Claude Code routine) runs weekly to check if CLEAN-SLATE.md files across projects have become stale relative to their git history, and flags what needs updating.",
+      "description_short": "A personal project dashboard that auto-syncs from ~/Documents/.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "next-themes"
+      ],
+      "hosting": "Vercel free tier. Domain: ops.hosk.app.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/clean-slate"
+      },
+      "run_commands": {
+        "pnpm dev": "start dev server on localhost:3300",
+        "pnpm build": "build for production (static export)",
+        "pnpm sync": "scan ~/Documents/ and regenerate project data in config/data.json",
+        "pnpm sync:tools": "scan ~/.claude/ and regenerate tools inventory in config/data.json",
+        "pnpm sync:toolbox": "aggregate per-project Skills/Agents/Plugins mentions into the toolbox view",
+        "pnpm sync:all": "run all three syncs in order",
+        "pnpm test": "run tests",
+        "pnpm lint": "lint"
+      },
+      "services": [
+        "Vercel",
+        "Claude Code Routines (scheduled remote agent for staleness checks)"
+      ],
+      "notes": "No database. Fully static. Data comes from CLEAN-SLATE.md files in project folders and ~/.claude/ config files.\nTo add a new project to the dashboard, create a CLEAN-SLATE.md in that project's root.\nLaunchd plist: ~/Library/LaunchAgents/com.hosk.clean-slate-sync.plist",
+      "toolbox_mentions": [],
+      "deployed_url": "https://ops.hosk.app",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-22T06:52:09+02:00"
+    },
+    {
+      "name": "Company Knowledge Base",
+      "path": "~/_work/stormfors/company-kb",
+      "description": "A multi-user knowledge base with semantic search and RAG (Retrieval-Augmented Generation) over internal company documents. Users log in via Google Sign-In or email/password and are placed in a `pending` state until an admin assigns a role.\n\nThe core flow is: uploaded documents get chunked and embedded locally using `all-MiniLM-L6-v2` (384-dim vectors), then stored in Qdrant for vector search. When a user asks a question, the app retrieves the most relevant chunks from Qdrant, passes them to an LLM via OpenRouter, and streams the answer back. All conversations are persisted in PostgreSQL.\n\nDocuments are organized into Collections (e.g. HR, Engineering). Each collection maps to a dedicated Qdrant collection. Role-based access controls which collections a user can search. Roles: `admin`, `editor`, `member`, `pending`.\n\nThe admin panel covers document upload, collection CRUD, user management, model selection, a KB description editor, and external connectors (Google Drive integration exists in code but needs end-to-end testing).",
+      "description_short": "A multi-user knowledge base with semantic search and RAG (Retrieval-Augmented Generation) over internal company documents.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Qdrant",
+        "NextAuth.js",
+        "OpenRouter",
+        "`@xenova/transformers` (local embeddings)",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Vitest"
+      ],
+      "hosting": "App: Coolify on Hetzner server, live at **https://kb.stormfors.ai** (Coolify app UUID: `mk8k08soks4s48wcs84gssoo`). Database: PostgreSQL managed via Coolify on the same server. Qdrant: Docker container on the same Coolify internal network.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/company-kb"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server",
+        "npm run build": "Production build",
+        "npm start": "Start production server",
+        "npm test": "Run Vitest unit tests",
+        "npm run lint": "Run ESLint",
+        "npx prisma migrate deploy": "Apply pending migrations (run in Coolify terminal after deploy)",
+        "npx prisma db seed": "Seed the database (first deploy / full reset only)"
+      },
+      "services": [
+        "OpenRouter (LLM inference)",
+        "Google OAuth (NextAuth)",
+        "Google Drive API (connector)",
+        "Resend (email)",
+        "Coolify (deployment)",
+        "Hetzner (server hosting)"
+      ],
+      "notes": "- Deploy by pushing to main - Coolify auto-deploys via GitHub webhook\n- Embedding runs locally inside the container using `@xenova/transformers` - no external embedding API needed\n- After any Prisma schema change: create migration locally, deploy, then run `npx prisma migrate deploy` in Coolify terminal\n- Default LLM model: `qwen/qwen-2.5-7b-instruct` via OpenRouter\n- See `TASKS.md` for known issues and pending work\n- Reference repo (read-only): `~/Documents/projects/personal/apps/private-knowledge-base`",
+      "toolbox_mentions": [],
+      "deployed_url": "https://kb.stormfors.ai",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:48:58+02:00"
+    },
+    {
+      "name": "demoflow",
+      "path": "~/_personal/apps/demoflow",
+      "description": "AI-driven demo authoring and rendering. Author a step-based demo once via AI chat (give it URLs, intent, audience), then render the same step JSON as: auto-play screenshot walkthrough, interactive click-through, live-app video, or animated explainer (Bytemonk-style scene library). One tool, four output modes, one brand theme. The v0 CLI (Playwright-records-live-app → MP4) is archived under `legacy/v0-cli/` and will be folded back in as the video renderer in sub-plan 7.",
+      "description_short": "AI-driven demo authoring and rendering.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "server components",
+        "server actions",
+        "standalone build)\n- TypeScript strict",
+        "Tailwind v4",
+        "shadcn/ui (added in sub-plan 2)\n- Drizzle ORM + Postgres 16\n- graphile-worker (Postgres-backed job queue",
+        "no Redis)\n- Cloudflare R2 (S3-compatible) for screenshots",
+        "audio",
+        "video\n- TTS: OpenAI `tts-1` default",
+        "ElevenLabs toggle per project",
+        "plus own / own-polished / cloned modes\n- LLM script chat: OpenRouter (model decided at implementation time)\n- Playwright (screenshot capture in sub-plan 6",
+        "live-app recording in sub-plan 7)\n- Remotion (animated explainer renderer in sub-plan 8)\n- ffmpeg (audio polish",
+        "video assembly)"
+      ],
+      "hosting": "- Production: Coolify on Hetzner CX22 VPS (Docker compose: web + db + worker). Cloudflare Access in front for auth (email allowlist, OTP).\n- Files: Cloudflare R2 from day one (10 GB free, no egress fees).\n- Local dev: `docker compose -f docker/compose.yml up` (same Dockerfiles as prod).",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/demoflow"
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "next lint",
+        "pnpm test": "vitest run"
+      },
+      "services": [
+        "- Cloudflare (R2 bucket + Zero Trust / Access) — to be set up in Task 7\n- Hetzner VPS + Coolify — to be set up in Task 7\n- OpenAI (TTS) — sub-plan 3\n- ElevenLabs (TTS toggle) — sub-plan 3\n- OpenRouter (script chat LLM) — sub-plan 4"
+      ],
+      "notes": "- **Sub-plans 1-3 complete (2026-06-28 → 2026-07-07):** branch `feat/v1-foundation`, 33 commits `d5b0656..4249932` (local only, not pushed, no PR). Foundation + full authoring UI + AI chat draft flow all working end-to-end via `pnpm docker:up`.\n- **Docker unblock (2026-07-07):** pnpm pinned to 9.15.4 via packageManager field, DB-touching routes marked `export const dynamic = 'force-dynamic'`, Dockerfile.web builder stage gets dummy env vars so Zod parse passes at build time (runtime values come from compose).\n- **Known runtime issue (open):** screenshot upload returns 500 with TLS `SSL alert number 40` at R2. Root cause TBD — likely a placeholder `R2_ACCOUNT_ID` in `.env.local` or R2 bucket not yet provisioned. Chat drafting works.\n- **Next session:** verify R2 credentials, or wire MinIO as a local S3 emulator to unblock screenshot testing. Then sub-plan 4 (TTS) or Task 7 (deploy).\n- Voicebox / Qwen / Kokoro from v0 are NOT used by v1 (Voicebox is local-only and would not run on the Hetzner VPS). The local TTS work survives in `legacy/v0-cli/` for reference.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers:brainstorming"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "fmw-check-gotchas"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "firecrawl-scrape"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "claude-api"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "frontend-design"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "context7"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "coolify-personal"
+        }
+      ],
+      "deployed_url": "https://compose.yml",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-07-07T09:12:16+02:00"
+    },
+    {
+      "name": "djapo",
+      "path": "~/_personal/clients/djapo",
+      "description": "Setup project for a photographer friend's new portfolio + small print shop website. Platform chosen: Shopify, starting as a portfolio-first site with contact-to-buy (hidden cart/prices) and optional self-fulfilled print sales later (she prints and ships herself). Her current site runs on Portfoliobox; the domain is registered at Namecheap, so migration is a DNS change.\n\nShopify chosen for full theme code control (Liquid, CLI, git), official Dev MCP + APIs, free Translate & Adapt for two languages, built-in consent banner, and hidden-cart portfolio mode that flips on to full commerce later without a rebuild.\n\ndescription_short: Platform research and site setup for a photographer's portfolio + print shop.",
+      "description_short": "Setup project for a photographer friend's new portfolio + small print shop website.",
+      "stack": [
+        "- Shopify (Online Store 2.0",
+        "Liquid). Live theme: **Atelier**. Unpublished: Horizon. Edited locally via Shopify CLI; theme files in `shopify-site/theme/`."
+      ],
+      "hosting": "- Shopify-hosted. Store: **td8jti-ye.myshopify.com** (no custom domain connected yet).",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Domain: Namecheap (client's)",
+        "not yet connected to Shopify\n- Current site: Portfoliobox (to be replaced)\n- Shopify store: td8jti-ye.myshopify.com"
+      ],
+      "notes": "- Platform decision: Shopify, starting as contact-to-buy (hidden cart/prices), commerce flipped on later without rebuild.\n- Handover plan: dev creates the store under own Gmail + own card to build. At handover, change the store-owner email (Settings -> Users and permissions) to the client's domain email, client sets her own password + MFA, client swaps billing card. No formal ownership transfer needed - just the email change.\n- MFA: leave OFF during dev (so no codes needed from client); enable with the client's device at handover.\n- Dev keeps access post-handover via a free Shopify Partner collaborator account (own email, doesn't use a staff slot, revocable). Create the Partner account anytime, even at the end.\n- Do NOT use a shared Google account.\n- Client domain email: set up hello@/studio@/linda@lindadjapo.com at Namecheap. Free = email forwarding to her Gmail (receive only); ~$1/mo = Namecheap Private Email (real mailbox, can send as the address).\n- Claude CLI/MCP wiring (done): `shopify-site/.mcp.json` has `shopify-dev-mcp` (docs/validation, active) + `shopify-mcp` (store data, idle until Client ID/Secret filled). CLI auth uses a per-store **Theme Access token** (`SHOPIFY_CLI_THEME_TOKEN` in gitignored `.env`), NOT global login - so it runs in parallel with the Moiwak CLI session under a different account. Do not `shopify auth logout` (would break Moiwak's session).\n- Store-data MCP (`shopify-mcp`) needs a custom-app Client ID + Secret - NOT yet created. Only needed when Claude should manage products/collections/orders/pages. Theme/design work needs none of it.\n- Storefront password was removed (was blocking `theme dev`). RE-ENABLE before connecting the real domain so Google doesn't index the half-built site.\n- Agent-accessibility: opt-out for now - platform-hosted site builder, no custom app surface yet",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "deep-research (platform comparisons)"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "Shopify Dev MCP (if Shopify is chosen)"
+        }
+      ],
+      "deployed_url": "https://td8jti-ye.myshopify.com",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-14T12:19:58.664Z"
+    },
+    {
+      "name": "Flatfile Playbook",
+      "path": "~/_base/pending/flatfile-playbook",
+      "description": "Flatfile Playbook is a knowledge repo capturing reusable techniques for building things with the flat-file / git-as-data approach - using plain files in a folder as the source of truth instead of a database, optionally with an LLM as the compiler that turns messy input into clean output. Covers when the pattern fits vs when you need a real database, the swappable pieces (scheduler, compiler, delivery), the AI variant, the connection to Andrej Karpathy's LLM Wiki, and AI persistent memory.",
+      "description_short": "Flatfile Playbook is a knowledge repo capturing reusable techniques for building things with the flat-file / git-as-data approach - using plain files in a folder as the source of truth instead of a database, optionally with an LLM as the compiler that turns messy input into clean output.",
+      "stack": [
+        "Markdown",
+        "Git"
+      ],
+      "hosting": "Not deployed - reference/docs repo.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/flatfile-playbook"
+      },
+      "run_commands": {},
+      "services": [
+        "None"
+      ],
+      "notes": "Born out of the Clean Slate build. The reference implementation of the deterministic version of this pattern lives at `~/_base/clean-slate`. Ideas land here so they don't get lost; expand the playbook as new use cases come up.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "content-write-article"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers:brainstorming"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T22:17:59+02:00"
+    },
+    {
+      "name": "git-guard",
+      "path": "~/_base/utilities/git-guard",
+      "description": "A small bash pre-commit hook that catches sensitive content (paths with username, real names, client emails, server IPs, AI-assistant config files like `CLAUDE.md` / `.claude/`, local-only folders like `private/` / `docs/`) before a commit ships. When something matches, the commit is blocked and on macOS an unmissable dialog opens with three buttons: Cancel, Open in editor, or Commit anyway. The dialog title and body show which repo the commit is in and which process invoked git (terminal, launchd auto-sync, AI session) so a popup that fires without an active session is interpretable.\n\nDesigned for the workflow of using AI coding assistants where a \"helpful\" `git add .` can sweep in machine-local config or absolute paths before you notice.",
+      "description_short": "A small bash pre-commit hook that catches sensitive content (paths with username, real names, client emails, server IPs, AI-assistant config files like `CLAUDE.md` / `.claude/`, local-only folders like `private/` / `docs/`) before a commit ships.",
+      "stack": [
+        "Bash",
+        "AppleScript (macOS dialog)",
+        "POSIX extended regex (`grep -E`)"
+      ],
+      "hosting": "Local on this Mac. Public open-source repo on GitHub. No build, no deploy.",
+      "database": "",
+      "github": {
+        "account": "personal (`hanna-fmw`)",
+        "ssh_alias": "`github.com-personal`",
+        "repo_url": "https://github.com/hanna-fmw/git-guard"
+      },
+      "run_commands": {
+        "./install.sh": "install the hook into `~/.git-hooks/` and wire `core.hooksPath`",
+        "./uninstall.sh": "remove the hook script and unset `core.hooksPath`"
+      },
+      "services": [
+        "None — entirely local."
+      ],
+      "notes": "The actual active patterns live at `~/.git-hooks/sensitive-patterns` (gitignored, never copied into this repo). This repo ships only generic `.example` templates. Companion Claude Code permission deny rules in `~/.claude/settings.json` block the AI from running `--no-verify` or rewriting `core.hooksPath` to bypass the hook. Full gotcha around launchd auto-sync + absolute paths interacting with this hook is documented at `~/.claude/rules/gotchas/clean-slate-sync-and-paths.md`.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-07T11:19:24+02:00"
+    },
+    {
+      "name": "Health Insights Tracker (React Native)",
+      "path": "~/_personal/apps/rn-health-tracker",
+      "description": "A voice-first personal health tracking mobile app targeting App Store publication. Users log lifestyle factors and symptoms daily; the app combines statistical analysis with LLM interpretation to surface trustworthy correlations and insights. This is a mobile rebuild of the Next.js web app at `~/Documents/projects/personal/apps/tracker` - portable code (metric definitions, Zod schemas, LLM prompts, date utils) should be reused from there.\n\nPrivacy is a hard constraint - Supabase Row-Level Security is required on every user-scoped table. Hanna is the admin (can manage metrics and settings, cannot see other users' data). UX must be simple - one user is not tech-savvy. The app is offline-first: entry logging works via local SQLite and syncs to Supabase when online.\n\nLLM calls happen in Supabase Edge Functions (not client-side) to keep API keys server-side. Architecture, code quality, and UX should meet App Store review standards from the start.",
+      "description_short": "A voice-first personal health tracking mobile app targeting App Store publication.",
+      "stack": [
+        "Expo SDK 53+ (managed workflow)",
+        "Expo Router v4+",
+        "TypeScript (strict)",
+        "NativeWind v4 (Tailwind for React Native)",
+        "Supabase (auth + PostgreSQL + RLS + Edge Functions + real-time)",
+        "Zustand",
+        "expo-sqlite (offline)",
+        "react-native-reanimated v3",
+        "react-native-gesture-handler",
+        "@shopify/flash-list",
+        "expo-notifications",
+        "OpenRouter (via Edge Functions)",
+        "Zod",
+        "Vitest"
+      ],
+      "hosting": "Supabase (EU region, database + auth + edge functions). App distributed via App Store (iOS target). No separate server.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/rn-health-tracker"
+      },
+      "run_commands": {
+        "pnpm ios": "start on iOS simulator",
+        "pnpm android": "start on Android emulator",
+        "pnpm web": "start in web browser (limited support)",
+        "pnpm test": "run Vitest",
+        "pnpm lint": "run ESLint",
+        "pnpm format": "format with Prettier"
+      },
+      "services": [
+        "Supabase (auth + database + edge functions + real-time)",
+        "OpenRouter (LLM via Edge Functions)",
+        "Expo (build + distribution tooling)"
+      ],
+      "notes": "Uses `@shopify/flash-list` instead of FlatList and `expo-image` instead of RN Image for performance. Target 60fps on all animations and lists. Apple/Google sign-in prepared for later (not in initial build). Charts: `react-native-gifted-charts` or Victory Native. Reference the web app's `docs/REQUIREMENTS.md` and `docs/ARCHITECTURE.md` for full feature requirements and data model - adapt Prisma schema to Supabase SQL migrations.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-06-06T13:50:16+02:00"
+    },
+    {
+      "name": "Health Insights Tracker (Web)",
+      "path": "~/_personal/apps/tracker",
+      "description": "A voice-first personal health tracking app for two users. Each user logs daily lifestyle factors (food, sleep, weather, stress, etc.) and symptoms (bloating, palpitations, blood pressure, fatigue, brain fog, etc.). An AI analysis pipeline finds patterns and correlations between logged factors and symptoms.\n\nPrivacy is a hard requirement - the two users have strict data isolation and cannot see each other's entries. Hanna is the admin and can manage tracked metric categories and system settings, but cannot see the other user's health data. The UX must be simple - one user is not tech-savvy and needs clear flows with obvious next actions.\n\nVoice input with AI extraction is the primary entry method. Manual forms are the fallback. The app includes an option to cross-reference findings with online medical sources. This is the web version; a React Native mobile rebuild lives at `~/Documents/projects/personal/apps/rn-health-tracker`.",
+      "description_short": "A voice-first personal health tracking app for two users.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript (strict)",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Recharts",
+        "Prisma ORM",
+        "PostgreSQL (Railway)",
+        "Auth.js (NextAuth v5) with credentials provider",
+        "Web Speech API",
+        "OpenAI Whisper API (voice fallback)",
+        "OpenRouter (LLM)"
+      ],
+      "hosting": "Railway (both app and PostgreSQL database). Domain: subdomain on hanna.app via Cloudflare.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/tracker"
+      },
+      "run_commands": {
+        "pnpm dev": "start Next.js dev server",
+        "pnpm build": "generate Prisma client and build for production",
+        "pnpm start": "start production server",
+        "pnpm lint": "run ESLint",
+        "pnpm format": "format with Prettier",
+        "pnpm db:migrate": "run Prisma migrations (dev)",
+        "pnpm db:seed": "seed database with 2 users and 21 default metrics",
+        "pnpm db:studio": "open Prisma Studio GUI"
+      },
+      "services": [
+        "Railway (hosting + PostgreSQL)",
+        "OpenRouter (LLM/AI analysis)",
+        "OpenAI Whisper (voice transcription fallback)",
+        "Cloudflare (DNS)"
+      ],
+      "notes": "Auth.js (NextAuth v5) uses credentials provider. Uses `proxy.ts` (not `middleware.ts`) per Next.js 16. Prisma schema has 7 models. Detailed requirements at `docs/REQUIREMENTS.md`, architecture and data model at `docs/ARCHITECTURE.md`, phased roadmap at `docs/ROADMAP.md`.",
+      "toolbox_mentions": [],
+      "deployed_url": "https://hanna.app",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:48:44+02:00"
+    },
+    {
+      "name": "heartbeat-hook",
+      "path": "~/_base/utilities/heartbeat-hook",
+      "description": "A tiny Claude Code `UserPromptSubmit` hook that periodically re-injects the most important rules (style, security, project isolation) into the active session so the model doesn't drift halfway through a long conversation.\n\nEvery Nth prompt (default 8) the hook fires a short reminder back into the model's context, pointing it at `CLAUDE.md` and `MEMORY.md`. A matching statusline indicator (magenta `♥ N/8`) shows the cycle position so you can see at a glance when the next fire is due.\n\nBuilt for personal use after one too many sessions where the model echoed an API key into chat or quietly started ignoring the global CLAUDE.md rules. Tiny, copyable, immediately useful.",
+      "description_short": "A tiny Claude Code `UserPromptSubmit` hook that periodically re-injects the most important rules (style, security, project isolation) into the active session so the model doesn't drift halfway through a long conversation.",
+      "stack": [
+        "Bash",
+        "jq. No build step",
+        "no dependencies beyond a POSIX shell."
+      ],
+      "hosting": "N/A - runs locally as a Claude Code hook.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/heartbeat-hook"
+      },
+      "run_commands": {},
+      "services": [
+        "None."
+      ],
+      "notes": "- Live install location: `~/.claude/hooks/heartbeat.sh`, wired in `~/.claude/settings.json`.\n- Statusline snippet lives in `~/.claude/statusline.sh` and reads the per-session counter file.\n- The reminder text is inline in the script - the rules it nudges about are personal and should be edited to match what matters most for the user reading them.\n- Public + MIT - good portfolio piece, immediately useful for anyone using Claude Code on long sessions.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-06T23:42:46+02:00"
+    },
+    {
+      "name": "Infrastructure",
+      "path": "~/_base/infra",
+      "description": "Infrastructure notes and access reference for the Hetzner VPS (Coolify) and the homelab (Proxmox host + Ubuntu VM running Coolify). Source of truth for SSH aliases, dashboard URLs, and where credentials live.",
+      "description_short": "Infrastructure notes and access reference for the Hetzner VPS (Coolify) and the homelab (Proxmox host + Ubuntu VM running Coolify).",
+      "stack": [
+        "- Hetzner Cloud (CPX22)\n- Proxmox VE (homelab)\n- Ubuntu Server VM\n- Coolify (on both Hetzner and homelab)\n- NetBird (mesh VPN to reach homelab remotely)"
+      ],
+      "hosting": "- **Hetzner VPS** — `ssh coolify-hetzner` — Coolify dashboard exposed via sslip.io\n- **Homelab Proxmox host** — web UI at `192.168.0.50:8006` (local network only)\n- **Homelab Ubuntu VM** — `ssh ubuntu-vm` — local `192.168.0.102`, NetBird `100.109.75.79`\n- **Homelab Coolify** — `192.168.0.102:8000` (local) or `100.109.75.79:8000` (via NetBird)",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Coolify on Hetzner — deploys public apps\n- Coolify on homelab VM — deploys private/dev apps\n- Proxmox — manages homelab VMs"
+      ],
+      "notes": "- Coolify passwords are saved in the password manager (entries: **Coolify coolify-1** and **Coolify .env coolify-1** for Hetzner; homelab Coolify entry likewise)\n- Proxmox root password is in the password manager\n- NetBird is NOT needed for Hetzner (public internet); it IS needed for the homelab when off the local network\n- NetBird breaks IPv6 for some CLIs (Supabase, Vercel) — disconnect when doing public-internet CLI work\n- Full reference: `~/_base/infra/proxmox/Home Server Cheatsheet.md`\n- Hetzner setup log: `~/_base/infra/hetzner/2026-06-01-coolify-1-setup.md`",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "coolify-personal"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "proxmox"
+        }
+      ],
+      "deployed_url": "https://sslip.io",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-21T13:35:10.421Z"
+    },
+    {
+      "name": "JSON-LD Schema Generator",
+      "path": "~/_work/internal/json-ld-generator",
+      "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
+      "description_short": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Prisma 7 (with `@prisma/adapter-pg` WASM engine)",
+        "PostgreSQL",
+        "Firecrawl API",
+        "OpenRouter",
+        "schema-dts",
+        "structured-data-testing-tool",
+        "Cheerio",
+        "Docker"
+      ],
+      "hosting": "Deployed on Coolify (Stormfors Hetzner server) at `aeo.stormfors.ai`. Build pack is Dockerfile (not nixpacks). Standalone PostgreSQL database (`json-ld-db`). The container entrypoint runs `prisma db push` and a slug backfill script on startup. There is no local database - DB operations require the deployed container.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/json-ld-generator"
+      },
+      "run_commands": {
+        "pnpm dev": "start Next.js dev server on port 3000",
+        "pnpm build": "build for production",
+        "pnpm start": "start production server",
+        "pnpm lint": "run ESLint",
+        "pnpm prisma db push": "push schema changes to database",
+        "pnpm prisma studio": "open Prisma database GUI",
+        "pnpm prisma generate": "regenerate Prisma Client after schema changes"
+      },
+      "services": [
+        "Firecrawl (web crawling)",
+        "OpenRouter (LLM)",
+        "Coolify (hosting)",
+        "Hetzner (server)",
+        "PostgreSQL",
+        "Trello (report posting)"
+      ],
+      "notes": "Prisma 7 has specific quirks: `prisma.config.ts` uses `process.env.DATABASE_URL ?? ''` (not `env()` - breaks Docker builds), `schema.prisma` has no `url` in the datasource block, and there is no `--skip-generate` flag. Prisma CLI is installed in an isolated `/prisma-cli` directory in Docker because pnpm symlinks break between build stages. Detailed deployment writeup lives at `~/knowledge-base/issues-solved/nextjs-prisma7-docker-coolify-hetzner-deployment.md`.",
+      "toolbox_mentions": [],
+      "deployed_url": "https://aeo.stormfors.ai",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:48:56+02:00"
+    },
+    {
+      "name": "Leadfront Clean Slate",
+      "path": "~/_work/leadfront/utilities/clean-slate",
+      "description": "",
+      "description_short": "",
+      "stack": [
+        "- Next.js dashboard (adapted from personal `clean-slate`)\n- systemd timer for the 6h sync\n- GitHub API (fine-grained token",
+        "read-only)"
+      ],
+      "hosting": "- Leadfront Linux container, NetBird-only",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [],
+      "notes": "",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-07-06T12:33:25.418Z"
+    },
+    {
+      "name": "Moiwak",
+      "path": "~/_personal/clients/moiwak",
+      "description": "Moiwak is a physical-product store launching summer 2026. This folder is a parent workspace containing two independent subprojects plus shared strategy documentation. The two subprojects must be kept strictly separate.\n\nmarketing-site/ is a Next.js 16 marketing site that launches first. Its purpose is to announce the store, build SEO foundations, and capture early interest before the shop is live.\n\nshopify-site/ is the Shopify storefront, targeting a mid-June to early July 2026 launch once enough products are ready.\n\nShared strategy lives in `/docs`: project overview, active tasks, backlog, SEO/AEO/GEO strategy, and retail operations (POS, inventory, suppliers, finance automation). Google Workspace is live.",
+      "description_short": "Moiwak is a physical-product store launching summer 2026.",
+      "stack": [
+        "Next.js 16 (marketing site)",
+        "Shopify (storefront)",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Vercel"
+      ],
+      "hosting": "Marketing site: Vercel. Shopify storefront: Shopify platform. No shared database.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw) - repos under the Moiwak GitHub organization",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "No single repo - each subproject has its own repo under the Moiwak GitHub org"
+      },
+      "run_commands": {
+        "pnpm dev": "start local dev server",
+        "pnpm build": "production build",
+        "pnpm lint": "run ESLint"
+      },
+      "services": [
+        "Vercel",
+        "Shopify",
+        "Google Workspace\n\n**Commerce/finance backbone:** Shopify ↔ Specter (ERP/POS hub",
+        "source of truth for stock and orders) ↔ Fortnox (accounting). Shopify is not wired to Fortnox directly - everything flows through Specter via its first-party connectors. Specter offer received 2026-05-22",
+        "under evaluation. Integration notes",
+        "API summary",
+        "and the Specter API doc live in `docs/integrations/`.\n\n**Analytics/compliance:** GA4 (G-JSQ0Q5KDBQ) via GTM (GTM-PG7ZCRD7)",
+        "Google Search Console",
+        "cookie consent (Cookiebot or alternative) on both sites",
+        "Signal Stack for SEO/AEO/GEO + tracking once the store is live."
+      ],
+      "notes": "No git repo at the parent workspace level - only the subprojects have repos. Workstreams A (foundations) and B (domain + email) are complete. Marketing site is scaffolded and deployed but has no features yet - spec brainstorm is pending. Do not add features to either subproject until the relevant workstream has an approved spec. Shopify research is documented in `shopify-site/docs/spec.md`.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md:113",
+      "last_modified": "2026-08-18T10:36:41.283Z"
+    },
+    {
+      "name": "no-excuses",
+      "path": "~/_personal/apps/no-excuses",
+      "description": "Personal home-workout cheat sheet PWA. Browse exercises by muscle group, see a minimum effective set, and log workouts on a calendar (per-day entries, pick from cheat sheet or free text). Single user (Hanna).",
+      "description_short": "Personal home-workout cheat sheet PWA.",
+      "stack": [
+        "Next.js 16 (App Router",
+        "server components)",
+        "React 19",
+        "Tailwind v4",
+        "shadcn/ui (base-nova)",
+        "next-themes (dark default)",
+        "TypeScript",
+        "pnpm."
+      ],
+      "hosting": "Vercel — production at https://no-excuses-tau.vercel.app. Scope/team `hannafmws-projects`. Private repo on Hobby does NOT auto-deploy from GitHub — deploy manually with `pnpm dlx vercel --prod --yes`.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/no-excuses"
+      },
+      "run_commands": {
+        "pnpm dev": "vite",
+        "pnpm build": "tsc && vite build"
+      },
+      "services": [
+        "- Vercel (hosting)\n- No database yet — workout log uses **localStorage**. Planned: plain Postgres container on home server when cross-device sync is wanted (no Supabase — overkill for one user)."
+      ],
+      "notes": "- Workout log: `/log` page, swappable data layer in `src/lib/workout-log.ts` (`loadEntries`/`saveEntry`/`deleteEntry`) — swap to a Postgres-backed API route without touching the UI.\n- Tailwind v4 font wiring: `@theme` in `globals.css` must reference the exact variable name `next/font` sets (e.g. `--font-geist-sans`). Self-referential `var(--font-sans)` silently falls back to default sans.\n- PWA: `public/manifest.ts` + flame icon makes it installable to Dock. Updates pick up on reopen / hard refresh.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:deploy"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "run"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "code-review"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None configured for this project (single-user, no backend yet)."
+        }
+      ],
+      "deployed_url": "https://no-excuses-tau.vercel.app",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md:157",
+      "last_modified": "2026-08-14T07:29:40+02:00"
+    },
+    {
+      "name": "OpenClaw",
+      "path": "~/_personal/openClaw",
+      "description": "OpenClaw is a self-hosted application running on a Proxmox homelab, deployed inside a Docker container managed by Coolify on a dedicated Ubuntu VM (VM1). The setup follows a security-first posture: the VM is network-isolated using NetBird (a WireGuard-based overlay network), SSH-hardened with fail2ban and UFW, and the application is accessible only through the private NetBird network.\n\nOpenClaw integrates with Telegram and provides optional security tooling via its ClawSec module. The repo (named `pfc` on GitHub) contains the installation guide and configuration notes for this deployment.",
+      "description_short": "OpenClaw is a self-hosted application running on a Proxmox homelab, deployed inside a Docker container managed by Coolify on a dedicated Ubuntu VM (VM1).",
+      "stack": [
+        "Docker",
+        "Coolify",
+        "Ubuntu 24.04",
+        "Proxmox",
+        "NetBird",
+        "Telegram integration"
+      ],
+      "hosting": "Self-hosted on Proxmox homelab. VM1 at local IP 192.168.0.102 / NetBird IP 100.109.75.79. Coolify manages containers on that VM. Accessible only via NetBird private network.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pfc"
+      },
+      "run_commands": {},
+      "services": [
+        "Proxmox",
+        "Coolify",
+        "NetBird",
+        "Telegram",
+        "fail2ban",
+        "UFW"
+      ],
+      "notes": "VM1 is isolated and dedicated to OpenClaw only - do not use it for other projects (the knowledge base runs on VM2). OpenClaw docs update frequently; use Context7 to look up current OpenClaw documentation rather than relying on the CLAUDE.md content.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:48:52+02:00"
+    },
+    {
+      "name": "Pindrop",
+      "path": "~/_personal/apps/pindrop",
+      "description": "Pindrop is a single-screen visual feedback tool for websites the developer builds, now live in production. The developer picks a page and a viewport (Desktop / Tablet / Mobile); a server-side Playwright capture renders a full-page screenshot, and comments are dropped as colored pins directly on the image. Pins are viewport-scoped so they never drift. Clients are invited per project via a private share link (branded email invite, no password), can add/resolve/react to pins, and get email notifications. Each project also exposes a per-project MCP server + API so an AI coding agent (Claude Code) can read that project's feedback, implement it, and mark pins done / reply - closing the loop from client comment to shipped fix. Screenshots are used instead of a live iframe because cross-origin iframes break full-height layouts and can't anchor pins reliably.",
+      "description_short": "Pindrop is a single-screen visual feedback tool for websites the developer builds, now live in production.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "server components",
+        "server actions)\n- TypeScript (strict)\n- Tailwind CSS v4 + shadcn/ui (dark/light mode via next-themes)\n- PostgreSQL via `pg` (no Supabase - plain Postgres)\n- Playwright (chromium) for server-side screenshot capture\n- Zod (validation)",
+        "Resend (optional email)"
+      ],
+      "hosting": "- **Live** on Hetzner via Coolify (Node server, not Vercel serverless - needed for Playwright)\n- Postgres: a managed Postgres container on the same host\n- Auth: single shared password gate (`proxy.ts`); clients enter via per-project share-token cookie\n- Email: Resend on a verified domain (branded client invites + notifications)",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pindrop"
+      },
+      "run_commands": {
+        "pnpm dev": "start dev server (port 3007)",
+        "node --env-file=.env.local scripts/migrate.mjs": "apply schema + seed demo project",
+        "pnpm build": "production build",
+        "pnpm test": "unit tests (Vitest)",
+        "node scripts/console-check.mjs": "Playwright console/e2e check"
+      },
+      "services": [
+        "- PostgreSQL - pins",
+        "comments",
+        "projects",
+        "screenshot metadata (`DATABASE_URL`)\n- Local screenshots stored under `data/screenshots/` (a volume in production)\n- Resend - optional owner notification email"
+      ],
+      "notes": "- Canvas renders the captured PNG (`/api/screenshot`); `/api/capture` (Playwright, nodejs runtime) takes the shot. A Capture/Refresh button re-captures.\n- Pins store `pin_x/pin_y` in image space + `viewport_w`; filtered per viewport.\n- Owner authed by shared `APP_PASSWORD`; clients by per-project share token (`/r/<token>` sets a 180-day cookie). Identity is derived server-side from the session, never the client.\n- **MCP:** per-project key (`pk_...`, `projects.mcp_token`) generated in the sidebar; `/api/mcp/*` routes bypass the password gate and auth by Bearer key. MCP server at `mcp/pindrop-mcp.mjs`. Setup steps in `docs/mcp-setup.md`; agent spec in `AGENTS.md`.\n- Screenshot display caps at the capture width (mobile renders phone-sized, not upscaled). Board view is parked (future Archive).\n- Dev DB currently points at the local Postgres on `127.0.0.1:54322`.\n- Sitemap: `/api/sitemap` uses the entered URL's origin, discovers via `robots.txt` + `/sitemap.xml`, `/sitemap_index.xml`, `/wp-sitemap.xml` (WordPress), stores a `pages` table; sidebar has a searchable page list + depth filter.\n- Capture robustness: normal Chrome UA (HeadlessChrome gets blocked), `waitUntil: 'load'` (networkidle never settles on real sites), scroll + force-eager + `data-src`/WP-placeholder image loading. SSRF guard blocks private/redirect targets in prod; `SSRF_ALLOW_LOCAL=1` only in dev.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:shadcn"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "compound-engineering:agent-browser / Playwright"
+        }
+      ],
+      "deployed_url": "https://proxy.ts",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T22:17:26+02:00"
+    },
+    {
+      "name": "pipeline-guardrails",
+      "path": "~/_base/utilities/pipeline-guardrails",
+      "description": "A modular safety and best-practice kit for the full code delivery pipeline — from opening the editor to the client seeing the deploy. Built for small teams that lean on AI coding assistants and need the safety net senior engineers usually carry in their heads.\n\nEight self-contained modules, each with a README covering the practice (what a senior dev does and why), the automation (the config, script, or hook that enforces it), and the maintenance (how it stays current). Reference-first: you read a module and copy its templates, there is no installer.\n\nPublic repo, MIT licensed, intended as a portfolio piece as well as a working reference.",
+      "description_short": "A modular safety and best-practice kit for the full code delivery pipeline — from opening the editor to the client seeing the deploy.",
+      "stack": [
+        "- Markdown documentation + copy-paste templates\n- Bash scripts (POSIX-compatible",
+        "tested on macOS BSD tooling)\n- JSON / YAML config templates\n- No application code",
+        "no build step",
+        "no dependencies"
+      ],
+      "hosting": "Not hosted or deployed anywhere. The Vercel and Coolify templates in module 07 are for *other* projects to copy — nothing in this repo deploys.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/pipeline-guardrails"
+      },
+      "run_commands": {},
+      "services": [
+        "None. No database",
+        "no API keys",
+        "no third-party accounts required to use the repo. Individual templates reference GitHub Actions",
+        "gitleaks",
+        "husky",
+        "CodeRabbit",
+        "1Password",
+        "Vercel",
+        "and Supabase",
+        "but only as things the *reader's* project may use."
+      ],
+      "notes": "- **Reference-first, no CLI.** An `init` / `update` CLI is planned but not implemented; the README says so explicitly rather than implying a package exists.\n- **Verification status matters here.** Config and hook templates have been checked against current official docs and the shell templates were executed. The workflow and deploy templates are unverified end-to-end — they can only be proven in a project that adopts them.\n- **The characteristic failure mode is silence.** A hook that stopped firing, a regex that doesn't know a new key format, or a renamed config key all look fine — nothing errors. The README carries a review-cadence table keyed to model releases and agent-tooling releases for this reason.\n- **All examples use fictional data** (`acme-` vaults, `@your-org/maintainers`) so nothing employer-specific ships in a public repo.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-10T15:17:30+02:00"
+    },
+    {
+      "name": "Portfolio",
+      "path": "~/_base/job-hub/portfolio",
+      "description": "Personal portfolio website. Built with Next.js 16 using the App Router, server components by default, with Framer Motion animations for page transitions and scroll effects.\n\nSupports two languages (English and Swedish) via next-intl, with translation files in `messages/en.json` and `messages/sv.json`. Swedish text must use real characters (å, ä, ö). Dark/light theme toggle via next-themes.",
+      "description_short": "Personal portfolio website.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "next-intl (i18n)",
+        "next-themes",
+        "shadcn/ui",
+        "Playwright"
+      ],
+      "hosting": "Not configured yet (no remote in git config). Likely Vercel.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "Not yet pushed to remote"
+      },
+      "run_commands": {
+        "pnpm dev": "Start dev server",
+        "pnpm build": "Production build",
+        "pnpm start": "Start production server",
+        "pnpm lint": "Run ESLint"
+      },
+      "services": [
+        "None"
+      ],
+      "notes": "- No remote configured in `.git/config` yet - repo has not been pushed\n- Client components only when browser APIs, state, or event handlers are needed\n- i18n: add translations to both `messages/en.json` and `messages/sv.json` for every string",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T22:02:03+02:00"
+    },
+    {
+      "name": "Portfolio Platform",
+      "path": "~/_base/job-hub/portfolio-platform",
+      "description": "A personal portfolio at portfolio.hosk.app, built as a platform-style dashboard rather than a traditional portfolio site. Visitors land in a sidebar-driven interface with sections for About, Projects, Services & Tools, and CV - mirroring the operational dashboard aesthetic of [clean-slate](https://github.com/hanna-fmw/clean-slate) but adapted for public consumption.\n\nThe Projects view reads from `CLEAN-SLATE.md` files across `~/Documents/` projects (same source files Clean Slate uses internally), but only includes projects flagged with `Portfolio: true`. Public repos show live URLs and source links; private repos show screenshots and a short blurb instead of internal run commands or infra notes.\n\nThe CV section is the source of truth for the resume - HTML rendered, with a print stylesheet that produces a clean PDF via browser print-to-PDF. The live URL works in LinkedIn's Featured section and as a Website link; the downloadable PDF covers ATS systems (Workday/Greenhouse/Lever).\n\nA sync script parses portfolio-flagged `CLEAN-SLATE.md` files into `config/data.json` at build time. No database, fully static.",
+      "description_short": "A personal portfolio at portfolio.hosk.app, built as a platform-style dashboard rather than a traditional portfolio site.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "next-themes"
+      ],
+      "hosting": "Vercel free tier. Domain: portfolio.hosk.app.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "TBD"
+      },
+      "run_commands": {
+        "pnpm dev": "start dev server on localhost:3400",
+        "pnpm build": "build for production",
+        "pnpm sync": "scan ~/Documents/ for CLEAN-SLATE.md files flagged `Portfolio: true` and regenerate config/data.json",
+        "pnpm test": "run tests",
+        "pnpm lint": "lint"
+      },
+      "services": [
+        "Vercel"
+      ],
+      "notes": "No database. Fully static. Data comes from portfolio-flagged CLEAN-SLATE.md files across ~/Documents/.\nTo add a project: in that project's `CLEAN-SLATE.md`, add `Portfolio: true` and a `## Portfolio` section with blurb, role, screenshots, and live URL.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "frontend-design"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "gemini-imagegen"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:deployments-cicd"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "Frontend Developer"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "UI Designer"
+        },
+        {
+          "type": "agent",
+          "category": null,
+          "name": "UX Architect"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "(none required for static site)"
+        }
+      ],
+      "deployed_url": "https://portfolio.hosk.app",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T22:17:55+02:00"
+    },
+    {
+      "name": "Prefeo API",
+      "path": "~/_work/stormfors/clients/rookie/rookie-api",
+      "description": "Production Express.js webhook/API service for the Prefeo recruitment lead-processing workflow, converted from an n8n flow. Handles inbound leads, scraping via Apify, CV parsing (pdf-parse), and OpenAI-assisted processing on a cron schedule.",
+      "description_short": "Production Express.js webhook/API service for the Prefeo recruitment lead-processing workflow, converted from an n8n flow.",
+      "stack": [
+        "- Express.js",
+        "TypeScript\n- Supabase (supabase-js)",
+        "Apify client",
+        "OpenAI\n- node-cron",
+        "helmet",
+        "express-rate-limit"
+      ],
+      "hosting": "- See repo deploy config (webhook service)",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-api"
+      },
+      "run_commands": {
+        "npm run dev": "dev server"
+      },
+      "services": [
+        "- Supabase",
+        "Apify",
+        "OpenAI"
+      ],
+      "notes": "- Originally an n8n workflow; this repo is the code conversion",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "nodejs-backend-patterns"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "n8n-workflow-patterns (for reference against the original flows)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-14T10:36:35+02:00"
+    },
+    {
+      "name": "Prefeo Platform",
+      "path": "~/_work/stormfors/clients/rookie/rookie-platform",
+      "description": "The main recruiting agency platform connecting candidates with companies, managed by Prefeo internal staff. Three portals: candidate, company (client), and admin, plus public routes for landing and job listings.\n\nThe flagship app of the Prefeo client engagement - active development.",
+      "description_short": "The main recruiting agency platform connecting candidates with companies, managed by Prefeo internal staff.",
+      "stack": [
+        "- Next.js 16 (App Router",
+        "Server Components",
+        "Server Actions)",
+        "TypeScript strict\n- Tailwind CSS v4",
+        "shadcn/ui\n- Supabase (PostgreSQL + RLS",
+        "Auth)\n- Cloudflare R2 (file storage)",
+        "dnd-kit (drag and drop)\n- pnpm"
+      ],
+      "hosting": "- Vercel (project linked via .vercel)\n- Supabase cloud",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie-platform"
+      },
+      "run_commands": {
+        "pnpm dev": "dev server",
+        "pnpm db:generate-types": "regenerate Supabase types"
+      },
+      "services": [
+        "- Supabase",
+        "Vercel",
+        "Railway",
+        "Cloudflare R2",
+        "Resend",
+        "Apify",
+        "OpenRouter"
+      ],
+      "notes": "- Six project-scoped MCP servers prefixed `rookie-` (see below). Configured in ~/.claude.json.\n- Rebrand in progress: Rookie → Prefeo AB (Bolagsverket confirmed 2026-06-12). Codebase + repos still use \"rookie\" naming during transition. Working folder: `docs/rebrand-prefeo/`.\n- **Staging environment** (set up 2026-07-02): sibling folder `rookie-platform-staging/` — local clone with GitHub push disabled, own `.env` pointing at staging Supabase (`prefeo-staging`) + staging R2 bucket. `cd` there and `PORT=3003 pnpm dev` to test anything with zero risk to prod code or prod data. `git pull` inside it to refresh from local main. Full how-to: that folder's `CLAUDE.md` + `docs/operations/staging.md`.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-supabase"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-railway"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-cloudflare"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-resend"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-trello"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "rookie-apify"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "vercel:nextjs, vercel:deployments-cicd, vercel:shadcn"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-14T10:55:30+02:00"
+    },
+    {
+      "name": "Private Knowledge Base",
+      "path": "~/_personal/apps/private-knowledge-base",
+      "description": "A personal knowledge base with semantic search and RAG over private markdown notes and documents. Three content sources feed into the system: a local `~/knowledge-base/` folder auto-synced to GitHub via `fswatch`, Google Drive folders (OAuth2, delta sync hourly / full sync every 6h), and manual drag-and-drop uploads in the admin UI.\n\nAll sources go through an ingestion pipeline that chunks content, embeds it using `all-MiniLM-L6-v2` (384-dim vectors, runs locally), and stores vectors in Qdrant. Users ask questions in a chat UI; the app retrieves relevant chunks and passes them to an LLM (Qwen 2.5 7B via HF Inference API) which streams the answer with source citations.\n\nThe web UI includes a TipTap markdown editor, a unified file sidebar showing content from all three sources (Repo / Google Drive / Uploads), and a chat interface. Deployed via Coolify on a dedicated VM (VM2) that is separate and isolated from other VMs on the home server.",
+      "description_short": "A personal knowledge base with semantic search and RAG over private markdown notes and documents.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "Qdrant",
+        "`@xenova/transformers` (local embeddings)",
+        "HF Inference API (Qwen LLM)",
+        "TipTap",
+        "Google Drive API",
+        "isomorphic-git",
+        "better-sqlite3",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Vitest",
+        "Playwright"
+      ],
+      "hosting": "App: Coolify on VM2 (Ubuntu 24.04 on Proxmox homelab). VM2 is accessible via NetBird VPN. Qdrant: Docker container managed by Coolify on VM2. No external database - uses SQLite (better-sqlite3) for metadata.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/private-knowledge-base"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server",
+        "npm run build": "Production build (allocates 4GB Node heap)",
+        "npm start": "Start production server",
+        "npm test": "Run Vitest unit tests",
+        "npm run test:watch": "Run Vitest in watch mode",
+        "npm run test:e2e": "Run Playwright E2E tests",
+        "npm run test:e2e:ui": "Run Playwright E2E tests with UI",
+        "npm run lint": "Run ESLint"
+      },
+      "services": [
+        "HF Inference API (Qwen LLM)",
+        "Google Drive API (OAuth2 connector)",
+        "Coolify (deployment)",
+        "Proxmox/NetBird (homelab infrastructure)"
+      ],
+      "notes": "- VM2 SSH: `ssh knowledge-base` (via NetBird, IP: 100.109.251.80)\n- Coolify on VM2: http://100.109.251.80:8000\n- Local notes source: `~/knowledge-base/` auto-pushed to GitHub via `fswatch` launchd service on Mac\n- GitHub repo acts as the sync mechanism between local notes and the app on VM2\n- LLM provider is abstracted - swapping from HF Inference to another provider requires only a config change\n- Scope is personal notes and docs only, not code projects\n- Build uses `NODE_OPTIONS='--max-old-space-size=4096'` due to heavy TypeScript type definitions (`googleapis` package)",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:48:50+02:00"
+    },
+    {
+      "name": "RankSmile",
+      "path": "~/_personal/apps/ranksmile",
+      "description": "An SEO SaaS targeting small Swedish businesses. Positioned as decision intelligence for SEO - it helps users optimize and generate content, not just write with AI. The core value is telling users what to do, not just surfacing data.\n\nThe project is a pnpm monorepo with two apps: `apps/web` (Next.js frontend on Vercel) and `apps/api` (Express backend to be deployed on Coolify). Auth uses Supabase. A Vercel Cron job runs daily at 06:00 UTC to process articles via `/api/cron/process-articles`. Magic link dev login is available via `node scripts/dev-login.js` from the repo root.",
+      "description_short": "An SEO SaaS targeting small Swedish businesses.",
+      "stack": [
+        "Next.js 16",
+        "TypeScript",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Express",
+        "Supabase (auth + PostgreSQL + RLS)",
+        "OpenRouter",
+        "Stripe",
+        "Resend",
+        "Vitest",
+        "pnpm workspaces"
+      ],
+      "hosting": "Web: Vercel (team: ranksmile). API: to be deployed on Coolify. Database: Supabase (EU region).",
+      "database": "",
+      "github": {
+        "account": "ranksmile (adminranksmile-design)",
+        "ssh_alias": "github.com-ranksmile",
+        "repo_url": "https://github.com/adminranksmile-design/ranksmile"
+      },
+      "run_commands": {
+        "pnpm dev": "start both web (port 3005) and API (port 8000) in parallel",
+        "pnpm dev:web": "start only the Next.js web app",
+        "pnpm dev:api": "start only the Express API",
+        "pnpm dev:login": "generate a magic link for dev login (requires env vars from `apps/web/.env.local`)",
+        "pnpm build": "build all apps",
+        "pnpm test": "run Vitest across all apps",
+        "pnpm lint": "run ESLint",
+        "pnpm type-check": "run TypeScript check across all apps"
+      },
+      "services": [
+        "Supabase (auth + database)",
+        "Vercel (hosting + cron)",
+        "OpenRouter (LLM)",
+        "Stripe (payments)",
+        "Resend (email)"
+      ],
+      "notes": "Two env files must be kept in sync: `apps/web/.env.local` (Next.js) and `.env.local` at repo root (API). Shared vars include Supabase keys and `CRON_SECRET`. Word count is capped at 500 in `apps/api/src/services/articles/article-generator.ts` during development - remove for production. Supabase project ref: `awtwkdkinpykaozbwcdy`. MCP server `supabase-ranksmile` is configured in `~/.claude.json`.",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md:70",
+      "last_modified": "2026-04-04T13:23:52+02:00"
+    },
+    {
+      "name": "Reclaim",
+      "path": "~/_base/utilities/reclaim",
+      "description": "Process-aware macOS disk + memory janitor. Auditable bash. Never deletes anything you appear to be actively working on (live dev server, dirty git tree, or files edited in last 24h). Every removed path is logged to an append-only JSONL audit log. Runs on a launchd schedule with a per-category tickbox approval dialog and an \"Ask Claude\" escape hatch.\n\nCleans 10 categories (each opt-in via tickbox, with size + why-it-is-safe note shown):\n1. `.next` caches — rebuilds on next dev\n2. Installer DMGs — old auto-update installers\n3. Docker unused images (full prune) — volumes never touched\n4. npm cache (`~/.npm/_cacache`) — rebuilds on next `npm install`\n5. Claude `vm_bundles` — skipped if Claude.app is running\n6. Dormant `node_modules` — per-project sub-picker, 30d+ idle only\n7. Ballooned Turbopack dev caches (2 GB+) — only on projects protection skips; never while that dev server runs\n8. Browser cache — cache dir only, never the profiles holding logins/passwords; needs the browser quit\n9. pnpm store — prune only, existing `node_modules` keep working\n10. Stray recordings (200 MB+, 30d+) — user's own files, never ticked by default\n\nAlso reported, never deleted: reboot gain, plus an offer to start the container runtime and rescan when its daemon is down.",
+      "description_short": "Process-aware macOS disk + memory janitor.",
+      "stack": [
+        "Bash",
+        "Python 3 (for history/stats/trend)",
+        "AppleScript (for the approval dialog and Chrome tab inspection)",
+        "launchd"
+      ],
+      "hosting": "Local macOS tool. Deployed to `~/.disk-cleanup/` by `install.sh`, CLI symlinked onto PATH.",
+      "database": "",
+      "github": {
+        "account": "**hanna-fmw** (personal)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/reclaim"
+      },
+      "run_commands": {},
+      "services": [
+        "- **launchd** — `dev.reclaim.plist`",
+        "label `dev.reclaim`",
+        "daily 08:45",
+        "with a 3-day gate inside `cleanup.sh` so it only actually acts every ~3 days.\n- **Docker** — pruned at clean time (images + build cache; never volumes). Step skipped silently if daemon is not running."
+      ],
+      "notes": "- Plist label: `dev.reclaim` (NOT `com.hanna.disk-cleanup`; changed during open-source cleanup to remove personal name from public artifacts).\n- Plist is templated with `__HOME__` placeholders that `install.sh` substitutes at install time, so the deployed plist has the actual user's home directory.\n- **Runtime vs source split.** Repo (`~/_base/utilities/reclaim/`) is the source of truth. `~/.disk-cleanup/` is the deployed runtime + per-machine state (`history.jsonl` audit log, `last-run` timestamp, deployed copies of `cleanup.sh` and `reclaim`). Runtime state is per-user and stays out of git; standard `/source vs /state` split (like `~/.config/*`, `~/.local/state/*`).\n- **Deploy discipline.** Always edit files in the repo, then run `./install.sh` to redeploy. Do NOT `cp` scripts directly into `~/.disk-cleanup/` — that lets the runtime drift ahead of the repo and un-committed source piles up. This bit us in 2026-07: months of source lived only in `~/.disk-cleanup/` before finally being committed.\n- `docs/` is gitignored. Initial cleanup notes from 2026-05-17 archived at `docs/initial-cleanup-2026-05-17.md` (local only). Scope-expansion plan at `docs/TODO-expand-scope.md` — items 1-4 shipped 2026-06-23 (v1.4), item 5 partially shipped 2026-08-10 (v1.5); item 6 + stopped-container pruning still open.\n- **Ask Claude button** (in the main dialog): opens Terminal.app in the repo dir, prints the cleanup plan, then drops into an interactive `claude` session so you can ask questions before deciding. After exiting Claude the dialog re-appears.\n- Version 1.5 (`reclaim --version`).",
+      "toolbox_mentions": [],
+      "deployed_url": "https://install.sh",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-14T15:33:06+02:00"
+    },
+    {
+      "name": "Rookie Ongoing",
+      "path": "~/_work/stormfors/clients/rookie/misc/rookie-ongoing/rookie-ongoing",
+      "description": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts. No application code.",
+      "description_short": "Docs and planning repo for ongoing Rookie work: PRD, backlog, task lists, project-setup templates, n8n flow exports, and helper scripts.",
+      "stack": [
+        "- Markdown docs",
+        "n8n flow JSON exports",
+        "shell scripts"
+      ],
+      "hosting": "- None (docs repo)",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/rookie-ongoing"
+      },
+      "run_commands": {},
+      "services": [
+        "- n8n (flow exports under n8n-flows/)"
+      ],
+      "notes": "- Default branch is `master` (not main)\n- Contains PRD.md, BACKLOG.md, TASKS.md, TEMPLATE-* setup docs",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "n8n-workflow-patterns, n8n-node-configuration (when editing flow exports)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-01-23T16:31:36+01:00"
+    },
+    {
+      "name": "Rookie Test Form",
+      "path": "~/_work/stormfors/clients/rookie/misc/rookie-test-form",
+      "description": "Scratch/test project for Rookie form flows (candidate/client intake forms). Local-only - no remote.",
+      "description_short": "Scratch/test project for Rookie form flows (candidate/client intake forms).",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript",
+        "Tailwind CSS",
+        "Radix primitives",
+        "motion"
+      ],
+      "hosting": "- None (local testing)",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "eslint"
+      },
+      "services": [
+        "- None"
+      ],
+      "notes": "- Test bed - has uncommitted experiments in the working tree",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-11T11:38:59+02:00"
+    },
+    {
+      "name": "Rookie Version 1",
+      "path": "~/_work/stormfors/clients/rookie/misc/rookie_version_1",
+      "description": "Earlier iteration of the Rookie site/platform (repo name `rookie_2.0`). Kept for reference - superseded by rookie-platform and rookie-marketing-website.",
+      "description_short": "Earlier iteration of the Rookie site/platform (repo name `rookie_2.0`).",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript\n- Tailwind CSS",
+        "Base UI primitives\n- Supabase (supabase-js)"
+      ],
+      "hosting": "- Not actively deployed (reference only)",
+      "database": "",
+      "github": {
+        "account": "rookieworkdev",
+        "ssh_alias": "github.com-rookie",
+        "repo_url": "https://github.com/rookieworkdev/rookie_2.0"
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "eslint"
+      },
+      "services": [
+        "- Supabase"
+      ],
+      "notes": "- Archive/reference - active work happens in rookie-platform",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-11T11:38:59+02:00"
+    },
+    {
+      "name": "SignalStack",
+      "path": "~/_personal/apps/signalstack",
+      "description": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO. Built for non-technical users - natural language chat is the primary interface, not dashboards full of charts.\n\nThe two core selling points are: (1) Talk to your data - ask any marketing data a question in plain language, and (2) Your weekly action plan - cross-subsystem LangGraph agents extract top findings from each area and a consolidator synthesizes them into a ranked action plan. This \"action plan\" feature is the main differentiator - it replaces what an SEO agency decision-maker does.\n\nNavigation is workflow-based: 5 main pages (Home, Research, Visibility, Content, Ads) with progressive disclosure (\"More tools\" sections). Old domain-based routes redirect to new pages.\n\nThe architecture is an npm workspaces monorepo with `apps/web` (Next.js), `apps/api` (Express on port 5000), and `packages/shared`. The Express API is a persistent server (avoids serverless timeouts for AI workloads). Auth is Supabase with JWT verified via jose + JWKS in Express middleware.",
+      "description_short": "An AI-powered marketing intelligence SaaS covering SEO, AEO (Answer Engine Optimization), Google Ads monitoring, and local SEO.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "Express",
+        "Supabase (auth + PostgreSQL + RLS)",
+        "OpenRouter",
+        "LangGraph",
+        "Zod",
+        "Vitest",
+        "React Testing Library",
+        "npm workspaces"
+      ],
+      "hosting": "Web: Vercel at `app.signalstack.hosk.app`. API: Coolify on Hetzner CPX22 (Helsinki, `coolify-1`) at `api.signalstack.hosk.app`. Database: Supabase (EU, free tier — single project, dev = prod for now; will split when first real client onboards). Cloudflare Tunnel + Access (email-OTP) gates the Coolify dashboard at `coolify-hetzner.hosk.app` and SSH at `ssh-coolify-hetzner.hosk.app`. Hetzner public IP serves only 80/443/ICMP; port 22 is closed and all SSH goes through the tunnel.",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/signal-stack"
+      },
+      "run_commands": {
+        "npm run dev": "start both web and API in parallel",
+        "npm run dev:web": "start only the Next.js web app",
+        "npm run dev:api": "start only the Express API (port 5000)",
+        "npm run build": "build all workspaces",
+        "npm run test": "run Vitest across all workspaces (run from repo root so `.env` is picked up)",
+        "npm run lint": "run ESLint",
+        "npm run format": "format with Prettier"
+      },
+      "services": [
+        "Supabase (auth + database)",
+        "OpenRouter (LLM)",
+        "Apify (data scraping)",
+        "Jina AI Reader (content extraction)",
+        "PageSpeed API",
+        "Google Ads API (planned)"
+      ],
+      "notes": "Run `npm test` from the repo root - Vitest needs the root `.env` file. Running `npx vitest run` inside `apps/api` also works when test setup mocks dependencies before real imports. Architecture overview in `docs/ARCHITECTURE.md`. Competitive gap analysis vs Otterly.AI, Ahrefs, SEMrush, Trackerly.ai at `docs/research/2026-04-03-competitive-gap-analysis.md`. Launch checklist + deployment runbook in `docs/LAUNCH.md`. MCP server `supabase-signalstack` is configured in `~/.claude.json`. Coolify session notes for the Hetzner server in `~/Documents/projects/infra/infra/hetzner/`.",
+      "toolbox_mentions": [],
+      "deployed_url": "https://app.signalstack.hosk.app",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md:39",
+      "last_modified": "2026-08-22T07:37:13+02:00"
+    },
+    {
+      "name": "Social Media Generator",
+      "path": "~/_personal/apps/social-media-generator",
+      "description": "A multi-agent content generator that uses LangGraph.js for agent orchestration. The system learns your writing style from previous posts and generates new content across multiple formats: blog posts, LinkedIn posts, Instagram captions, Twitter threads, and YouTube scripts.\n\nThe agent pipeline consists of specialized nodes - a topic agent, a research agent, and a writing agent - each handling a stage of content creation. Style examples stored in a library teach the system your voice. Content moves through a draft stage before being published to the library.\n\nThe app uses Supabase as the database (can run locally via `supabase start` + Docker, or against the hosted project). The LLM is Claude Sonnet via the Anthropic API (routed through `@langchain/openai` compatible interface).",
+      "description_short": "A multi-agent content generator that uses LangGraph.js for agent orchestration.",
+      "stack": [
+        "Next.js (App Router)",
+        "TypeScript",
+        "LangGraph.js",
+        "LangChain",
+        "Supabase",
+        "Claude Sonnet",
+        "shadcn/ui",
+        "Tailwind CSS"
+      ],
+      "hosting": "Vercel (frontend/API). Supabase (database - hosted or local Docker instance).",
+      "database": "",
+      "github": {
+        "account": "personal (hanna-fmw)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/social-media-generator"
+      },
+      "run_commands": {
+        "npm run dev": "Start dev server (requires Docker + `supabase start` first if using local Supabase)",
+        "npm run build": "Production build",
+        "npm start": "Start production server",
+        "npm run lint": "Run ESLint"
+      },
+      "services": [
+        "Supabase (database)",
+        "Anthropic Claude API (LLM)",
+        "LangGraph.js (agent orchestration)"
+      ],
+      "notes": "- **Local dev startup order is mandatory:** (1) Start Docker Desktop, (2) run `supabase start` in terminal, (3) then `npm run dev` in a new terminal. Skipping steps causes middleware fetch failures.\n- Task list lives in `docs/TASKS_V2.md` - mark tasks complete as you go\n- Architecture overview in `docs/ARCHITECTURE_V2.md`\n- Active refactor branch: `refactor/project-restructure`\n- **Scope-down decision 2026-08-19:** do NOT complete the full 12-phase\n  TASKS_V2 refactor before calling this project done. Minimal finish: the app\n  runs, the style-example-to-generated-post flow works end to end, and the\n  README reflects reality. Before calling it done: run a code review\n  (/code-review) and fix findings, then debrief it in learning-hub's\n  built-projects topic, then tell the job-hub session (it strengthens the\n  tone-of-voice claim in the content-manager CV as \"built her own tooling\",\n  side projects stay unnamed there).",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T22:17:30+02:00"
+    },
+    {
+      "name": "Testing Rookie Queries",
+      "path": "~/_work/stormfors/clients/rookie/misc/testing-rookie-queries/frontend",
+      "description": "Scratch/test project for trying Supabase queries against Rookie data (frontend harness). Local-only - no remote.",
+      "description_short": "Scratch/test project for trying Supabase queries against Rookie data (frontend harness).",
+      "stack": [
+        "- Next.js (App Router)",
+        "TypeScript",
+        "Supabase (ssr + supabase-js)",
+        "Tailwind CSS"
+      ],
+      "hosting": "- None (local testing)",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {
+        "pnpm dev": "next dev",
+        "pnpm build": "next build",
+        "pnpm start": "next start",
+        "pnpm lint": "eslint"
+      },
+      "services": [
+        "- Supabase (test queries)"
+      ],
+      "notes": "- Query test bed - has uncommitted experiments in the working tree",
+      "toolbox_mentions": [],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-11T11:38:59+02:00"
+    },
+    {
+      "name": "Todo",
+      "path": "~/_personal/apps/tauri-todo",
+      "description": "A tiny personal Todo app for macOS. Tauri + React with local JSON storage. Folders to separate tasks (Personal, Work, etc.), native macOS traffic-light buttons, dark UI inspired by the AI Hub start-learning card.",
+      "description_short": "A tiny personal Todo app for macOS.",
+      "stack": [
+        "- **Tauri 2** (Rust backend)\n- **React 19** + **TypeScript** + **Vite**\n- **serde / serde_json** for JSON storage\n- Plain CSS (no Tailwind",
+        "no shadcn — too heavy for one-window app)"
+      ],
+      "hosting": "- Local desktop app, no server.",
+      "database": "",
+      "github": {
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/todo"
+      },
+      "run_commands": {
+        "pnpm dev": "vite",
+        "pnpm build": "tsc && vite build"
+      },
+      "services": [
+        "- None. Storage is local JSON at `~/Library/Application Support/dev.todo/todos.json`."
+      ],
+      "notes": "- Window has native macOS traffic lights (`titleBarStyle: \"Overlay\"`, `hiddenTitle: true`) — sidebar/titlebar regions are `-webkit-app-region: drag` for moving.\n- Default folders on first run: Personal, Work.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None needed."
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "None specific."
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-06-15T07:41:14+02:00"
+    },
+    {
+      "name": "UJD Shopify",
+      "path": "~/_personal/clients/ujd-shopify",
+      "description": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se). Live production e-commerce site. Tweaks, product additions, descriptions, collections, pages, blog setup.\n\nSibling app `content-studio/` is a custom Next.js + Vercel app for Ulla. 4-step wizard (beskriv plagget → pris/storlekar → bilder → granska och skicka) that uses OpenRouter (GPT-5-mini) to write product descriptions in her voice and Gemini 3 Pro Image (Nano Banana Pro) to AI-edit product photos, then saves the product as a Shopify draft with sizes, prices, inventory, and attached images via the Admin API.",
+      "description_short": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se).",
+      "stack": [
+        "- Shopify (Liquid theme",
+        "native) for the storefront\n- `content-studio/` — Next.js 16 (App Router) + TypeScript + Tailwind v4 + shadcn/ui",
+        "deployed to Vercel\n- Shopify CLI for theme sync\n- Admin GraphQL via shopify-mcp + shopify store execute + content-studio (client_credentials grant)"
+      ],
+      "hosting": "Shopify-hosted. Public domain: ullajacobssondesign.se.",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- Shopify store: `1qerbz-rh.myshopify.com` (admin: https://admin.shopify.com/store/1qerbz-rh)\n- Custom app **Claude Code UJD** in Dev Dashboard — `client_credentials` grant",
+        "scopes set as **Required** (see `docs/shopify-admin-api-setup.md`)\n- OpenRouter (text + image gen via Gemini)\n- Vercel Hobby (content-studio)"
+      ],
+      "notes": "Live production site. Default everything to DRAFT / development theme. Never push to live theme or publish products/pages/collections/articles without explicit user approval for that specific change.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify-dev-mcp"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "shopify-mcp"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "shopify:dev"
+        }
+      ],
+      "deployed_url": "https://ullajacobssondesign.se",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-05-22T13:59:28.590Z"
+    },
+    {
+      "name": "Ultracode Weekly Audit",
+      "path": "~/_base/utilities/ultracode-weekly-audit",
+      "description": "A standing weekly routine that spends any leftover Claude Code Max weekly usage on a deep, read-only ultracode audit of one active project, right before the weekly limit resets. \"Use it or lose it\" budget for free deep code reviews.",
+      "description_short": "A standing weekly routine that spends any leftover Claude Code Max weekly usage on a deep, read-only ultracode audit of one active project, right before the weekly limit resets.",
+      "stack": [
+        "- Claude Code (multi-agent **Workflow** mode",
+        "triggered by the `ultracode` keyword)\n- Cloud routine on claude.ai (cron) + Gmail MCP connector for the reminder email"
+      ],
+      "hosting": "- Routine runs in Anthropic cloud (CCR) on cron `0 10 * * 5` UTC (Fri 12:00 Stockholm)\n- Audit itself runs locally in Claude Code on the user's machine",
+      "database": "",
+      "github": {
+        "account": "",
+        "ssh_alias": "",
+        "repo_url": ""
+      },
+      "run_commands": {},
+      "services": [
+        "- claude.ai routine ID: `trig_01RLiQ1hrmHVfgUuXh1nCixA`\n- Manage / disable: https://claude.ai/code/routines/trig_01RLiQ1hrmHVfgUuXh1nCixA\n- Gmail MCP connector (sends the weekly reminder email)"
+      ],
+      "notes": "- Reset time: **Friday 14:00 Stockholm**. Reminder fires 2h before.\n- Audit output goes to each target project's `docs/audits/<date>.md` (gitignored by default).\n- Start audits early enough to finish before reset — a big run can take 20–60+ minutes.\n- Read-only by design — the prompt explicitly forbids code modification so the report can be reviewed later or fed to a second LLM for a judge pass.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "schedule"
+        },
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "Gmail (claude.ai connector)"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-06-27T07:34:02.374Z"
+    },
+    {
+      "name": "Unlogged",
+      "path": "~/_base/utilities/unlogged",
+      "description": "Fullscreen macOS overlay that takes over the screen on Friday afternoons and refuses to be ignored until time is logged in Harvest. Built with Tauri 2 (Rust + WebView), runs at ~15 MB and ~0% idle CPU. Active animation: a terminal-style ASCII skull reveal with typed alert lines.",
+      "description_short": "Fullscreen macOS overlay that takes over the screen on Friday afternoons and refuses to be ignored until time is logged in Harvest.",
+      "stack": [
+        "Tauri 2",
+        "Rust",
+        "React",
+        "TypeScript",
+        "Vite",
+        "pnpm"
+      ],
+      "hosting": "Local macOS app (not hosted). LaunchAgent schedule + tray menu integration.",
+      "database": "",
+      "github": {
+        "account": "**hanna-fmw** (personal)",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/unlogged"
+      },
+      "run_commands": {
+        "pnpm dev": "vite",
+        "pnpm build": "tsc && vite build",
+        "pnpm test": "vitest"
+      },
+      "services": [
+        "- **Harvest API** — Personal Access Token + Account ID",
+        "stored at `~/Library/Application Support/dev.unlogged/state.json` (0600 perms). Set via tray menu → \"Harvest credentials…\".\n- **launchd** — schedule fires `dev.unlogged.plist`",
+        "label `dev.unlogged`",
+        "default Friday 16:45.\n- **macOS Login Items** — app added so Cmd+Shift+H survives reboots."
+      ],
+      "notes": "- Bundle identifier: `dev.unlogged` (NOT `com.hanna.timereport`; changed during open-source prep to remove personal name from public artifacts).\n- State file location depends on bundle identifier — if identifier changes again, migrate `~/Library/Application Support/<old-id>/state.json` to the new dir.\n- TCC (Automation permission for System Events) is keyed by bundle identifier; identifier change re-prompts once.\n- `docs/` is gitignored except `docs/screenshot.png`. Walkthrough, handoffs, planning files stay local.",
+      "toolbox_mentions": [
+        {
+          "type": "skill",
+          "category": null,
+          "name": "superpowers"
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "session-handoff"
+        },
+        {
+          "type": "plugin",
+          "category": null,
+          "name": "firecrawl-mcp-stormfors"
+        },
+        {
+          "type": "plugin",
+          "category": null,
+          "name": "plugin:compound-engineering:context7"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "~/_base/clean-slate/private/vault.md",
+      "last_modified": "2026-08-21T21:48:03+02:00"
+    },
+    {
+      "name": "yllw-app",
+      "path": "~/_work/stormfors/clients/yllw/yllw-app",
+      "description": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts. Structure (procurements, sub-areas, brands, discount categories) is authored in the Webflow CMS and mirrored into Supabase via WhaleSync; the portal writes documents and publish state only.\n\nSchema rebuild + LIVE cutover complete 2026-06-20. New model: documents → discount_category_documents → procurement_documents (derived via triggers) → current_documents. Portal procurement-detail page fully shipped (read-only meta + accordion of discount categories + link/unlink modals + inline edit + create/delete category). E2E testing pass 2 merged 2026-06-22. Cover-page schema migrated from FK to direct URL field. In-app Help section added 2026-06-23 with Hjälp link in the sidebar; upload-limits flipped from free-tier to Supabase Pro (bucket cap raised to 1 GB, no client-side size check, friendly Swedish error mapping for tus failures). Real-PDF migration completed 2026-06-11. Demo-prep round 2026-06-23 added a `documents.description` text column (Beskrivning) surfaced to Webflow one-way + an editable field in upload and archive-edit forms, dropped the Status column / Land filter / Rabattkategorier trash icon / detail-page banner / \"Ersatt\" wording (now \"Tidigare version\"), renamed the nav \"Arkiv\" → \"Dokumentarkiv\", added required-asterisks to upload form, added inline ⚠ warning icons on the Upphandlingar list when `upload_rules` + `allowed_dates` are inconsistent, and added a Koppling filter to the link-documents modal.",
+      "description_short": "Client portal for managing procurement price-list PDFs: upload, versioned publishing with per-procurement time windows, and derived discounts.",
+      "stack": [
+        "Next.js (App Router) + TypeScript",
+        "Tailwind",
+        "Supabase (Postgres + Storage + Auth magic link)",
+        "WhaleSync",
+        "Webflow CMS",
+        "Zod."
+      ],
+      "hosting": "Client Vercel (Hobby), deploys via GitHub Actions (push = preview, main = production).",
+      "database": "",
+      "github": {
+        "account": "LeadfrontAB",
+        "ssh_alias": "github.com-leadfront",
+        "repo_url": "https://github.com/LeadfrontAB/yllw-app"
+      },
+      "run_commands": {},
+      "services": [
+        "Client Supabase (eu-north-1)",
+        "client Vercel",
+        "WhaleSync (live sync built + verified)",
+        "Webflow live site (built) + Copy site (sandbox). Plus a separate TESTING stack: test Supabase on the company account + Copy Webflow",
+        "deployed to a personal Vercel via CLI."
+      ],
+      "notes": "- LIVE cutover done 2026-06-20 (all migrations applied, Phase 6 smoke test green, storage orphans cleaned, stray test procurement removed). Remaining infra polish: replicate migration 20260620150000 + storage cleanup on yllw-testing, switch countries source from (new) to LIVE Länder/countries (attempted + reverted today — needs Webflow schema change on Procurements (new).Country + Regions (new).Country reference fields, test on yllw-testing first).\n- TWO environments, never to be mixed: PRODUCTION (`yllw-app` -> client Vercel via GitHub Actions, client Supabase, LIVE Webflow) and TESTING (`yllw-testing` -> personal Vercel via `vercel` CLI, test Supabase, COPY Webflow). The testing clone has its push URL disabled and no deploy workflow so it can never reach live. Full map in CLAUDE.md / AGENTS.md.\n- Testing deploy is interim CLI-from-local; a durable GitHub-Actions staging pipeline is to be written after the demo.\n- LIVE bucket `documents` is on Supabase Pro with `file_size_limit = 1 GB`. Test Supabase is still free-tier (~50 MB cap) so very large files can only be validated on LIVE.\n- Nothing touches the live Webflow site except deliberate, confirmed go-live steps.\n- Agent-accessibility opt-out: internal admin tool for a handful of client users; no public API surface planned.",
+      "toolbox_mentions": [
+        {
+          "type": "mcp",
+          "category": null,
+          "name": "None configured for this project (Supabase access via CLI/REST with project-scoped credentials)."
+        },
+        {
+          "type": "skill",
+          "category": null,
+          "name": "session-handoff"
+        }
+      ],
+      "deployed_url": "",
+      "chrome_profile": "",
+      "vault": "",
+      "last_modified": "2026-08-19T14:22:02+02:00"
+    }
+  ],
   "services": [
     {
       "name": "GitHub",

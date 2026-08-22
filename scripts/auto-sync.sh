@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PROJECT_DIR="$HOME/system/clean-slate"
+PROJECT_DIR="$HOME/_base/clean-slate"
 cd "$PROJECT_DIR"
 
 export PATH="/opt/homebrew/bin:/opt/homebrew/share/pnpm:/usr/local/bin:$HOME/.local/bin:$PATH"
