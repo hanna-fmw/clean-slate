@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T06:27:15.854Z",
+  "generated_at": "2026-08-22T12:52:57.057Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -245,7 +245,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:145",
-      "last_modified": "2026-08-21T22:17:32+02:00"
+      "last_modified": "2026-08-22T14:21:50+02:00"
     },
     {
       "name": "browse-me",
@@ -287,11 +287,11 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T21:50:32+02:00"
+      "last_modified": "2026-08-22T10:43:38+02:00"
     },
     {
       "name": "claude-bloat",
-      "path": "~/_system/utilities/claude-bloat/docs",
+      "path": "~/_system/backstage/claude-bloat/from-docs",
       "description": "CLI that measures what Claude Code loads into context before you type anything — the global\n`CLAUDE.md`, its `@`-imports, `~/.claude/rules/`, plus skill and subagent descriptions — and\ntracks it week over week. Pops a macOS dialog (not a banner: Focus modes suppress those)\nwhen something crosses a threshold, and never edits config itself. Token counts are\ncalibrated against a real `/context` run rather than estimated from word counts, which read\nabout 40% low on dense markdown.\n\nCompanion utility `paths` (separate, local-only) keeps a registry of stable folder keys so\nmoving a folder does not break the skills and hooks pointing at it.",
       "description_short": "CLI that measures what Claude Code loads into context before you type anything — the global",
       "stack": [
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-10T18:26:19+02:00"
+      "last_modified": "2026-08-22T10:50:14+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-22T08:26:52+02:00"
+      "last_modified": "2026-08-22T10:37:11+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -418,7 +418,7 @@
       "deployed_url": "https://kb.stormfors.ai",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-22T07:51:04+02:00"
+      "last_modified": "2026-08-22T10:43:33+02:00"
     },
     {
       "name": "demoflow",
@@ -503,7 +503,7 @@
       "deployed_url": "https://compose.yml",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-07T09:12:16+02:00"
+      "last_modified": "2026-08-22T10:43:50+02:00"
     },
     {
       "name": "djapo",
@@ -580,7 +580,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T22:17:59+02:00"
+      "last_modified": "2026-08-22T08:28:22+02:00"
     },
     {
       "name": "git-guard",
@@ -659,7 +659,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-06-06T13:50:16+02:00"
+      "last_modified": "2026-08-22T10:43:50+02:00"
     },
     {
       "name": "Health Insights Tracker (Web)",
@@ -707,7 +707,7 @@
       "deployed_url": "https://hanna.app",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T21:48:44+02:00"
+      "last_modified": "2026-08-22T10:43:38+02:00"
     },
     {
       "name": "heartbeat-hook",
@@ -735,7 +735,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-06T23:42:46+02:00"
+      "last_modified": "2026-08-22T10:43:55+02:00"
     },
     {
       "name": "Infrastructure",
@@ -748,15 +748,15 @@
       "hosting": "- **Hetzner VPS** — `ssh coolify-hetzner` — Coolify dashboard exposed via sslip.io\n- **Homelab Proxmox host** — web UI at `192.168.0.50:8006` (local network only)\n- **Homelab Ubuntu VM** — `ssh ubuntu-vm` — local `192.168.0.102`, NetBird `100.109.75.79`\n- **Homelab Coolify** — `192.168.0.102:8000` (local) or `100.109.75.79:8000` (via NetBird)",
       "database": "",
       "github": {
-        "account": "",
-        "ssh_alias": "",
-        "repo_url": ""
+        "account": "hanna-fmw",
+        "ssh_alias": "github.com-personal",
+        "repo_url": "https://github.com/hanna-fmw/infra"
       },
       "run_commands": {},
       "services": [
         "- Coolify on Hetzner — deploys public apps\n- Coolify on homelab VM — deploys private/dev apps\n- Proxmox — manages homelab VMs"
       ],
-      "notes": "- Coolify passwords are saved in the password manager (entries: **Coolify coolify-1** and **Coolify .env coolify-1** for Hetzner; homelab Coolify entry likewise)\n- Proxmox root password is in the password manager\n- NetBird is NOT needed for Hetzner (public internet); it IS needed for the homelab when off the local network\n- NetBird breaks IPv6 for some CLIs (Supabase, Vercel) — disconnect when doing public-internet CLI work\n- Full reference: `~/_system/infra/proxmox/Home Server Cheatsheet.md`\n- Hetzner setup log: `~/_system/infra/hetzner/2026-06-01-coolify-1-setup.md`",
+      "notes": "- Coolify passwords are saved in the password manager (entries: **Coolify coolify-1** and **Coolify .env coolify-1** for Hetzner; homelab Coolify entry likewise)\n- Proxmox root password is in the password manager\n- NetBird is NOT needed for Hetzner (public internet); it IS needed for the homelab when off the local network\n- NetBird breaks IPv6 for some CLIs (Supabase, Vercel) — disconnect when doing public-internet CLI work\n- Full reference: `proxmox/Home Server Cheatsheet.md`\n- Hetzner setup log: `hetzner/2026-06-01-coolify-1-setup.md`",
       "toolbox_mentions": [
         {
           "type": "mcp",
@@ -772,7 +772,7 @@
       "deployed_url": "https://sslip.io",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-21T13:35:10.421Z"
+      "last_modified": "2026-08-22T14:50:18+02:00"
     },
     {
       "name": "JSON-LD Schema Generator",
@@ -822,7 +822,7 @@
       "deployed_url": "https://aeo.stormfors.ai",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T21:48:56+02:00"
+      "last_modified": "2026-08-22T10:43:34+02:00"
     },
     {
       "name": "Leadfront Clean Slate",
@@ -953,7 +953,7 @@
       "deployed_url": "https://no-excuses-tau.vercel.app",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:157",
-      "last_modified": "2026-08-14T07:29:40+02:00"
+      "last_modified": "2026-08-22T10:43:37+02:00"
     },
     {
       "name": "OpenClaw",
@@ -1038,7 +1038,7 @@
       "deployed_url": "https://proxy.ts",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T22:17:26+02:00"
+      "last_modified": "2026-08-22T10:43:50+02:00"
     },
     {
       "name": "pipeline-guardrails",
@@ -1076,7 +1076,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-10T15:17:30+02:00"
+      "last_modified": "2026-08-22T10:43:54+02:00"
     },
     {
       "name": "Portfolio",
@@ -1114,7 +1114,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T22:02:03+02:00"
+      "last_modified": "2026-08-22T10:44:11+02:00"
     },
     {
       "name": "Portfolio Platform",
@@ -1191,7 +1191,7 @@
       "deployed_url": "https://portfolio.hosk.app",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T22:17:55+02:00"
+      "last_modified": "2026-08-22T10:44:09+02:00"
     },
     {
       "name": "Prefeo API",
@@ -1364,7 +1364,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T21:48:50+02:00"
+      "last_modified": "2026-08-22T10:43:38+02:00"
     },
     {
       "name": "RankSmile",
@@ -1413,7 +1413,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:70",
-      "last_modified": "2026-04-04T13:23:52+02:00"
+      "last_modified": "2026-08-22T10:44:11+02:00"
     },
     {
       "name": "Reclaim",
@@ -1445,7 +1445,7 @@
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-14T15:33:06+02:00"
+      "last_modified": "2026-08-22T10:43:23+02:00"
     },
     {
       "name": "Rookie Ongoing",
@@ -1597,7 +1597,7 @@
       "deployed_url": "https://app.signalstack.hosk.app",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:39",
-      "last_modified": "2026-08-22T07:37:13+02:00"
+      "last_modified": "2026-08-22T10:43:52+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1637,7 +1637,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T22:17:30+02:00"
+      "last_modified": "2026-08-22T10:43:50+02:00"
     },
     {
       "name": "Testing Rookie Queries",
@@ -1712,7 +1712,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-06-15T07:41:14+02:00"
+      "last_modified": "2026-08-22T10:43:37+02:00"
     },
     {
       "name": "UJD Shopify",
@@ -1854,7 +1854,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-21T21:48:03+02:00"
+      "last_modified": "2026-08-22T10:43:55+02:00"
     },
     {
       "name": "yllw-app",
@@ -1900,7 +1900,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-19T14:22:02+02:00"
+      "last_modified": "2026-08-22T14:41:05+02:00"
     }
   ],
   "services": [
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-22T06:26:52.842Z",
+    "synced_at": "2026-08-22T12:52:57.624Z",
     "agents": [
       {
         "name": "ai-architect",
@@ -2759,7 +2759,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "unknown",
+        "version": "3afb46aa148a",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2789,7 +2789,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "unknown",
+        "version": "3afb46aa148a",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2939,16 +2939,16 @@
         }
       },
       {
-        "name": "fmw-pending",
-        "description": "Capture a new idea, project, or task into ~/_projects/pending so Hanna can stop holding it in her head and get back to work. Use ONLY when she invokes /fmw-pending explicitly, or asks in her own words to save/park an idea, project or task. Never trigger on ordinary phrases like \"I got an idea\" or \"jag kom på en grej\" - she says those constantly and does not want them captured.",
+        "name": "fmw-reclaim",
+        "description": "Run Hanna's reclaim disk-cleanup tool from chat - scan, show the plan as a numbered list, let her pick categories, then clean. Use when she says \"/fmw-reclaim\", \"run reclaim\", \"clean up my disk\", \"free up space\", \"disk is full\", or after a Disk Cleanup notification appeared.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
         }
       },
       {
-        "name": "fmw-reclaim",
-        "description": "Run Hanna's reclaim disk-cleanup tool from chat - scan, show the plan as a numbered list, let her pick categories, then clean. Use when she says \"/fmw-reclaim\", \"run reclaim\", \"clean up my disk\", \"free up space\", \"disk is full\", or after a Disk Cleanup notification appeared.",
+        "name": "fmw-scaffold-project",
+        "description": "Start anything new - an app, a utility, a client project, or a raw idea to park for later - or review a repo before making it public. Creates the folder in the right place, a private GitHub repo, the backstage notes link, and README/AGENTS.md. Use when Hanna says she wants to start, build, create or set up a project, app, tool, utility or site, when she has an idea she wants saved for later, or invokes /fmw-scaffold-project. Never trigger on casual phrases like \"I got an idea\" or \"jag kom pa en grej\" - she says those constantly and does not want them captured.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
@@ -2996,7 +2996,7 @@
       },
       {
         "name": "frontend-design",
-        "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
+        "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.",
         "plugin": "frontend-design",
         "origin": {
           "source": "anthropic",
@@ -3006,7 +3006,7 @@
       },
       {
         "name": "skill-creator",
-        "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+        "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
         "plugin": "skill-creator",
         "origin": {
           "source": "anthropic",
