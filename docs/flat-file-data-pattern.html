@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flat-file data pattern - when to use it instead of a database</title>
+  <style>
+    body { max-width: 50rem; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, sans-serif; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <p>Yes - and it's a legit, well-known pattern, not a hack. It's sometimes called a <strong>flat-file / git-as-data / build-time data</strong> approach. The rule of thumb for when it fits:</p>
+
+  <p><strong>Good fit (use this instead of a database):</strong></p>
+  <ul>
+    <li>The data only changes occasionally, and only <em>you</em> (or a trusted few) change it</li>
+    <li>The app only ever <em>reads</em> it - users don't create or edit data through the app</li>
+    <li>It's small-to-moderate in size</li>
+    <li>A little lag is fine (updates appear after the next sync + redeploy, not instantly)</li>
+  </ul>
+  <p>That's exactly Clean Slate, and it's also how blogs, docs sites, portfolios, changelogs, pricing pages, "team" pages, etc. are usually built.</p>
+
+  <p><strong>Needs a real database instead:</strong></p>
+  <ul>
+    <li>Users submit or edit data <em>in the app</em> (forms, logins, comments, orders)</li>
+    <li>You need instant updates or many people writing at once</li>
+    <li>You need to query/search/filter large or related datasets live</li>
+  </ul>
+
+  <p>The three pieces are also swappable - don't think of launchd as the only way:</p>
+  <ul>
+    <li><strong>The scheduler</strong> (launchd) is just "run this every N hours." You could instead trigger on <em>file change</em> (so it updates seconds after you edit, not on a 6-hour timer), run it manually, or use a scheduled GitHub Action in the cloud so it doesn't depend on your Mac being on.</li>
+    <li><strong>The delivery</strong> (commit JSON &rarr; deploy) is one option. You could also write the JSON to a storage bucket the app reads, or regenerate it as part of the build step so every deploy is fresh.</li>
+  </ul>
+
+  <p>So yes: any time the answer to "where does this data come from?" is "a folder on my computer that I update now and then," this pattern is usually the right, cheapest tool - no database, no hosting cost, nothing to secure. The moment the answer becomes "users type it into the app," that's your signal to reach for a database.</p>
+</body>
+</html>

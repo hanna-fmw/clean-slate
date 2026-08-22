@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clean Slate - hosting, sync, and Cloudflare explained</title>
+  <style>
+    body { max-width: 50rem; margin: 2rem auto; padding: 0 1rem; font-family: system-ui, sans-serif; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <p>Totally fair - these are separate concepts that all sound similar. Let me untangle them calmly. It's simpler than it feels.</p>
+
+  <h2>1. The launchd job</h2>
+  <p><code>launchd</code> is macOS's built-in task scheduler (the Mac equivalent of a cron job). You have one registered as <code>com.hosk.clean-slate-sync</code>, and it's currently loaded and active. It runs <code>scripts/auto-sync.sh</code> every <strong>6 hours</strong> (21600 seconds). That script regenerates <code>config/data.json</code> from your <code>CLEAN-SLATE.md</code> files. It's native to your Mac - nothing in the cloud.</p>
+
+  <h2>2. Why no database is needed</h2>
+  <p>Here's the key: the reading does <strong>not</strong> happen live from your <code>.md</code> files. The flow is:</p>
+  <ul>
+    <li>Every 6 hours, the launchd job reads all your <code>CLEAN-SLATE.md</code> files and bakes them into one file: <code>config/data.json</code>.</li>
+    <li>That <code>data.json</code> gets committed and ends up deployed with the app.</li>
+    <li>When the live site renders, it just imports that one JSON file. The data is "frozen" into the deployment.</li>
+  </ul>
+  <p>So the website never touches your Mac or your <code>.md</code> files - it only reads the snapshot that was baked in at deploy time. A database is for data that changes from user actions (logins, form submits, edits in the app). Clean Slate has none of that - it's read-only and the content only changes when <em>you</em> edit a markdown file and re-sync. That's why a static JSON file is perfect and a database would be overkill. (Trade-off: edits only show up live after a sync + redeploy, not instantly. For a personal dashboard, that's fine.)</p>
+
+  <h2>3. Cloudflare: Tunnel vs Zero Trust vs Access</h2>
+  <p>These get conflated constantly. Quick map:</p>
+  <ul>
+    <li><strong>Cloudflare Zero Trust</strong> = the umbrella product/dashboard name. Not a feature itself, just the platform that contains the others.</li>
+    <li><strong>Cloudflare Access</strong> = the password/login gate. This is the thing you want - it puts a login screen in front of a site. (Lives inside Zero Trust.)</li>
+    <li><strong>Cloudflare Tunnel</strong> = a different tool, for exposing something running on a private machine (like your homelab) to the internet without opening ports. <strong>You do NOT need this</strong> - Clean Slate is already public on Vercel, not on a private machine.</li>
+  </ul>
+  <p>So for your goal: <strong>you only need Cloudflare Access.</strong> Ignore Tunnel entirely.</p>
+</body>
+</html>
