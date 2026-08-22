@@ -58,7 +58,7 @@ Each project's `CLEAN-SLATE.md` should include a `## Skills, Agents & Plugins` s
 
 ### Overrides
 
-Create `~/_base/clean-slate/toolbox-overrides.md` (gitignored) to:
+Create `~/_system/clean-slate/toolbox-overrides.md` (gitignored) to:
 
 - **Pin** tools you want surfaced regardless of usage count
 - **Override one-liners** with your own phrasing

@@ -7,7 +7,7 @@ import { readApiKeys } from './parse-api-keys'
 import type { Project, DashboardData } from '../lib/types'
 
 const HOME_DIR = process.env.HOME ?? ''
-const SCAN_ROOTS = ['_work', '_personal', '_base'].map((d) => path.join(HOME_DIR, d))
+const SCAN_ROOTS = ['_work', '_personal', '_system', '_projects'].map((d) => path.join(HOME_DIR, d))
 const OUTPUT_PATH = path.join(__dirname, '..', 'config', 'data.json')
 const API_KEYS_DIR = path.join(__dirname, '..', 'data', 'api-keys')
 // Local, gitignored list of project names to exclude from data.json entirely
@@ -191,7 +191,7 @@ export function filterHidden(projects: Project[], hiddenNames: string[]): Projec
 function main() {
   const projects: Project[] = []
   const byName = new Map<string, Project>()
-  const vaultIndex = buildVaultIndex('~/_base/clean-slate/private/vault.md')
+  const vaultIndex = buildVaultIndex('~/_system/clean-slate/private/vault.md')
 
   for (const dirPath of collectProjectDirs()) {
     const project = scanProject(dirPath, vaultIndex)
