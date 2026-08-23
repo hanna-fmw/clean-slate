@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T09:04:05.665Z",
+  "generated_at": "2026-08-23T15:12:56.775Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-23T05:47:56+02:00"
+      "last_modified": "2026-08-23T14:23:18+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-22T20:53:02+02:00"
+      "last_modified": "2026-08-23T11:04:06+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,8 +2414,26 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-23T09:04:06.214Z",
+    "synced_at": "2026-08-23T15:12:57.373Z",
     "agents": [
+      {
+        "name": "pa",
+        "description": "Hanna's personal assistant. Use for the day itself - what is open, what to do next, capturing something so it is not forgotten, checking things off, and reading or running the morning brief. Also use when she says \"remind me\", \"save this\", \"add this to my list\", \"what should I do today\", \"what did I say about X\", or drops a link or a thought she wants kept. Not for thinking through technology - that is the tech. Not for writing code.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "general"
+      },
+      {
+        "name": "tech",
+        "description": "Hanna's technical sounding board. Use when she wants to think out loud about tech - a question about how something works, a video or article she just watched, whether an approach fits something she already has, or brainstorming a project before it exists. Also use when she says \"what do you think about X\", \"is this any good\", \"could we use this\", or drops a link and wants a view on it. Not for executing a coding task in a project - that is ordinary work in that project's own session.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "general"
+      },
       {
         "name": "ai-architect",
         "description": "Specializes in architecting AI-powered applications on Vercel — choosing between AI SDK patterns, configuring providers, building agents, setting up durable workflows, and integrating MCP servers. Use when designing AI features, building chatbots, or creating agentic applications.",
@@ -2759,7 +2777,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "8ad4a26ca55b",
+        "version": "4b8566ea9545",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2789,7 +2807,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "8ad4a26ca55b",
+        "version": "4b8566ea9545",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
