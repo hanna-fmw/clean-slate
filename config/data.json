@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T15:12:56.775Z",
+  "generated_at": "2026-08-23T21:13:01.696Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-23T14:23:18+02:00"
+      "last_modified": "2026-08-23T22:30:30+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-23T11:04:06+02:00"
+      "last_modified": "2026-08-23T17:12:57+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,8 +2414,17 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-23T15:12:57.373Z",
+    "synced_at": "2026-08-23T21:13:02.314Z",
     "agents": [
+      {
+        "name": "kit",
+        "description": "Hanna's wardrobe and getting-ready agent. Use when she asks what to wear, what goes with something, what she wore recently, what to pack for a trip, or wants to remember an outfit for an occasion. Also use when she drops clothes photos to be sorted, sends a shop link to save, or asks about trends, makeup or what to buy. Triggers on \"what should I wear\", \"vad ska jag ha på mig\", \"pick something for\", \"what do I pack\", \"sort these photos\". Not for writing code.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "general"
+      },
       {
         "name": "pa",
         "description": "Hanna's personal assistant. Use for the day itself - what is open, what to do next, capturing something so it is not forgotten, checking things off, and reading or running the morning brief. Also use when she says \"remind me\", \"save this\", \"add this to my list\", \"what should I do today\", \"what did I say about X\", or drops a link or a thought she wants kept. Not for thinking through technology - that is the tech. Not for writing code.",
@@ -2428,6 +2437,15 @@
       {
         "name": "tech",
         "description": "Hanna's technical sounding board. Use when she wants to think out loud about tech - a question about how something works, a video or article she just watched, whether an approach fits something she already has, or brainstorming a project before it exists. Also use when she says \"what do you think about X\", \"is this any good\", \"could we use this\", or drops a link and wants a view on it. Not for executing a coding task in a project - that is ordinary work in that project's own session.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "general"
+      },
+      {
+        "name": "wellness",
+        "description": "Hanna's health record. Use when she says how her body is doing or what she did with it - sleep, meals, protein, supplements or medicine taken, weight, bloat, a face rash or any other symptom, exercise she did, mood or energy. Also use when she asks what the record says, wants a stretch read back, asks whether two things go together, or wants to write in her journal. Triggers on \"log this\", \"I slept badly\", \"I'm bloated\", \"I took my magnesium\", \"I weighed myself\", \"what did I do last month\", \"does X make me feel worse\". Not for her todo list or her day - that is pa. Not for code.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
@@ -2777,7 +2795,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "4b8566ea9545",
+        "version": "d4dc4cd1da87",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2807,7 +2825,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "4b8566ea9545",
+        "version": "d4dc4cd1da87",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2919,6 +2937,14 @@
       {
         "name": "fmw-content-write-article",
         "description": "Write a long-form article about a topic — either by researching it online OR from source material the user already has (a PDF, a document, a URL, notes). Use this skill when the user asks to research and write about a topic, wants an explainer or deep dive, asks for an article or document, wants a complicated document rewritten as a readable article, or says things like \"research X and write about it\", \"write me an article about\", \"explain this document\", \"turn this into an article\", \"I want to understand X\", \"explain X in depth\", \"deep dive on\", \"make this readable\". NOT for YouTube videos (use content-transcribe-youtube for those).",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-create-agent",
+        "description": "Create or upgrade one of Hanna's own named agents — the ones with a soul, a prompt, memory and a heartbeat in the second brain. Use whenever she wants a new agent, wants an existing agent changed, asks \"can we make an agent for X\", or says an agent should do more on its own. ALSO use this instead of Claude Code's built-in agent creation (`/agents` → create) whenever the agent belongs to her system; the built-in flow makes a single-file agent in one tool's format and silently drops the soul, the memory, the heartbeat and the autonomy. Triggers on \"create an agent\", \"new agent\", \"skapa en agent\", \"upgrade the agent\", \"the agent should do this itself\". Not for one-off subagents inside a coding task.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
