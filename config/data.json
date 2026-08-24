@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T15:55:28.885Z",
+  "generated_at": "2026-08-24T20:07:31.027Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-24T16:28:26+02:00"
+      "last_modified": "2026-08-24T21:09:09+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-24T11:55:23+02:00"
+      "last_modified": "2026-08-24T17:55:29+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -772,7 +772,7 @@
       "deployed_url": "https://sslip.io",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-23T05:47:49+02:00"
+      "last_modified": "2026-08-24T18:31:16+02:00"
     },
     {
       "name": "JSON-LD Schema Generator",
@@ -847,7 +847,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-24T14:48:57.627Z"
+      "last_modified": "2026-08-24T18:51:31.076Z"
     },
     {
       "name": "Moiwak",
@@ -1597,7 +1597,7 @@
       "deployed_url": "https://app.signalstack.hosk.app",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:39",
-      "last_modified": "2026-08-22T10:43:52+02:00"
+      "last_modified": "2026-08-24T18:08:28+02:00"
     },
     {
       "name": "Social Media Generator",
@@ -1795,7 +1795,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-06-27T07:34:02.374Z"
+      "last_modified": "2026-08-24T18:58:53+02:00"
     },
     {
       "name": "Unlogged",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-24T15:55:29.528Z",
+    "synced_at": "2026-08-24T20:07:31.860Z",
     "agents": [
       {
         "name": "kit",
