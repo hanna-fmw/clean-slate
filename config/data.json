@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T09:55:23.009Z",
+  "generated_at": "2026-08-24T15:55:28.885Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-23T22:30:30+02:00"
+      "last_modified": "2026-08-24T16:28:26+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-23T23:13:02+02:00"
+      "last_modified": "2026-08-24T11:55:23+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -776,7 +776,7 @@
     },
     {
       "name": "JSON-LD Schema Generator",
-      "path": "~/_work/internal/json-ld-generator",
+      "path": "~/_work/internal/apps/json-ld-generator",
       "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
       "description_short": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website.",
       "stack": [
@@ -847,7 +847,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-07-06T12:33:25.418Z"
+      "last_modified": "2026-08-24T14:48:57.627Z"
     },
     {
       "name": "Moiwak",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-24T09:55:23.646Z",
+    "synced_at": "2026-08-24T15:55:29.528Z",
     "agents": [
       {
         "name": "kit",
@@ -2795,7 +2795,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "d4dc4cd1da87",
+        "version": "b8092d19fed0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2825,7 +2825,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "d4dc4cd1da87",
+        "version": "b8092d19fed0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2944,7 +2944,7 @@
       },
       {
         "name": "fmw-create-agent",
-        "description": "Create or upgrade one of Hanna's own named agents — the ones with a soul, a prompt, memory and a heartbeat in the second brain. Use whenever she wants a new agent, wants an existing agent changed, asks \"can we make an agent for X\", or says an agent should do more on its own. ALSO use this instead of Claude Code's built-in agent creation (`/agents` → create) whenever the agent belongs to her system; the built-in flow makes a single-file agent in one tool's format and silently drops the soul, the memory, the heartbeat and the autonomy. Triggers on \"create an agent\", \"new agent\", \"skapa en agent\", \"upgrade the agent\", \"the agent should do this itself\". Not for one-off subagents inside a coding task.",
+        "description": "Create or upgrade one of Hanna's own named agents — the ones with a soul, a prompt, memory and a heartbeat in their own workspace folder. Use whenever she wants a new agent, wants an existing agent changed, asks \"can we make an agent for X\", or says an agent should do more on its own. ALSO use this instead of Claude Code's built-in agent creation (`/agents` → create) whenever the agent belongs to her system; the built-in flow makes a single-file agent in one tool's format and silently drops the soul, the memory, the heartbeat and the autonomy. Triggers on \"create an agent\", \"new agent\", \"skapa en agent\", \"upgrade the agent\", \"the agent should do this itself\". Not for one-off subagents inside a coding task.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
