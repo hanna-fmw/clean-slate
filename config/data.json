@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T08:22:02.475Z",
+  "generated_at": "2026-08-26T14:22:07.485Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-25T21:40:52+02:00"
+      "last_modified": "2026-08-26T10:22:03+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,11 +2414,11 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-26T08:22:03.018Z",
+    "synced_at": "2026-08-26T14:22:08.073Z",
     "agents": [
       {
-        "name": "kit",
-        "description": "Hanna's wardrobe and getting-ready agent. Use when she asks what to wear, what goes with something, what she wore recently, what to pack for a trip, or wants to remember an outfit for an occasion. Also use when she drops clothes photos to be sorted, sends a shop link to save, or asks about trends, makeup or what to buy. Triggers on \"what should I wear\", \"vad ska jag ha på mig\", \"pick something for\", \"what do I pack\", \"sort these photos\". Not for writing code.",
+        "name": "coach",
+        "description": "Hanna's health record. Use when she says how her body is doing or what she did with it - sleep, meals, protein, supplements or medicine taken, weight, bloat, a face rash or any other symptom, exercise she did, mood or energy. Also use when she asks what the record says, wants a stretch read back, asks whether two things go together, or wants to write in her journal. Triggers on \"log this\", \"I slept badly\", \"I'm bloated\", \"I took my magnesium\", \"I weighed myself\", \"what did I do last month\", \"does X make me feel worse\". Not for her todo list or her day - that is pa. Not for code.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
@@ -2435,8 +2435,8 @@
         "category": "general"
       },
       {
-        "name": "tech",
-        "description": "Hanna's technical sounding board. Use when she wants to think out loud about tech - a question about how something works, a video or article she just watched, whether an approach fits something she already has, or brainstorming a project before it exists. Also use when she says \"what do you think about X\", \"is this any good\", \"could we use this\", or drops a link and wants a view on it. Not for executing a coding task in a project - that is ordinary work in that project's own session.",
+        "name": "stylist",
+        "description": "Hanna's wardrobe and getting-ready agent. Use when she asks what to wear, what goes with something, what she wore recently, what to pack for a trip, or wants to remember an outfit for an occasion. Also use when she drops clothes photos to be sorted, sends a shop link to save, or asks about trends, makeup or what to buy. Triggers on \"what should I wear\", \"vad ska jag ha på mig\", \"pick something for\", \"what do I pack\", \"sort these photos\". Not for writing code.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
@@ -2444,13 +2444,13 @@
         "category": "general"
       },
       {
-        "name": "wellness",
-        "description": "Hanna's health record. Use when she says how her body is doing or what she did with it - sleep, meals, protein, supplements or medicine taken, weight, bloat, a face rash or any other symptom, exercise she did, mood or energy. Also use when she asks what the record says, wants a stretch read back, asks whether two things go together, or wants to write in her journal. Triggers on \"log this\", \"I slept badly\", \"I'm bloated\", \"I took my magnesium\", \"I weighed myself\", \"what did I do last month\", \"does X make me feel worse\". Not for her todo list or her day - that is pa. Not for code.",
+        "name": "tech-lead",
+        "description": "Hanna's tech lead and AI lead, and her technical sounding board. Use when she wants to think out loud about tech - a question about how something works, a video or article she just watched, whether an approach fits something she already has, or brainstorming a project before it exists. Also use when she says \"what do you think about X\", \"is this any good\", \"could we use this\", or drops a link and wants a view on it. Not for executing a coding task in a project - that is ordinary work in that project's own session.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
         },
-        "category": "general"
+        "category": "tech"
       },
       {
         "name": "ai-architect",
