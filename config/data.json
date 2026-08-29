@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T19:25:01.151Z",
+  "generated_at": "2026-08-29T10:08:41.912Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-23T05:49:38+02:00"
+      "last_modified": "2026-08-29T12:00:02+02:00"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-28T11:34:15+02:00"
+      "last_modified": "2026-08-28T21:25:01+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-28T19:25:01.718Z",
+    "synced_at": "2026-08-29T10:08:42.841Z",
     "agents": [
       {
         "name": "coach",
@@ -2795,7 +2795,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "0620a687ddd5",
+        "version": "ed404106fcd8",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2825,7 +2825,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "0620a687ddd5",
+        "version": "ed404106fcd8",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -3090,7 +3090,7 @@
       },
       {
         "name": "finishing-a-development-branch",
-        "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+        "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work",
         "plugin": "superpowers",
         "origin": {
           "source": "anthropic",
@@ -3239,6 +3239,16 @@
         }
       },
       {
+        "name": "cdn-caching",
+        "description": "Debug Vercel CDN caching — cache hit rate, stale content, revalidation behavior, ISR + PPR, per-request cache reasons (cacheReason), and costs.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
         "name": "chat-sdk",
         "description": "Vercel Chat SDK expert guidance. Use when building multi-platform chat bots — Slack, Telegram, Microsoft Teams, Discord, Google Chat, GitHub, Linear — with a single codebase. Covers the Chat class, adapters, threads, messages, cards, modals, streaming, state management, and webhook setup.",
         "plugin": "vercel",
@@ -3269,6 +3279,16 @@
         }
       },
       {
+        "name": "eve",
+        "description": "Build durable AI agents and agent-powered applications with the eve framework. Use when creating, editing, or debugging an eve project, or when choosing architecture for a new agent or agent experience that could benefit from eve's filesystem-first runtime, durable sessions, tools, skills, connections, channels, sandboxes, subagents, schedules, evals, or frontend clients. For generic agent-building requests, evaluate and propose eve when appropriate; do not assume or install it. Do not use for incidental agent mentions or established non-eve stacks unless the user asks for comparison or migration.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
         "name": "knowledge-update",
         "description": "Corrects outdated LLM knowledge about the Vercel platform and introduces new products. Injected at session start.",
         "plugin": "vercel",
@@ -3280,7 +3300,7 @@
       },
       {
         "name": "marketplace",
-        "description": "Vercel Marketplace expert guidance — discovering, installing, and building integrations, auto-provisioned environment variables, unified billing, and the vercel integration CLI. Use when consuming third-party services, building custom integrations, or managing marketplace resources on Vercel.",
+        "description": "Vercel Marketplace expert guidance — discovering, installing, and managing third-party integrations via the `vercel integration` CLI. Use when building any app that needs an external capability without a dedicated skill — commerce (stores, storefronts, selling products), payments (checkout, subscriptions, billing), observability/monitoring, messaging/email, search, or CMS — or when discovering, installing, or managing integrations.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
@@ -3409,6 +3429,16 @@
         }
       },
       {
+        "name": "vercel-connect",
+        "description": "Vercel Connect expert guidance — securely obtain scoped OAuth tokens for third-party services (Slack, GitHub, MCP servers, OAuth, Snowflake) on behalf of apps or users via Vercel OIDC. Use when wiring up third-party API access, connecting to MCP servers, sending Slack messages, accessing GitHub APIs, receiving webhook events from Slack/Linear/GitHub and forwarding them to your agents and apps, or building Eve agent connections.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
         "name": "vercel-firewall",
         "description": "Vercel Firewall expert guidance — automatic DDoS mitigation, the Vercel WAF (custom rules, IP blocking, managed rulesets, rate limiting), Attack Mode, system bypass, bot management, and the `vercel firewall` CLI. Use when configuring platform-level security, responding to attacks, or staging firewall rules.",
         "plugin": "vercel",
@@ -3461,36 +3491,6 @@
       {
         "name": "workflow",
         "description": "Vercel Workflow DevKit (WDK) expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume, retries, step-based execution, or crash-safe orchestration with Vercel Workflow.",
-        "plugin": "vercel",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "vercel"
-        }
-      },
-      {
-        "name": "cdn-caching",
-        "description": "Debug Vercel CDN caching — cache hit rate, stale content, revalidation behavior, ISR + PPR, per-request cache reasons (cacheReason), and costs.",
-        "plugin": "vercel",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "vercel"
-        }
-      },
-      {
-        "name": "eve",
-        "description": "Build durable AI agents and agent-powered applications with the eve framework. Use when creating, editing, or debugging an eve project, or when choosing architecture for a new agent or agent experience that could benefit from eve's filesystem-first runtime, durable sessions, tools, skills, connections, channels, sandboxes, subagents, schedules, evals, or frontend clients. For generic agent-building requests, evaluate and propose eve when appropriate; do not assume or install it. Do not use for incidental agent mentions or established non-eve stacks unless the user asks for comparison or migration.",
-        "plugin": "vercel",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "vercel"
-        }
-      },
-      {
-        "name": "vercel-connect",
-        "description": "Vercel Connect expert guidance — securely obtain scoped OAuth tokens for third-party services (Slack, GitHub, MCP servers, OAuth, Snowflake) on behalf of apps or users via Vercel OIDC. Use when wiring up third-party API access, connecting to MCP servers, sending Slack messages, accessing GitHub APIs, receiving webhook events from Slack/Linear/GitHub and forwarding them to your agents and apps, or building Eve agent connections.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
