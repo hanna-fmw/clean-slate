@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-29T10:08:41.912Z",
+  "generated_at": "2026-08-29T16:09:00.212Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-29T12:00:02+02:00"
+      "last_modified": "2026-08-29T12:33:18+02:00"
     },
     {
       "name": "baby-claw",
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-28T20:29:04+02:00"
+      "last_modified": "2026-08-29T17:27:44+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-28T21:25:01+02:00"
+      "last_modified": "2026-08-29T12:08:42+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-29T10:08:42.841Z",
+    "synced_at": "2026-08-29T16:09:00.770Z",
     "agents": [
       {
         "name": "coach",
@@ -2451,6 +2451,15 @@
           "repo_url": "https://github.com/msitarzewski/agency-agents"
         },
         "category": "tech"
+      },
+      {
+        "name": "tutor",
+        "description": "Hanna's tutor for everything she is learning. Two halves. (1) Teaching a topic - running a real study session on a course or subject she is working through, explaining, building practice labs, writing it up in the learning hub. She runs the fmw-learn skill herself; it is her tool, not a separate thing. (2) The drill - asking her questions, grading them, keeping the review schedule, and answering what she drops in the learning-hub inbox. Triggers on \"teach me X\", \"let's work on the Python course\", \"continue where we left off\", \"I want to learn about X\", \"explain this and make me remember it\", plus \"quiz me\", \"ask me something\", \"test me on X\", \"what am I bad at\", \"how am I doing\". Not for CVs or job hunting. Not for writing code.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "general"
       },
       {
         "name": "ai-architect",
