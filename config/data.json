@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T13:13:53.016Z",
+  "generated_at": "2026-08-31T20:25:00.640Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -291,7 +291,7 @@
     },
     {
       "name": "claude-bloat",
-      "path": "~/_system/backstage/claude-bloat/from-docs",
+      "path": "~/_system/_retired-backstage-notes/claude-bloat/from-docs",
       "description": "CLI that measures what Claude Code loads into context before you type anything — the global\n`CLAUDE.md`, its `@`-imports, `~/.claude/rules/`, plus skill and subagent descriptions — and\ntracks it week over week. Pops a macOS dialog (not a banner: Focus modes suppress those)\nwhen something crosses a threshold, and never edits config itself. Token counts are\ncalibrated against a real `/context` run rather than estimated from word counts, which read\nabout 40% low on dense markdown.\n\nCompanion utility `paths` (separate, local-only) keeps a registry of stable folder keys so\nmoving a folder does not break the skills and hooks pointing at it.",
       "description_short": "CLI that measures what Claude Code loads into context before you type anything — the global",
       "stack": [
@@ -329,7 +329,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-31T12:42:11+02:00"
+      "last_modified": "2026-08-31T15:54:32+02:00"
     },
     {
       "name": "Clean Slate",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-31T09:13:49+02:00"
+      "last_modified": "2026-08-31T15:13:53+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-31T13:13:53.574Z",
+    "synced_at": "2026-08-31T20:25:01.185Z",
     "agents": [
       {
         "name": "coach",
@@ -3001,7 +3001,7 @@
       },
       {
         "name": "fmw-scaffold-project",
-        "description": "Start anything new - an app, a utility, a client project, or a raw idea to park for later - or review a repo before making it public. Creates the folder in the right place, a private GitHub repo, the backstage notes link, and README/AGENTS.md. Use when Hanna says she wants to start, build, create or set up a project, app, tool, utility or site, when she has an idea she wants saved for later, or invokes /fmw-scaffold-project. Also use when she points at a folder that already exists - even one with just a spec draft in it - and wants it brought up to the current conventions (repo, backstage notes, README/AGENTS). Never trigger on casual phrases like \"I got an idea\" or \"jag kom pa en grej\" - she says those constantly and does not want them captured.",
+        "description": "Start anything new - an app, a utility, a client project, or a raw idea to park for later - or review a repo before making it public. Creates the folder in the right place, a private GitHub repo, a docs/ notes folder, and README/AGENTS.md. Use when Hanna says she wants to start, build, create or set up a project, app, tool, utility or site, when she has an idea she wants saved for later, or invokes /fmw-scaffold-project. Also use when she points at a folder that already exists - even one with just a spec draft in it - and wants it brought up to the current conventions (repo, docs/ notes, README/AGENTS). Never trigger on casual phrases like \"I got an idea\" or \"jag kom pa en grej\" - she says those constantly and does not want them captured.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
@@ -3025,7 +3025,7 @@
       },
       {
         "name": "fmw-write-sms-email-slack",
-        "description": "Draft an SMS, email, or Slack message in Hanna's voice from a rough brief, optionally pulling the relevant Gmail thread for context and saving the reply as a Gmail draft with empty recipients (so nothing sends without her approval). Use when Hanna wants help writing an SMS, text, email, or Slack/team message — e.g. \"write an SMS to mom about...\", \"reply to the thread with [name] about...\", \"draft an email to a client saying...\", \"message the team that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\", \"skriv till teamet...\". Defaults to Swedish. Three audiences: `clients` (email only, light-formal default), `team-slack` (Slack or email to colleagues), and `friends-family`. Reads style samples from ~/_system/utilities/writing-examples/write-sms-email-slack/{channel}/{lang}/from-me-to-{audience}.md.",
+        "description": "Draft an SMS, email, or Slack message in Hanna's voice from a rough brief, optionally pulling the relevant Gmail thread for context and saving the reply as a Gmail draft with empty recipients (so nothing sends without her approval). Use when Hanna wants help writing an SMS, text, email, or Slack/team message — e.g. \"write an SMS to mom about...\", \"reply to the thread with [name] about...\", \"draft an email to a client saying...\", \"message the team that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\", \"skriv till teamet...\". Defaults to Swedish. Also drafts answers to course assignments, exam questions and questionnaires (\"skriv svaret på uppgiften\", \"help me answer this course question\", \"reflektionsuppgift\", \"tentafråga\"). Four styles: `clients` (email only, light-formal default), `team-slack` (Slack or email to colleagues), `friends-family`, and `course-answers` (school Swedish, handed in to a teacher). Reads style samples from ~/_system/utilities/writing-examples/write-sms-email-slack/{channel}/{lang}/from-me-to-{audience}.md.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
