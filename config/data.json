@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T20:25:00.640Z",
+  "generated_at": "2026-09-01T12:38:40.376Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-08-31T15:13:53+02:00"
+      "last_modified": "2026-08-31T22:25:01+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-08-31T20:25:01.185Z",
+    "synced_at": "2026-09-01T12:38:40.913Z",
     "agents": [
       {
         "name": "coach",
@@ -3042,6 +3042,14 @@
       {
         "name": "fmw-write-trello-comments",
         "description": "Draft a client-facing Trello card comment or reply in the team's voice (status updates, \"OK to proceed?\" check-ins, delivery notes, tradeoff explanations, priority questions). Use when Hanna wants to write, draft, or reply with a Trello comment - e.g. \"write a Trello comment saying...\", \"draft the reply on the card\", \"answer the client on Trello\", \"comment on the ticket that it's done\". English default. Reads style samples from ~/_system/utilities/writing-examples/write-trello-comments/samples.md.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "my-writing",
+        "description": "Write in Hanna's own voice, in Swedish or English. Use whenever drafting an email, SMS, Slack message or short reply that will be sent as her — or when she says \"use my-writing\".",
         "plugin": "custom",
         "origin": {
           "source": "custom"
