@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T07:12:55.321Z",
+  "generated_at": "2026-09-02T13:13:00.417Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-02T07:35:40+02:00"
+      "last_modified": "2026-09-02T14:54:46+02:00"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-02T07:35:56+02:00"
+      "last_modified": "2026-09-02T09:12:56+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -418,7 +418,7 @@
       "deployed_url": "https://kb.stormfors.ai",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-22T10:43:33+02:00"
+      "last_modified": "2026-09-02T13:29:22+02:00"
     },
     {
       "name": "demoflow",
@@ -822,7 +822,7 @@
       "deployed_url": "https://aeo.stormfors.ai",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-08-22T10:43:34+02:00"
+      "last_modified": "2026-09-02T13:29:32+02:00"
     },
     {
       "name": "Leadfront Clean Slate",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-02T07:12:55.970Z",
+    "synced_at": "2026-09-02T13:13:01.047Z",
     "agents": [
       {
         "name": "coach",
@@ -2804,7 +2804,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "0e3f501d0f4a",
+        "version": "50c879f1dadd",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2824,7 +2824,7 @@
       },
       {
         "name": "vercel",
-        "version": "0.45.1",
+        "version": "0.48.0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2834,7 +2834,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "0e3f501d0f4a",
+        "version": "50c879f1dadd",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -3508,6 +3508,36 @@
       {
         "name": "workflow",
         "description": "Vercel Workflow DevKit (WDK) expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume, retries, step-based execution, or crash-safe orchestration with Vercel Workflow.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "access-protected-vercel-deployment",
+        "description": "Access and test Vercel deployments protected by Vercel Authentication, SSO, or Deployment Protection. Use when curl, agent-browser, Playwright, or another automated request reaches a Vercel login or protection page; when a protected preview or production URL returns 401 or 403; when TRUSTED_SOURCES_ENVIRONMENT_MISMATCH appears; or when choosing between `vercel curl` and the `x-vercel-trusted-oidc-idp-token` header.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "build-agents",
+        "description": "Default guidance for building AI agents. Use for generic requests to build, create, scaffold, design, architect, or implement an AI agent, agent app, tool-calling agent, durable agent, multi-agent system, or scheduled agent.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "vercel-services",
+        "description": "Configure and troubleshoot Vercel Services for multiple frontends and backends in one project. Use when composing a polyglot or multi-service application on one Vercel deployment; defining the `services` key, service-targeted rewrites, or service bindings in `vercel.json`; or running all services with `vercel dev`.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
