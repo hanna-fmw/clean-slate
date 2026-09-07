@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T09:46:39.637Z",
+  "generated_at": "2026-09-07T15:46:44.566Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-06T13:51:26+02:00"
+      "last_modified": "2026-09-07T11:46:47+02:00"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-06T22:04:54+02:00"
+      "last_modified": "2026-09-07T11:46:40+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -772,11 +772,11 @@
       "deployed_url": "https://sslip.io",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-02T07:35:50+02:00"
+      "last_modified": "2026-09-07T17:24:08+02:00"
     },
     {
       "name": "JSON-LD Schema Generator",
-      "path": "~/_work/internal/apps/json-ld-generator",
+      "path": "~/_work/internal/json-ld-generator",
       "description": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website. The pipeline works in stages: it discovers pages via a sitemap, crawls each page using the Firecrawl API, sends the content to an LLM (via OpenRouter) to generate appropriate schema markup, validates the output against schema.org rules, auto-fixes any errors, then presents the results with copy/export buttons.\n\nEach run is associated with a client record and is stored in PostgreSQL so runs can be revisited. A Trello comment integration allows generated reports to be posted back to Trello cards. The tool also generates llms.txt files - a machine-readable index of a site's content for LLM consumption.",
       "description_short": "An internal Stormfors tool that automates the creation of JSON-LD structured data and llms.txt files for any website.",
       "stack": [
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-07T09:46:40.303Z",
+    "synced_at": "2026-09-07T15:46:45.142Z",
     "agents": [
       {
         "name": "coach",
