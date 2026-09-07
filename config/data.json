@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T15:46:44.566Z",
+  "generated_at": "2026-09-07T18:25:00.057Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-07T11:46:40+02:00"
+      "last_modified": "2026-09-07T17:46:45+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1795,7 +1795,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-02T07:35:43+02:00"
+      "last_modified": "2026-09-07T20:12:19+02:00"
     },
     {
       "name": "Unlogged",
@@ -2414,7 +2414,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-07T15:46:45.142Z",
+    "synced_at": "2026-09-07T18:25:01.523Z",
     "agents": [
       {
         "name": "coach",
@@ -2427,7 +2427,7 @@
       },
       {
         "name": "pa",
-        "description": "Hanna's personal assistant. Use for the day itself - what is open, what to do next, capturing something so it is not forgotten, checking things off, and reading or running the morning brief. Also use when she says \"remind me\", \"save this\", \"add this to my list\", \"what should I do today\", \"what did I say about X\", or drops a link or a thought she wants kept. Not for thinking through technology - that is the tech. Not for writing code.",
+        "description": "Hanna's personal assistant. Use for the day itself - what is open, what to do next, capturing something so it is not forgotten, checking things off, and reading or running the morning brief. Also use when she says \"remind me\", \"save this\", \"add this to my list\", \"what should I do today\", \"what did I say about X\", or drops a link or a thought she wants kept. Not for thinking through technology - that is tech-lead. Not for writing code.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
