@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T18:25:00.057Z",
+  "generated_at": "2026-09-08T09:04:37.120Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-07T11:46:47+02:00"
+      "last_modified": "2026-09-08T11:04:33+02:00"
     },
     {
       "name": "baby-claw",
@@ -245,7 +245,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:145",
-      "last_modified": "2026-09-02T07:35:40+02:00"
+      "last_modified": "2026-09-07T20:29:11+02:00"
     },
     {
       "name": "browse-me",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-07T17:46:45+02:00"
+      "last_modified": "2026-09-07T20:25:01+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -710,34 +710,6 @@
       "last_modified": "2026-09-02T07:34:47+02:00"
     },
     {
-      "name": "heartbeat-hook",
-      "path": "~/_system/utilities/heartbeat-hook",
-      "description": "A tiny Claude Code `UserPromptSubmit` hook that periodically re-injects the most important rules (style, security, project isolation) into the active session so the model doesn't drift halfway through a long conversation.\n\nEvery Nth prompt (default 8) the hook fires a short reminder back into the model's context, pointing it at `CLAUDE.md` and `MEMORY.md`. A matching statusline indicator (magenta `♥ N/8`) shows the cycle position so you can see at a glance when the next fire is due.\n\nBuilt for personal use after one too many sessions where the model echoed an API key into chat or quietly started ignoring the global CLAUDE.md rules. Tiny, copyable, immediately useful.",
-      "description_short": "A tiny Claude Code `UserPromptSubmit` hook that periodically re-injects the most important rules (style, security, project isolation) into the active session so the model doesn't drift halfway through a long conversation.",
-      "stack": [
-        "Bash",
-        "jq. No build step",
-        "no dependencies beyond a POSIX shell."
-      ],
-      "hosting": "N/A - runs locally as a Claude Code hook.",
-      "database": "",
-      "github": {
-        "account": "personal (hanna-fmw)",
-        "ssh_alias": "github.com-personal",
-        "repo_url": "https://github.com/hanna-fmw/heartbeat-hook"
-      },
-      "run_commands": {},
-      "services": [
-        "None."
-      ],
-      "notes": "- Live install location: `~/.claude/hooks/heartbeat.sh`, wired in `~/.claude/settings.json`.\n- Statusline snippet lives in `~/.claude/statusline.sh` and reads the per-session counter file.\n- The reminder text is inline in the script - the rules it nudges about are personal and should be edited to match what matters most for the user reading them.\n- Public + MIT - good portfolio piece, immediately useful for anyone using Claude Code on long sessions.",
-      "toolbox_mentions": [],
-      "deployed_url": "",
-      "chrome_profile": "",
-      "vault": "",
-      "last_modified": "2026-08-22T10:43:55+02:00"
-    },
-    {
       "name": "Infrastructure",
       "path": "~/_system/infra",
       "description": "Infrastructure notes and access reference for the Hetzner VPS (Coolify) and the homelab (Proxmox host + Ubuntu VM running Coolify). Source of truth for SSH aliases, dashboard URLs, and where credentials live.",
@@ -772,7 +744,7 @@
       "deployed_url": "https://sslip.io",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-07T17:24:08+02:00"
+      "last_modified": "2026-09-07T20:29:04+02:00"
     },
     {
       "name": "JSON-LD Schema Generator",
@@ -1795,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-07T20:12:19+02:00"
+      "last_modified": "2026-09-07T21:29:11+02:00"
     },
     {
       "name": "Unlogged",
@@ -2414,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-07T18:25:01.523Z",
+    "synced_at": "2026-09-08T09:04:39.775Z",
     "agents": [
       {
         "name": "coach",
