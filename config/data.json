@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T13:18:13.393Z",
+  "generated_at": "2026-09-10T05:32:50.447Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-09T08:16:06+02:00"
+      "last_modified": "2026-09-09T15:18:14+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1417,7 +1417,7 @@
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-02T07:35:49+02:00"
+      "last_modified": "2026-09-09T16:07:43+02:00"
     },
     {
       "name": "Rookie Ongoing",
@@ -1688,7 +1688,7 @@
     },
     {
       "name": "UJD Shopify",
-      "path": "~/_personal/clients/ujd-shopify",
+      "path": "~/_personal/clients/ujd/ujd-shopify",
       "description": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se). Live production e-commerce site. Tweaks, product additions, descriptions, collections, pages, blog setup.\n\nSibling app `content-studio/` is a custom Next.js + Vercel app for Ulla. 4-step wizard (beskriv plagget → pris/storlekar → bilder → granska och skicka) that uses OpenRouter (GPT-5-mini) to write product descriptions in her voice and Gemini 3 Pro Image (Nano Banana Pro) to AI-edit product photos, then saves the product as a Shopify draft with sizes, prices, inventory, and attached images via the Admin API.",
       "description_short": "Ongoing Shopify storefront work for Ulla Jacobsson Design (ullajacobssondesign.se).",
       "stack": [
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-09T13:18:13.943Z",
+    "synced_at": "2026-09-10T05:32:50.983Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "517b2fcd1b60",
+        "version": "3ea32df27be7",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "517b2fcd1b60",
+        "version": "3ea32df27be7",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2835,7 +2835,7 @@
       },
       {
         "name": "security-guidance",
-        "version": "2.0.7",
+        "version": "2.0.8",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
