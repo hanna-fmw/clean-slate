@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T11:32:55.269Z",
+  "generated_at": "2026-09-10T17:48:34.997Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-10T07:32:51+02:00"
+      "last_modified": "2026-09-10T13:32:56+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-09T07:06:29+02:00"
+      "last_modified": "2026-09-10T17:42:45+02:00"
     },
     {
       "name": "Unlogged",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-10T11:32:55.859Z",
+    "synced_at": "2026-09-10T17:48:35.556Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "3ea32df27be7",
+        "version": "3b600518a637",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "3ea32df27be7",
+        "version": "3b600518a637",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
