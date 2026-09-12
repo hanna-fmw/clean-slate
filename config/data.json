@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T12:28:30.427Z",
+  "generated_at": "2026-09-12T11:31:27.955Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-09T08:38:13+02:00"
+      "last_modified": "2026-09-12T08:36:49+02:00"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-11T08:23:46+02:00"
+      "last_modified": "2026-09-11T14:28:31+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-11T12:28:30.986Z",
+    "synced_at": "2026-09-12T11:31:28.497Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "3b600518a637",
+        "version": "3deb821cb71c",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2796,7 +2796,7 @@
       },
       {
         "name": "vercel",
-        "version": "0.48.0",
+        "version": "0.49.0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "3b600518a637",
+        "version": "3deb821cb71c",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -3518,6 +3518,26 @@
       {
         "name": "vercel-services",
         "description": "Configure and troubleshoot Vercel Services for multiple frontends and backends in one project. Use when composing a polyglot or multi-service application on one Vercel deployment; defining the `services` key, service-targeted rewrites, or service bindings in `vercel.json`; or running all services with `vercel dev`.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "create-a-backend",
+        "description": "Backend architecture guidance. Use when planning, building, or migrating an API or backend; choosing between Functions, Services, containers, Workflow, Queues, and Marketplace databases; or selecting a supported backend framework or runtime.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "flags-sdk",
+        "description": "Flags SDK and Vercel Flags expert guidance. Use when declaring feature flags with flag(), wiring provider adapters (Vercel, Statsig, LaunchDarkly, PostHog, and others), managing flags with the vercel flags CLI, implementing the precompute pattern for static A/B tests, or integrating the Flags Explorer.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
