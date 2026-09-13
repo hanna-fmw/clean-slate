@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-13T11:44:03.850Z",
+  "generated_at": "2026-09-13T19:03:52.081Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-12T23:09:56+02:00"
+      "last_modified": "2026-09-13T13:44:04+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-09-12T12:58:32.262Z"
+      "last_modified": "2026-09-13T16:04:24.725Z"
     },
     {
       "name": "no-excuses",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-13T11:44:04.281Z",
+    "synced_at": "2026-09-13T19:03:52.587Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "3deb821cb71c",
+        "version": "f0dce59fec06",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2796,7 +2796,7 @@
       },
       {
         "name": "vercel",
-        "version": "0.49.0",
+        "version": "0.49.1",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "3deb821cb71c",
+        "version": "f0dce59fec06",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
