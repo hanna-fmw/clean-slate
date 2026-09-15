@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T19:15:19.481Z",
+  "generated_at": "2026-09-15T09:24:04.082Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-14T15:15:17+02:00"
+      "last_modified": "2026-09-14T21:15:20+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-14T19:15:19.943Z",
+    "synced_at": "2026-09-15T09:24:04.564Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "022b3c274938",
+        "version": "da823e86c8fe",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2796,7 +2796,7 @@
       },
       {
         "name": "vercel",
-        "version": "0.49.1",
+        "version": "0.49.2",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "022b3c274938",
+        "version": "da823e86c8fe",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2883,6 +2883,14 @@
       },
       {
         "name": "coolify-personal",
+        "origin": {
+          "source": "3rd-party"
+        },
+        "transport": "stdio",
+        "notes": ""
+      },
+      {
+        "name": "chrome-devtools",
         "origin": {
           "source": "3rd-party"
         },
