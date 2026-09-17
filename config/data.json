@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T05:59:44.370Z",
+  "generated_at": "2026-09-17T12:06:28.432Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-16T08:36:40+02:00"
+      "last_modified": "2026-09-17T14:06:07+02:00"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-16T18:38:37+02:00"
+      "last_modified": "2026-09-17T07:59:44+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-17T05:59:44.797Z",
+    "synced_at": "2026-09-17T12:06:29.014Z",
     "agents": [
       {
         "name": "coach",
