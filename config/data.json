@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-18T09:57:41.177Z",
+  "generated_at": "2026-09-18T16:59:30.756Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-17T22:20:43+02:00"
+      "last_modified": "2026-09-18T11:57:41+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-18T09:57:41.727Z",
+    "synced_at": "2026-09-18T16:59:31.183Z",
     "agents": [
       {
         "name": "coach",
