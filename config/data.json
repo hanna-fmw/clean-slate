@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T20:20:43.267Z",
+  "generated_at": "2026-09-18T09:57:41.177Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -142,7 +142,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-17T14:06:07+02:00"
+      "last_modified": "2026-09-18T07:26:02+02:00"
     },
     {
       "name": "baby-claw",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-17T14:06:29+02:00"
+      "last_modified": "2026-09-17T22:20:43+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1417,7 +1417,7 @@
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-14T14:11:21+02:00"
+      "last_modified": "2026-09-18T07:24:36+02:00"
     },
     {
       "name": "Rookie Ongoing",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-16T09:15:40+02:00"
+      "last_modified": "2026-09-18T07:24:38+02:00"
     },
     {
       "name": "Unlogged",
@@ -1872,7 +1872,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-16T16:20:52+02:00"
+      "last_modified": "2026-09-18T07:14:20+02:00"
     }
   ],
   "services": [
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-17T20:20:43.814Z",
+    "synced_at": "2026-09-18T09:57:41.727Z",
     "agents": [
       {
         "name": "coach",
