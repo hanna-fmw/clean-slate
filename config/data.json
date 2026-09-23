@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T17:20:01.897Z",
+  "generated_at": "2026-09-23T07:02:33.264Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-22T11:53:22+02:00"
+      "last_modified": "2026-09-22T19:20:02+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-22T17:20:02.325Z",
+    "synced_at": "2026-09-23T07:02:33.785Z",
     "agents": [
       {
         "name": "coach",
@@ -2766,7 +2766,7 @@
     "plugins": [
       {
         "name": "superpowers",
-        "version": "6.3.0",
+        "version": "6.4.1",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/obra/superpowers",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "c447c3207a42",
+        "version": "db467cc56673",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2796,7 +2796,7 @@
       },
       {
         "name": "vercel",
-        "version": "0.49.2",
+        "version": "0.50.0",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "c447c3207a42",
+        "version": "db467cc56673",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -3204,6 +3204,16 @@
         }
       },
       {
+        "name": "diagnosing-superpowers",
+        "description": "Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, \"it took too long\", \"why is it so expensive\", \"what is it doing\" — or wants to build a bug report for the superpowers maintainers, for the current session or a past one identified by id or path, on any harness.",
+        "plugin": "superpowers",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
+      },
+      {
         "name": "access-protected-vercel-deployment",
         "description": "Access and test Vercel deployments protected by Vercel Authentication, SSO, or Deployment Protection. Use when curl, agent-browser, Playwright, or another automated request reaches a Vercel login or protection page; when a protected preview or production URL returns 401 or 403; when TRUSTED_SOURCES_ENVIRONMENT_MISMATCH appears; or when choosing between `vercel curl` and the `x-vercel-trusted-oidc-idp-token` header.",
         "plugin": "vercel",
@@ -3546,6 +3556,26 @@
       {
         "name": "flags-sdk",
         "description": "Flags SDK and Vercel Flags expert guidance. Use when declaring feature flags with flag(), wiring provider adapters (Vercel, Statsig, LaunchDarkly, PostHog, and others), managing flags with the vercel flags CLI, implementing the precompute pattern for static A/B tests, or integrating the Flags Explorer.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "custom-metrics",
+        "description": "Emit and query Vercel Custom Metrics. Use when instrumenting application or business measurements in Vercel Functions, using metric() from @vercel/functions, choosing metric names and attributes, or querying emitted values with vc metrics.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "queues",
+        "description": "Vercel Queues guidance — durable topics with at-least-once delivery, independent consumer groups, retries, delays, and idempotency keys via @vercel/queue (JS) or vercel-queue (Python). Use when deferring background work, buffering traffic, fanning out events, or choosing between Queues and Workflows.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
