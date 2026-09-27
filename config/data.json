@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T10:05:15.841Z",
+  "generated_at": "2026-09-27T16:06:21.000Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-26T23:15:54+02:00"
+      "last_modified": "2026-09-27T12:05:17+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-09-27T07:51:33.482Z"
+      "last_modified": "2026-09-27T15:38:13.359Z"
     },
     {
       "name": "no-excuses",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-27T10:05:16.795Z",
+    "synced_at": "2026-09-27T16:06:21.435Z",
     "agents": [
       {
         "name": "coach",
@@ -3335,7 +3335,7 @@
       },
       {
         "name": "flags-sdk",
-        "description": "Flags SDK and Vercel Flags expert guidance. Use when declaring feature flags with flag(), wiring provider adapters (Vercel, Statsig, LaunchDarkly, PostHog, and others), managing flags with the vercel flags CLI, implementing the precompute pattern for static A/B tests, or integrating the Flags Explorer.",
+        "description": "Set up and use feature flags and A/B tests with the Flags SDK (`flags` npm package) and Vercel Flags. Use when installing or configuring the SDK, adding a new or existing flag, wiring `vercelAdapter` (OIDC or SDK keys), declaring flags with `flag()`, using the `vercel flags` CLI (create, inspect, list, enable, disable, set, update, split, rollout, rules, segments, use-targeting, evaluations, versions, open, archive, unarchive, rm, sdk-keys, override, prepare), setting up providers/adapters (Vercel, Statsig, LaunchDarkly, PostHog, GrowthBook, Global Config, OpenFeature, Split, Flagsmith, Reflag, Optimizely, or custom), precompute, `identify`/`dedupe`, Flags Explorer/Toolbar, Next.js or SvelteKit, or encrypting flag values. Triggers: feature flags, feature gates, A/B testing, experimentation, gradual rollout, traffic split, targeting rules, flag overrides, precompute, Flags Explorer, Vercel Flags, vercel flags CLI, `flags/next`, `flags/sveltekit`, `flags/react`, `@flags-sdk/*`.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
@@ -3475,7 +3475,7 @@
       },
       {
         "name": "vercel-cli",
-        "description": "Vercel CLI expert guidance. Use when deploying, managing environment variables, linking projects, viewing logs, querying metrics, managing domains, or interacting with the Vercel platform from the command line.",
+        "description": "Vercel CLI expert guidance. Use when deploying, managing environment variables, linking projects, viewing logs, querying metrics, managing domains, managing feature flags with vercel flags, or interacting with the Vercel platform from the command line.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
