@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T14:30:52.549Z",
+  "generated_at": "2026-09-30T20:34:55.473Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-30T09:37:38+02:00"
+      "last_modified": "2026-09-30T16:30:53+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -744,7 +744,7 @@
       "deployed_url": "https://sslip.io",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-07T20:29:04+02:00"
+      "last_modified": "2026-09-30T19:05:43+02:00"
     },
     {
       "name": "JSON-LD Schema Generator",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-09-28T20:27:47.555Z"
+      "last_modified": "2026-09-30T18:21:55.159Z"
     },
     {
       "name": "no-excuses",
@@ -1417,7 +1417,7 @@
       "deployed_url": "https://install.sh",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md",
-      "last_modified": "2026-09-18T07:24:36+02:00"
+      "last_modified": "2026-09-30T20:22:08+02:00"
     },
     {
       "name": "Rookie Ongoing",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-28T17:02:34+02:00"
+      "last_modified": "2026-09-30T21:18:29+02:00"
     },
     {
       "name": "Unlogged",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-30T14:30:53.364Z",
+    "synced_at": "2026-09-30T20:34:56.288Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "2a8ad9f74633",
+        "version": "72399850766a",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "2a8ad9f74633",
+        "version": "72399850766a",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
