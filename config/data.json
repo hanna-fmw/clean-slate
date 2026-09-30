@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T17:20:43.809Z",
+  "generated_at": "2026-09-30T07:37:38.176Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-29T13:20:39+02:00"
+      "last_modified": "2026-09-29T19:20:44+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-29T17:20:44.353Z",
+    "synced_at": "2026-09-30T07:37:38.649Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "fbe07fb6ce7d",
+        "version": "2a8ad9f74633",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "fbe07fb6ce7d",
+        "version": "2a8ad9f74633",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
