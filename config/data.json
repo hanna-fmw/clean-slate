@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T20:34:55.473Z",
+  "generated_at": "2026-10-01T09:58:31.952Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-30T16:30:53+02:00"
+      "last_modified": "2026-09-30T22:34:56+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-09-30T18:21:55.159Z"
+      "last_modified": "2026-09-30T20:54:38.975Z"
     },
     {
       "name": "no-excuses",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-30T21:18:29+02:00"
+      "last_modified": "2026-10-01T10:34:17+02:00"
     },
     {
       "name": "Unlogged",
@@ -1872,7 +1872,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-09-28T13:49:54+02:00"
+      "last_modified": "2026-10-01T06:51:51+02:00"
     }
   ],
   "services": [
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-09-30T20:34:56.288Z",
+    "synced_at": "2026-10-01T09:58:32.727Z",
     "agents": [
       {
         "name": "coach",
@@ -2776,7 +2776,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "72399850766a",
+        "version": "ab024cdcfa7c",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2806,7 +2806,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "72399850766a",
+        "version": "ab024cdcfa7c",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2896,9 +2896,25 @@
         },
         "transport": "stdio",
         "notes": ""
+      },
+      {
+        "name": "mcpjungle",
+        "origin": {
+          "source": "3rd-party"
+        },
+        "transport": "sse",
+        "notes": ""
       }
     ],
     "skills": [
+      {
+        "name": "fmw-add-mcp",
+        "description": "Add, update, remove or group an MCP server in Hanna's MCP Jungle gateway, with its keys in Infisical. Use when she wants a new MCP, wants to move an existing MCP into MCP Jungle, a key changed or expired, an MCP should be in her work or private group, or a project should get MCP Jungle's tools. Triggers on \"add an MCP\", \"set up X MCP\", \"put X in MCP Jungle\", \"move my MCPs\", \"rotate the key for X\", \"this project needs the X MCP\". Not for the claude.ai connectors (Gmail, Slack, HubSpot, Drive, Calendar) - those stay in claude.ai.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
       {
         "name": "fmw-check-gotchas",
         "description": "Look up Hanna's verified fixes before debugging or setting up known-trap tools - Supabase, WhaleSync, Webflow, Shopify, Prisma, Postgres, pnpm-in-Docker, NetBird VPN, Coolify, Docker, Next.js, Tailwind v4 fonts, OAuth/Google, Vercel, Cloudflare Access, RAG/vector DBs, Tauri SQLite, Playwright logged-in verification, or the clean-slate dashboard. Trigger on \"check gotchas\" or any bug/setup step in those areas, BEFORE attempting a fix.",
