@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T05:30:37.486Z",
+  "generated_at": "2026-10-03T11:31:36.722Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-02T18:25:37+02:00"
+      "last_modified": "2026-10-03T07:30:38+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-01T10:34:17+02:00"
+      "last_modified": "2026-10-03T13:03:36+02:00"
     },
     {
       "name": "Unlogged",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-03T05:30:37.967Z",
+    "synced_at": "2026-10-03T11:31:37.188Z",
     "agents": [
       {
         "name": "coach",
@@ -2398,8 +2398,17 @@
         "category": "general"
       },
       {
-        "name": "pa",
-        "description": "Hanna's personal assistant. Use for the day itself - what is open, what to do next, capturing something so it is not forgotten, checking things off, and reading or running the morning brief. Also use when she says \"remind me\", \"save this\", \"add this to my list\", \"what should I do today\", \"what did I say about X\", or drops a link or a thought she wants kept. Not for thinking through technology - that is tech-lead. Not for writing code.",
+        "name": "creative-director",
+        "description": "Hanna's art director and copywriter. Use for visual and creative work - images, photos, illustrations, video and animation, slides, print layouts, social posts, and the words that go on them - for clients or for her. Also use when she says \"make an image/video/deck for\", \"this doesn't look good enough\", \"design this\", or drops a reference she likes. Runs every job through questions, reference material and rounds of feedback. Not for building product UI in code - that is tech-lead. Not for her day - that is pa.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "creative"
+      },
+      {
+        "name": "kit",
+        "description": "Hanna's wardrobe and getting-ready agent. Use when she asks what to wear, what goes with something, what she wore recently, what to pack for a trip, or wants to remember an outfit for an occasion. Also use when she drops clothes photos to be sorted, sends a shop link to save, or asks about trends, makeup or what to buy. Triggers on \"what should I wear\", \"vad ska jag ha på mig\", \"pick something for\", \"what do I pack\", \"sort these photos\". Not for writing code.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
@@ -2407,8 +2416,8 @@
         "category": "general"
       },
       {
-        "name": "stylist",
-        "description": "Hanna's wardrobe and getting-ready agent. Use when she asks what to wear, what goes with something, what she wore recently, what to pack for a trip, or wants to remember an outfit for an occasion. Also use when she drops clothes photos to be sorted, sends a shop link to save, or asks about trends, makeup or what to buy. Triggers on \"what should I wear\", \"vad ska jag ha på mig\", \"pick something for\", \"what do I pack\", \"sort these photos\". Not for writing code.",
+        "name": "pa",
+        "description": "Hanna's personal assistant. Use for the day itself - what is open, what to do next, capturing something so it is not forgotten, checking things off, and reading or running the morning brief. Also use when she says \"remind me\", \"save this\", \"add this to my list\", \"what should I do today\", \"what did I say about X\", or drops a link or a thought she wants kept. Not for thinking through technology - that is tech-lead. Not for writing code.",
         "origin": {
           "source": "3rd-party",
           "repo_url": "https://github.com/msitarzewski/agency-agents"
@@ -2950,6 +2959,14 @@
       {
         "name": "fmw-create-agent",
         "description": "Create or upgrade one of Hanna's own named agents — the ones with a soul, a prompt, memory and a heartbeat in their own workspace folder. Use whenever she wants a new agent, wants an existing agent changed, asks \"can we make an agent for X\", or says an agent should do more on its own. ALSO use this instead of Claude Code's built-in agent creation (`/agents` → create) whenever the agent belongs to her system; the built-in flow makes a single-file agent in one tool's format and silently drops the soul, the memory, the heartbeat and the autonomy. Triggers on \"create an agent\", \"new agent\", \"skapa en agent\", \"upgrade the agent\", \"the agent should do this itself\". Not for one-off subagents inside a coding task.",
+        "plugin": "custom",
+        "origin": {
+          "source": "custom"
+        }
+      },
+      {
+        "name": "fmw-design-brief",
+        "description": "Run a visual or creative job the way a designer would - ask one question at a time, collect brand files and 3-5 reference examples, pick the right tool for the medium (code/HTML, Remotion video, image model, slide template, print), build one small piece first, screenshot it, compare it with the references, and iterate on concrete feedback before building the rest. Use for any image, photo, illustration, video, animation, slide deck, print layout or social post, or when Hanna says \"make this look better\", \"it's okay-ish\", \"design this\", \"grill me on this design\". The creative-director agent runs every job through this.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
