@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T07:32:44.920Z",
+  "generated_at": "2026-10-05T13:32:50.174Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-04T19:54:43+02:00"
+      "last_modified": "2026-10-05T09:32:45+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-10-04T10:22:53.190Z"
+      "last_modified": "2026-10-05T12:32:52.549Z"
     },
     {
       "name": "no-excuses",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-03T13:03:36+02:00"
+      "last_modified": "2026-10-05T13:10:37+02:00"
     },
     {
       "name": "Unlogged",
@@ -2386,17 +2386,8 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-05T07:32:45.391Z",
+    "synced_at": "2026-10-05T13:32:50.812Z",
     "agents": [
-      {
-        "name": "coach",
-        "description": "Hanna's health record. Use when she says how her body is doing or what she did with it - sleep, meals, protein, supplements or medicine taken, weight, bloat, a face rash or any other symptom, exercise she did, mood or energy. Also use when she asks what the record says, wants a stretch read back, asks whether two things go together, or wants to write in her journal. Triggers on \"log this\", \"I slept badly\", \"I'm bloated\", \"I took my magnesium\", \"I weighed myself\", \"what did I do last month\", \"does X make me feel worse\". Not for her todo list or her day - that is pa. Not for code.",
-        "origin": {
-          "source": "3rd-party",
-          "repo_url": "https://github.com/msitarzewski/agency-agents"
-        },
-        "category": "general"
-      },
       {
         "name": "creative-director",
         "description": "Hanna's art director and copywriter. Use for visual and creative work - images, photos, illustrations, video and animation, slides, print layouts, social posts, and the words that go on them - for clients or for her. Also use when she says \"make an image/video/deck for\", \"this doesn't look good enough\", \"design this\", or drops a reference she likes. Runs every job through questions, reference material and rounds of feedback. Not for building product UI in code - that is tech-lead. Not for her day - that is pa.",
@@ -2405,6 +2396,15 @@
           "repo_url": "https://github.com/msitarzewski/agency-agents"
         },
         "category": "creative"
+      },
+      {
+        "name": "go-happy",
+        "description": "Hanna's health record. Use when she says how her body is doing or what she did with it - sleep, meals, protein, supplements or medicine taken, weight, bloat, a face rash or any other symptom, exercise she did, mood or energy. Also use when she asks what the record says, wants a stretch read back, asks whether two things go together, or wants to write in her journal. Triggers on \"log this\", \"I slept badly\", \"I'm bloated\", \"I took my magnesium\", \"I weighed myself\", \"what did I do last month\", \"does X make me feel worse\". Not for her todo list or her day - that is pa. Not for code.",
+        "origin": {
+          "source": "3rd-party",
+          "repo_url": "https://github.com/msitarzewski/agency-agents"
+        },
+        "category": "go"
       },
       {
         "name": "kit",
