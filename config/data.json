@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T16:12:53.916Z",
+  "generated_at": "2026-10-07T04:31:47.972Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-06T11:11:07+02:00"
+      "last_modified": "2026-10-06T18:12:54+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-06T16:12:54.783Z",
+    "synced_at": "2026-10-07T04:31:48.514Z",
     "agents": [
       {
         "name": "creative-director",
@@ -3107,6 +3107,16 @@
         }
       },
       {
+        "name": "diagnosing-superpowers",
+        "description": "Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, \"it took too long\", \"why is it so expensive\", \"what is it doing\" — or wants to build a bug report for the superpowers maintainers, for the current session or a past one identified by id or path, on any harness.",
+        "plugin": "superpowers",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/obra/superpowers",
+          "plugin": "superpowers"
+        }
+      },
+      {
         "name": "dispatching-parallel-agents",
         "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
         "plugin": "superpowers",
@@ -3118,7 +3128,7 @@
       },
       {
         "name": "executing-plans",
-        "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+        "description": "Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is available",
         "plugin": "superpowers",
         "origin": {
           "source": "anthropic",
@@ -3237,16 +3247,6 @@
         }
       },
       {
-        "name": "diagnosing-superpowers",
-        "description": "Use when a superpowers session went wrong and your human partner wants to know why — repeated work, ignored plans, stumbles, poor results, a skill that didn't fire, \"it took too long\", \"why is it so expensive\", \"what is it doing\" — or wants to build a bug report for the superpowers maintainers, for the current session or a past one identified by id or path, on any harness.",
-        "plugin": "superpowers",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/obra/superpowers",
-          "plugin": "superpowers"
-        }
-      },
-      {
         "name": "access-protected-vercel-deployment",
         "description": "Access and test Vercel deployments protected by Vercel Authentication, SSO, or Deployment Protection. Use when curl, agent-browser, Playwright, or another automated request reaches a Vercel login or protection page; when a protected preview or production URL returns 401 or 403; when TRUSTED_SOURCES_ENVIRONMENT_MISMATCH appears; or when choosing between `vercel curl` and the `x-vercel-trusted-oidc-idp-token` header.",
         "plugin": "vercel",
@@ -3278,7 +3278,7 @@
       },
       {
         "name": "auth",
-        "description": "Authentication integration guidance — Clerk (native Vercel Marketplace), Descope, and Auth0 setup for Next.js applications. Covers middleware auth patterns, sign-in/sign-up flows, and Marketplace provisioning. Use when implementing user authentication.",
+        "description": "Authentication integration guidance — Clerk (native Vercel Marketplace), Descope, and Auth0 setup for Next.js applications, plus Sign in with Vercel, Vercel Passport, and Vercel KMS. Covers proxy.ts auth patterns, sign-in/sign-up flows, and Marketplace provisioning. Use when implementing user authentication or protecting deployments.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
@@ -3329,6 +3329,16 @@
       {
         "name": "create-a-backend",
         "description": "Backend architecture guidance. Use when planning, building, or migrating an API or backend; choosing between Functions, Services, containers, Workflow, Queues, and Marketplace databases; or selecting a supported backend framework or runtime.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
+        "name": "custom-metrics",
+        "description": "Emit and query Vercel Custom Metrics. Use when instrumenting application or business measurements in Vercel Functions, using metric() from @vercel/functions, choosing metric names and attributes, or querying emitted values with vc metrics.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
@@ -3447,6 +3457,16 @@
         }
       },
       {
+        "name": "queues",
+        "description": "Vercel Queues guidance — durable topics with at-least-once delivery, independent consumer groups, retries, delays, and idempotency keys via @vercel/queue (JS) or vercel-queue (Python). Use when deferring background work, buffering traffic, fanning out events, or choosing between Queues and Workflows.",
+        "plugin": "vercel",
+        "origin": {
+          "source": "anthropic",
+          "repo_url": "https://github.com/anthropics/claude-plugins-official",
+          "plugin": "vercel"
+        }
+      },
+      {
         "name": "react-best-practices",
         "description": "React best-practices reviewer for TSX files. Triggers after editing multiple TSX components to run a condensed quality checklist covering component structure, hooks usage, accessibility, performance, and TypeScript patterns.",
         "plugin": "vercel",
@@ -3498,7 +3518,7 @@
       },
       {
         "name": "vercel-agent",
-        "description": "Vercel Agent guidance — AI-powered code review, incident investigation, and SDK installation. Automates PR analysis and anomaly debugging. Use when configuring or understanding Vercel's AI development tools.",
+        "description": "Vercel Agent guidance — dashboard and Slack chat, code review, production investigation, approved actions, and product installation. Use when configuring or working with Vercel's AI assistant.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
@@ -3589,26 +3609,6 @@
       {
         "name": "workflow",
         "description": "Vercel Workflow SDK expert guidance. Use when building durable workflows, long-running tasks, API routes or agents that need pause/resume, retries, step-based execution, or crash-safe orchestration with Vercel Workflow.",
-        "plugin": "vercel",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "vercel"
-        }
-      },
-      {
-        "name": "custom-metrics",
-        "description": "Emit and query Vercel Custom Metrics. Use when instrumenting application or business measurements in Vercel Functions, using metric() from @vercel/functions, choosing metric names and attributes, or querying emitted values with vc metrics.",
-        "plugin": "vercel",
-        "origin": {
-          "source": "anthropic",
-          "repo_url": "https://github.com/anthropics/claude-plugins-official",
-          "plugin": "vercel"
-        }
-      },
-      {
-        "name": "queues",
-        "description": "Vercel Queues guidance — durable topics with at-least-once delivery, independent consumer groups, retries, delays, and idempotency keys via @vercel/queue (JS) or vercel-queue (Python). Use when deferring background work, buffering traffic, fanning out events, or choosing between Queues and Workflows.",
         "plugin": "vercel",
         "origin": {
           "source": "anthropic",
