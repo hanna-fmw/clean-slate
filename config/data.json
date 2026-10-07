@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T10:31:53.416Z",
+  "generated_at": "2026-10-07T16:32:00.573Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-07T06:31:48+02:00"
+      "last_modified": "2026-10-07T12:31:54+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-05T13:10:37+02:00"
+      "last_modified": "2026-10-07T17:27:17+02:00"
     },
     {
       "name": "Unlogged",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-07T10:31:53.915Z",
+    "synced_at": "2026-10-07T16:32:01.052Z",
     "agents": [
       {
         "name": "creative-director",
@@ -2785,7 +2785,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "d4226d062928",
+        "version": "6eb6a30bf024",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2815,7 +2815,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "d4226d062928",
+        "version": "6eb6a30bf024",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -3038,7 +3038,7 @@
       },
       {
         "name": "fmw-write-sms-email-slack",
-        "description": "Draft an SMS, email, or Slack message in Hanna's voice from a rough brief, optionally pulling the relevant Gmail thread for context and saving the reply as a Gmail draft with empty recipients (so nothing sends without her approval). Use when Hanna wants help writing an SMS, text, email, or Slack/team message — e.g. \"write an SMS to mom about...\", \"reply to the thread with [name] about...\", \"draft an email to a client saying...\", \"message the team that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\", \"skriv till teamet...\". Defaults to Swedish. Also drafts answers to course assignments, exam questions and questionnaires (\"skriv svaret på uppgiften\", \"help me answer this course question\", \"reflektionsuppgift\", \"tentafråga\"). Four styles: `clients` (email only, light-formal default), `team-slack` (Slack or email to colleagues), `friends-family`, and `course-answers` (school Swedish, handed in to a teacher). Reads style samples from ~/_system/utilities/writing-examples/write-sms-email-slack/{channel}/{lang}/from-me-to-{audience}.md.",
+        "description": "Draft an SMS, email, or Slack message in Hanna's voice from a rough brief, optionally pulling the relevant Gmail thread for context and saving the reply as a Gmail draft with empty recipients (so nothing sends without her approval). Use when Hanna wants help writing an SMS, text, email, or Slack/team message — e.g. \"write an SMS to mom about...\", \"reply to the thread with [name] about...\", \"draft an email to a client saying...\", \"message the team that...\", \"skriv ett SMS till...\", \"skriv ett mail till...\", \"skriv till teamet...\". Defaults to Swedish. Also drafts answers to course assignments, exam questions and questionnaires (\"skriv svaret på uppgiften\", \"help me answer this course question\", \"reflektionsuppgift\", \"tentafråga\"). Five styles: `clients` (email only, light-formal default), `team-slack` (Slack or email to colleagues), `moiwak-team` (Slack messages AND Trello cards/comments to the Moiwak store team), `friends-family`, and `course-answers` (school Swedish, handed in to a teacher). Reads style samples from ~/_system/utilities/writing-examples/write-sms-email-slack/{channel}/{lang}/from-me-to-{audience}.md.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
