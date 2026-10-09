@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T09:25:37.336Z",
+  "generated_at": "2026-10-09T15:25:42.247Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-08T21:26:53+02:00"
+      "last_modified": "2026-10-09T11:25:38+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-10-08T18:17:49.216Z"
+      "last_modified": "2026-10-09T10:50:39.803Z"
     },
     {
       "name": "no-excuses",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-09T09:25:37.882Z",
+    "synced_at": "2026-10-09T15:25:42.765Z",
     "agents": [
       {
         "name": "creative-director",
@@ -2785,7 +2785,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "315c4e48967d",
+        "version": "b860d6f2554f",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2815,7 +2815,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "315c4e48967d",
+        "version": "b860d6f2554f",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2844,7 +2844,7 @@
       },
       {
         "name": "security-guidance",
-        "version": "2.0.11",
+        "version": "2.0.12",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2936,7 +2936,7 @@
     "skills": [
       {
         "name": "fmw-add-mcp",
-        "description": "Add, update, remove or group an MCP server in Hanna's MCP Jungle gateway, with its keys in Infisical. Use when she wants a new MCP, wants to move an existing MCP into MCP Jungle, a key changed or expired, an MCP should be in her work or private group, or a project should get MCP Jungle's tools. Triggers on \"add an MCP\", \"set up X MCP\", \"put X in MCP Jungle\", \"move my MCPs\", \"rotate the key for X\", \"this project needs the X MCP\". Not for the claude.ai connectors (Gmail, Slack, HubSpot, Drive, Calendar) - those stay in claude.ai.",
+        "description": "Add, update, remove or group an MCP server in Hanna's MCP Jungle gateway, with its keys in Infisical. Also the way to get ANY API key, token or OAuth secret for a service, for an MCP or a project's own env vars. Use when she wants a new MCP, needs a key or token for a service, wants to move an existing MCP into MCP Jungle, a key changed or expired, an MCP should be in her work or private group, or a project should get MCP Jungle's tools. Triggers on \"I need an API key for X\", \"get me a token\", \"set up OAuth for X\", \"add an MCP\", \"set up X MCP\", \"put X in MCP Jungle\", \"move my MCPs\", \"rotate the key for X\", \"this project needs the X MCP\". Not for the claude.ai connectors (Gmail, Slack, HubSpot, Drive, Calendar) - those stay in claude.ai.",
         "plugin": "custom",
         "origin": {
           "source": "custom"
