@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T15:25:42.247Z",
+  "generated_at": "2026-10-10T04:35:02.775Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-09T11:25:38+02:00"
+      "last_modified": "2026-10-09T17:25:42+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -863,7 +863,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "~/_system/clean-slate/private/vault.md:113",
-      "last_modified": "2026-10-09T10:50:39.803Z"
+      "last_modified": "2026-10-09T16:01:21.464Z"
     },
     {
       "name": "no-excuses",
@@ -1767,7 +1767,7 @@
       "deployed_url": "",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-09T08:18:08+02:00"
+      "last_modified": "2026-10-09T18:14:10+02:00"
     },
     {
       "name": "Unlogged",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-09T15:25:42.765Z",
+    "synced_at": "2026-10-10T04:35:03.210Z",
     "agents": [
       {
         "name": "creative-director",
@@ -2785,7 +2785,7 @@
       },
       {
         "name": "skill-creator",
-        "version": "b860d6f2554f",
+        "version": "b8e53f1c05df",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
@@ -2815,7 +2815,7 @@
       },
       {
         "name": "frontend-design",
-        "version": "b860d6f2554f",
+        "version": "b8e53f1c05df",
         "origin": {
           "source": "anthropic",
           "repo_url": "https://github.com/anthropics/claude-plugins-official",
