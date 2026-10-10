@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T04:35:02.775Z",
+  "generated_at": "2026-10-10T10:35:07.149Z",
   "projects": [
     {
       "name": "Abril Aventura",
@@ -369,7 +369,7 @@
       "deployed_url": "https://ops.hosk.app",
       "chrome_profile": "",
       "vault": "",
-      "last_modified": "2026-10-09T17:25:42+02:00"
+      "last_modified": "2026-10-10T06:35:03+02:00"
     },
     {
       "name": "Company Knowledge Base",
@@ -2386,7 +2386,7 @@
     }
   ],
   "tools": {
-    "synced_at": "2026-10-10T04:35:03.210Z",
+    "synced_at": "2026-10-10T10:35:07.578Z",
     "agents": [
       {
         "name": "creative-director",
@@ -2869,15 +2869,6 @@
           "plugin": "filetree"
         },
         "marketplace": "claude-code-filetree"
-      },
-      {
-        "name": "blast-radius",
-        "version": "0.1.0",
-        "origin": {
-          "source": "3rd-party",
-          "plugin": "blast-radius"
-        },
-        "marketplace": "claude-code-playground-mods"
       }
     ],
     "mcp_servers": [
